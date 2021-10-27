@@ -101,4 +101,46 @@ for(i in 1:nrow(endpoints_level3)){
 }
 
 #Save dataset
-#write.csv(dataset, '')
+write.csv(dataset, 'endpointsDefinitionsUKB.csv')
+
+##########################################################################################################################################################################################
+
+#Aim for this section of code is to produce a wide table which will create an array of all phenotypes that belong to a person. No information is provided on earliest date for this table. 
+
+endpoints <- fread('endpointDefinitionsUKB.csv', data.table=FALSE)
+endpoints <- endpoints[,-1]
+
+uniqueIDs <- as.data.frame(endpoints$eid[!duplicated(endpoints$eid)])
+colnames(uniqueIDs) <- 'eid'
+
+level1 <- subset(endpoints, LEVEL==1)
+level1 <- select(level1, c("eid","DATE","CODE1","ENDPOINT_LEVEL_1", "LEVEL"))
+for(i in unique(level1$ENDPOINT_LEVEL_1)){
+  print(i)
+  case <- subset(level1, i==ENDPOINT_LEVEL_1)
+  case[[paste0(i)]] <- 1
+  case <- case[,c('eid',paste0(i))]
+  uniqueIDs <- left_join(uniqueIDs, case)
+}
+
+level2 <- subset(endpoints, LEVEL==2 & !is.na(ENDPOINT_LEVEL_2))
+level2 <- select(level2, c("eid","DATE","CODE1", "LEVEL", "ENDPOINT_LEVEL_2"))
+for(i in unique(level2$ENDPOINT_LEVEL_2)){
+  print(i)
+  case <- subset(level2, i==ENDPOINT_LEVEL_2)
+  case[[paste0(i)]] <- 1
+  case <- case[,c('eid',paste0(i))]
+  uniqueIDs <- left_join(uniqueIDs, case)
+}
+
+level3 <- subset(endpoints, LEVEL==3 & !is.na(ENDPOINT_LEVEL_3))
+level3 <- select(level3, c("eid","DATE","CODE1", "LEVEL", "ENDPOINT_LEVEL_3"))
+for(i in unique(level3$ENDPOINT_LEVEL_3)){
+  print(i)
+  case <- subset(level3, i==ENDPOINT_LEVEL_3)
+  case[[paste0(i)]] <- 1
+  case <- case[,c('eid',paste0(i))]
+  uniqueIDs <- left_join(uniqueIDs, case)
+}
+
+write.csv(uniqueIDs, 'endpointsWideFormat.csv')
