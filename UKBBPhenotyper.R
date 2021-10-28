@@ -159,3 +159,5 @@ endpointswide <- select(uniqueIDs, c("eid","C3_CANCER", "C3_COLORECTAL", "C3_BRE
                                      "GE_STRICT_DATE", "FE_STRICT_DATE", "K11_APPENDACUT_DATE"))
 
 write.csv(uniqueIDs, 'endpointsWideFormat.csv')
+
+#There will be a group who have received no ICD codes. These participants should be included as controls also. Link these remaining people to the saved dataset above and include as controls. 
