@@ -6,6 +6,8 @@ library(dplyr)
 library(ggplot2)
 library(stringi)
 library(tidyverse)
+library(reshape2)
+library(ggrepel)
 
 #I think this doesn't work because it's a .xlsx
 #file<-"https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit?usp=sharing&ouid=115040676596308698055&rtpof=true&sd=true"
@@ -13,6 +15,7 @@ library(tidyverse)
 #download file to use 
 file<-drive_find(pattern="Intervene_flagship_endpoint_collection.xlsx") #takes a bit of time..would be better to know path
 drive_download(file$name,overwrite=TRUE)
+#will have to authorize your google account, check option to see accounts, wil copy and apste an authorization code 
 
 #read in names
 names<-read_xlsx(file$name,sheet=1)
@@ -25,6 +28,8 @@ levels(names2$`Endpoint family`)<-my_colors #set colorblind frienldy colors
 #list sheets
 sheets<-excel_sheets(file$name)
 indices<-grep("Metrics",sheets) #select sheets with metrics
+
+##### TO DO: fix IBD, IBS, osteo and hip in the sheets
 
 drop_rows_all_na <- function(x, pct=0.90) x[!rowSums(is.na(x)) >= ncol(x)*pct,]
 
@@ -113,6 +118,29 @@ dat_long$value<-as.numeric(dat_long$value)
 pdf(file="corr.pdf",height=10,width=12)
 ggplot(dat_long[!is.na(dat_long$value),],aes(y=endpoint,x=value,shape=variable)) + geom_point(aes(color = `Endpoint family`),stat="identity") + facet_wrap(~biobank,nrow=2) + geom_vline(linetype="dashed",color="red",xintercept=0) +
   scale_color_manual(values = levels(dat_long$`Endpoint family`), labels = levels(dat_long$Group)) + theme_bw()  + theme(legend.position="bottom") +  scale_y_discrete(limits=rev(levels(dat_long$endpoint)))
+dev.off()
+
+#### leave one biobank vs rest for age correlations
+dat_long_age<-dat_long[dat_long$variable=="age_corr",]
+corr_age<-dat_long_age %>% left_join(dat_long_age,by="endpoint") %>% subset(biobank.x!=biobank.y) %>% drop_na
+pdf(file="corr_age.pdf",height=12,width=12)
+ggplot(corr_age,aes(x=value.x,y=value.y,shape=biobank.y,color=Group.x,label=endpoint)) + geom_point() + theme_bw() + 
+  geom_abline(slope=1,intercept=0, color="black",linetype="dashed") + facet_wrap(~biobank.x) + 
+  labs(title="Endpoint & Age correlations",x="Leave one out biobank correlation",y="Remaining biobank correlations") +
+  geom_text_repel(size=3) + theme(legend.position="bottom") + scale_color_discrete(name="Endpoint Category") + scale_shape_discrete(name="Biobank") +
+  geom_vline(xintercept=0,color="black",alpha=0.5) +  geom_hline(yintercept=0,color="black",alpha=0.5)
+dev.off()
+
+
+#### leave one biobank vs rest for sex correlations
+dat_long_sex<-dat_long[dat_long$variable=="sex_corr",]
+corr_sex<-dat_long_sex %>% left_join(dat_long_sex,by="endpoint") %>% subset(biobank.x!=biobank.y) %>% drop_na
+pdf(file="corr_sex.pdf",height=12,width=12)
+ggplot(corr_sex,aes(x=value.x,y=value.y,shape=biobank.y,color=Group.x,label=endpoint)) + geom_point() + theme_bw() + 
+  geom_abline(slope=1,intercept=0, color="black",linetype="dashed") + facet_wrap(~biobank.x) + 
+  labs(title="Endpoint & Sex correlations",x="Leave one out biobank correlation",y="Remaining biobank correlations") +
+  geom_text_repel(size=3) + theme(legend.position="bottom") + scale_color_discrete(name="Endpoint Category") + scale_shape_discrete(name="Biobank") +
+  geom_vline(xintercept=0,color="black",alpha=0.5) +  geom_hline(yintercept=0,color="black",alpha=0.5)
 dev.off()
 
 
