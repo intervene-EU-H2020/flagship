@@ -13,3 +13,6 @@ To make sure the script can separate between ICD 10 and ICD 9 codes, it places a
 
 The regex pattern then searches for strings starting with 10x or 9x before identifying the codes themselves. 
 
+### biobank_summary_plot.R
+Script by Brooke Wolford to analyze endpoint metrics collected from biobanks. 
+Reads in data from google drive excel file. 
