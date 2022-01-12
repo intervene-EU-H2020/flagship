@@ -151,12 +151,12 @@ endpointswide <- select(uniqueIDs, c("eid","C3_CANCER", "C3_COLORECTAL", "C3_BRE
                                      "J10_ASTHMA", "I9_HEARTFAIL_NS", "I9_STR", "G6_AD_WIDE", "T1D", "I9_AF", "N14_CHRONKIDNEYDIS", "F5_DEPRESSIO", 
                                      "C3_BRONCHUS_LUNG", "RHEUMA_SEROPOS_OTH", "K11_IBD_STRICT", "I9_VTE", "I9_THAORTANEUR", "I9_ABAORTANEUR", 
                                      "COX_ARTHROSIS", "KNEE_ARTHROSIS", "M13_OSTEOPOROSIS", "AUD_SWEDISH", "E4_HYTHYNAS", "G6_SLEEPAPNO", "IPF", 
-                                     "ILD", "GOUT", "H7_GLAUCOMA", "G6_EPLEPSY", "GE_STRICT", "FE_STRICT", "K11_APPENDACUT",
+                                     "ILD", "GOUT", "H7_GLAUCOMA", "G6_EPLEPSY", "GE_STRICT", "FE_STRICT", "K11_APPENDACUT", "COVID",
                                      "C3_CANCER_DATE", "C3_COLORECTAL_DATE", "C3_BREAST_DATE", "T2D_DATE", "C3_PROSTATE_DATE", "I9_CHD_DATE", "I9_SAH_DATE", "C3_MELANOMA_SKIN_DATE", "J10_ASTHMA_DATE", 
                                      "I9_HEARTFAIL_NS_DATE", "I9_STR_DATE", "G6_AD_WIDE_DATE", "T1D_DATE", "I9_AF_DATE", "N14_CHRONKIDNEYDIS_DATE", "F5_DEPRESSIO_DATE", "C3_BRONCHUS_LUNG_DATE", 
                                      "RHEUMA_SEROPOS_OTH_DATE", "K11_IBD_STRICT_DATE", "I9_VTE_DATE", "I9_THAORTANEUR_DATE", "I9_ABAORTANEUR_DATE", "COX_ARTHROSIS_DATE", "KNEE_ARTHROSIS_DATE", 
                                      "M13_OSTEOPOROSIS_DATE", "AUD_SWEDISH_DATE", "E4_HYTHYNAS_DATE", "G6_SLEEPAPNO_DATE", "IPF_DATE", "ILD_DATE", "GOUT_DATE", "H7_GLAUCOMA_DATE", "G6_EPLEPSY_DATE", 
-                                     "GE_STRICT_DATE", "FE_STRICT_DATE", "K11_APPENDACUT_DATE"))
+                                     "GE_STRICT_DATE", "FE_STRICT_DATE", "K11_APPENDACUT_DATE", "COVID_DATE"))
 
 write.csv(uniqueIDs, 'endpointsWideFormat.csv')
 
