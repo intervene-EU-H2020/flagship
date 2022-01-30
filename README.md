@@ -23,13 +23,13 @@ Code for the flagship project (WP2)
 
 #### Note - only to be performed if the genome build is hg38 and the variant ID structure is CHR_POS_REF_ALT.
 
+* Run script hg38_biobankadjustments.R
+
 * This script is required for all biobanks which have a genome build of hg38/where the variant ID structure within the bim file is in the form CHR_POS_REF_ALT. 
 
 * Due to the nature of the conversion to hg38 within the pre-adjusted summary statistics, we cannot be sure what the REF or ALT allele is within your bim file as we have relied on those within the summary statistics themselves. As such, both combinations are currently saved within the sum stats. 
 
 * The script reads in your bim file and identifies which variant ID is contained within your bim file and the summary statistics and creates a final snp list for the adjusted summary statistics. 
-
-* Run script hg38_biobankadjustments.R
 
 * For this script to work you will have to:
     1. Line 9 - Adjust the path within the 'bim' variable to read in your biobanks bim file.
@@ -74,6 +74,8 @@ Code for the flagship project (WP2)
         5. Line 31 - Amend if the column numbers selected do not automatically select the ID column and the first ten principal components. If necessary, also amend the column names of the file to be in the format 'PC1, PC2, ... PCN'.
         6. Line 38 - If this does not subset individuals to those of european ancestries, amend to do so with the files you have available to you.
         7. Line 88 - Change ENTER_BIOBANK_NAME to your biobank.
+
+**Send results to bradley.jermy@helsinki.fi :)**
 
 ### UKBBPhenotyper.R
 v1.0 under development :warning:  
