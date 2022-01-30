@@ -59,10 +59,10 @@ Code for the flagship project (WP2)
 ### Step 4: Calculate associations between PRS and Phenotype - logistic regression
 
 * **Note: this script has four assumptions. 
-      1) You have a phenotype file with case control assignments for each phenotype. 
-      2) You have been able to allocate genetic ancestry for the participants within your biobank. This does not have to be harmonized, any approach taken by your biobank will suffice for this analysis.
-      3) You have kept the same short hand names for the phenotypes as within [FinnGen](https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit#gid=334983519) (column B). 
-      4) You have kept the same naming structure for the PRS files as when you downloaded them.**
+        1) You have a phenotype file with case control assignments for each phenotype. 
+        2) You have been able to allocate genetic ancestry for the participants within your biobank. This does not have to be harmonized, any approach taken by your biobank will suffice for this analysis.
+        3) You have kept the same short hand names for the phenotypes as within [FinnGen](https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit#gid=334983519) (column B). 
+        4) You have kept the same naming structure for the PRS files as when you downloaded them.**
 
 * Run script OddsRatioCalculation.R
 
