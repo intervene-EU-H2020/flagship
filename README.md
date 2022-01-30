@@ -58,22 +58,22 @@ Code for the flagship project (WP2)
 
 ### Step 4: Calculate associations between PRS and Phenotype - logistic regression
 
-* **Note: this script has four assumptions. 
-        1) You have a phenotype file with case control assignments for each phenotype. 
-        2) You have been able to allocate genetic ancestry for the participants within your biobank. This does not have to be harmonized, any approach taken by your biobank will suffice for this analysis.
-        3) You have kept the same short hand names for the phenotypes as within [FinnGen](https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit#gid=334983519) (column B). 
-        4) You have kept the same naming structure for the PRS files as when you downloaded them.**
+* **Note: this script has four assumptions.** 
+    1) You have a phenotype file with case control assignments for each phenotype.
+    2) You have been able to allocate genetic ancestry for the participants within your biobank. This does not have to be harmonized, any approach taken by your biobank will suffice for this analysis.
+    3) You have kept the same short hand names for the phenotypes as within [FinnGen](https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit#gid=334983519) (column B).
+    4) You have kept the same naming structure for the PRS files as when you downloaded them.
 
 * Run script OddsRatioCalculation.R
 
 * For this script to work you will have to:
-        1. Line 9 - Specify the path to the phenotype file. *See assumption 1.*
-        2. Line 15 - Specify the path to the files containing the individual level PRS for each participant. 
-        3. Line 21 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
-        4. Line 28 - Specify the path to file which contains the genetic principal components calculated within participants of european ancestries.
-        5. Line 31 - Amend if the column numbers selected do not automatically select the ID column and the first ten principal components. If necessary, also amend the column names of the file to be in the format 'PC1, PC2, ... PCN'.
-        6. Line 38 - If this does not subset individuals to those of european ancestries, amend to do so with the files you have available to you.
-        7. Line 88 - Change ENTER_BIOBANK_NAME to your biobank.
+    1. Line 9 - Specify the path to the phenotype file. *See assumption 1.*
+    2. Line 15 - Specify the path to the files containing the individual level PRS for each participant. 
+    3. Line 21 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
+    4. Line 28 - Specify the path to file which contains the genetic principal components calculated within participants of european ancestries.
+    5. Line 31 - Amend if the column numbers selected do not automatically select the ID column and the first ten principal components. If necessary, also amend the column names of the file to be in the format 'PC1, PC2, ... PCN'.
+    6. Line 38 - If this does not subset individuals to those of european ancestries, amend to do so with the files you have available to you.
+    7. Line 88 - Change ENTER_BIOBANK_NAME to your biobank.
 
 **Send results to bradley.jermy@helsinki.fi :)**
 
