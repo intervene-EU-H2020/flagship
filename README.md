@@ -54,7 +54,7 @@ Code for the flagship project (WP2)
     
 * *Note: If you do not have a file containing allele frequencies, we recommend producing one before computing PRS as otherwise plink will redo this step for every phenotype.*
 
-* *Note: If the number of SNPs within your genotype file is very large and the run is taking a long time due to plink having to read in all the SNPs, consider creating a separate bim file with just Remos SNP list (hapmap + well-imputed 1000G) and separately specifying this bim file to reduce time (I can provide code on how to do this if required). Remos SNP list can be found [here](https://github.com/intervene-EU-H2020/prspipe/tree/main/resources/1kg).*
+* *Note: If the number of SNPs within your genotype file is very large and the run is taking a long time due to plink having to read in all the SNPs, consider using an argument that only uses Remos SNP list (hapmap + well-imputed 1000G). Remos SNP list can be found [here](https://github.com/intervene-EU-H2020/prspipe/tree/main/resources/1kg).*
 
 ### Step 4: Calculate associations between PRS and Phenotype - logistic regression
 
