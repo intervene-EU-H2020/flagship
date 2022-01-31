@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #command read-freq used to stop plink calculating allele frequencies every time the PRS is calculated.
 #if you do not have an allele frequency file, i suggest creating one and then referring to this as it will save you a bunch of time. 
 
