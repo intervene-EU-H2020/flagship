@@ -16,6 +16,6 @@ do
 /path/to/plink2 \
 --bfile ${genotype_directory}/genotype_plink_files
 --read-freq ${frequency_directory}/frequency_file
---score ${score_directory}/${phenoi}_megaPRS_scores_hg[19/38].txt 1 2 5 header 
---out ${output}/${phenoi}_PRS
+--score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38].txt 1 2 5 header 
+--out ${output}/${pheno_i}_PRS
 done
