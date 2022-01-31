@@ -1,4 +1,5 @@
 library(data.table)
+library(dplyr)
 
 mapping <- fread("/path/to/mapping/file/1KGPhase3_hm3_hg19_hg38_mapping.tsv", data.table=FALSE)
 
@@ -28,5 +29,4 @@ snplist$Predictor <- case_when(snplist$Predictor_v1 %in% first_id ~ snplist$Pred
 snplist <- snplist$Predictor
   
 #Save adjusted snplist file so that it can be read by plink
-write.table(snplist, "/path/to/snplist/snplist_file", sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
-
+write.table(snplist, "/path/to/snplist/snplist_hg38", sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
