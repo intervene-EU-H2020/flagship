@@ -38,6 +38,19 @@ Code for the flagship project (WP2)
 
 ### Step 3: Compute PRS
 
+#### Step 3a: Generate a SNP list to speed up PRS computation
+* For genome build hg19:
+    * Download pre-computed SNP list from this repository 'snplist_hg19'.
+
+* For genome build hg38:
+    * Download mapping file created by Remo from [here](https://github.com/intervene-EU-H2020/prspipe/tree/main/resources/1kg).
+    * Run script create_hg38_snplist.R
+    * For this script to work you will have to:
+        1. Line 4 - Specify the path of the mapping file downloaded in the previous step. 
+        2. Line 14 - Specify the path and name of the bim file. 
+        3. Line 32 - Specify the output path for the snp list.   
+
+#### Step 3b: Run plink to compute PRS 
 * **Note: if you use a job scheduler which allows multiple jobs to be submitted, please adjust the script below and create a single job for each phenotype. This script assumes an interactive job and loops over phenotypes which will be much much slower than running in parallel.**
 
 * Run script GeneratePRS.sh
@@ -46,15 +59,15 @@ Code for the flagship project (WP2)
     1. Line 6 - Specify the path where PRS are to be saved.
     2. Line 7 - Specify the path of the downloaded summary statistics from Step 1.
     3. Line 8 - Specify the path to the directory where the allele frequencys are stored.
-    4. Line 9 - Specify the path to the directory where the genotypes are stored (it is likely line 8 and line 9 will have the same path). 
-    5. Line 16 - Specify the path to plink. If you do not have plink2 installed, also change to the version used by your biobank.
-    6. Line 17 - Change 'genotype_plink_files' to the name of your genotype files
-    7. Line 18 - Change 'frequency_file' to the name of your file containing allele frequencies.
-    8. Line 19 - Select 19 or 38 depending on the build of your biobanks genome. Also remove square brackets surrounding the number.
+    4. Line 9 - Specify the path to the directory of the snplist created as part of Step 3a. 
+    5. Line 10 - Specify the path to the directory where the genotypes are stored (it is likely line 8 and line 10 will have the same path). 
+    6. Line 17 - Specify the path to plink. If you do not have plink2 installed, also change to the version used by your biobank.
+    7. Line 18 - Change 'genotype_plink_files' to the name of your genotype files.
+    8. Line 19 - Remove square brackets and keep the number which corresponds to your biobanks genome build.
+    9. Line 20 - Change 'frequency_file' to the name of your file containing allele frequencies.
+    10. Line 21 - Select 19 or 38 depending on the build of your biobanks genome. Also remove square brackets surrounding the number.
     
 * *Note: If you do not have a file containing allele frequencies, we recommend producing one before computing PRS as otherwise plink will redo this step for every phenotype.*
-
-* *Note: If the number of SNPs within your genotype file is very large and the run is taking a long time due to plink having to read in all the SNPs, consider using an argument that only uses Remos SNP list (hapmap + well-imputed 1000G). Remos SNP list can be found [here](https://github.com/intervene-EU-H2020/prspipe/tree/main/resources/1kg).*
 
 ### Step 4: Calculate associations between PRS and Phenotype - logistic regression
 
