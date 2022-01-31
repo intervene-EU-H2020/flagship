@@ -11,7 +11,7 @@ genotype_directory=/path/to/genotype
 #Loop through phenotypes
 for i in ${!pheno[@]}; do
 
-pheno_i=${endpoints[i]}
+pheno_i=${pheno[i]}
 do
 /path/to/plink2 \
 --bfile ${genotype_directory}/genotype_plink_files
