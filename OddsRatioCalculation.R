@@ -37,6 +37,8 @@ pheno <- left_join(pheno, pcs)
 #Feel free to subset using your own code: only provided as a reminder.
 pheno <- subset(pheno, ANCESTRY=='EUR')
 
+#Subset to unrelated individuals - this will be specific to the biobank as was the case for ancestries. 
+
 #Standardise PRS now they are subset to european ancestry participants.
 for(i in phenotypes){
   pheno[[i]] <- scale(pheno[[i]])
