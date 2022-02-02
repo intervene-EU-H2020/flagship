@@ -49,7 +49,7 @@ pheno <- subset(pheno, ANCESTRY=='EUR')
 
 #Standardise PRS now they are subset to european ancestry participants.
 for(i in phenotypes){
-  pheno[[i]] <- scale(pheno[[i]])
+  pheno[[paste0(i,"_prs")]] <- scale(pheno[[paste0(i,"_prs"]])
 }
 
 #Perform regressions
@@ -64,9 +64,9 @@ for(i in 1:29){
   regression <- glm(as.formula(paste(phenocols[i], " ~ ", prscols[i], "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + batch + assessment_centre", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
   phenotype <- phenocols[i]
   prs <- prscols[i]
-  betas <- summary(regression)$coefficients[prscols[i],"Estimate"]
-  std_errs <- summary(regression)$coefficients[prscols[i],"Std. Error"]
-  pvals <- summary(regression)$coefficients[prscols[i],"Pr(|z|)"]
+  betas <- summary(regression)$coefficients[paste(prscols[i],"_prs"),"Estimate"]
+  std_errs <- summary(regression)$coefficients[paste(prscols[i],"_prs"),"Std. Error"]
+  pvals <- summary(regression)$coefficients[paste(prscols[i],"_prs"),"Pr(>|z|)"]
   OR <- exp(betas)
   CIpos <- exp(betas+(1.96*std_errs))
   CIneg <- exp(betas-(1.96*std_errs))
@@ -83,9 +83,9 @@ for(i in 1:29){
     regression <- glm(as.formula(paste(phenocols[i], " ~ ", broadriskPRS, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + batch + assessment_centre", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
     phenotype <- phenocols[i]
     prs <- prscols[i]
-    betas <- summary(regression)$coefficients[prscols[i],"Estimate"]
-    std_errs <- summary(regression)$coefficients[prscols[i],"Std. Error"]
-    pvals <- summary(regression)$coefficients[prscols[i],"Pr(|z|)"]
+    betas <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Estimate"]
+    std_errs <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Std. Error"]
+    pvals <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Pr(>|z|)"]
     OR <- exp(betas)
     CIpos <- exp(betas+(1.96*std_errs))
     CIneg <- exp(betas-(1.96*std_errs))
