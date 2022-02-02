@@ -79,13 +79,13 @@ broadriskPRS <- c("BMI", "Educational_Attainment", "Lifespan", "Pain")
 for(i in 1:29){
   for(j in broadriskPRS){
     print(phenocols[i])
-    print(prscols[i])
-    regression <- glm(as.formula(paste(phenocols[i], " ~ ", broadriskPRS, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + batch + assessment_centre", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
+    print(j)
+    regression <- glm(as.formula(paste(phenocols[i], " ~ ", j, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + batch + assessment_centre", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
     phenotype <- phenocols[i]
-    prs <- prscols[i]
-    betas <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Estimate"]
-    std_errs <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Std. Error"]
-    pvals <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Pr(>|z|)"]
+    prs <- j
+    betas <- summary(regression)$coefficients[paste0(j,"_prs"),"Estimate"]
+    std_errs <- summary(regression)$coefficients[paste0(j,"_prs"),"Std. Error"]
+    pvals <- summary(regression)$coefficients[paste0(j,"_prs"),"Pr(>|z|)"]
     OR <- exp(betas)
     CIpos <- exp(betas+(1.96*std_errs))
     CIneg <- exp(betas-(1.96*std_errs))
