@@ -30,7 +30,15 @@ pcs <- fread("path/to/european/principal/components", data.table=FALSE)
 #Subset to first 10 PCs - change subset if this doesnt work!!
 pcs <- pcs[c(1:11)]
 
-pheno <- left_join(pheno, pcs)
+#Read in batch and assessment centre for inclusion as covariates (if you have them).
+covariates <- fread("path/to/covariate/file", data.table=FALSE)
+
+#Change column names to batch and assessment centre. - Note you will need to identify the appropriate index.
+colnames(covariates)[c('ENTER INDICES')] <- c("batch", "assessment_centre")
+
+covariates <- full_join(pcs, covariates)
+
+pheno <- left_join(pheno, covariates)
 
 #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
 #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
@@ -53,7 +61,7 @@ results <- c()
 for(i in 1:29){
   print(phenocols[i])
   print(prscols[i])
-  regression <- glm(as.formula(paste(phenocols[i], " ~ ", prscols[i], "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
+  regression <- glm(as.formula(paste(phenocols[i], " ~ ", prscols[i], "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + batch + assessment_centre", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
   phenotype <- phenocols[i]
   prs <- prscols[i]
   betas <- summary(regression)$coefficients[prscols[i],"Estimate"]
@@ -72,7 +80,7 @@ for(i in 1:29){
   for(j in broadriskPRS){
     print(phenocols[i])
     print(prscols[i])
-    regression <- glm(as.formula(paste(phenocols[i], " ~ ", broadriskPRS, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
+    regression <- glm(as.formula(paste(phenocols[i], " ~ ", broadriskPRS, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + batch + assessment_centre", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
     phenotype <- phenocols[i]
     prs <- prscols[i]
     betas <- summary(regression)$coefficients[prscols[i],"Estimate"]
