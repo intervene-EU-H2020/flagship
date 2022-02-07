@@ -8,7 +8,7 @@ library(fmsb)
 #Read in phenotype file
 pheno <- fread(input="path/to/pheno_file", data.table=FALSE)
 
-phenotypes <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone")
+phenotypes <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "smoking", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone")
 
 for(i in phenotypes){
 #Read in PRS scores
@@ -74,8 +74,8 @@ for(i in 1:29){
   results <- rbind(results, result)
 }
 
-#For the lifespan, pain, educational attainment and BMI PRS, run regressions for all phenotypes
-broadriskPRS <- c("BMI", "Educational_Attainment", "Lifespan", "Pain")
+#For the lifespan, pain, educational attainment, smoking and BMI PRS, run regressions for all phenotypes
+broadriskPRS <- c("BMI", "Educational_Attainment", "Lifespan", "Pain", "smoking")
 for(i in 1:29){
   for(j in broadriskPRS){
     print(phenocols[i])
