@@ -8,7 +8,7 @@ library(fmsb)
 #Read in phenotype file
 pheno <- fread(input="path/to/pheno_file", data.table=FALSE)
 
-phenotypes <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "Stroke", "Subarachnoid_Haemmorhage", "T2D", "Thyroid_Stimulating_Hormone")
+phenotypes <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone")
 
 for(i in phenotypes){
 #Read in PRS scores
@@ -53,8 +53,8 @@ for(i in phenotypes){
 }
 
 #Perform regressions
-phenocols <- c("AUD_SWEDISH", "G6_AD_WIDE", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "N14_CHRONKIDNEYDIS", "G6_EPLEPSY", "FE_STRICT", "GE_STRICT", "GOUT", "I9_HEARTFAIL_NS", "COX_ARTHROSIS", "ILD", "K11_IBD_STRICT", "KNEE_ARTHROSIS", "C3_BRONCHUS_LUNG", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "M13_OSTEOPOROSIS", "H7_GLAUCOMA", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "G6_SLEEPAPNO", "I9_STR", "I9_SAH", "T2D", "E4_HYTHYNAS", "E4_THYTOXGOITDIF")
-prscols <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "Stroke", "Subarachnoid_Haemmorhage", "T2D", "Thyroid_Stimulating_Hormone", "Thyroid_Stimulating_Hormone") #Lifepsan, Pain and maybe BMI and educational attainment to be assessed by all phenotypes so do separately
+phenocols <- c("AUD_SWEDISH", "G6_AD_WIDE", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "N14_CHRONKIDNEYDIS", "G6_EPLEPSY", "FE_STRICT", "GE_STRICT", "GOUT", "I9_HEARTFAIL_NS", "COX_ARTHROSIS", "IPF", "ILD", "K11_IBD_STRICT", "KNEE_ARTHROSIS", "C3_BRONCHUS_LUNG", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "M13_OSTEOPOROSIS", "H7_GLAUCOMA", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "G6_SLEEPAPNO", "I9_STR", "I9_SAH", "I9_THAORTANEUR", "T1D", "T2D", "E4_HYTHYNAS", "E4_THYTOXGOITDIF")
+prscols <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone", "Thyroid_Stimulating_Hormone") #Lifepsan, Pain and maybe BMI and educational attainment to be assessed by all phenotypes so do separately
 
 #Loop through each phenotype and corresponding prs to perform regression,
 results <- c()
