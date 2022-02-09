@@ -51,7 +51,7 @@ results <- c()
 for(i in 1:29){
   print(phenocols[i])
   print(prscols[i])
-  regression <- glm(as.formula(paste(phenocols[i], " ~ ", prscols[i], "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
+  regression <- glm(as.formula(paste(phenocols[i], " ~ ", prscols[i], "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
   phenotype <- phenocols[i]
   prs <- prscols[i]
   betas <- summary(regression)$coefficients[prscols[i],"Estimate"]
@@ -70,7 +70,7 @@ for(i in 1:29){
   for(j in broadriskPRS){
     print(phenocols[i])
     print(prscols[i])
-    regression <- glm(as.formula(paste(phenocols[i], " ~ ", broadriskPRS, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
+    regression <- glm(as.formula(paste(phenocols[i], " ~ ", broadriskPRS, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
     phenotype <- phenocols[i]
     prs <- prscols[i]
     betas <- summary(regression)$coefficients[prscols[i],"Estimate"]
