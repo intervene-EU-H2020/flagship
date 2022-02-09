@@ -56,7 +56,7 @@ for(i in 1:29){
   prs <- prscols[i]
   betas <- summary(regression)$coefficients[prscols[paste0(i,"_prs")],"Estimate"]
   std_errs <- summary(regression)$coefficients[prscols[paste0(i,"_prs")],"Std. Error"]
-  pvals <- summary(regression)$coefficients[prscols[paste0(i,"_prs")],"Pr(|z|)"]
+  pvals <- summary(regression)$coefficients[prscols[paste0(i,"_prs")],"Pr(>|z|)"]
   OR <- exp(betas)
   CIpos <- exp(betas+(1.96*std_errs))
   CIneg <- exp(betas-(1.96*std_errs))
@@ -75,7 +75,7 @@ for(i in 1:29){
     prs <- prscols[i]
     betas <- summary(regression)$coefficients[paste0(prscols[i],"_prs")],"Estimate"]
     std_errs <- summary(regression)$coefficients[paste0(prscols[i],"_prs")],"Std. Error"]
-    pvals <- summary(regression)$coefficients[paste0(prscols[i],"_prs")],"Pr(|z|)"]
+    pvals <- summary(regression)$coefficients[paste0(prscols[i],"_prs")],"Pr(>|z|)"]
     OR <- exp(betas)
     CIpos <- exp(betas+(1.96*std_errs))
     CIneg <- exp(betas-(1.96*std_errs))
