@@ -177,16 +177,10 @@ prscols <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fib
 #For diagnosis
 for(i in phenocols){
   pheno[,paste0(i,"_AGE")] <- time_length(difftime(pheno[,paste0(i,"_DATE")], pheno[,"DATE_OF_BIRTH"]), 'years')
-  #For Bradley - for me it was necessary to define it as Date and define format structure
-  #pheno[,paste0(i,"_AGE")] <-time_length(difftime(as.Date(pheno[,paste0(i,"_DATE")],format="%Y-%m-%d"), as.Date(pheno[,"DATE_OF_BIRTH"],format="%Y-%m-%d")), 'years')
-
 } 
 
 #For end of follow up
 pheno$AGE_FU_END <- time_length(difftime(pheno$END_OF_FOLLOWUP, pheno$DATE_OF_BIRTH), 'years')
-#For bradley, again as.date conversion
-#pheno$AGE_FU_END <- time_length(difftime(as.Date(pheno$END_OF_FOLLOWUP,format="%Y-%m-%d"), as.Date(pheno$DATE_OF_BIRTH,format="%Y-%m-%d")), 'years')
-
 
 results <- c()
 
