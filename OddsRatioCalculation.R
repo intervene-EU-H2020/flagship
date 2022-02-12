@@ -57,6 +57,12 @@ for(i in 1:29){
   betas <- summary(regression)$coefficients[prscols[paste0(i,"_prs")],"Estimate"]
   std_errs <- summary(regression)$coefficients[prscols[paste0(i,"_prs")],"Std. Error"]
   pvals <- summary(regression)$coefficients[prscols[paste0(i,"_prs")],"Pr(>|z|)"]
+  
+  # Bradley, please see, i think correct is this
+  #betas <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Estimate"]
+  #std_errs <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Std. Error"]
+  #pvals <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Pr(>|z|)"]
+ 
   OR <- exp(betas)
   CIpos <- exp(betas+(1.96*std_errs))
   CIneg <- exp(betas-(1.96*std_errs))
@@ -71,11 +77,19 @@ for(i in 1:29){
     print(phenocols[i])
     print(prscols[i])
     regression <- glm(as.formula(paste(phenocols[i], " ~ ", broadriskPRS, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
+      #for Bradley, i think this instead
+    #regression <- glm(as.formula(paste(phenocols[i], " ~ ", j, "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT", sep="")), family=binomial(link='logit'), data=pheno, na.action=na.exclude)
+
     phenotype <- phenocols[i]
     prs <- prscols[i]
     betas <- summary(regression)$coefficients[paste0(prscols[i],"_prs")],"Estimate"]
     std_errs <- summary(regression)$coefficients[paste0(prscols[i],"_prs")],"Std. Error"]
     pvals <- summary(regression)$coefficients[paste0(prscols[i],"_prs")],"Pr(>|z|)"]
+    #for Bradley, i propose this
+    #betas <- summary(regression)$coefficients[paste0(j,"_prs"),"Estimate"]
+    #std_errs <- summary(regression)$coefficients[paste0(j,"_prs"),"Std. Error"]
+    #pvals <- summary(regression)$coefficients[paste0(j,"_prs"),"Pr(>|z|)"]
+
     OR <- exp(betas)
     CIpos <- exp(betas+(1.96*std_errs))
     CIneg <- exp(betas-(1.96*std_errs))
@@ -163,10 +177,16 @@ prscols <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fib
 #For diagnosis
 for(i in phenocols){
   pheno[,paste0(i,"_AGE")] <- time_length(difftime(pheno[,paste0(i,"_DATE")], pheno[,"DATE_OF_BIRTH"]), 'years')
+  #For Bradley - for me it was necessary to define it as Date and define format structure
+  #pheno[,paste0(i,"_AGE")] <-time_length(difftime(as.Date(pheno[,paste0(i,"_DATE")],format="%Y-%m-%d"), as.Date(pheno[,"DATE_OF_BIRTH"],format="%Y-%m-%d")), 'years')
+
 } 
 
 #For end of follow up
 pheno$AGE_FU_END <- time_length(difftime(pheno$END_OF_FOLLOWUP, pheno$DATE_OF_BIRTH), 'years')
+#For bradley, again as.date conversion
+#pheno$AGE_FU_END <- time_length(difftime(as.Date(pheno$END_OF_FOLLOWUP,format="%Y-%m-%d"), as.Date(pheno$DATE_OF_BIRTH,format="%Y-%m-%d")), 'years')
+
 
 results <- c()
 
@@ -187,6 +207,9 @@ for(i in 1:length(phenocols)){
     
     #Perform regression
     regression <- glm(as.formula(paste("disease_status ~ ", prscols[i], "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT", sep="")), family=binomial(link='logit'), data=females, na.action=na.exclude)
+    #For Bradley:
+    # regression <- glm(as.formula(paste("disease_status ~ ", prscols[i], "_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT", sep="")), family=binomial(link='logit'), data=sample, na.action=na.exclude)
+
     phenotype <- phenocols[i]
     prs <- prscols[i]
     betas <- summary(regression)$coefficients[paste0(prscols[i],"_prs"),"Estimate"]
