@@ -4,7 +4,7 @@ library(ggplot2)
 library(dplyr)
 
 #Incidence data - basic pre-processing
-incidence <- fread("/fle/path/GBD_Incidence.csv", data.table=FALSE)
+incidence <- fread("/file/path/GBD_Incidence.csv", data.table=FALSE)
 
 #Incidence data to be replaced with that for males and females for prostate cancer and breast cancer respectively. Came from a separate dataset to reduce size of the full dataset. 
 incidence <- subset(incidence, cause!="Prostate cancer" & cause!="Breast cancer")
@@ -75,7 +75,7 @@ for(i in unique(incidence$cause)){
                axis.text.x = element_text(size = 12, angle=-90, hjust=0),
                axis.title.y = element_text(size = 18),
                axis.text.y = element_text(size = 16))
-  ggsave(paste0("/Users/jermy/Documents/INTERVENE/Results/GBD_Incidence/",i,"_GBDRates.png"), height=10 , width=10)
+  ggsave(paste0("/file/path/",i,"_GBDRates.png"), height=10 , width=10)
 }
 
 #Divide incidence rates by 100,000 to get the incidence as a probability (note: incidence rates are per year)
@@ -144,7 +144,7 @@ incidence <- incidence[,c("location","age","cause","incidence","hazard","risk")]
 #Use all cause and cause specific mortality incidence rates to calculate the competing risk of death during the age interval
 
 #Calculate age specific and disease specific mortality
-mortality <- fread("/Users/jermy/Documents/INTERVENE/Results/GBD_Incidence/GBD_Mortality.csv", data.table=FALSE)
+mortality <- fread("/file/path/GBD_Incidence/GBD_Mortality.csv", data.table=FALSE)
 mortality <- mortality[,c("location","age","cause","metric","val")]
 
 mortality <- subset(mortality, cause!="Prostate cancer" & cause!="Breast cancer")
