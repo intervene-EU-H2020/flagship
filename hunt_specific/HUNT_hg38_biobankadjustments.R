@@ -5,6 +5,7 @@
 library(data.table)
 library(dplyr)
 require(R.utils)
+library(tidyr)
 
 args <- commandArgs(TRUE)
 bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/PART_09.bim" #HUNT bim are in hg38
