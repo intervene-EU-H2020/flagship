@@ -29,7 +29,9 @@ phenotypes <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_
 
 for(i in phenotypes){ 
   #read in adjusted mega PRS summary statistics
-  score <- fread(input=paste0(score_file_path,i,"_megaPRS_scores_hg19.txt.gz"), data.table=FALSE)
+  file<-paste0(score_file_path,i,"_megaPRS_scores_hg19.txt.gz")
+  print(file)
+  score <- fread(input=file, data.table=FALSE)
 
   #update on what score is being analyzed
   print(score)
