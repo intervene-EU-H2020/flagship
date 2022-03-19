@@ -9,7 +9,7 @@ require(R.utils)
 args <- commandArgs(TRUE)
 bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/PART_09.bim" #HUNT bim are in hg38
 map_file<-args[2] #map_file<-"/mnt/scratch/brooke/1KGPhase3_hm3_hg19_hg38_mapping_cached.tsv.gz"
-score_file_path<-args[3] "/home/bwolford/scratch/brooke/PRS/"
+score_file_path<-args[3] #"/home/bwolford/scratch/brooke/PRS/"
 
 #read bim file
 bim <- fread(bim_file, data.table=FALSE)
