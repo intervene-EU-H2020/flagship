@@ -33,9 +33,6 @@ for(i in phenotypes){
   print(file)
   score <- fread(input=file, data.table=FALSE)
 
-  #update on what score is being analyzed
-  print(score)
-  
   #Use this for reference later
   print(dim(score))
 
