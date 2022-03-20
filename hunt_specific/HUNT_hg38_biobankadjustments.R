@@ -8,20 +8,20 @@ require(R.utils)
 library(tidyr)
 
 args <- commandArgs(TRUE)
-bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/PART_09.bim" #HUNT bim are in hg19
+bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/all.log.bim" #HUNT bim are in hg19
 map_file<-args[2] #map_file<-"/mnt/scratch/brooke/1KGPhase3_hm3_hg19_hg38_mapping_cached.tsv.gz"
-score_file_path<-args[3] #"/mnt/scratch/brooke/PRS/"
+score_file_path<-args[3] #score_file_path<-"/mnt/scratch/brooke/PRS/"
+snplist_file_path<-args[4] #snplist_file_path<-"/mnt/scratch/brooke/flagship/hunt_specific/snplist_hg19_varid"
 
 #read bim file
 bim <- fread(bim_file, data.table=FALSE)
+#give the file column names: I have assumed standard bim format.
+colnames(bim) <- c("chrom","variant_id","cM","pos","a1","a2") 
 
 #read mapping file
 if (file.exists(map_file)) {
    map<-fread(map_file,data.table=FALSE)
 }
-
-#give the file column names: I have assumed standard bim format.
-colnames(bim) <- c("chrom","variant_id","cM","pos","a1","a2") 
 
 #Note: the below code assumes you are using the same filenames as I originally saved
 phenotypes <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "smoking", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone")
@@ -36,7 +36,7 @@ for(i in phenotypes){
   print(dim(score))
 
   #hg19 to hg38, rsID to chr:pos_A1/A2
-  merged<-left_join(score,map,by=c("Predictor"="rsid"))
+  merged<-left_join(score,map,by=c("Predictor"="rsid")) #maybe check to see if matches rsid from another build?
   merged$Predictor_v1<-paste0(merged$chr,":",merged$pos_hg19,"_",merged$a1,"/",merged$a2)
   merged$Predictor_v2<-paste0(merged$chr,":",merged$pos_hg19,"_",merged$a2,"/",merged$a1)
 
@@ -53,3 +53,27 @@ for(i in phenotypes){
   #Save adjusted score file so that it can be read by plink
   fwrite(score2, paste0(score_file_path,i,"_megaPRS_scores_hg19_varid.txt"), sep="\t")
 }
+
+
+#### also create snp list file (addapted from create_snplist.R)
+
+mapping <- fread(map_file, data.table=FALSE)
+mapping$Predictor_v1 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a1,"/",mapping$a2)
+mapping$Predictor_v2 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a2,"/",mapping$a1)
+
+snplist <- mapping[,c("Predictor_v1", "Predictor_v2")]
+print(nrow(snplist))
+#identify which of the two variant_ids are found in your bim file
+first_id <- subset(snplist, Predictor_v1 %in% bim$variant_id)
+first_id <- first_id$Predictor_v1
+second_id <- subset(snplist, Predictor_v2 %in% bim$variant_id)
+second_id <- second_id$Predictor_v2
+
+snplist$Predictor <- case_when(snplist$Predictor_v1 %in% first_id ~ snplist$Predictor_v1,
+                               snplist$Predictor_v2 %in% second_id ~ snplist$Predictor_v2,
+                               TRUE ~ NA_character_)
+print(table(is.na(snplist$Predictor))) #how many match?
+snplist <- snplist[!is.na(snplist$Predictor),]$Predictor
+print(nrow(snplist))
+#Save adjusted snplist file so that it can be read by plink
+write.table(snplist, snplist_file_path, sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
