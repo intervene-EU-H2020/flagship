@@ -8,9 +8,9 @@ require(R.utils)
 library(tidyr)
 
 args <- commandArgs(TRUE)
-bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/PART_09.bim" #HUNT bim are in hg38
+bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/PART_09.bim" #HUNT bim are in hg19
 map_file<-args[2] #map_file<-"/mnt/scratch/brooke/1KGPhase3_hm3_hg19_hg38_mapping_cached.tsv.gz"
-score_file_path<-args[3] #"/home/bwolford/scratch/brooke/PRS/"
+score_file_path<-args[3] #"/mnt/scratch/brooke/PRS/"
 
 #read bim file
 bim <- fread(bim_file, data.table=FALSE)
@@ -19,7 +19,6 @@ bim <- fread(bim_file, data.table=FALSE)
 if (file.exists(map_file)) {
    map<-fread(map_file,data.table=FALSE)
 }
-
 
 #give the file column names: I have assumed standard bim format.
 colnames(bim) <- c("chrom","variant_id","cM","pos","a1","a2") 
@@ -36,19 +35,21 @@ for(i in phenotypes){
   #Use this for reference later
   print(dim(score))
 
+  #hg19 to hg38, rsID to chr:pos_A1/A2
   merged<-left_join(score,map,by=c("Predictor"="rsid"))
-  merged$Predictor_v1<-paste0(merged$chr,":",merged$pos_hg38,"_",merged$a1,"/",merged$a2)
-  merged$Predictor_v2<-paste0(merged$chr,":",merged$pos_hg38,"_",merged$a2,"/",merged$a1)
+  merged$Predictor_v1<-paste0(merged$chr,":",merged$pos_hg19,"_",merged$a1,"/",merged$a2)
+  merged$Predictor_v2<-paste0(merged$chr,":",merged$pos_hg19,"_",merged$a2,"/",merged$a1)
 
   v1<-left_join(merged,bim,by=c("Predictor_v1"="variant_id")) %>% drop_na %>% mutate(varid=Predictor_v1)
   v2<-left_join(merged,bim,by=c("Predictor_v2"="variant_id")) %>% drop_na %>% mutate(varid=Predictor_v2)
   all<-rbind(v1,v2)
+  all_sorted<-arrange(all,chr,pos_hg19)
   
-  score2 <- all[,c("varid", "A1", "A2", "Centre", "Effect_Best")]
-
+  score2 <- all_sorted[,c("varid", "A1", "A2", "Centre", "Effect_Best")]
+ 
   #Check to make sure you haven't lost a whole bunch of SNPs from this.
   print(dim(score2))
 
   #Save adjusted score file so that it can be read by plink
-  fwrite(score2, paste0(score_file_path,i,"_megaPRS_scores_hg19_varid.txt"), sep="\t")
+  fwrite(score2, paste0(score_file_path,i,"_megaPRS_scores_hg38_varid.txt"), sep="\t")
 }
