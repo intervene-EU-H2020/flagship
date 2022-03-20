@@ -51,5 +51,5 @@ for(i in phenotypes){
   print(dim(score2))
 
   #Save adjusted score file so that it can be read by plink
-  fwrite(score2, paste0(score_file_path,i,"_megaPRS_scores_hg38_varid.txt"), sep="\t")
+  fwrite(score2, paste0(score_file_path,i,"_megaPRS_scores_hg19_varid.txt"), sep="\t")
 }
