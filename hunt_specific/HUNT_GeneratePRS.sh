@@ -4,12 +4,12 @@
 #if you do not have an allele frequency file, i suggest creating one and then referring to this as it will save you a bunch of time. 
 
 #pheno=(Alcohol_Use_Disorder Alzheimers_Disease Asthma Atrial_Fibrillation BMI Breast_Cancer CHD Chronic_Kidney_Disease Educational_Attainment Epilepsy Focal_Epilepsy Generalised_Epilepsy Gout Heart_Failure Hip_Osteoarthritis IPF ILD Inflammatory_Bowel_Disease Knee_Osteoarthritis Lifespan Lung_Cancer MDD Melanoma Osteoporosis Pain POAG Prostate_Cancer Rheumatoid_Arthritis Sleep_Apnoea smoking Stroke Subarachnoid_Haemmorhage TAA T1D T2D Thyroid_Stimulating_Hormone)
-pheno=(Alcohol_Use_Disorder)
+declare -a pheno=(Alcohol_Use_Disorder Alzheimers_Disease) 
 output=/mnt/scratch/brooke/PRS/scores
 score_directory=/mnt/scratch/brooke/PRS
-frequency_directory=/mnt/scratch/brooke/PRS/bcf
-snplist_directory=/mnt/scratch/brooke/flagship/hunt_specific/
-genotype_directory=/path/to/genotype
+frequency_directory=/mnt/scratch/brooke/bcf
+snplist_directory=/mnt/scratch/brooke/flagship/hunt_specific
+genotype_directory=/mnt/scratch/brooke/bcf
 
 #Loop through phenotypes
 for i in ${!pheno[@]}; do
