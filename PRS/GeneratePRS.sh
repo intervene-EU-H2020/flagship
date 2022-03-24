@@ -19,7 +19,9 @@ pheno_i=${pheno[i]}
 /path/to/plink2 \
 --bfile ${genotype_directory}/genotype_plink_files \
 --extract ${snplist_directory}/snplist_hg[19/38] \
+--exclude ${snplist_directory}/duplicatesnps \
 --read-freq ${frequency_directory}/frequency_file \
---score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38].txt.gz 1 2 5 header \
---out ${output}/${pheno_i}_PRS
+--out ${output}/${pheno_i}_PRS \
+--score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38].txt.gz 1 2 5 header list-variants
+
 done
