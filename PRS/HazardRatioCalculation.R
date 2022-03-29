@@ -61,7 +61,7 @@ for(i in 1:length(phenocols)){
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
-  group <- c(paste0(prscols[i],"_groupGroup ",1:5:7:11))
+  group <- c(paste0(prscols[i],"_groupGroup ",c(1:5:7:11)))
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
@@ -138,7 +138,7 @@ for(i in 1:length(phenocols)){
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
-  group <- c(paste0(prscols[i],"_groupGroup ",1:5,7:11))
+  group <- c(paste0(prscols[i],"_groupGroup ",c(1:5,7:11)))
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
@@ -156,7 +156,7 @@ for(i in 1:length(phenocols)){
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
-  group <- c(paste0(prscols[i],"_groupGroup ",1:5,7:11))
+  group <- c(paste0(prscols[i],"_groupGroup ",c(1:5,7:11)))
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
@@ -301,7 +301,7 @@ for(i in 1:length(phenocols)){
   prs <- rep(prscols[i],10)
   minage <- rep(j[1], 10)
   maxage <- rep(j[2], 10)
-  group <- c(paste0(prscols[i],"_groupGroup ",1:5:,7:11))
+  group <- c(paste0(prscols[i],"_groupGroup ",c(1:5:,7:11)))
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
