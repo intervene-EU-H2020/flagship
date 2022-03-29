@@ -210,18 +210,12 @@ for(i in 1:length(phenocols)){
   #Feel free to subset using your own code: only provided as a reminder.
   pheno <- subset(pheno, ANCESTRY=='EUR')
   
-  #Assign PRS into percentiles
-  q <- quantile(pheno[[paste0(prscols[i],"_prs")]], probs=c(0,0.01,0.05,0.1,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1))
-  
-  pheno[[paste0(prscols[i],"_group")]] <- cut(pheno[[paste0(prscols[i],"_prs")]], q, include.lowest=TRUE,
-                                              labels=paste("Group",1:11))
-  
+  pheno[[paste0(prscols[i],"_prs")]] <- scale(pheno[[paste0(prscols[i],"_prs")]])
+
   #Make all necessary variables factors
   pheno$BATCH <- as.factor(pheno$BATCH)
   pheno$COHORT <- as.factor(pheno$COHORT)
-  pheno[[paste0(prscols[i],"_group")]] <- as.factor(pheno[[paste0(prscols[i],"_group")]])
-  pheno[[paste0(prscols[i],"_group")]] <- relevel(pheno[[paste0(prscols[i],"_group")]], ref="Group 6")
-  
+ 
   #Specify age as either the Age at Onset or End of Follow-up (if not a case)
   pheno$AGE <- ifelse(pheno[[phenocols[i]]]==1, time_length(difftime(pheno[[paste0(phenocols[i],"_DATE")]], pheno$DATE_OF_BIRTH), 'years'), time_length(difftime(pheno$END_OF_FOLLOWUP, pheno$DATE_OF_BIRTH), 'years'))
   
