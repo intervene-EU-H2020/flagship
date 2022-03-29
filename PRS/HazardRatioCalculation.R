@@ -31,6 +31,8 @@ for(i in 1:length(phenocols)){
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
 
+  pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
+ 
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
   #Feel free to subset using your own code: only provided as a reminder.
@@ -106,6 +108,8 @@ for(i in 1:length(phenocols)){
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
   
+  pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
+ 
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
   #Feel free to subset using your own code: only provided as a reminder.
@@ -174,6 +178,11 @@ write.csv(femaleresults, "file/path/to/output_FemaleSample.csv")
 ###########################################################################################################################################################################################################################################################
 ###########################################################################################################################################################################################################################################################
 
+phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ATHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D")
+prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D","T2D")
+
+results <- c()
+
 for(i in 1:length(phenocols)){
   
   print(phenocols[i])
@@ -194,6 +203,8 @@ for(i in 1:length(phenocols)){
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
   
+  pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
+ 
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
   #Feel free to subset using your own code: only provided as a reminder.
