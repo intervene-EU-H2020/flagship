@@ -56,12 +56,12 @@ for(i in 1:length(phenocols)){
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
   
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE",phenocols[i]," ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=pheno, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=pheno, na.action=na.exclude)
 
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
-  group <- c(paste0(prscols[i],"_groupGroup ",1:11))
+  group <- c(paste0(prscols[i],"_groupGroup ",1:5:7:11))
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
@@ -133,12 +133,12 @@ for(i in 1:length(phenocols)){
   males <- subset(pheno, SEX="male")
   
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE",phenocols[i]," ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=males, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=males, na.action=na.exclude)
   
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
-  group <- c(paste0(prscols[i],"_groupGroup ",1:11))
+  group <- c(paste0(prscols[i],"_groupGroup ",1:5,7:11))
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
@@ -151,12 +151,12 @@ for(i in 1:length(phenocols)){
   females <- subset(pheno, SEX="female")
   
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE",phenocols[i]," ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=males, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=males, na.action=na.exclude)
   
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
-  group <- c(paste0(prscols[i],"_groupGroup ",1:11))
+  group <- c(paste0(prscols[i],"_groupGroup ",1:5,7:11))
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
@@ -219,7 +219,7 @@ for(i in 1:length(phenocols)){
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
   
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE",phenocols[i]," ~ ",prscols[i],"_prs + SEX + ", prscols[i], "_prs:SEX + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=pheno, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs + SEX + ", prscols[i], "_prs:SEX + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=pheno, na.action=na.exclude)
   
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
@@ -294,14 +294,14 @@ for(i in 1:length(phenocols)){
   sample <- subset(pheno, is.na(AGE) | (pheno[[phenocols[i]]] == 1 & AGE >= j[1] & AGE < j[2]) | (pheno[[phenocols[i]]] == 0 & AGE >= j[1]))
   
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE",phenocols[i]," ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=sample, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=sample, na.action=na.exclude)
   
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
   minage <- rep(j[1], 10)
   maxage <- rep(j[2], 10)
-  group <- c(paste0(prscols[i],"_groupGroup ",1:11))
+  group <- c(paste0(prscols[i],"_groupGroup ",1:5:,7:11))
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
