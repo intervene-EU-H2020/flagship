@@ -18,7 +18,9 @@ for(i in 1:length(phenocols)){
   
   #Read in phenotype file
   pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH","COHORT"), data.table=FALSE)
-  
+    
+  pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
+ 
   #Read in PRS scores
   PRS <- fread(input=paste0("path/to/PRS/",prscols[i],"_PRS.sscore"), data.table=FALSE)
 
@@ -96,6 +98,8 @@ for(i in 1:length(phenocols)){
   #Read in phenotype file
   pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","SEX","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH","COHORT"), data.table=FALSE)
   
+  pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
+ 
   #Read in PRS scores
   PRS <- fread(input=paste0("path/to/PRS/",prscols[i],"_PRS.sscore"), data.table=FALSE)
   
@@ -191,6 +195,8 @@ for(i in 1:length(phenocols)){
   #Read in phenotype file
   pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","SEX","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH","COHORT"), data.table=FALSE)
   
+  pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
+ 
   #Read in PRS scores
   PRS <- fread(input=paste0("path/to/PRS/",prscols[i],"_PRS.sscore"), data.table=FALSE)
   
@@ -260,6 +266,8 @@ for(i in 1:length(phenocols)){
   #Read in phenotype file
   pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH","COHORT"), data.table=FALSE)
   
+  pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
+  
   #Read in PRS scores
   PRS <- fread(input=paste0("path/to/PRS/",prscols[i],"_PRS.sscore"), data.table=FALSE)
   
@@ -271,6 +279,8 @@ for(i in 1:length(phenocols)){
   
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
+  
+  pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
   
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
@@ -291,15 +301,17 @@ for(i in 1:length(phenocols)){
   
   #Specify age as either the Age at Onset or End of Follow-up (if not a case)
   pheno$AGE <- ifelse(pheno[[phenocols[i]]]==1, time_length(difftime(pheno[[paste0(phenocols[i],"_DATE")]], pheno$DATE_OF_BIRTH), 'years'), time_length(difftime(pheno$END_OF_FOLLOWUP, pheno$DATE_OF_BIRTH), 'years'))
-  
+    
+  sample <- subset(pheno, is.na(AGE) | (pheno[[phenocols[i]]] == 1 & AGE > j[1] & AGE <= j[2]) | (pheno[[phenocols[i]]] == 0 & AGE > j[1]))
+
   #Adjust to censor at age 80
-  pheno[[paste0(phenocols[i])]] <- ifelse(pheno[[paste0(phenocols[i])]]==1 & pheno$AGE > 80, 0, pheno[[paste0(phenocols[i])]])
-  pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
-  
-  sample <- subset(pheno, is.na(AGE) | (pheno[[phenocols[i]]] == 1 & AGE >= j[1] & AGE < j[2]) | (pheno[[phenocols[i]]] == 0 & AGE >= j[1]))
-  
+  sample$AGE <- ifelse(sample$AGE > j[2], j[2], sample$AGE)
+
   #Perform survival analysis
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=sample, na.action=na.exclude)
+  
+  controls <- table(sample[[paste0(prscols[i],"_group")]], sample[[phenocols[i]]])[2:11,1]
+  cases <- ifelse(sum(nrow(sample[[paste0(phenocols[i])]])) == 0, rep(0,10), table(sample[[paste0(prscols[i],"_group")]], sample[[phenocols[i]]])[2:11,2]
   
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
@@ -313,7 +325,7 @@ for(i in 1:length(phenocols)){
   OR <- exp(betas)
   CIpos <- exp(betas+1.96*std_errs)
   CIneg <- exp(betas-1.96*std_errs)
-  result <- matrix(c(phenotype, prs, minage, maxage, table(sample[[paste0(prscols[i],"_group")]], sample[[phenocols[i]]])[2:11,1], table(sample[[paste0(prscols[i],"_group")]], sample[[phenocols[i]]])[2:11,2], group, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=13)
+  result <- matrix(c(phenotype, prs, minage, maxage, controls, cases, group, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=13)
   results <- rbind(results, result)
   
 }
