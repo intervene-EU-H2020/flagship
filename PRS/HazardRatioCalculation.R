@@ -311,8 +311,9 @@ for(i in 1:length(phenocols)){
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH + COHORT")), data=sample, na.action=na.exclude)
   
   controls <- table(sample[[paste0(prscols[i],"_group")]], sample[[phenocols[i]]])[2:11,1]
-  cases <- ifelse(sum(nrow(sample[[paste0(phenocols[i])]])) == 0, rep(0,10), table(sample[[paste0(prscols[i],"_group")]], sample[[phenocols[i]]])[2:11,2])
-  
+  cases <- if(sum(nrow(sample[sample[[paste0(phenocols[i])]]==1,])) == 0){ 
+    rep(0,10)} else {table(sample[[paste0(prscols[i],"_group")]], sample[[paste0(phenocols[i])]])[2:11,2]}
+
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
