@@ -11,7 +11,7 @@ args <- commandArgs(TRUE)
 bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/all.log.bim" #HUNT bim are in hg19
 map_file<-args[2] #map_file<-"/mnt/scratch/brooke/1KGPhase3_hm3_hg19_hg38_mapping_cached.tsv.gz"
 score_file_path<-args[3] #score_file_path<-"/mnt/scratch/brooke/PRS_v2/"
-snplist_file_path<-args[4] #snplist_file_path<-"/mnt/scratch/brooke/flagship/hunt_specific/snplist_hg19_varid"
+snplist_file_path<-args[4] #snplist_file_path<-"/mnt/scratch/brooke/flagship/hunt_specific/"
 rsid_TF<-args[5]
 
 #read bim file
@@ -76,7 +76,7 @@ mapping <- fread(map_file,data.table=FALSE)
 mapping$Predictor_v1 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a1,"/",mapping$a2)
 mapping$Predictor_v2 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a2,"/",mapping$a1)
 
-snplist <- mapping[,c("Predictor_v1", "Predictor_v2")]
+snplist <- mapping[,c("Predictor_v1", "Predictor_v2","rsid")]
 print(nrow(snplist))
 #identify which of the two variant_ids are found in your bim file
 first_id <- subset(snplist, Predictor_v1 %in% bim$variant_id)
@@ -87,8 +87,12 @@ second_id <- second_id$Predictor_v2
 snplist$Predictor <- case_when(snplist$Predictor_v1 %in% first_id ~ snplist$Predictor_v1,
                                snplist$Predictor_v2 %in% second_id ~ snplist$Predictor_v2,
                                TRUE ~ NA_character_)
-print(table(is.na(snplist$Predictor))) #how many match?
-snplist <- snplist[!is.na(snplist$Predictor),]$Predictor
-print(nrow(snplist))
 #Save adjusted snplist file so that it can be read by plink
-write.table(snplist, snplist_file_path, sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
+print(table(is.na(snplist$Predictor))) #how many match?
+snplist_varid <- snplist[!is.na(snplist$Predictor),]$Predictor
+write.table(snplist_varid, paste0(snplist_file_path,"snplist_hg19_varid"), sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
+
+#write out rsIDs for comparison with other biobanks SNP coverage
+snplist_rsid <- snplist[!is.na(snplist$Predictor),]$rsid
+write.table(snplist_rsid, paste0(snplist_file_path,"snplist_hg19_rsid"), sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
+
