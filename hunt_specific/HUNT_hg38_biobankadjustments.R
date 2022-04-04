@@ -10,8 +10,9 @@ library(tidyr)
 args <- commandArgs(TRUE)
 bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/all.log.bim" #HUNT bim are in hg19
 map_file<-args[2] #map_file<-"/mnt/scratch/brooke/1KGPhase3_hm3_hg19_hg38_mapping_cached.tsv.gz"
-score_file_path<-args[3] #score_file_path<-"/mnt/scratch/brooke/PRS/"
+score_file_path<-args[3] #score_file_path<-"/mnt/scratch/brooke/PRS_v2/"
 snplist_file_path<-args[4] #snplist_file_path<-"/mnt/scratch/brooke/flagship/hunt_specific/snplist_hg19_varid"
+rsid_TF<-args[5]
 
 #read bim file
 bim <- fread(bim_file, data.table=FALSE)
@@ -26,6 +27,7 @@ if (file.exists(map_file)) {
 #Note: the below code assumes you are using the same filenames as I originally saved
 phenotypes <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "smoking", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone")
 
+
 for(i in phenotypes){ 
   #read in adjusted mega PRS summary statistics
   file<-paste0(score_file_path,i,"_megaPRS_scores_hg19.txt.gz")
@@ -35,17 +37,30 @@ for(i in phenotypes){
   #Use this for reference later
   print(dim(score))
 
-  #hg19 to hg38, rsID to chr:pos_A1/A2
-  merged<-left_join(score,map,by=c("Predictor"="rsid")) #maybe check to see if matches rsid from another build?
-  merged$Predictor_v1<-paste0(merged$chr,":",merged$pos_hg19,"_",merged$a1,"/",merged$a2)
-  merged$Predictor_v2<-paste0(merged$chr,":",merged$pos_hg19,"_",merged$a2,"/",merged$a1)
+  #Predictor       A1      A2      Centre  Effect_Best and Predictor is rsID
+  if (rsid_TF==TRUE){
+    #hg19 to hg38, rsID to chr:pos_A1/A2
+    merged<-left_join(score,map,by=c("Predictor"="rsid")) #maybe check to see if matches rsid from another build?
+    merged$Predictor_v1<-paste0(merged$chr,":",merged$pos_hg19,"_",merged$a1,"/",merged$a2)
+    merged$Predictor_v2<-paste0(merged$chr,":",merged$pos_hg19,"_",merged$a2,"/",merged$a1)
+  } else {
+    #   rsid A1 A2   Centre Effect_Best Predictor chr position and Predictor is chr:pos in hg19
+    merged<-left_join(score,map,by=c("chr"="chr","position"="pos_hg19"))
+    merged$Predictor_v1<-paste0(merged$chr,":",merged$position,"_",merged$a1,"/",merged$a2)
+    merged$Predictor_v2<-paste0(merged$chr,":",merged$position,"_",merged$a2,"/",merged$a1)
+  }
 
   v1<-left_join(merged,bim,by=c("Predictor_v1"="variant_id")) %>% drop_na %>% mutate(varid=Predictor_v1)
   v2<-left_join(merged,bim,by=c("Predictor_v2"="variant_id")) %>% drop_na %>% mutate(varid=Predictor_v2)
   all<-rbind(v1,v2)
-  all_sorted<-arrange(all,chr,pos_hg19)
+  if (rsid_TF==TRUE){
+    all_sorted<-arrange(all,chr,pos_hg19)
+    score2 <- all_sorted[,c("varid", "A1", "A2", "Centre", "Effect_Best")]
+  } else{
+    all_sorted<-arrange(all,chr,position) %>%select(-rsid.y) %>% rename(rsid=rsid.x)
+    score2 <- all_sorted[,c("rsid", "A1", "A2", "Centre", "Effect_Best","Predictor","chr","position")]
+  }
   
-  score2 <- all_sorted[,c("varid", "A1", "A2", "Centre", "Effect_Best")]
  
   #Check to make sure you haven't lost a whole bunch of SNPs from this.
   print(dim(score2))
@@ -57,7 +72,7 @@ for(i in phenotypes){
 
 #### also create snp list file (addapted from create_snplist.R)
 
-mapping <- fread(map_file, data.table=FALSE)
+mapping <- fread(map_file,data.table=FALSE)
 mapping$Predictor_v1 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a1,"/",mapping$a2)
 mapping$Predictor_v2 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a2,"/",mapping$a1)
 
