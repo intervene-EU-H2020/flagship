@@ -40,3 +40,5 @@ vignettes/*.pdf
 
 ##### Other files
 endpointsDefinitionsHUNT.csv
+snplist_hg19_varid
+snplist_hg19_rsid
