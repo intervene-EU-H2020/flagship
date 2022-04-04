@@ -72,27 +72,29 @@ for(i in phenotypes){
 
 #### also create snp list file (addapted from create_snplist.R)
 
-mapping <- fread(map_file,data.table=FALSE)
-mapping$Predictor_v1 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a1,"/",mapping$a2)
-mapping$Predictor_v2 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a2,"/",mapping$a1)
+#only want to do once, not for every phenotype since htis is mapping and bim files and not involving score files 
+if (!file.exists(paste0(snplist_file_path,"snplist_hg19_rsid")) | !file.exists(paste0(snplist_file_path,"snplist_hg19_varid"))){
+  mapping <- fread(map_file,data.table=FALSE)
+  mapping$Predictor_v1 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a1,"/",mapping$a2)
+  mapping$Predictor_v2 <-paste0(mapping$chr,":",mapping$pos_hg19,"_",mapping$a2,"/",mapping$a1)
 
-snplist <- mapping[,c("Predictor_v1", "Predictor_v2","rsid")]
-print(nrow(snplist))
-#identify which of the two variant_ids are found in your bim file
-first_id <- subset(snplist, Predictor_v1 %in% bim$variant_id)
-first_id <- first_id$Predictor_v1
-second_id <- subset(snplist, Predictor_v2 %in% bim$variant_id)
-second_id <- second_id$Predictor_v2
+  snplist <- mapping[,c("Predictor_v1", "Predictor_v2","rsid")]
+  print(nrow(snplist))
+  #identify which of the two variant_ids are found in your bim file
+  first_id <- subset(snplist, Predictor_v1 %in% bim$variant_id)
+  first_id <- first_id$Predictor_v1
+  second_id <- subset(snplist, Predictor_v2 %in% bim$variant_id)
+  second_id <- second_id$Predictor_v2
 
-snplist$Predictor <- case_when(snplist$Predictor_v1 %in% first_id ~ snplist$Predictor_v1,
+  snplist$Predictor <- case_when(snplist$Predictor_v1 %in% first_id ~ snplist$Predictor_v1,
                                snplist$Predictor_v2 %in% second_id ~ snplist$Predictor_v2,
                                TRUE ~ NA_character_)
-#Save adjusted snplist file so that it can be read by plink
-print(table(is.na(snplist$Predictor))) #how many match?
-snplist_varid <- snplist[!is.na(snplist$Predictor),]$Predictor
-write.table(snplist_varid, paste0(snplist_file_path,"snplist_hg19_varid"), sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
+  #Save adjusted snplist file so that it can be read by plink
+  print(table(is.na(snplist$Predictor))) #how many match?
+  snplist_varid <- snplist[!is.na(snplist$Predictor),]$Predictor
+  write.table(snplist_varid, paste0(snplist_file_path,"snplist_hg19_varid"), sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
 
-#write out rsIDs for comparison with other biobanks SNP coverage
-snplist_rsid <- snplist[!is.na(snplist$Predictor),]$rsid
-write.table(snplist_rsid, paste0(snplist_file_path,"snplist_hg19_rsid"), sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
-
+  #write out rsIDs for comparison with other biobanks SNP coverage
+  snplist_rsid <- snplist[!is.na(snplist$Predictor),]$rsid
+  write.table(snplist_rsid, paste0(snplist_file_path,"snplist_hg19_rsid"), sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE)
+}
