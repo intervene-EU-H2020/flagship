@@ -19,7 +19,8 @@ pheno_i=${pheno[i]}
 /home/bwolford/miniconda3/bin/plink2 \
 --bfile ${genotype_directory}/all.log \
 --extract ${snplist_directory}/snplist_hg19_varid \
+--exclude ${snplist_directory}/duplicatesnps \
 --read-freq ${frequency_directory}/all.frq \
---score ${score_directory}/${pheno_i}_megaPRS_scores_hg19_varid.txt.gz 1 2 5 header \
+--score ${score_directory}/${pheno_i}_megaPRS_scores_hg19_varid.txt.gz 1 2 5 header list-variants \
 --out ${output}/${pheno_i}_PRS
 done
