@@ -8,11 +8,12 @@ require(R.utils)
 library(tidyr)
 
 args <- commandArgs(TRUE)
+print(args)
 bim_file<-args[1] #bim_file<-"/mnt/scratch/brooke/bcf/all.log.bim" #HUNT bim are in hg19
 map_file<-args[2] #map_file<-"/mnt/scratch/brooke/1KGPhase3_hm3_hg19_hg38_mapping_cached.tsv.gz"
 score_file_path<-args[3] #score_file_path<-"/mnt/scratch/brooke/PRS_v2/"
 snplist_file_path<-args[4] #snplist_file_path<-"/mnt/scratch/brooke/flagship/hunt_specific/"
-rsid_TF<-args[5]
+rsid_TF<-as.logical(args[5])
 
 #read bim file
 bim <- fread(bim_file, data.table=FALSE)
