@@ -9,7 +9,7 @@ output=/home/bwolford/bluebox/results
 score_directory=/home/bwolford/bluebox/data/PRS_v2
 frequency_directory=/home/bwolford/bluebox/data
 snplist_directory=/home/bwolford/bluebox/hunt_specific
-genotype_directory=/home/bwolford/bluebox/data/
+genotype_directory=/home/bwolford/bluebox/data
 plink_path=/home/bwolford/miniconda/bin/plink2
 
 ${plink_path} \
