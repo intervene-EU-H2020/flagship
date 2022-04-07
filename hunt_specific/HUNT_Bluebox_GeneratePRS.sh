@@ -16,6 +16,10 @@ ${plink_path} \
 --bfile ${genotype_directory}/all.log \
 --extract ${snplist_directory}/snplist_hg19_varid \
 --read-freq ${frequency_directory}/all.frq \
---score ${score_directory}/${pheno}_megaPRS_scores_hg19_varid.txt.gz 1 2 5 header list-variants \
+--score ${score_directory}/${pheno}_megaPRS_scores_hg19_varid.txt.gz 6 2 5 header list-variants \
 --out ${output}/${pheno}_PRS
 done
+
+
+#--score my.scores 3 2 1 header 
+#reads variant IDs from column 3, allele codes from column 2, and scores from column 1 
