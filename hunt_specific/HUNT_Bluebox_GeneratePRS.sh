@@ -12,16 +12,11 @@ snplist_directory=/home/bwolford/bluebox/hunt_specific
 genotype_directory=/home/bwolford/bluebox/data/
 plink_path=/home/bwolford/miniconda/bin/plink2
 
-#Loop through phenotypes
-for i in ${!pheno[@]}; do
-
-pheno_i=${pheno[i]}
-
 ${plink_path} \
 --bfile ${genotype_directory}/all.log \
 --extract ${snplist_directory}/snplist_hg19_varid \
 --exclude ${snplist_directory}/duplicatesnps \
 --read-freq ${frequency_directory}/all.frq \
---score ${score_directory}/${pheno_i}_megaPRS_scores_hg19_varid.txt.gz 1 2 5 header list-variants \
---out ${output}/${pheno_i}_PRS
+--score ${score_directory}/${pheno}_megaPRS_scores_hg19_varid.txt.gz 1 2 5 header list-variants \
+--out ${output}/${pheno}_PRS
 done
