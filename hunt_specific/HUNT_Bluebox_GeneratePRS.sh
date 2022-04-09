@@ -18,6 +18,7 @@ ${plink_path} \
 --read-freq ${frequency_directory}/all.frq \
 --score ${score_directory}/${pheno}_megaPRS_scores_hg19_varid.txt.gz 6 2 5 header list-variants \
 --out ${output}/${pheno}_PRS
+
 done
 
 
