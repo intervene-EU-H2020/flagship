@@ -19,7 +19,7 @@ ${plink_path} \
 --score ${score_directory}/${pheno}_megaPRS_scores_hg19_varid.txt.gz 6 2 5 header list-variants \
 --out ${output}/${pheno}_PRS
 
-done
+
 
 
 #--score my.scores 3 2 1 header 
