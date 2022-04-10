@@ -1,7 +1,6 @@
 library(data.table)
 library(dplyr)
 
-
 args <- commandArgs(TRUE)
 print(args)
 score<-args[1] #score<-"/mnt/scratch/brooke/BlueBox/results_scores1/Breast_Cancer_PRS.sscore
@@ -40,6 +39,21 @@ if (percentiles==TRUE) {
 
   #Remove grouping
   PRS <- PRS[,-2]
+  
+  
+  #FOR PRS GROUPS
+  #Create fake columns for vcf file 
+  CHROM <- rep("chr1", 10)
+  POS <- seq(1,10)
+  ID <- c("rs1", "rs15", "rs510", "rs1020", "rs2040", "rs6080", "rs8090", "rs9095", "rs9599", "rs99")
+  REF <- rep("A", 10)
+  ALT <- rep("G", 10)
+  QUAL <- rep(".", 10)
+  FILTER <- rep(".", 10)
+  INFO <- rep(".", 10)
+  FORMAT <- rep("DS", 10)
+  vcf <- data.frame(CHROM, POS, ID, REF, ALT, QUAL, FILTER, INFO, FORMAT)
+  colnames(vcf)[1]<-"#CHROM"
 }
 
 #Assign rownames to ID so that transposing the dataframe assigns these as column names. Then remove ID column 
@@ -55,19 +69,6 @@ PRS[is.na(PRS)] <- "."
 PRS_transpose <- t(PRS)
 colnames(PRS_transpose) <- rownames(PRS)
 
-#FOR PRS GROUPS
-#Create fake columns for vcf file 
-CHROM <- rep("chr1", 10)
-POS <- seq(1,10)
-ID <- c("rs1", "rs15", "rs510", "rs1020", "rs2040", "rs6080", "rs8090", "rs9095", "rs9599", "rs99")
-REF <- rep("A", 10)
-ALT <- rep("G", 10)
-QUAL <- rep(".", 10)
-FILTER <- rep(".", 10)
-INFO <- rep(".", 10)
-FORMAT <- rep("DS", 10)
-vcf <- data.frame(CHROM, POS, ID, REF, ALT, QUAL, FILTER, INFO, FORMAT)
-colnames(vcf)[1] <- #CHROM
   
 #FOR CONTINUOUS PRS
 #Create fake columns for vcf file 
@@ -81,7 +82,7 @@ FILTER <- "."
 INFO <- "."
 FORMAT <- "DS"
 vcf <- data.frame(CHROM, POS, ID, REF, ALT, QUAL, FILTER, INFO, FORMAT)
-colnames(vcf)[1] <- #CHROM
+colnames(vcf)[1]<-"#CHROM"
   
 #Join samples to required VCF columns
 vcf <- cbind(vcf, PRS_transpose)
