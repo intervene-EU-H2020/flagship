@@ -244,7 +244,8 @@ hunt_file<-"/mnt/work/phenotypes/allin-phecode-2018_41492/kilde/hunt/2019 02 27 
 
 ### impute DOB from birth year 
 set.seed(1234)
-hunt$DATE_OF_BIRTH<-impute_dob(as.Date(paste0(hunt$BirthYear+1,"01","01"),format='%Y%m%d'),age_years=0)
+hunt$DATE_OF_BIRTH<-impute_dob(as.Date(paste0(hunt$BirthYear+1,"01","01"),format='%Y%m%d'),age_years=0) #as.Date defaults to UTC
+hunt$DATE_OF_BIRTH<-as.POSIXct(hunt$DATE_OF_BIRTH)
 
 #identify start of follow up ie recruitment 
 hunt<-hunt %>% filter(!(is.na(`PartAg@NT1BLQ1`) & is.na(`PartAg@NT2BLQ1`) & is.na(`PartAg@NT3BLQ1`))) #drop people in hospital records not in HUNT
@@ -255,7 +256,7 @@ hunt$START_OF_FOLLOWUP<-ceiling_date(ymd(hunt$DATE_OF_BIRTH) + dyears(hunt$START
 #last linking date (i.e. the last date when the person was still known to be alive) or with the date of death.
 #could use date that EHR was pulled
 last_date<-dat %>% group_by(ID) %>% mutate(max=max(DATE)) %>% select(ID,max) %>% unique()
-hunt<-hunt %>% left_join(last_date,by=c("PID@108485"="ID")) %>% rename(END_OF_FOLLOWUP=max)
+hunt<-hunt %>% left_join(last_date,by=c("PID@108485"="ID")) %>% rename(END_OF_FOLLOWUP=max) %>% select(-Sex)
 
 #identify genotyped samples
 fam<-fread(fam_file)
@@ -271,7 +272,7 @@ hunt$EDUCATION_11<-NA
 df<-left_join(ew, last_date,by="ID") %>% 
   full_join(bdf,by=c("ID"="PID108485")) %>% 
   left_join(mdf,by=c("PID105118"="gid.current")) %>% 
-  left_join(hunt,by=c("PID105118"="PID@108485")) %>% 
+  left_join(hunt,by=c("ID"="PID@108485")) %>% 
   right_join(fam,by=c("IID"="V1"))
 
 #delted RHEUM SERO POS doesn't exist,  "I9_THAORTANEUR","I9_ABAORTANEUR",  "E4_HYTHYNAS","G6_SLEEPAPNO",IPF"GE_STRICT","FE_STRICT","COVID"
@@ -294,10 +295,12 @@ header<-c("ID","SEX","DATE_OF_BIRTH",	"PC1",	"PC2",	"PC3",	"PC4","PC5",
           "KNEE_ARTHROSIS_DATE",	"M13_OSTEOPOROSIS_DATE",	"AUD_SWEDISH_DATE",	"E4_HYTHYNAS_DATE",	"E4_THYTOXGOITDIF_DATE",	"G6_SLEEPAPNO_DATE",	"IPF_DATE",	"ILD_DATE",	"GOUT_DATE",	"H7_GLAUCOMA_DATE",	"G6_EPLEPSY_DATE",	
           "GE_STRICT_DATE",	"FE_STRICT_DATE",	"K11_APPENDACUT_DATE",	
           "START_OF_FOLLOWUP",	"END_OF_FOLLOWUP",	"SMOKING",	"EDUCATION_97",	"EDUCATION_11")	
-names(df)[grep("Sex",names(df))]<-"SEX"
+names(df)[grep("^ID$",names(df))]<-"hospitalID" #need exact match
+names(df)[grep("IID",names(df))]<-"ID" #matches genetics data (n=69715)
+names(df)[grep("Sex",names(df))]<-"SEX" #2 and 1
 names(df)[grep("Ancestry",names(df))]<-"ANCESTRY"
 names(df)[grep("Bmi",names(df))]<-"BMI"
-names(df)[grep("IID",names(df))]<-"ID" #matches genetics data (n=69715)
+
 
 #replace NA in the binary phenotype columns with 0 for controls
 #can we assume that anyone who is genotyped but not in the EHR files is a control? or could they be missing from hospital records and should be NA?
@@ -316,4 +319,58 @@ names(empty)<-columns
 df3<-cbind(df2,empty) %>% select(header) #subset just to headers of interest 
 
 #write file
-write.csv(df3,'endpointsPhenoFormatHUNT.csv',row.names=FALSE)
+write.csv(df3,'endpointsPhenoFormatHUNT.csv',row.names=FALSE,quote=FALSE)
+
+############## CALCULATE INTERQUARTILE RANGE FOR AGE AT ONSET FOR SELECT PHENOTYPES
+p<-c("C3_BREAST","G6_EPLEPSY","GOUT","C3_PROSTATE","RHEUMA_SEROPOS_OTH","T1D","C3_CANCER","I9_AF","I9_CHD","T2D","I9_SAH","C3_MELANOMA_SKIN","J10_ASTHMA","F5_DEPRESSIO","C3_BRONCHUS_LUNG","COX_ARTHROSIS","KNEE_ARTHROSIS","K11_APPENDACUT","C3_COLORECTAL","ILD")
+
+for (idx in 1:length(p)){
+  print(p[idx])
+  date_col=paste0(p[idx],"_DATE")
+  tmp<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5)
+  if (idx==1){
+    age_df<-data.frame(p[idx],t(as.data.frame(quantile(tmp$age, probs = c(.25, .5, .75)))))
+  } else{
+    age_df<-rbind(age_df,data.frame(p[idx],t(as.data.frame(quantile(tmp$age, probs = c(.25, .5, .75))))))
+  }
+}
+names(age_df)<-c("trait","X25","X50","X75")
+write.csv(format(age_df,digits=3),"age_quartiles.csv",row.names=FALSE,quote=FALSE)
+
+##### other summary stats for phenotypes
+
+for (idx in 1:length(p)){
+  print(p[idx])
+  if(length(is.na(pull(df3,p[idx])))==nrow(df3)){ #if entire case/control designation is NA then the phenotype is missing 
+    next
+  }
+  date_col=paste0(p[idx],"_DATE")
+  # of cases and controls
+  cases<-df3 %>% filter(get(p[idx])==1) %>% nrow()
+  controls<-df3 %>% filter(get(p[idx])==0) %>% nrow()
+  #Age distribution at time of recruitment/baseline (median, IQR)	
+  tmp<-df3  %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
+  age_recruitment_median<-df3  %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))%>% summarize(median(age))
+  age_recruitment_IQR<-df3 %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5)) %>% summarize(IQR(age,na.rm=TRUE))
+  #Age of onset distribution (median, IQR)	ONLY CASES
+  age_onset_median<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5) %>% summarize(median(age))
+  age_onset_IQR<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5) %>% summarize(IQR(age))
+  #Distribution of time of follow-up (median, IQR)	
+  #why NA with followup dates?
+  follow_up_median<-df3 %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=(END_OF_FOLLOWUP-START_OF_FOLLOWUP)/365.5) %>% summarize(median(follow,na.rm=TRUE))
+  follow_up_IQR<-df3 %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=as.numeric(END_OF_FOLLOWUP-START_OF_FOLLOWUP)/365.5) %>% summarize(IQR(follow,na.rm=TRUE))
+  #correlations 
+  age_corr<-cor.test(pull(df3,p[idx]),tmp$age)$estimate #has to be age of recruitment because age of onset wouldn't have controls
+  age_cor_ci<-cor.test(pull(df3,p[idx]),tmp$age)$conf.int
+  sex_corr<-cor.test(pull(df3,p[idx]),df3$SEX)$estimate
+  sex_cor_ci<-cor.test(pull(df3,p[idx]),df3$SEX)$conf.int
+  female_perc<-unlist(table(df3$SEX)/nrow(df3))[[2]]*100
+  if (idx==1){
+    summary_stats_cases_df<-data.frame(p[idx],cases,controls,age_recruitment_median,age_recruitment_IQR,age_onset_median,age_onset_IQR,follow_up_median,follow_up_IQR,age_corr,sex_corr,female_perc)
+  } else{
+    summary_stats_cases_df<-rbind(summary_stats_cases_df,data.frame(p[idx],cases,controls,age_recruitment_median,age_recruitment_IQR,age_onset_median,age_onset_IQR,follow_up_median,follow_up_IQR,age_corr,sex_corr,female_perc))
+  }
+}
+
+write.csv(format(summary_stats_cases_df,digits=3),"summary_stats_cases.csv",row.names=FALSE,quote=FALSE)
+
