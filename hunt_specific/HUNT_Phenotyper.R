@@ -17,9 +17,10 @@ library(demprep)
 library(lubridate)
 
 ###### variables #######
-endpoint_file<-"../flagship/UKBB_definitions_demo_TEST.csv"
+endpoint_file<-"../flagship/Phenotyping/UKBB_definitions_demo_TEST.csv"
 master_file<-"/mnt/work/master/DATASET_20170512/SAMPLE_QC/Masterkey_DATASET.20170512.txt.gz"
 bridge_file<-"/mnt/work/bridge/allin-phecode-2018_41492/PID@108485-PID@105118.sav"
+fam_file<-"/mnt/scratch/brooke/bcf/all.log.fam"
 
 files<-list.files("/mnt/work/phenotypes/allin-phecode-2018_41492/kilde/hnt/",full.names=TRUE)
 files<- files[!grepl("etter",files)] #what is issue with that sav file?
@@ -70,13 +71,13 @@ make_file<-function(file){
   names(data)[1]<-"ID"
   data$ID<-as.character(data$ID)
   print(names(data))
-  #diagnosis date in numeric format 
+  #diagnosis date in POSIXct format (does this need to be numeric?)
   if (TRUE %in% grepl("diagnosedato",names(data))){
-    data$dx<-as.numeric(as.POSIXct(as.Date(paste0(data$YYYYMM_diagnosedato,"01"),format='%Y%m%d')),origin="1970-01-01")
+    data$dx<-as.POSIXct(as.Date(paste0(data$YYYYMM_diagnosedato,"01"),format='%Y%m%d'),origin="1970-01-01")
   }else if (TRUE %in% grepl("diagnosekode",names(data))){
-    data$dx<-as.numeric(as.POSIXct(as.Date(paste0(data$YYYYMM_diagnosekode,"01"),format='%Y%m%d')),origin="1970-01-01")
+    data$dx<-as.POSIXct(as.Date(paste0(data$YYYYMM_diagnosekode,"01"),format='%Y%m%d'),origin="1970-01-01")
   }else if (TRUE %in% grepl("diagnose",names(data))){
-    data$dx<-as.numeric(as.POSIXct(as.Date(paste0(data$YYYYMM_diagnose,"01"),format='%Y%m%d')),origin="1970-01-01")
+    data$dx<-as.POSIXct(as.Date(paste0(data$YYYYMM_diagnose,"01"),format='%Y%m%d'),origin="1970-01-01")
   }
   #trim white space on ICD code entries and add prefix
   data$ICD9<-paste0("9x",trimws(data$ICD9))
@@ -218,6 +219,7 @@ write.csv(uniqueIDs, 'endpointsWideFormatHUNT.csv',row.names=FALSE)
 #There will be a group who have received no ICD codes. 
 #These participants should be included as controls also.
 #Link these remaining people to the saved dataset above and include as controls. 
+#Note: see below 
 
 ########## Make phenotype file 
 #MISSING VALUES: missing values should be denoted with -
@@ -226,17 +228,18 @@ write.csv(uniqueIDs, 'endpointsWideFormatHUNT.csv',row.names=FALSE)
 #``
 ######## https://docs.google.com/document/d/1GbZszpPeyf-hyb0V_YDx828YbM7woh8OBJhvzkEwo2g/edit
 
-uniqueIDs<-read.csv('endpointsWideFormatHUNT.csv')
-uniqueIDs$ID<-as.character(uniqueIDs$ID)
+ew<-read.csv('endpointsWideFormatHUNT.csv')
+ew$ID<-as.character(ew$ID)
 #what IDs are not in uniqueIDs but are in the master file?
 mdf<-fread(master_file) #70517
 mdf$gid.current<-as.character(mdf$gid.current)
 bdf<-read_sav(bridge_file) #79058
+names(bdf)<-c("PID108485","PID105118")
 
 #bring in HUNT data for BMI
 hunt_file<-"/mnt/work/phenotypes/allin-phecode-2018_41492/kilde/hunt/2021-11-08_Data_delivery_1084851/2021-11-08_108485_Data.sav"
 hunt<-read_sav(hunt_file)
-#hunt_file<-"/mnt/work/phenotypes/allin-phecode-2018_41492/kilde/hunt/2019 02 27 Datautlevering/2019-02-27_108485_Data.sav"
+hunt_file<-"/mnt/work/phenotypes/allin-phecode-2018_41492/kilde/hunt/2019 02 27 Datautlevering/2019-02-27_108485_Data.sav"
 #do we have BMI for more than HUNT 3?
 
 ### impute DOB from birth year 
@@ -244,24 +247,44 @@ set.seed(1234)
 hunt$DATE_OF_BIRTH<-impute_dob(as.Date(paste0(hunt$BirthYear+1,"01","01"),format='%Y%m%d'),age_years=0)
 
 #identify start of follow up ie recruitment 
+hunt<-hunt %>% filter(!(is.na(`PartAg@NT1BLQ1`) & is.na(`PartAg@NT2BLQ1`) & is.na(`PartAg@NT3BLQ1`))) #drop people in hospital records not in HUNT
 hunt<-hunt %>% rowwise() %>% mutate(START_OF_FOLLOWUP=min(`PartAg@NT1BLQ1`,`PartAg@NT2BLQ1`,`PartAg@NT3BLQ1`,na.rm=TRUE))
-hunt[is.infinite(hunt$START_OF_FOLLOWUP),]$START_OF_FOLLOWUP<-NA #turn Inf to NA
 hunt$START_OF_FOLLOWUP<-ceiling_date(ymd(hunt$DATE_OF_BIRTH) + dyears(hunt$START_OF_FOLLOWUP),unit="days")
 
 #identify end of follow up 
 #last linking date (i.e. the last date when the person was still known to be alive) or with the date of death.
 #could use date that EHR was pulled
+last_date<-dat %>% group_by(ID) %>% mutate(max=max(DATE)) %>% select(ID,max) %>% unique()
+hunt<-hunt %>% left_join(last_date,by=c("PID@108485"="ID")) %>% rename(END_OF_FOLLOWUP=max)
+
+#identify genotyped samples
+fam<-fread(fam_file)
+
+#smoking
+hunt$SMOKING<-NA
+
+#education 
+hunt$EDUCATION_97<-NA
+hunt$EDUCATION_11<-NA
 
 #merge all
-df<-left_join(bdf,uniqueIDs,by=c("PID@108485"="ID")) %>% left_join(mdf,by=c("PID@105118"="gid.current")) %>% left_join(hunt)
+df<-left_join(ew, last_date,by="ID") %>% 
+  full_join(bdf,by=c("ID"="PID108485")) %>% 
+  left_join(mdf,by=c("PID105118"="gid.current")) %>% 
+  left_join(hunt,by=c("PID105118"="PID@108485")) %>% 
+  right_join(fam,by=c("IID"="V1"))
+
+#delted RHEUM SERO POS doesn't exist,  "I9_THAORTANEUR","I9_ABAORTANEUR",  "E4_HYTHYNAS","G6_SLEEPAPNO",IPF"GE_STRICT","FE_STRICT","COVID"
 
 ###get COVID-19 ICD codes from COVID HGI data, not in these files from the hospital
 
 #convert numeric dates back to date format
-df %>% mutate_at(all_of(date_columns),~as.Date(as.POSIXct(.x,origin="1970-01-01")))
+date_columns<-grep("_DATE",colnames(df))
+df<-df %>% mutate_at(all_of(date_columns),~as.Date(as.POSIXct(.x,origin="1970-01-01")))
 
 header<-c("ID","SEX","DATE_OF_BIRTH",	"PC1",	"PC2",	"PC3",	"PC4","PC5",	
-          "PC6","PC7","PC8","PC9","PC10","ANCESTRY","C3_CANCER",	"C3_COLORECTAL",	
+          "PC6","PC7","PC8","PC9","PC10","ANCESTRY",
+          "C3_CANCER",	"C3_COLORECTAL",	
           "C3_BREAST",	"T2D",	"C3_PROSTATE",	"I9_CHD",	"I9_SAH",	"C3_MELANOMA_SKIN",	"J10_ASTHMA",	"I9_HEARTFAIL_NS",	"I9_STR",	"G6_AD_WIDE",	
           "BMI",	"T1D",	"I9_AF",	"N14_CHRONKIDNEYDIS",	"COVID",	"F5_DEPRESSIO",	"C3_BRONCHUS_LUNG",	"RHEUMA_SEROPOS_OTH",	"K11_IBD_STRICT",	"I9_VTE",	
           "I9_THAORTANEUR",	"I9_ABAORTANEUR",	"COX_ARTHROSIS",	"KNEE_ARTHROSIS",	"M13_OSTEOPOROSIS",	"AUD_SWEDISH",	"E4_HYTHYNAS",	"E4_THYTOXGOITDIF",	"G6_SLEEPAPNO",	"IPF",	
@@ -275,20 +298,22 @@ names(df)[grep("Sex",names(df))]<-"SEX"
 names(df)[grep("Ancestry",names(df))]<-"ANCESTRY"
 names(df)[grep("Bmi",names(df))]<-"BMI"
 names(df)[grep("IID",names(df))]<-"ID" #matches genetics data (n=69715)
-columns<-header[!header %in% names(df)]
-empty<-data.frame(matrix(nrow=nrow(df), ncol = length(columns))) #make empty columns for missing variables 
-names(empty)<-columns
-df2<-cbind(df,empty)
 
-#can we assume that anyone who is genotyped but not in the EHR files is a control? or could they be missing from hospital records and should be NA?
 #replace NA in the binary phenotype columns with 0 for controls
-#mutate_at(my_data, c("C1", "C4"), ~replace(., is.na(.), 0))
+#can we assume that anyone who is genotyped but not in the EHR files is a control? or could they be missing from hospital records and should be NA?
 binary<-c("C3_CANCER",	"C3_COLORECTAL",	
           "C3_BREAST",	"T2D",	"C3_PROSTATE",	"I9_CHD",	"I9_SAH",	"C3_MELANOMA_SKIN",	"J10_ASTHMA",	"I9_HEARTFAIL_NS",	"I9_STR",	"G6_AD_WIDE",	
           "T1D",	"I9_AF",	"N14_CHRONKIDNEYDIS",	"COVID",	"F5_DEPRESSIO",	"C3_BRONCHUS_LUNG",	"RHEUMA_SEROPOS_OTH",	"K11_IBD_STRICT",	"I9_VTE",	
           "I9_THAORTANEUR",	"I9_ABAORTANEUR",	"COX_ARTHROSIS",	"KNEE_ARTHROSIS",	"M13_OSTEOPOROSIS",	"AUD_SWEDISH",	"E4_HYTHYNAS",	"E4_THYTOXGOITDIF",	"G6_SLEEPAPNO",	"IPF",	
           "ILD",	"GOUT",	"H7_GLAUCOMA",	"G6_EPLEPSY",	"GE_STRICT",	"FE_STRICT",	"K11_APPENDACUT")
-df3<-mutate_at(df2,binary,~replace(., is.na(.), 0))
+binary<-binary[binary %in% names(df)] #what actually exists
+df2<-df %>% mutate_at(binary,~replace(.,is.na(.),0))
 
-df3<-df3 %>% select(header) #select correct columns and reorder
+#make empty columns for missing phenotypes/variables 
+columns<-header[!header %in% names(df2)]
+empty<-data.frame(matrix(nrow=nrow(df2), ncol = length(columns))) 
+names(empty)<-columns
+df3<-cbind(df2,empty) %>% select(header) #subset just to headers of interest 
+
+#write file
 write.csv(df3,'endpointsPhenoFormatHUNT.csv',row.names=FALSE)
