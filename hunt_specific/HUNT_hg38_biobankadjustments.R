@@ -14,7 +14,7 @@ map_file<-args[2] #map_file<-"/mnt/scratch/brooke/1KGPhase3_hm3_hg19_hg38_mappin
 score_file_path<-args[3] #score_file_path<-"/mnt/scratch/brooke/PRS_v2/"
 snplist_file_path<-args[4] #snplist_file_path<-"/mnt/scratch/brooke/flagship/hunt_specific/"
 rsid_TF<-as.logical(args[5]) #TRUE if we want to use rsIDs, FALSE if we want to use chr:pos:A2/A1 or A1/A2
-pheno<-args[6]
+pheno<-args[6] #string if you don't want to use the list 
 
 #read bim file
 bim <- fread(bim_file, data.table=FALSE)
@@ -26,11 +26,12 @@ if (file.exists(map_file)) {
    map<-fread(map_file,data.table=FALSE)
 }
 
-if (exists(pheno)){
-   phenotypes<-pheno
+if (pheno!=""){ #provide custom phenotype string
+   print(pheno)
+   phenotypes<-c(pheno)
 } else {
 #Note: the below code assumes you are using the same filenames as I originally saved
-phenotypes <- c("AAA","Alcohol_Use_Disorder", "AllCancers", "Alzheimers_Disease", "Appendicitis", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Colorectal_Cancer","Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "smoking", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone")
+   phenotypes <- c("AAA","Alcohol_Use_Disorder", "AllCancers", "Alzheimers_Disease", "Appendicitis", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Colorectal_Cancer","Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "smoking", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone")
 }
 
 
