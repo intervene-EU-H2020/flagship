@@ -6,7 +6,7 @@
 #pheno=(Alcohol_Use_Disorder Alzheimers_Disease Asthma Atrial_Fibrillation BMI Breast_Cancer CHD Chronic_Kidney_Disease Educational_Attainment Epilepsy Focal_Epilepsy Generalised_Epilepsy Gout Heart_Failure Hip_Osteoarthritis IPF ILD Inflammatory_Bowel_Disease Knee_Osteoarthritis Lifespan Lung_Cancer MDD Melanoma Osteoporosis Pain POAG Prostate_Cancer Rheumatoid_Arthritis Sleep_Apnoea smoking Stroke Subarachnoid_Haemmorhage TAA T1D T2D Thyroid_Stimulating_Hormone)
 pheno=$1
 output=/home/bwolford/bluebox/results
-score_directory=/home/bwolford/bluebox/data/PRS_v2
+score_directory=/home/bwolford/bluebox/data/
 frequency_directory=/home/bwolford/bluebox/data
 snplist_directory=/home/bwolford/bluebox/hunt_specific
 genotype_directory=/home/bwolford/bluebox/data
