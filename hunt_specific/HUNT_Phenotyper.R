@@ -327,50 +327,56 @@ p<-c("C3_BREAST","G6_EPLEPSY","GOUT","C3_PROSTATE","RHEUMA_SEROPOS_OTH","T1D","C
 for (idx in 1:length(p)){
   print(p[idx])
   date_col=paste0(p[idx],"_DATE")
-  tmp<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5)
-  if (idx==1){
-    age_df<-data.frame(p[idx],t(as.data.frame(quantile(tmp$age, probs = c(.25, .5, .75)))))
-  } else{
-    age_df<-rbind(age_df,data.frame(p[idx],t(as.data.frame(quantile(tmp$age, probs = c(.25, .5, .75))))))
+  if (p[idx] %in% colnames(df3)) {
+    tmp<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5)
+   if (idx==1){
+      age_df<-data.frame(p[idx],t(as.data.frame(quantile(tmp$age, probs = c(.25, .5, .75)))))
+    } else{
+      age_df<-rbind(age_df,data.frame(p[idx],t(as.data.frame(quantile(tmp$age, probs = c(.25, .5, .75))))))
+    }
   }
 }
 names(age_df)<-c("trait","X25","X50","X75")
 write.csv(format(age_df,digits=3),"age_quartiles.csv",row.names=FALSE,quote=FALSE)
 
 ##### other summary stats for phenotypes
-
+p<-c("C3_CANCER","C3_COLORECTAL","C3_BREAST","T2D","C3_PROSTATE","I9_CHD","I9_SAH","C3_MELANOMA_SKIN","J10_ASTHMA","I9_HEARTFAIL_NS","I9_STR","G6_AD_WIDE","T1D","I9_AF","N14_CHRONKIDNEYDIS","COVID","F5_DEPRESSIO","C3_BRONCHUS_LUNG","RHEUMA_SEROPOS_OTH",
+     "K11_IBD_STRICT","I9_VTE","I9_THAORTANEUR","I9_ABAORTANEUR","COX_ARTHROSIS","KNEE_ARTHROSIS","M13_OSTEOPOROSIS","AUD_SWEDISH","E4_HYTHYNAS","E4_THYTOXGOITDIF","G6_SLEEPAPNO","IPF","ILD","GOUT","H7_GLAUCOMA","G6_EPLEPSY","GE_STRICT","FE_STRICT","K11_APPENDACUT")
 for (idx in 1:length(p)){
   print(p[idx])
   if(length(is.na(pull(df3,p[idx])))==nrow(df3)){ #if entire case/control designation is NA then the phenotype is missing 
     next
-  }
-  date_col=paste0(p[idx],"_DATE")
-  # of cases and controls
-  cases<-df3 %>% filter(get(p[idx])==1) %>% nrow()
-  controls<-df3 %>% filter(get(p[idx])==0) %>% nrow()
-  #Age distribution at time of recruitment/baseline (median, IQR)	
-  tmp<-df3  %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
-  age_recruitment_median<-df3  %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))%>% summarize(median(age))
-  age_recruitment_IQR<-df3 %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5)) %>% summarize(IQR(age,na.rm=TRUE))
-  #Age of onset distribution (median, IQR)	ONLY CASES
-  age_onset_median<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5) %>% summarize(median(age))
-  age_onset_IQR<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5) %>% summarize(IQR(age))
-  #Distribution of time of follow-up (median, IQR)	
-  #why NA with followup dates?
-  follow_up_median<-df3 %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=(END_OF_FOLLOWUP-START_OF_FOLLOWUP)/365.5) %>% summarize(median(follow,na.rm=TRUE))
-  follow_up_IQR<-df3 %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=as.numeric(END_OF_FOLLOWUP-START_OF_FOLLOWUP)/365.5) %>% summarize(IQR(follow,na.rm=TRUE))
-  #correlations 
-  age_corr<-cor.test(pull(df3,p[idx]),tmp$age)$estimate #has to be age of recruitment because age of onset wouldn't have controls
-  age_cor_ci<-cor.test(pull(df3,p[idx]),tmp$age)$conf.int
-  sex_corr<-cor.test(pull(df3,p[idx]),df3$SEX)$estimate
-  sex_cor_ci<-cor.test(pull(df3,p[idx]),df3$SEX)$conf.int
-  female_perc<-unlist(table(df3$SEX)/nrow(df3))[[2]]*100
-  if (idx==1){
-    summary_stats_cases_df<-data.frame(p[idx],cases,controls,age_recruitment_median,age_recruitment_IQR,age_onset_median,age_onset_IQR,follow_up_median,follow_up_IQR,age_corr,sex_corr,female_perc)
-  } else{
-    summary_stats_cases_df<-rbind(summary_stats_cases_df,data.frame(p[idx],cases,controls,age_recruitment_median,age_recruitment_IQR,age_onset_median,age_onset_IQR,follow_up_median,follow_up_IQR,age_corr,sex_corr,female_perc))
+  } else {
+    date_col=paste0(p[idx],"_DATE")
+    # of cases and controls
+    cases<-df3 %>% filter(get(p[idx])==1) %>% nrow()
+    controls<-df3 %>% filter(get(p[idx])==0) %>% nrow()
+    prev<-cases/(cases+controls)*100
+    #Age distribution at time of recruitment/baseline (median, IQR)	
+    tmp<-df3  %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
+    age_recruitment_median<-df3  %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))%>% summarize(median(age))
+    age_recruitment_IQR<-df3 %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5)) %>% summarize(IQR(age,na.rm=TRUE))
+    #Age of onset distribution (median, IQR)	ONLY CASES
+    age_onset_median<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5) %>% summarize(median(age))
+    age_onset_IQR<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5) %>% summarize(IQR(age))
+    #Distribution of time of follow-up (median, IQR)	
+    #why NA with followup dates?
+    follow_up_median<-df3 %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=as.numeric((END_OF_FOLLOWUP-START_OF_FOLLOWUP)/365.5)) %>% summarize(median(follow,na.rm=TRUE))
+    follow_up_IQR<-df3 %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=as.numeric((END_OF_FOLLOWUP-START_OF_FOLLOWUP)/365.5)) %>% summarize(IQR(follow,na.rm=TRUE))
+    #correlations 
+    age_corr<-cor.test(pull(df3,p[idx]),tmp$age)$estimate #has to be age of recruitment because age of onset wouldn't have controls
+    age_cor_ci<-cor.test(pull(df3,p[idx]),tmp$age)$conf.int
+    sex_corr<-cor.test(pull(df3,p[idx]),df3$SEX)$estimate
+    sex_cor_ci<-cor.test(pull(df3,p[idx]),df3$SEX)$conf.int
+    female_perc<-unlist(table(df3$SEX)/nrow(df3))[[2]]*100
+    if (idx==1){
+      summary_stats_cases_df<-data.frame(p[idx],cases,controls,prev,age_recruitment_median,age_recruitment_IQR,age_onset_median,age_onset_IQR,follow_up_median,follow_up_IQR,age_corr,sex_corr,female_perc)
+    } else{
+      summary_stats_cases_df<-rbind(summary_stats_cases_df,data.frame(p[idx],cases,controls,prev,age_recruitment_median,age_recruitment_IQR,age_onset_median,age_onset_IQR,follow_up_median,follow_up_IQR,age_corr,sex_corr,female_perc))
+    }
   }
 }
 
+names(summary_stats_cases_df)<-c()
 write.csv(format(summary_stats_cases_df,digits=3),"summary_stats_cases.csv",row.names=FALSE,quote=FALSE)
 
