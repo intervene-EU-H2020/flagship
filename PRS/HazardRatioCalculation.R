@@ -364,6 +364,7 @@ for(i in 1:length(phenocols)){
     prs <- rep(prscols[i],10)
     minage <- rep(min(pheno_split_sub$tstart), 10)
     maxage <- rep(max(pheno_split_sub$AGE, 10)
+    medianAAO <- median(pheno_split_sub[pheno_split_sub$event==1,"AGE"], na.rm=TRUE)
     group <- c(paste0(prscols[i],"_groupGroup ",c(1:5,7:11)))
     betas <- summary(survival)$coefficients[group,"coef"]
     std_errs <- summary(survival)$coefficients[group,"se(coef)"]
@@ -371,7 +372,7 @@ for(i in 1:length(phenocols)){
     OR <- exp(betas)
     CIpos <- exp(betas+1.96*std_errs)
     CIneg <- exp(betas-1.96*std_errs)
-    result <- matrix(c(phenotype, prs, minage, maxage, controls, cases, group, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=13)
+    result <- matrix(c(phenotype, prs, minage, maxage, medianAAO, controls, cases, group, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=14)
     results <- rbind(results, result)
   }
 }
