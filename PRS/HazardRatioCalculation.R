@@ -195,6 +195,8 @@ write.csv(femaleresults, "file/path/to/output_FemaleSample.csv")
 ###########################################################################################################################################################################################################################################################
 ###########################################################################################################################################################################################################################################################
 
+#Test for significant interaction of PRS with sex
+
 phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D","T2D", "ILD", "Lung_Cancer")
 
@@ -262,6 +264,8 @@ write.csv(results, "file/path/to/output_SexInteraction.csv")
 
 ###########################################################################################################################################################################################################################################################
 ###########################################################################################################################################################################################################################################################
+
+#Age stratification analysis
 
 phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D", "T2D", "ILD", "Lung_Cancer")
@@ -349,10 +353,10 @@ for(i in 1:length(phenocols)){
     pheno_split_sub <- subset(pheno_split, tgroup==j)
 
     #Perform survival analysis
-    survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno_split_sub, na.action=na.exclude)
+    survival <- coxph(as.formula(paste0("Surv(tstart, AGE, event) ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno_split_sub, na.action=na.exclude)
 
-    controls <- table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[[phenocols[i]]])[2:11,1]
-    cases <- if(sum(nrow(pheno_split_sub[pheno_split_sub[[paste0(phenocols[i])]]==0,])) == length(pheno_split_sub[[paste0(phenocols[i])]])){ 
+    controls <- table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[["event"]])[2:11,1]
+    cases <- if(sum(nrow(pheno_split_sub[pheno_split_sub[["event")]]==0,])) == length(pheno_split_sub[["event"]])){ 
       rep(0,10)} else {table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[[paste0(phenocols[i])]])[2:11,2]}
 
     #Extract hazard ratios, betas, standard errors and p-vals
