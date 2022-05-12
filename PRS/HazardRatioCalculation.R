@@ -364,7 +364,7 @@ for(i in 1:length(phenocols)){
     prs <- rep(prscols[i],10)
     minage <- rep(min(pheno_split_sub$tstart), 10)
     maxage <- rep(max(pheno_split_sub$AGE), 10)
-    medianAAO <- median(pheno_split_sub[pheno_split_sub$event==1,"AGE"], na.rm=TRUE)
+    medianAAO <- rep(median(pheno_split_sub[pheno_split_sub$event==1,"AGE"], na.rm=TRUE),10)
     group <- c(paste0(prscols[i],"_groupGroup ",c(1:5,7:11)))
     betas <- summary(survival)$coefficients[group,"coef"]
     std_errs <- summary(survival)$coefficients[group,"se(coef)"]
