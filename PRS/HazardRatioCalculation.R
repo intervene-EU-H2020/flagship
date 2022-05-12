@@ -348,7 +348,7 @@ for(i in 1:length(phenocols)){
   pheno_split$tgroup <- factor(pheno_split$tgroup, levels=c(1,2,3,4))
   pheno_split$tgroup <- relevel(pheno_split$tgroup, ref=1)
 
-  for(j in c(1,2,3,4){
+  for(j in c(1,2,3,4)){
     
     pheno_split_sub <- subset(pheno_split, tgroup==j)
 
@@ -356,14 +356,14 @@ for(i in 1:length(phenocols)){
     survival <- coxph(as.formula(paste0("Surv(tstart, AGE, event) ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno_split_sub, na.action=na.exclude)
 
     controls <- table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[["event"]])[2:11,1]
-    cases <- if(sum(nrow(pheno_split_sub[pheno_split_sub[["event")]]==0,])) == length(pheno_split_sub[["event"]])){ 
+    cases <- if(sum(nrow(pheno_split_sub[pheno_split_sub[["event"]]==0,])) == length(pheno_split_sub[["event"]])){ 
       rep(0,10)} else {table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[[paste0(phenocols[i])]])[2:11,2]}
 
     #Extract hazard ratios, betas, standard errors and p-vals
     phenotype <- rep(phenocols[i],10)
     prs <- rep(prscols[i],10)
     minage <- rep(min(pheno_split_sub$tstart), 10)
-    maxage <- rep(max(pheno_split_sub$AGE, 10)
+    maxage <- rep(max(pheno_split_sub$AGE), 10)
     medianAAO <- median(pheno_split_sub[pheno_split_sub$event==1,"AGE"], na.rm=TRUE)
     group <- c(paste0(prscols[i],"_groupGroup ",c(1:5,7:11)))
     betas <- summary(survival)$coefficients[group,"coef"]
