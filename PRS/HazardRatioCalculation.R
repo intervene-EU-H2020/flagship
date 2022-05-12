@@ -271,26 +271,26 @@ phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST"
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D", "T2D", "ILD", "Lung_Cancer")
 
 #Ages are based on mean quartiles from biobanks to be used in the lifetime risk estimation
-ages <- list(c(c(53.34,63.54,72.24), #C3_CANCER
-             c(c(21.27,32.49,46.77), #K11_APPENDACUT
-             c(c(31.37,48.53,62.07), #J10_ASTHMA
-             c(c(61.51,70.32,77.77), #I9_AF
-             c(c(50.68,58.83,67.26), #C3_BREAST
-             c(c(55.86,64.18,72.35), #I9_CHD
-             c(c(60.10,68.74,76.10), #C3_COLORECTAL
-             c(c(21.35,40.10,58.22), #G6_EPLEPSY
-             c(c(57.07,66.45,74.21), #GOUT
-             c(c(55.66,64.08,71.80), #COX_ARTHROSIS
-             c(c(51.35,59.64,68.27), #KNEE_ARTHROSIS
-             c(c(31.98,44.01,57.19), #F5_DEPRESSIO
-             c(c(46.51,59.02,69.38), #C3_MELANOMA_SKIN
-             c(c(62.60,68.25,73.89), #C3_PROSTATE
-             c(c(), #RHEUMA_SEROPOS_OTHER
-             c(c(43.46,54.54,65.66), #I9_SAH
-             c(c(12.62,19.73,33.28), #T1D
-             c(c(54.36,63.04,71.13), #T2D
-             c(c(51.22,61.59,71.48), #ILD
-             c(c(60.79,68.02,75.52)) #C3_BRONCHUS_LUNG
+ages <- data.frame(c(53.34,63.54,72.24), #C3_CANCER
+                   c(21.27,32.49,46.77), #K11_APPENDACUT
+                   c(31.37,48.53,62.07), #J10_ASTHMA
+                   c(61.51,70.32,77.77), #I9_AF
+                   c(50.68,58.83,67.26), #C3_BREAST
+                   c(55.86,64.18,72.35), #I9_CHD
+                   c(60.10,68.74,76.10), #C3_COLORECTAL
+                   c(21.35,40.10,58.22), #G6_EPLEPSY
+                   c(57.07,66.45,74.21), #GOUT
+                   c(55.66,64.08,71.80), #COX_ARTHROSIS
+                   c(51.35,59.64,68.27), #KNEE_ARTHROSIS
+                   c(31.98,44.01,57.19), #F5_DEPRESSIO
+                   c(46.51,59.02,69.38), #C3_MELANOMA_SKIN
+                   c(62.60,68.25,73.89), #C3_PROSTATE
+                   c(), #RHEUMA_SEROPOS_OTHER
+                   c(43.46,54.54,65.66), #I9_SAH
+                   c(12.62,19.73,33.28), #T1D
+                   c(54.36,63.04,71.13), #T2D
+                   c(51.22,61.59,71.48), #ILD
+                   c(60.79,68.02,75.52)) #C3_BRONCHUS_LUNG
 
 results <- c()
 
