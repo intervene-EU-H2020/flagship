@@ -1,5 +1,5 @@
 
-/apps/statistics2/R-4.0.0/bin/R
+#/apps/statistics2/R-4.0.0/bin/R
 
 setwd("~/intervene")
 
@@ -294,12 +294,13 @@ header<-c("ID","SEX","DATE_OF_BIRTH",	"PC1",	"PC2",	"PC3",	"PC4","PC5",
           "COVID_DATE",	"F5_DEPRESSIO_DATE",	"C3_BRONCHUS_LUNG_DATE",	"RHEUMA_SEROPOS_OTH_DATE",	"K11_IBD_STRICT_DATE",	"I9_VTE_DATE",	"I9_THAORTANEUR_DATE",	"I9_ABAORTANEUR_DATE",	"COX_ARTHROSIS_DATE",	
           "KNEE_ARTHROSIS_DATE",	"M13_OSTEOPOROSIS_DATE",	"AUD_SWEDISH_DATE",	"E4_HYTHYNAS_DATE",	"E4_THYTOXGOITDIF_DATE",	"G6_SLEEPAPNO_DATE",	"IPF_DATE",	"ILD_DATE",	"GOUT_DATE",	"H7_GLAUCOMA_DATE",	"G6_EPLEPSY_DATE",	
           "GE_STRICT_DATE",	"FE_STRICT_DATE",	"K11_APPENDACUT_DATE",	
-          "START_OF_FOLLOWUP",	"END_OF_FOLLOWUP",	"SMOKING",	"EDUCATION_97",	"EDUCATION_11")	
+          "START_OF_FOLLOWUP",	"END_OF_FOLLOWUP","BATCH",	"SMOKING",	"EDUCATION_97",	"EDUCATION_11")	
 names(df)[grep("^ID$",names(df))]<-"hospitalID" #need exact match
 names(df)[grep("IID",names(df))]<-"ID" #matches genetics data (n=69715)
 names(df)[grep("Sex",names(df))]<-"SEX" #2 and 1
 names(df)[grep("Ancestry",names(df))]<-"ANCESTRY"
 names(df)[grep("Bmi",names(df))]<-"BMI"
+names(df)[grep("batch",names(df))]<-"BATCH"
 
 
 #replace NA in the binary phenotype columns with 0 for controls
@@ -344,7 +345,7 @@ p<-c("C3_CANCER","C3_COLORECTAL","C3_BREAST","T2D","C3_PROSTATE","I9_CHD","I9_SA
      "K11_IBD_STRICT","I9_VTE","I9_THAORTANEUR","I9_ABAORTANEUR","COX_ARTHROSIS","KNEE_ARTHROSIS","M13_OSTEOPOROSIS","AUD_SWEDISH","E4_HYTHYNAS","E4_THYTOXGOITDIF","G6_SLEEPAPNO","IPF","ILD","GOUT","H7_GLAUCOMA","G6_EPLEPSY","GE_STRICT","FE_STRICT","K11_APPENDACUT")
 for (idx in 1:length(p)){
   print(p[idx])
-  if(length(is.na(pull(df3,p[idx])))==nrow(df3)){ #if entire case/control designation is NA then the phenotype is missing 
+  if(sum(is.na(pull(df3,p[idx])))==nrow(df3)){ #if entire case/control designation is NA then the phenotype is missing 
     next
   } else {
     date_col=paste0(p[idx],"_DATE")
@@ -354,8 +355,8 @@ for (idx in 1:length(p)){
     prev<-cases/(cases+controls)*100
     #Age distribution at time of recruitment/baseline (median, IQR)	
     tmp<-df3  %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
-    age_recruitment_median<-df3  %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))%>% summarize(median(age))
-    age_recruitment_IQR<-df3 %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5)) %>% summarize(IQR(age,na.rm=TRUE))
+    age_recruitment_median<-median(tmp$age,na.rm=TRUE)
+    age_recruitment_IQR<-median(tmp$age,na.rm=TRUE)
     #Age of onset distribution (median, IQR)	ONLY CASES
     age_onset_median<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5) %>% summarize(median(age))
     age_onset_IQR<-df3 %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5) %>% summarize(IQR(age))
@@ -369,14 +370,13 @@ for (idx in 1:length(p)){
     sex_corr<-cor.test(pull(df3,p[idx]),df3$SEX)$estimate
     sex_cor_ci<-cor.test(pull(df3,p[idx]),df3$SEX)$conf.int
     female_perc<-unlist(table(df3$SEX)/nrow(df3))[[2]]*100
+  }
     if (idx==1){
       summary_stats_cases_df<-data.frame(p[idx],cases,controls,prev,age_recruitment_median,age_recruitment_IQR,age_onset_median,age_onset_IQR,follow_up_median,follow_up_IQR,age_corr,sex_corr,female_perc)
     } else{
       summary_stats_cases_df<-rbind(summary_stats_cases_df,data.frame(p[idx],cases,controls,prev,age_recruitment_median,age_recruitment_IQR,age_onset_median,age_onset_IQR,follow_up_median,follow_up_IQR,age_corr,sex_corr,female_perc))
-    }
-  }
-}
+}}
 
-names(summary_stats_cases_df)<-c()
+names(summary_stats_cases_df)<-c("trait","cases","controls","prevalence","age_recruitment_median","age_recruitment_IQR","age_onset_median","age_onset_IQR","follow_up_median","follow_up_IQR","age_corr","sex_corr","female_prev")
 write.csv(format(summary_stats_cases_df,digits=3),"summary_stats_cases.csv",row.names=FALSE,quote=FALSE)
 
