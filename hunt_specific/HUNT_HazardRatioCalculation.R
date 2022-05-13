@@ -5,11 +5,25 @@ library(data.table)
 library(dplyr)
 library(lubridate)
 library(survival)
+library(broom)
+library(RNOmni)
+library(tidyr)
 
-phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
-prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D","T2D", "ILD", "Lung_Cancer)
+# Set variables 
+phenocols <- c("J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD",  "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE",  "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+prscols <- c("Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "Subarachnoid_Haemmorhage", "T1D","T2D", "ILD", "Lung_Cancer")
+#"AllCancers", "Appendicitis",, "Colorectal_Cancer", "Rheumatoid_Arthritis"
+#"C3_CANCER", "K11_APPENDACUT", "C3_COLORECTAL","RHEUMA_SEROPOS_OTHER",
 
-results <- c()
+pheno_file="/home/bwolford/workbench/intervene/endpointsPhenoFormatHUNT.csv" #path to phenotype file 
+prs_path="/home/bwolford/scratch/brooke/BlueBox/results_1/" #path to PRS files
+pheno_file_ID="ID" #make sure this is in the right place on line 36
+#output_file_dir=getwd() #set directory for output file 
+output_file_dir="/mnt/work/workbench/bwolford/intervene/"
+
+########################################################################################################
+surv_results <- c()
+logreg_results<-c()
 
 for(i in 1:length(phenocols)){
   
@@ -17,18 +31,19 @@ for(i in 1:length(phenocols)){
   print(prscols[i])
   
   #Read in phenotype file
-  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH"), data.table=FALSE)
+  pheno <- fread(input=pheno_file, select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10","ANCESTRY",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH"), data.table=FALSE)
     
-  pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
+  pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01") 
+  #if it's already in date format, this won't mess things up
  
   #Read in PRS scores
-  PRS <- fread(input=paste0("path/to/PRS/",prscols[i],"_PRS.sscore"), data.table=FALSE)
+  PRS <- fread(input=paste0(prs_path,prscols[i],"_PRS.sscore"), data.table=FALSE)
 
   #Subset columns to the IDs and score only. Note: columns 1 or 2 may be redundant and can be removed if necessary. Kept in to avoid bugs.
   PRS <- PRS[,c(1,2,5)]
 
-  #Rename ID column to the name of the ID column in the 
-  colnames(PRS) <- c("ENTER_ID", "ENTER_ID", paste0(prscols[i],"_prs"))
+  #Rename ID column to the name of the ID column in the phenotype file
+  colnames(PRS) <- c("FID", pheno_file_ID, paste0(prscols[i],"_prs"))
 
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
@@ -54,6 +69,19 @@ for(i in 1:length(phenocols)){
   #Specify age as either the Age at Onset or End of Follow-up (if not a case)
   pheno$AGE <- ifelse(pheno[[phenocols[i]]]==1, time_length(difftime(pheno[[paste0(phenocols[i],"_DATE")]], pheno$DATE_OF_BIRTH), 'years'), time_length(difftime(pheno$END_OF_FOLLOWUP, pheno$DATE_OF_BIRTH), 'years'))
 
+  
+  #inverse normalize PRS
+  pheno[[paste0(prscols[i],"_invNorm")]] <- RankNorm(pheno[[paste0(prscols[i],"_prs")]])
+  
+  #perform logistic regression
+  logreg <- glm(as.formula(paste0(phenocols[i],"~",paste0(prscols[i],"_invNorm"),"+ PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), 
+                data=pheno, na.action=na.exclude,family="binomial")
+  #manipulate into data frame
+  lrdf<-tidy(logreg)
+  lrdf$OR<-exp(lrdf$estimate)
+  lrdf$LB<-exp(lrdf$estimate-1.96*lrdf$std.error)
+  lrdf$UB<-exp(lrdf$estimate+1.96*lrdf$std.error)
+  
   #Adjust to censor at age 80
   pheno[[paste0(phenocols[i])]] <- ifelse(pheno[[paste0(phenocols[i])]]==1 & pheno$AGE > 80, 0, pheno[[paste0(phenocols[i])]])
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
@@ -77,11 +105,18 @@ for(i in 1:length(phenocols)){
   CIpos <- exp(betas+1.96*std_errs)
   CIneg <- exp(betas-1.96*std_errs)
   result <- matrix(c(phenotype, prs, group, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=11)
-  results <- rbind(results, result)
+  surv_results <- rbind(surv_results, result)
+  
+  #Extract logistic regression info
+  lrdf$pheno <- rep(phenocols[i],nrow(lrdf))
+  logreg_results <- rbind(logreg_results, lrdf)
   
 }
+surv_results<-data.frame(surv_results)
+names(surv_results)<-c("phenotype", "prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "OR", "CIpos", "CIneg")
+write.table(surv_results, paste0(output_file_dir,"/survival_analysis_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
+write.table(logreg_results, paste0(output_file_dir,"/logistic_regression_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
 
-write.csv(results, "file/path/to/output_FullSample.csv")
 
 ###########################################################################################################################################################################################################################################################
 ###########################################################################################################################################################################################################################################################
