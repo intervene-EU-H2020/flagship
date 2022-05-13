@@ -357,7 +357,7 @@ for(i in 1:length(phenocols)){
 
     controls <- table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[["event"]])[2:11,1]
     cases <- if(sum(nrow(pheno_split_sub[pheno_split_sub[["event"]]==0,])) == length(pheno_split_sub[["event"]])){ 
-      rep(0,10)} else {table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[[paste0(phenocols[i])]])[2:11,2]}
+      rep(0,10)} else {table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[["event"]])[2:11,2]}
 
     #Extract hazard ratios, betas, standard errors and p-vals
     phenotype <- rep(phenocols[i],10)
