@@ -42,3 +42,7 @@ vignettes/*.pdf
 endpointsDefinitionsHUNT.csv
 snplist_hg19_varid
 snplist_hg19_rsid
+
+#plots
+*.pdf
+*.png
