@@ -6,7 +6,7 @@ library(dplyr)
 library(lubridate)
 library(survival)
 
-phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D","T2D", "ILD", "Lung_Cancer)
 
 results <- c()
@@ -33,7 +33,7 @@ for(i in 1:length(phenocols)){
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
 
-  pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
+  pheno <- subset(pheno, !is.na(pheno[[paste0(phenocols[i])]]) | !is.na(pheno[[paste0(prscols[i],"_prs")]]))
  
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
@@ -88,7 +88,7 @@ write.csv(results, "file/path/to/output_FullSample.csv")
 
 #Sex specific HRs
 
-phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTH", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D", "T2D", "ILD", "Lung_Cancer")
 
 maleresults <- c()
@@ -116,7 +116,7 @@ for(i in 1:length(phenocols)){
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
   
-  pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
+  pheno <- subset(pheno, !is.na(pheno[[paste0(phenocols[i])]]) | !is.na(pheno[[paste0(prscols[i],"_prs")]]))
  
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
@@ -197,7 +197,7 @@ write.csv(femaleresults, "file/path/to/output_FemaleSample.csv")
 
 #Test for significant interaction of PRS with sex
 
-phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTH", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D","T2D", "ILD", "Lung_Cancer")
 
 results <- c()
@@ -224,7 +224,7 @@ for(i in 1:length(phenocols)){
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
   
-  pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
+  pheno <- subset(pheno, !is.na(pheno[[paste0(phenocols[i])]]) | !is.na(pheno[[paste0(prscols[i],"_prs")]]))
  
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
@@ -267,7 +267,7 @@ write.csv(results, "file/path/to/output_SexInteraction.csv")
 
 #Age stratification analysis
 
-phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D", "T2D", "ILD", "Lung_Cancer")
 
 #Ages are based on mean quartiles from biobanks to be used in the lifetime risk estimation
@@ -285,7 +285,7 @@ ages <- data.frame(c(53.34,63.54,72.24), #C3_CANCER
                    c(31.98,44.01,57.19), #F5_DEPRESSIO
                    c(46.51,59.02,69.38), #C3_MELANOMA_SKIN
                    c(62.60,68.25,73.89), #C3_PROSTATE
-                   c(), #RHEUMA_SEROPOS_OTHER
+                   #RHEUMA_SEROPOS_OTH TO BE COMPLETED
                    c(43.46,54.54,65.66), #I9_SAH
                    c(12.62,19.73,33.28), #T1D
                    c(54.36,63.04,71.13), #T2D
@@ -314,7 +314,7 @@ for(i in 1:length(phenocols)){
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
 
-  pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
+  pheno <- subset(pheno, !is.na(pheno[[paste0(phenocols[i])]]) | !is.na(pheno[[paste0(prscols[i],"_prs")]]))
 
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
