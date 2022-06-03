@@ -3,22 +3,21 @@ library(ggplot2)
 library(dplyr)
 
 
-################## HUNT ONLY PLOTTINg ##############
+output_dir<-"/mnt/work/workbench/bwolford/intervene/"
 
-
-################### PLOTTING ###############
+################### HUNT ONLY PLOTTING ###############
 
 surv_results<-fread("/mnt/work/workbench/bwolford/intervene/survival_analysis_all.csv")
 logreg_results<-fread("/mnt/work/workbench/bwolford/intervene/logistic_regression_all.csv")
 
-pdf(file="HUNT_OddsRatio.pdf",height=8,width=8)
+pdf(file=paste0(output_dir,"HUNT_OddsRatio.pdf"),height=8,width=8)
 ggplot(logreg_results %>% filter(grepl("invNorm",term)),aes(x=pheno,y=as.numeric(OR))) + geom_point() +
   geom_errorbar(aes(ymin=as.numeric(LB),ymax=as.numeric(UB))) + theme_bw() + theme(axis.text.x=element_text(angle = 45,hjust=1)) +
   geom_hline(yintercept=1,linetype="dashed",color="black") + ylab("Odds Ratio per SD") + xlab("Endpoint")
 dev.off()
 
 
-pdf(file="HUNT_HazardRatio.pdf",height=8,width=8)
+pdf(file=paste0(output_dir,"HUNT_HazardRatio.pdf"),height=8,width=8)
 ggplot(surv_results %>% separate(group,into=c("string","groupNo"),sep=" ") %>% mutate(across(.cols=c(OR,CIpos,CIneg,groupNo),.fns=as.numeric)),aes(x=groupNo,y=OR)) +
   geom_point() +
   geom_errorbar(aes(ymin=CIneg,ymax=CIpos)) + theme_bw() + 
@@ -27,9 +26,8 @@ ggplot(surv_results %>% separate(group,into=c("string","groupNo"),sep=" ") %>% m
 dev.off()
 
 
-####################################################################################
+############################# HR versus 50th percentile comparison #######################################################
 #UKB, Finngen, Norway Hazard Ratio versus 50th percentile PRS
-#uk_file<-"/mnt/work/workbench/bwolford/intervene/PRS_HRsperSD_UKBiobank_FullSample.csv"
 uk_file<-"/mnt/work/workbench/bwolford/intervene/PRS_HRs_UKBiobank_FullSample_top1percent.csv"
 fi_file<-"/mnt/work/workbench/bwolford/intervene/HazardRatios_FullSample_FinnGen.csv"
 no_file<-"/mnt/work/workbench/bwolford/intervene/survival_analysis_all.csv"
@@ -69,7 +67,7 @@ for(i in unique(assoc$prs)){
           xlab("PRS percentile versus 50th percentile") +
           geom_hline(yintercept = 1.0) +
           scale_x_discrete(labels= phenotypelabels) +
-          scale_colour_manual(values=c("black","orange","blue")) + 
+          scale_colour_manual(values=c("darkblue","goldenrod3","purple")) + 
           theme(title = element_text(size = 18),
                 legend.text = element_text(size = 16),
                 legend.title = element_text(size = 18),
@@ -78,59 +76,122 @@ for(i in unique(assoc$prs)){
                 axis.title.y = element_text(size = 18),
                 axis.text.y = element_text(size = 16)) +
           coord_flip())
-  ggsave(paste0(out_dir,"HazardRatios_",i,"_PRS_Finngen_UKB_HUNT.png"), height=10 , width=10)
+  ggsave(paste0(output_dir,"HazardRatios_",i,"_PRS_Finngen_UKB_HUNT.png"), height=10 , width=10)
 }
 
-##### Odds Ratios
-no_file<-"/mnt/work/workbench/bwolford/intervene/survival_analysis_all.csv"
+############################# Odds Ratios #######################################################
+no_file<-"/mnt/work/workbench/bwolford/intervene/logistic_regression_all.csv"
 es_file<-"/mnt/work/workbench/bwolford/intervene/PRSassociations_EstBB.csv"
+fi_file<-"/mnt/work/workbench/bwolford/intervene/PRSassociations_FinnGen.csv"
 
 no<-fread(no_file)
-names(no)<-c("phenotype_code","phenotype","prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "OR", "CIpos", "CIneg")
 no$biobank<-"HUNT"
+no<-no %>% filter(grepl("invNorm",term))
 
 es<-fread(es_file)
-names(es)<-c("phenotype_code","prs","betas","std_errs","OR","CIpos","CIneg")
+names(es)<-c("pheno","prs","betas","std_errs","p.value","OR","UB","LB")
+es<-es[es$prs!="Pain" & es$prs!="BMI" & es$prs!="Pain" & es$prs!="Lifespan" & es$prs!="Educational_Attainment",]
 es$biobank<-"ESTBB"
 
-assoc<-rbind(no,es,fill=TRUE)
+fi<-fread(fi_file)
+names(fi)<-c("pheno","prs","betas","std_errs","p.value","OR","UB","LB")
+fi<-fi[fi$prs!="Pain" & fi$prs!="BMI" & fi$prs!="Pain" & fi$prs!="Lifespan" & fi$prs!="Educational_Attainment",]
+fi<-fi[!grepl("_cs",fi$prs)]
+fi$biobank<-"FinnGen"
+
+assoc<-rbind(no,es,fi,fill=TRUE)
+
+assoc$biobank <- as.factor(assoc$biobank)
+assoc$phenotype <- as.factor(assoc$phenotype)
 
 
 
+########################## HR per SD ######################
+
+uk_file<-"/mnt/work/workbench/bwolford/intervene/PRS_HRsperSD_UKBiobank_FullSample.csv"
+no_file<-"/mnt/work/workbench/bwolford/intervene/survival_perSD_all.csv"
+fi_file<-""
+
+################################## Sex specific HRs #######################
+
+
+no_male_file<-paste0(output_dir,"MaleSample.csv")
+no_female_file<-paste0(output_dir,"FemaleSample.csv")
+no_male<-fread(no_male_file)
+no_female<-fread(no_female_file)
+names(no_male)<-c("phenotype_code","phenotype","prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+names(no_female)<-c("phenotype_code","phenotype","prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+no_male$biobank<-"HUNT";no_female$biobank<-"HUNT"
+no_male$sex<-"male";no_female$sex<-"female"
+
+fi_male_file<-paste0(output_dir,"HazardRatios_MaleSample_FinnGen.csv")
+fi_female_file<-paste0(output_dir,"HazardRatios_FemaleSample_FinnGen.csv")
+fi_male<-fread(fi_male_file)
+fi_female<-fread(fi_female_file)
+names(fi_male)<-c("phenotype_code","phenotype","prs", "group", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+names(fi_female)<-c("phenotype_code","phenotype","prs", "group", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+fi_male$biobank<-"FinnGen";fi_female$biobank<-"FinnGen"
+fi_male$sex<-"male";fi_female$sex<-"female"
+
+#uk_male_file<-paste0(output_dir,"PRS_HR_UKBiobank_FemaleSample_v2.csv")
+#uk_female_file<-paste0(output_dir,"PRS_HR_UKBiobank_MaleSample_v2.csv")
+#uk_male<-fread(uk_male_file)
+#uk_female<-fread(uk_female_file)
+#names(uk_male)<-c("phenotype","prs", "group","case","control", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+#names(uk_female)<-c("phenotype","prs", "group","case","control", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+#uk_male$biobank<-"UKBB";uk_female$biobank<-"UKBB"
+#uk_male$sex<-"male";uk_female$sex<-"female"
+
+
+#assoc<-rbind(no_male,no_female,fi_male,fi_female,uk_male,uk_female,fill=TRUE)
+assoc<-rbind(no_male,no_female,fi_male,fi_female,fill=TRUE)
+assoc$biobank<-as.factor(assoc$biobank)
+assoc$sex<-as.factor(assoc$sex)
+assoc$phenotype<-as.factor(assoc$phenotype)
+
+for(i in unique(assoc$prs)){
+  print(i)
+  disease <- subset(assoc, prs==i)
+  disease$group <- factor(disease$group, levels=c(paste0(i,"_groupGroup 1"), paste0(i,"_groupGroup 2"), paste0(i,"_groupGroup 3"), paste0(i,"_groupGroup 4"), paste0(i,"_groupGroup 5"),paste0(i,"_groupGroup 7"), 
+                                                  paste0(i,"_groupGroup 8"), paste0(i,"_groupGroup 9"), paste0(i,"_groupGroup 10"), paste0(i,"_groupGroup 11")))
+  
+  phenotypelabels <- c("<1%", "1-5%", "5-10%", "10-20%", "20-40%", "60-80%", "80-90%", "90-95%", "95-99%", ">99%")
+  
+  print(ggplot(disease) +
+          geom_point(aes(group, HR, group=biobank, col=biobank,shape=sex), position=position_dodge(width=0.7)) +
+          theme_bw() +
+          geom_errorbar(aes(x=group, ymin = CIneg, ymax = CIpos, group=biobank, col=biobank), size=0.5, width=0.5, position=position_dodge(width=0.7)) +
+          ylab("Hazard Ratio (95% CI)") +
+          xlab("PRS percentile versus 50th percentile") +
+          geom_hline(yintercept = 1.0) +
+          scale_x_discrete(labels= phenotypelabels) +
+          scale_colour_manual(values=c("darkblue","goldenrod3","purple")) + 
+          theme(title = element_text(size = 18),
+                legend.text = element_text(size = 16),
+                legend.title = element_text(size = 18),
+                axis.title.x = element_text(size = 18),
+                axis.text.x = element_text(size = 16),
+                axis.title.y = element_text(size = 18),
+                axis.text.y = element_text(size = 16)) +
+          coord_flip())
+  ggsave(paste0(output_dir,"HazardRatios_bysex_",i,"_PRS_Finngen_UKB_HUNT.png"), height=10 , width=10)
+}
+assoc<-assoc%>% separate(group,into=c("grouptext","groupNo"),sep=" ")
+
+
+pdf(file=paste0(output_dir,"Comparison_HR_bysex.pdf"),height=8,width=8)
+ggplot(assoc,aes(x=as.numeric(groupNo),color=biobank,y=as.numeric(HR),shape=as.factor(sex))) + facet_wrap(~phenotype) +
+  geom_point() +
+  geom_errorbar(aes(ymin=CIneg,ymax=CIpos)) + theme_bw() + 
+  theme(axis.text.x=element_text(angle = 45,hjust=1)) + facet_wrap(~phenotype,scales="free_y") +
+  geom_hline(yintercept=1,linetype="dashed",color="black")
+dev.off()
 
 
 ####################################################################################################################################################################################################################
 ####################################################################################################################################################################################################################
 
-#UK Biobank - HRs per SDs
 
-associations <- fread("/Users/jermy/Documents/INTERVENE/Results/UKBiobank/PRS_HRsperSD_UKBiobank_FullSample.csv", data.table=FALSE)
-associations <- associations[,-1]
-colnames(associations) <- c("phenotype","prs","beta","se","pval","OR","Cipos","Cineg")
-associations <- associations[,c("phenotype","prs","OR","Cipos","Cineg")]
-
-associations$phenotype <- factor(associations$phenotype, levels=c("G6_EPLEPSY", "C3_BREAST", "GOUT", "RHEUMA_SEROPOS_OTH", "C3_PROSTATE", "T1D"))
-
-phenotypelabels <- c("Epilepsy", "Breast Cancer", "Gout", "Rheumatoid Arthritis", "Prostate Cancer", "T1D")
-
-ggplot(associations) +
-  geom_point(aes(phenotype, OR)) +
-  theme_bw() +
-  geom_errorbar(aes(x=phenotype, ymin = Cineg, ymax = Cipos), size=0.5, width=0.5) +
-  ylab("Hazard Ratio (95% CI)") +
-  xlab("") +
-  geom_hline(yintercept = 1.0) +
-  scale_x_discrete(labels= phenotypelabels) +
-  ggtitle("HR Per SD") + 
-  theme(title = element_text(size = 18),
-        legend.text = element_text(size = 16),
-        legend.title = element_text(size = 18),
-        axis.title.x = element_text(size = 18),
-        axis.text.x = element_text(size = 16),
-        axis.title.y = element_text(size = 18),
-        axis.text.y = element_text(size = 16)) +
-  coord_flip()
-ggsave("/Users/jermy/Documents/INTERVENE/Results/FinnGen/MegaPRS/Plots/HazardRatiosPerSD_PRS_UKBiobank.png", height=10 , width=10)
 
 ####################################################################################################################################################################################################################
 ####################################################################################################################################################################################################################
