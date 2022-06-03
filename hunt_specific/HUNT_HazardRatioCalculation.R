@@ -19,11 +19,12 @@ pheno_file="/home/bwolford/workbench/intervene/endpointsPhenoFormatHUNT.csv" #pa
 prs_path="/home/bwolford/scratch/brooke/BlueBox/results_1/" #path to PRS files
 pheno_file_ID="ID" #make sure this is in the right place on line 36
 #output_file_dir=getwd() #set directory for output file 
-output_file_dir="/mnt/work/workbench/bwolford/intervene/"
+output_dir="/mnt/work/workbench/bwolford/intervene/"
 
-########################################################################################################
+##################################################### All samples: logistic regression, survival regression per SD, and versus 50th percentile ###################################################
 surv_results <- c()
 logreg_results<-c()
+surv_sd_results<-c()
 
 for(i in 1:length(phenocols)){
   
@@ -76,6 +77,7 @@ for(i in 1:length(phenocols)){
   #perform logistic regression
   logreg <- glm(as.formula(paste0(phenocols[i],"~",paste0(prscols[i],"_invNorm"),"+ PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), 
                 data=pheno, na.action=na.exclude,family="binomial")
+  
   #manipulate into data frame
   lrdf<-tidy(logreg)
   lrdf$OR<-exp(lrdf$estimate)
@@ -85,6 +87,13 @@ for(i in 1:length(phenocols)){
   #Adjust to censor at age 80
   pheno[[paste0(phenocols[i])]] <- ifelse(pheno[[paste0(phenocols[i])]]==1 & pheno$AGE > 80, 0, pheno[[paste0(phenocols[i])]])
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
+  
+  #perform survival analysis HR per SD
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",paste0(prscols[i],"_invNorm")," + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno, na.action=na.exclude)
+  survdf<-tidy(survival)
+  survdf$HR<-exp(survdf$estimate)
+  survdf$LB<-exp(survdf$estimate-1.96*survdf$std.error)
+  survdf$UB<-exp(survdf$estimate+1.96*survdf$std.error)
   
   #Perform survival analysis
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno, na.action=na.exclude)
@@ -111,11 +120,18 @@ for(i in 1:length(phenocols)){
   lrdf$pheno <- rep(phenocols[i],nrow(lrdf))
   logreg_results <- rbind(logreg_results, lrdf)
   
+  #extract survival HR per SD
+  survdf<- rep(phenocols[i],nrow(survdf))
+  surv_sd_results <-rbind(surv_sd_results,survdf)
+  
 }
+
+#write output
 surv_results<-data.frame(surv_results)
 names(surv_results)<-c("phenotype", "prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "OR", "CIpos", "CIneg")
-write.table(surv_results, paste0(output_file_dir,"/survival_analysis_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
-write.table(logreg_results, paste0(output_file_dir,"/logistic_regression_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
+write.table(surv_results, paste0(output_dir,"/survival_analysis_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
+write.table(logreg_results, paste0(output_dir,"/logistic_regression_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
+write.table(surv_sd_results,paste0(output_dir,"/survival_perSD_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
 
 
 ###########################################################################################################################################################################################################################################################
@@ -123,11 +139,14 @@ write.table(logreg_results, paste0(output_file_dir,"/logistic_regression_all.csv
 
 #Sex specific HRs
 
-phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTHER", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
-prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D", "T2D", "ILD", "Lung_Cancer")
-
+phenocols <- c("J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD",  "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE",  "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+prscols <- c("Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "Subarachnoid_Haemmorhage", "T1D","T2D", "ILD", "Lung_Cancer")
+#"AllCancers", "Appendicitis",, "Colorectal_Cancer", "Rheumatoid_Arthritis"
+#"C3_CANCER", "K11_APPENDACUT", "C3_COLORECTAL","RHEUMA_SEROPOS_OTHER",
 maleresults <- c()
 femaleresults <- c()
+
+#ASSUMES SEX IS CODED 2 of female and 1 for male 
 
 for(i in 1:length(phenocols)){
   
@@ -135,18 +154,18 @@ for(i in 1:length(phenocols)){
   print(prscols[i])
   
   #Read in phenotype file
-  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","SEX","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH"), data.table=FALSE)
+  pheno <- fread(input=pheno_file, select=c("ID","DATE_OF_BIRTH","SEX","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10","ANCESTRY",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH"), data.table=FALSE)
   
   pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
  
   #Read in PRS scores
-  PRS <- fread(input=paste0("path/to/PRS/",prscols[i],"_PRS.sscore"), data.table=FALSE)
+  PRS <- fread(input=paste0(prs_path,prscols[i],"_PRS.sscore"), data.table=FALSE)
   
   #Subset columns to the IDs and score only. Note: columns 1 or 2 may be redundant and can be removed if necessary. Kept in to avoid bugs.
   PRS <- PRS[,c(1,2,5)]
   
-  #Rename ID column to the name of the ID column in the 
-  colnames(PRS) <- c("ENTER_ID", "ENTER_ID", paste0(prscols[i],"_prs"))
+  #Rename ID column to the name of the ID column in the phenotype file
+  colnames(PRS) <- c("FID", pheno_file_ID, paste0(prscols[i],"_prs"))
   
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
@@ -176,7 +195,8 @@ for(i in 1:length(phenocols)){
   pheno[[paste0(phenocols[i])]] <- ifelse(pheno[[paste0(phenocols[i])]]==1 & pheno$AGE > 80, 0, pheno[[paste0(phenocols[i])]])
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
   
-  males <- subset(pheno, SEX="male")
+  pheno$SEX<-as.numeric(as.factor(pheno$SEX)) #this should convert male and female text to numeric, but could be flipped 
+  males <- pheno %>% filter(SEX==1)
   
   #Define number of cases and controls in each PRS group.
   controls <- table(males[[paste0(prscols[i],"_group")]], males[[paste0(phenocols[i])]])[2:11,1]
@@ -199,7 +219,7 @@ for(i in 1:length(phenocols)){
   maleresult <- matrix(c(phenotype, prs, group, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=11)
   maleresults <- rbind(maleresults, maleresult)
   
-  females <- subset(pheno, SEX="female")
+  females <- pheno %>% filter(SEX==2)
   
   #Define number of cases and controls in each PRS group.
   controls <- table(females[[paste0(prscols[i],"_group")]], females[[paste0(phenocols[i])]])[2:11,1]
@@ -224,8 +244,8 @@ for(i in 1:length(phenocols)){
   
 }
 
-write.csv(maleresults, "file/path/to/output_MaleSample.csv")
-write.csv(femaleresults, "file/path/to/output_FemaleSample.csv")
+write.csv(maleresults, paste0(output_dir,"MaleSample.csv"))
+write.csv(femaleresults, paste0(output_dir,"FemaleSample.csv"))
 
 ###########################################################################################################################################################################################################################################################
 ###########################################################################################################################################################################################################################################################
