@@ -1,8 +1,6 @@
 
 #/apps/statistics2/R-4.0.0/bin/R
 
-setwd("~/intervene")
-
 ###### libraries ######
 library(data.table)
 library(tidyverse)
@@ -21,6 +19,7 @@ endpoint_file<-"../flagship/Phenotyping/UKBB_definitions_demo_TEST.csv"
 master_file<-"/mnt/work/master/DATASET_20170512/SAMPLE_QC/Masterkey_DATASET.20170512.txt.gz"
 bridge_file<-"/mnt/work/bridge/allin-phecode-2018_41492/PID@108485-PID@105118.sav"
 fam_file<-"/mnt/scratch/brooke/bcf/all.log.fam"
+output_dir="/mnt/work/workbench/bwolford/intervene/"
 
 files<-list.files("/mnt/work/phenotypes/allin-phecode-2018_41492/kilde/hnt/",full.names=TRUE)
 files<- files[!grepl("etter",files)] #what is issue with that sav file?
@@ -156,7 +155,7 @@ for(i in 1:nrow(endpoints_level3)){
 }
 
 #Save dataset
-write.csv(dataset, 'endpointsDefinitionsHUNT.csv',row.names=FALSE)
+write.csv(dataset, paste0(output_dir,'endpointsDefinitionsHUNT.csv'),row.names=FALSE)
 
 ##########################################################################################################################################################################################
 
@@ -213,7 +212,7 @@ endpointswide <- select(uniqueIDs, contains(c("ID","C3_CANCER", "C3_COLORECTAL",
                                      "M13_OSTEOPOROSIS_DATE", "AUD_SWEDISH_DATE", "E4_HYTHYNAS_DATE", "G6_SLEEPAPNO_DATE", "IPF_DATE", "ILD_DATE", "GOUT_DATE", "H7_GLAUCOMA_DATE", "G6_EPLEPSY_DATE", 
                                      "GE_STRICT_DATE", "FE_STRICT_DATE", "K11_APPENDACUT_DATE", "COVID_DATE")))
 #NOTE: added contains because some of the phenotypes aren't working (AAA), need to figure out why
-write.csv(uniqueIDs, 'endpointsWideFormatHUNT.csv',row.names=FALSE)
+write.csv(uniqueIDs, paste0(output_dir,'endpointsWideFormatHUNT.csv'),row.names=FALSE)
 ### note: editing seropositive in the definitions file to include M05.8 and .9 becuase not getting cases otherwise
 
 #There will be a group who have received no ICD codes. 
@@ -324,7 +323,7 @@ names(empty)<-columns
 df3<-cbind(df2,empty) %>% select(header) #subset just to headers of interest 
 
 #write file
-write.csv(df3,'endpointsPhenoFormatHUNT.csv',row.names=FALSE,quote=FALSE)
+write.csv(df3,paste0(output_dir,'endpointsPhenoFormatHUNT.csv'),row.names=FALSE,quote=FALSE)
 
 ############## CALCULATE INTERQUARTILE RANGE FOR AGE AT ONSET FOR SELECT PHENOTYPES
 p<-c("C3_BREAST","G6_EPLEPSY","GOUT","C3_PROSTATE","RHEUMA_SEROPOS_OTH","T1D","C3_CANCER","I9_AF","I9_CHD","T2D","I9_SAH","C3_MELANOMA_SKIN","J10_ASTHMA","F5_DEPRESSIO","C3_BRONCHUS_LUNG","COX_ARTHROSIS","KNEE_ARTHROSIS","K11_APPENDACUT","C3_COLORECTAL","ILD")
@@ -342,7 +341,7 @@ for (idx in 1:length(p)){
   }
 }
 names(age_df)<-c("trait","X25","X50","X75")
-write.csv(format(age_df,digits=3),"age_quartiles.csv",row.names=FALSE,quote=FALSE)
+write.csv(format(age_df,digits=3),paste0(output_dir,"age_quartiles.csv"),row.names=FALSE,quote=FALSE)
 
 ##### other summary stats for phenotypes
 p<-c("C3_CANCER","C3_COLORECTAL","C3_BREAST","T2D","C3_PROSTATE","I9_CHD","I9_SAH","C3_MELANOMA_SKIN","J10_ASTHMA","I9_HEARTFAIL_NS","I9_STR","G6_AD_WIDE","T1D","I9_AF","N14_CHRONKIDNEYDIS","COVID","F5_DEPRESSIO","C3_BRONCHUS_LUNG","RHEUMA_SEROPOS_OTH",
@@ -382,7 +381,7 @@ for (idx in 1:length(p)){
 }}
 
 names(summary_stats_cases_df)<-c("trait","cases","controls","prevalence","age_recruitment_median","age_recruitment_IQR","age_onset_median","age_onset_IQR","follow_up_median","follow_up_IQR","age_corr","sex_corr","female_prev")
-write.csv(format(summary_stats_cases_df,digits=3),"summary_stats_cases.csv",row.names=FALSE,quote=FALSE)
+write.csv(format(summary_stats_cases_df,digits=3),paste0(output_dir,"summary_stats_cases.csv"),row.names=FALSE,quote=FALSE)
 
 #################### files for the prspipeline
 setwd("~/intervene")
