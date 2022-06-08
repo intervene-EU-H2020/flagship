@@ -282,6 +282,10 @@ df<-left_join(ew, last_date,by="ID") %>%
 date_columns<-grep("_DATE",colnames(df))
 df<-df %>% mutate_at(all_of(date_columns),~as.Date(as.POSIXct(.x,origin="1970-01-01")))
 
+#TO DO if the diagnosis date is before the imputed DOB 
+#(e.g. got disease within 1st year of age and the imputed DOB makes that look like age of onset <0) 
+#let's reset DOB to 01-01
+
 header<-c("ID","SEX","DATE_OF_BIRTH",	"PC1",	"PC2",	"PC3",	"PC4","PC5",	
           "PC6","PC7","PC8","PC9","PC10","ANCESTRY",
           "C3_CANCER",	"C3_COLORECTAL",	
