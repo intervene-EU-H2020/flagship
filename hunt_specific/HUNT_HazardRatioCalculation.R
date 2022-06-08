@@ -1,4 +1,5 @@
-#Note: this script assumes the names of the phenotypes are consistent with FinnGen: Refer to https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit#gid=334983519
+#Note: this script assumes the names of the phenotypes are consistent with FinnGen: 
+#Refer to https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit#gid=334983519
 
 #Libraries
 library(data.table)
@@ -16,7 +17,7 @@ prscols <- c("Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Epilepsy"
 #"C3_CANCER", "K11_APPENDACUT", "C3_COLORECTAL","RHEUMA_SEROPOS_OTHER",
 
 pheno_file="/home/bwolford/workbench/intervene/endpointsPhenoFormatHUNT.csv" #path to phenotype file 
-prs_path="/home/bwolford/scratch/brooke/BlueBox/results_1/" #path to PRS files
+prs_path="/home/bwolford/scratch/brookescores" #path to PRS files
 pheno_file_ID="ID" #make sure this is in the right place on line 36
 #output_file_dir=getwd() #set directory for output file 
 output_dir="/mnt/work/workbench/bwolford/intervene/"
@@ -110,10 +111,10 @@ for(i in 1:length(phenocols)){
   betas <- summary(survival)$coefficients[group,"coef"]
   std_errs <- summary(survival)$coefficients[group,"se(coef)"]
   pvals <- summary(survival)$coefficients[group,"Pr(>|z|)"]
-  OR <- exp(betas)
+  HR <- exp(betas)
   CIpos <- exp(betas+1.96*std_errs)
   CIneg <- exp(betas-1.96*std_errs)
-  result <- matrix(c(phenotype, prs, group, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=11)
+  result <- matrix(c(phenotype, prs, group, controls, cases, betas, std_errs, pvals, HR, CIpos, CIneg), nrow=10, ncol=11)
   surv_results <- rbind(surv_results, result)
   
   #Extract logistic regression info
@@ -128,7 +129,7 @@ for(i in 1:length(phenocols)){
 
 #write output
 surv_results<-data.frame(surv_results)
-names(surv_results)<-c("phenotype", "prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "OR", "CIpos", "CIneg")
+names(surv_results)<-c("phenotype", "prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
 write.table(surv_results, paste0(output_dir,"/survival_analysis_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
 write.table(logreg_results, paste0(output_dir,"/logistic_regression_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
 write.table(surv_sd_results,paste0(output_dir,"/survival_perSD_all.csv"),sep=",",row.names=FALSE,col.names=TRUE)
@@ -244,8 +245,8 @@ for(i in 1:length(phenocols)){
   
 }
 
-write.csv(maleresults, paste0(output_dir,"MaleSample.csv"))
-write.csv(femaleresults, paste0(output_dir,"FemaleSample.csv"))
+write.csv(maleresults, paste0(output_dir,"HUNT_MaleSample.csv"))
+write.csv(femaleresults, paste0(output_dir,"HUNT_FemaleSample.csv"))
 
 ###########################################################################################################################################################################################################################################################
 ###########################################################################################################################################################################################################################################################
