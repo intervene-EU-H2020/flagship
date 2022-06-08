@@ -313,6 +313,10 @@ binary<-c("C3_CANCER",	"C3_COLORECTAL",
 binary<-binary[binary %in% names(df)] #what actually exists
 df2<-df %>% mutate_at(binary,~replace(.,is.na(.),0))
 
+#make NA for males with breast cancer and females with prostate cancer, instead of controls
+df2<-df2 %>% mutate(C3_BREAST=ifelse(SEX==1,NA,C3_BREAST))
+df2<-df2 %>% mutate(C3_PROSTATE=ifelse(SEX==2,NA,C3_PROSTATE))
+
 #make empty columns for missing phenotypes/variables 
 columns<-header[!header %in% names(df2)]
 empty<-data.frame(matrix(nrow=nrow(df2), ncol = length(columns))) 
@@ -379,4 +383,20 @@ for (idx in 1:length(p)){
 
 names(summary_stats_cases_df)<-c("trait","cases","controls","prevalence","age_recruitment_median","age_recruitment_IQR","age_onset_median","age_onset_IQR","follow_up_median","follow_up_IQR","age_corr","sex_corr","female_prev")
 write.csv(format(summary_stats_cases_df,digits=3),"summary_stats_cases.csv",row.names=FALSE,quote=FALSE)
+
+#################### files for the prspipeline
+setwd("~/intervene")
+df<-fread("endpointsWideFormatHUNT.csv")
+config<-fread("/mnt/scratch/brooke/prspipe/prspipe/config/studies_for_methods_comparison.tsv")
+phenos<-config$name
+phenos<-unique(unlist(strsplit(phenos,",")))
+
+
+
+"G6_ALZHEIMER"
+"C3_BREAST"
+"T2D"
+"K11_IBD_STRICT"
+
+
 
