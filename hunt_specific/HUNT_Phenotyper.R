@@ -15,7 +15,10 @@ library(demprep)
 library(lubridate)
 
 ###### variables #######
-endpoint_file<-"../flagship/Phenotyping/UKBB_definitions_demo_TEST.csv"
+#endpoint_file<-"../flagship/Phenotyping/UKBB_definitions_demo_TEST.csv"
+endpoint_file<-"../flagship/hunt_specific/HUNT_definitions_demo.csv"
+### note: editing seropositive in the definitions file to include M05.8 and .9 becuase not getting cases otherwise
+###editing I9_CHD so we include I20.0
 master_file<-"/mnt/work/master/DATASET_20170512/SAMPLE_QC/Masterkey_DATASET.20170512.txt.gz"
 bridge_file<-"/mnt/work/bridge/allin-phecode-2018_41492/PID@108485-PID@105118.sav"
 fam_file<-"/mnt/scratch/brooke/bcf/all.log.fam"
@@ -213,7 +216,7 @@ endpointswide <- select(uniqueIDs, contains(c("ID","C3_CANCER", "C3_COLORECTAL",
                                      "GE_STRICT_DATE", "FE_STRICT_DATE", "K11_APPENDACUT_DATE", "COVID_DATE")))
 #NOTE: added contains because some of the phenotypes aren't working (AAA), need to figure out why
 write.csv(uniqueIDs, paste0(output_dir,'endpointsWideFormatHUNT.csv'),row.names=FALSE)
-### note: editing seropositive in the definitions file to include M05.8 and .9 becuase not getting cases otherwise
+
 
 #There will be a group who have received no ICD codes. 
 #These participants should be included as controls also.
@@ -394,12 +397,11 @@ config<-fread("/mnt/scratch/brooke/prspipe/prspipe/config/studies_for_methods_co
 phenos<-config$name
 phenos<-unique(unlist(strsplit(phenos,",")))
 
+#BMI
+#height
+#metabolites
 
-
-"G6_ALZHEIMER"
-"C3_BREAST"
-"T2D"
-"K11_IBD_STRICT"
+pheno_list<-c("T2D","T1D","C3_BREAST","C3_PROSTATE","I9_STR","G6_AD_WIDE","GOUT","N14_CHRONKIDNEYDIS","RHEUMA_SEROPOS_OTH","K11_IBD_STRICT")
 
 
 
