@@ -31,6 +31,7 @@ dev.off()
 uk_file<-"/mnt/work/workbench/bwolford/intervene/PRS_HRs_UKBiobank_FullSample_top1percent.csv"
 fi_file<-"/mnt/work/workbench/bwolford/intervene/HazardRatios_FullSample_FinnGen.csv"
 no_file<-"/mnt/work/workbench/bwolford/intervene/survival_analysis_all.csv"
+es_file<-"/mnt/work/workbench/bwolford/intervene/FullSample_EstBB_relatedin.csv"
 out_dir<-"/mnt/work/workbench/bwolford/intervene/"
 
 uk<-fread(uk_file)
@@ -41,12 +42,16 @@ fi<-fread(fi_file)
 names(fi)<-c("phenotype_code","phenotype","prs", "group", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
 fi$biobank<-"FinnGen"
 
+es<-fread(es_file)
+names(es)<-c("phenotype_code","phenotype","prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+es$biobank<-"ESTBB"
+
 no<-fread(no_file)
-names(no)<-c("phenotype_code","phenotype","prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+#has header
 no$biobank<-"HUNT"
 
 #combine
-assoc <- rbind(uk,fi,no,fill=TRUE)
+assoc <- rbind(uk,fi,no,es,fill=TRUE)
 
 assoc$biobank <- as.factor(assoc$biobank)
 assoc$phenotype <- as.factor(assoc$phenotype)
@@ -67,7 +72,7 @@ for(i in unique(assoc$prs)){
           xlab("PRS percentile versus 50th percentile") +
           geom_hline(yintercept = 1.0) +
           scale_x_discrete(labels= phenotypelabels) +
-          scale_colour_manual(values=c("darkblue","goldenrod3","purple")) + 
+          scale_colour_manual(values=c("darkblue","goldenrod3","purple","grey")) + 
           theme(title = element_text(size = 18),
                 legend.text = element_text(size = 16),
                 legend.title = element_text(size = 18),
@@ -76,7 +81,7 @@ for(i in unique(assoc$prs)){
                 axis.title.y = element_text(size = 18),
                 axis.text.y = element_text(size = 16)) +
           coord_flip())
-  ggsave(paste0(output_dir,"HazardRatios_",i,"_PRS_Finngen_UKB_HUNT.png"), height=10 , width=10)
+  ggsave(paste0(output_dir,"HazardRatios_",i,"_PRS_Finngen_UKB_HUNT_EST.png"), height=10 , width=10)
 }
 
 ############################# Odds Ratios #######################################################
@@ -111,12 +116,13 @@ assoc$phenotype <- as.factor(assoc$phenotype)
 uk_file<-"/mnt/work/workbench/bwolford/intervene/PRS_HRsperSD_UKBiobank_FullSample.csv"
 no_file<-"/mnt/work/workbench/bwolford/intervene/survival_perSD_all.csv"
 fi_file<-""
+es_file<-""
 
 ################################## Sex specific HRs #######################
 
 
-no_male_file<-paste0(output_dir,"MaleSample.csv")
-no_female_file<-paste0(output_dir,"FemaleSample.csv")
+no_male_file<-paste0(output_dir,"HUNT_MaleSample.csv")
+no_female_file<-paste0(output_dir,"HUNT_FemaleSample.csv")
 no_male<-fread(no_male_file)
 no_female<-fread(no_female_file)
 names(no_male)<-c("phenotype_code","phenotype","prs", "group", "controls", "cases", "betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
@@ -133,6 +139,15 @@ names(fi_female)<-c("phenotype_code","phenotype","prs", "group", "betas", "std_e
 fi_male$biobank<-"FinnGen";fi_female$biobank<-"FinnGen"
 fi_male$sex<-"male";fi_female$sex<-"female"
 
+es_male_file<-paste0(output_dir,"EstBB_MaleSample_relatedin.csv")
+es_female_file<-paste0(output_dir,"EstBB_FemaleSample_relatedin.csv")
+es_male<-fread(es_male_file)
+es_female<-fread(es_female_file)
+names(es_male)<-c("phenotype_code","phenotype","prs", "group", "controls","cases","betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+names(es_female)<-c("phenotype_code","phenotype","prs", "group", "controls","cases","betas", "std_errs", "pvals", "HR", "CIpos", "CIneg")
+es_male$biobank<-"ESTBB";es_female$biobank<-"ESTBB"
+es_male$sex<-"male";es_female$sex<-"female"
+
 #uk_male_file<-paste0(output_dir,"PRS_HR_UKBiobank_FemaleSample_v2.csv")
 #uk_female_file<-paste0(output_dir,"PRS_HR_UKBiobank_MaleSample_v2.csv")
 #uk_male<-fread(uk_male_file)
@@ -144,7 +159,7 @@ fi_male$sex<-"male";fi_female$sex<-"female"
 
 
 #assoc<-rbind(no_male,no_female,fi_male,fi_female,uk_male,uk_female,fill=TRUE)
-assoc<-rbind(no_male,no_female,fi_male,fi_female,fill=TRUE)
+assoc<-rbind(no_male,no_female,fi_male,fi_female,es_male,es_female,fill=TRUE)
 assoc$biobank<-as.factor(assoc$biobank)
 assoc$sex<-as.factor(assoc$sex)
 assoc$phenotype<-as.factor(assoc$phenotype)
@@ -174,14 +189,14 @@ for(i in unique(assoc$prs)){
                 axis.title.y = element_text(size = 18),
                 axis.text.y = element_text(size = 16)) +
           coord_flip())
-  ggsave(paste0(output_dir,"HazardRatios_bysex_",i,"_PRS_Finngen_UKB_HUNT.png"), height=10 , width=10)
+  ggsave(paste0(output_dir,"HazardRatios_bysex_",i,"_PRS_Finngen_EST_HUNT.png"), height=10 , width=10)
 }
 assoc<-assoc%>% separate(group,into=c("grouptext","groupNo"),sep=" ")
 
 
 pdf(file=paste0(output_dir,"Comparison_HR_bysex.pdf"),height=8,width=8)
 ggplot(assoc,aes(x=as.numeric(groupNo),color=biobank,y=as.numeric(HR),shape=as.factor(sex))) + facet_wrap(~phenotype) +
-  geom_point() +
+  geom_point() +  scale_colour_manual(values=c("darkblue","goldenrod3","purple")) +
   geom_errorbar(aes(ymin=CIneg,ymax=CIpos)) + theme_bw() + 
   theme(axis.text.x=element_text(angle = 45,hjust=1)) + facet_wrap(~phenotype,scales="free_y") +
   geom_hline(yintercept=1,linetype="dashed",color="black")
