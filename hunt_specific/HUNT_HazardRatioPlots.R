@@ -2,10 +2,62 @@ library(data.table)
 library(ggplot2)
 library(dplyr)
 
-
-output_dir<-"/mnt/work/workbench/bwolford/intervene/results"
+#mkdir HR
+output_dir<-"/mnt/work/workbench/bwolford/intervene/results/HR"
+setwd(output_dir)
 
 ################# read in results from google drive ############
+library(googlesheets4)
+library(googledrive)
+
+ukbb<-drive_ls(as_id("1Z83oKw9pC-9tR2Fv2eG3A09wvhD14Krv"),type="csv")
+estb<-drive_ls(as_id("1mfP-A6qlR3A8NfuCHdtZdzu2Of7v1w9c"),type="csv")
+finn<-drive_ls(as_id("1R8ZdARfh3Ws1SBLvmSp3PXd5qYf5rHOJ"),type="csv")
+#only age specific...where are the rest? broken down by trait 
+hunt<-drive_ls(as_id("1Gi-azp1HqoeGW_Zn_PypVwIDqPCsCMfa"),type="csv")
+walk(c(estb$id,finn$id,hunt$id,ukbb$id), ~ drive_download(as_id(.x),overwrite=TRUE))
+
+
+############# age stratified plotting #############
+hunt_age<-fread("HUNT_AgeStratifiedResults.csv")
+hunt_age$biobank<-"HUNT"
+
+estb_age<-fread("EstBB_AgeStratifiedResults_relatedin080622.csv")
+estb_age$biobank<-"EstoniaBiobank"
+estb_age<-estb_age %>% select(-V1) 
+names(estb_age)<-names(hunt_age)[-1]
+
+finngen_files<-list.files(pattern="*_Age_Specific_Hazards.csv")
+finngen_age<-data.frame()
+for (f in 1:length(finngen_files)){
+  df<-fread(finngen_files[f])
+  df$pheno<-strsplit(finngen_files[f],"_Age_Specific_Hazards.csv")
+  finngen_age<-rbind(finngen_age,df)
+}
+names(finngen_age)<-c("maxage","betas","HR","group","pheno")
+finngen_age$biobank<-"FinnGen"
+
+ukbb_age<-fread("PRS_HR_UKBiobank_AgeStratifiedResults_v2.csv")
+ukbb_age$biobank<-"UKBB"
+names(ukbb_age)<-names(hunt_age)
+
+df<-rbind(hunt_age,ukbb_age,finngen_age,estb_age,fill=TRUE)
+
+#### prostate 
+#p<-df[df$prs=="Prostate_Cancer" | df$pheno=="C3_PROSTATE",]
+p<-df[df$prs=="Prostate_Cancer",] #need a better and more consistent file for finn gen, or finngen and UKB are similar but different from EstBB and HUNT...
+
+disease$PRS_GROUP <- factor(disease$PRS_GROUP, levels=c(paste0(i,"_groupGroup 1"), paste0(i,"_groupGroup 2"), paste0(i,"_groupGroup 3"), paste0(i,"_groupGroup 4"), paste0(i,"_groupGroup 5"),paste0(i,"_groupGroup 7"), 
+                                                        paste0(i,"_groupGroup 8"), paste0(i,"_groupGroup 9"), paste0(i,"_groupGroup 10"), paste0(i,"_groupGroup 11")))
+
+phenotypelabels <- c("<1%", "1-5%", "5-10%", "10-20%", "20-40%", "60-80%", "80-90%", "90-95%", "95-99%", ">99%")
+
+
+pdf(file="prostate_cancer_age_HR.pdf",width=11,height=5)
+ggplot(p,aes(x=group,y=HR)) + geom_point() + facet_wrap(~biobank) + theme_bw()
+dev.off()
+
+
 
 ################### HUNT ONLY PLOTTING ###############
 
@@ -121,7 +173,6 @@ fi_file<-""
 es_file<-""
 
 ################################## Sex specific HRs #######################
-
 
 no_male_file<-paste0(output_dir,"HUNT_MaleSample.csv")
 no_female_file<-paste0(output_dir,"HUNT_FemaleSample.csv")
