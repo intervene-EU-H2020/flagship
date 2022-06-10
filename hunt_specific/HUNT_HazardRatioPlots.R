@@ -3,7 +3,9 @@ library(ggplot2)
 library(dplyr)
 
 
-output_dir<-"/mnt/work/workbench/bwolford/intervene/"
+output_dir<-"/mnt/work/workbench/bwolford/intervene/results"
+
+################# read in results from google drive ############
 
 ################### HUNT ONLY PLOTTING ###############
 
