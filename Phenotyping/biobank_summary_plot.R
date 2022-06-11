@@ -234,6 +234,37 @@ ggplot(sub2,aes(x=cases,y=prev*100,label=endpoint,shape=biobank,color=`Endpoint 
         axis.text.y = element_text(size = 16))
 dev.off()
 
+#bar plot
+sub3<-sub2 %>% select(`Endpoint family`,def,total_cases,Group,pretty_varname,Group) %>% ungroup() %>%
+  mutate(pretty_varname=reorder(pretty_varname,total_cases)) %>% unique()
+pdf(file="cases_barplot.pdf",height=12,width=15,useDingbats=TRUE)
+ggplot(sub3,aes(x=pretty_varname,y=total_cases)) + geom_bar(aes(fill = `Endpoint family`),stat="identity") +
+  coord_flip() +  scale_y_continuous(labels = scales::comma) +
+  theme_bw() + scale_fill_manual(values=levels(sub3$`Endpoint family`),labels=levels(sub3$Group),drop=FALSE) + 
+  labs(y="Total Cases",x="Diseases") + 
+  theme( legend.text = element_text(size = 16),
+         legend.title = element_blank(),
+         axis.title.x = element_text(size = 18),
+         axis.text.x = element_text(size = 14),
+         axis.title.y = element_text(size = 18),
+         axis.text.y = element_text(size = 16))
+dev.off()
+
+#bar plot v2
+sub3<-sub2 %>% select(`Endpoint family`,def,total_cases,endpoint,pretty_varname,Group) %>% ungroup() %>%
+  mutate(endpoint=reorder(endpoint,total_cases)) %>% unique()
+pdf(file="cases_barplot_v2.pdf",height=9,width=15,useDingbats=TRUE)
+ggplot(sub3,aes(x=endpoint,y=total_cases)) + geom_bar(aes(fill = `Endpoint family`),stat="identity") +
+  coord_flip() +  scale_y_continuous(labels = scales::comma) +
+  theme_bw() + scale_fill_manual(values=levels(sub3$`Endpoint family`),labels=levels(sub3$Group),drop=FALSE) + 
+  labs(y="Total Cases",x="Diseases") + 
+  theme( legend.text = element_text(size = 16),
+         legend.title = element_blank(),
+         axis.title.x = element_text(size = 18),
+         axis.text.x = element_text(size = 14),
+         axis.title.y = element_text(size = 20),
+         axis.text.y = element_text(size = 16))
+dev.off()
 
 #################### Original plots #######################
 
