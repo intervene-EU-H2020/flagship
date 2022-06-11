@@ -8,7 +8,6 @@ library(stringr)
 ##### put custom path for incidence, prevalence, mortality
 output_dir<-"/mnt/work/workbench/bwolford/intervene/results/summary/"
 
-
 #Incidence data - basic pre-processing
 incidence <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/GBD_Incidence.csv",data.table=FALSE)
 
@@ -264,7 +263,8 @@ for(i in unique(incidence$cause)){
   my_colors = carto_pal(n=length(unique(disease$location)), name="Safe")
   disease$age <- factor(disease$age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
   disease$location <- as.factor(disease$location)
-  ggplot(disease, aes(age, lifetimerisk, color=location, group=location)) +
+  pdf(file=paste0(output_dir,i,"_LifetimeRisk.pdf"), height=10 , width=10,useDingbats=TRUE)
+  print(ggplot(disease, aes(age, lifetimerisk, color=location, group=location)) +
     stat_smooth(method = "lm", formula = y ~ poly(x, 15), se = FALSE) +
     geom_point(size=5,alpha=0.7) +
     xlab("Age Range") + 
@@ -279,8 +279,8 @@ for(i in unique(incidence$cause)){
           axis.title.x = element_text(size = 18),
           axis.text.x = element_text(size = 18, angle=45, hjust=1),
           axis.title.y = element_text(size = 18),
-          axis.text.y = element_text(size = 16))
-  ggsave(paste0(output_dir,i,"_LifetimeRisk.png"), height=10 , width=10)
+          axis.text.y = element_text(size = 16)))
+  dev.off()
 }
 
 prscols <- c("Asthma","AllCancers","Appendicitis", "Atrial_Fibrillation", "Breast_Cancer", "CHD","Colorectal_Cancer", "Epilepsy","Gout",
