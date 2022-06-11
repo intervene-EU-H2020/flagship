@@ -3,6 +3,7 @@ library(data.table)
 library(ggplot2)
 library(dplyr)
 library(rcartocolor)
+library(stringr)
 
 ##### put custom path for incidence, prevalence, mortality
 output_dir<-"/mnt/work/workbench/bwolford/intervene/results/summary/"
