@@ -38,13 +38,13 @@ walk(c(estb_age$id,finn_age$id,hunt_age$id,ukbb_age$id), ~ drive_download(as_id(
 finn_male<-drive_ls(as_id("1-rjyJuUYJIz61w_FtmyPPxBzrx95hKcc"),type="csv")
 ukbb_male<-drive_ls(as_id("111421mqtOe0b7n5WnncvheyIY-b7_HQq"),type="csv")
 hunt_male<-drive_ls(as_id("1EZc6YQDyH7JLtUMtLLN9geshoAHnsOry"),type="csv")
-estb_male<-c()
+estb_male<-drive_ls(as_id("1j8rFkgpRkOpVh9lCJLEktE89OhLKoB2z"),type="csv")
 walk(c(finn_male$id,hunt_male$id,ukbb_male$id), ~ drive_download(as_id(.x),overwrite=TRUE))
 
 finn_female<-drive_ls(as_id("1zrgl12J93csdkxes-3e7aS-vZBcmOFVm"),type="csv")
 ukbb_female<-drive_ls(as_id("1H0Po0OFsYBiIwDKTImcLMeFUr02WVFGe"),type="csv")
 hunt_female<-drive_ls(as_id("13awAoEV0to4ImOcNcwtQTMWmjszIHWH6"),type="csv")
-estb_female<-c()
+estb_female<-drive_ls(as_id("1YvJqa4U5sRRjVAjZQ9tcGbMZ1vpzBBA7"),type="csv")
 walk(c(finn_female$id,hunt_female$id,ukbb_female$id), ~ drive_download(as_id(.x),overwrite=TRUE))
 
 #hr_phenos <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
@@ -362,8 +362,39 @@ ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
                       axis.text.y = element_text(size = 16))
 dev.off()
 
-df2[df2$Age=="75 to 79",] %>% select(LifetimeRisk,label)
-############################
+#print final risk estimates
+#df2[df2$Age=="75 to 79",] %>% select(LifetimeRisk,label)
+
+######################## Gout ###############
+colors<-c("light green","plum2","light blue")
+#colors<-c("light green","dark green","plum2","orchid4","light blue","dark blue")
+
+riskwithintervals <- full %>% filter(Group=="Group1" | Group=="Group6" | Group=="Group11") %>% filter(pheno=="GOUT") %>%
+  mutate(Age=fct_relevel(as.factor(Age),"1 to 4","5 to 9"))
+pdf(file="Gout_full.pdf",height=5,width=11)
+ggplot(riskwithintervals, aes(Age, LifetimeRisk, color=Group, group=Group)) +
+  stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+  geom_point() + facet_wrap(~biobank,nrow=1) +
+  geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
+  xlab("Age Range") + 
+  ylab("Cumulative Risk (%)") + 
+  theme_bw() +
+  labs(color='PRS Group', fill='PRS Group') +
+  scale_color_manual(values=colors,labels = c("0-1%", "40-60%", "99-100%")) +
+  scale_fill_manual(values=colors,labels = c("0-1%", "40-60%", "99-100%")) +
+  theme(title = element_text(size = 22),
+        legend.position="bottom",
+        strip.background = element_rect(color="black", fill="white"),
+        strip.text = element_text(size = 20, margin = margin()),
+        legend.text = element_text(size = 16),
+        legend.title = element_text(size = 18),
+        axis.title.x = element_text(size = 18),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
+        axis.title.y = element_text(size = 18),
+        axis.text.y = element_text(size = 16))
+dev.off()
+
+##############################################
 
 #Considering confidence intervals
 #riskwithintervals <- subset(all, Group=="Group1" | Group=="Group6" | Group=="Group11")
