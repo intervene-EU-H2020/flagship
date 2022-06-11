@@ -21,6 +21,8 @@ setwd("/mnt/work/workbench/bwolford/intervene/results")
 #folder_url<-"https://drive.google.com/drive/u/1/folders/1bwedgU4lb4Y4i1pLsHXzjVaLBusjfcOQ"
 #folder<-drive_get(as_id(folder_url))
 
+#drive_auth(reset=TRUE)
+
 ukbb_full<-drive_ls(as_id("1ZwFUsYnU8VGcUcEMJ0jG3iq99UulLtXu"),type="csv")
 estb_full<-drive_ls(as_id("1dClpNyKv788ouoFoIEq_vZXa04KOg9ai"),type="csv")
 finn_full<-drive_ls(as_id("1GmG4GBPgnpq340jAMxlYSxWJw0P5l5gm"),type="csv")
@@ -87,13 +89,195 @@ full$analysis<-"full"
 female$analysis<-"female"
 male$analysis<-"male"
 
-###### CAD ######
-chd<-df %>% subset(Group=="Group6" & analysis=="full" & pheno=="I9_CHD")
+###### CAD PLOTS ######
+df<-as.data.frame(rbind(age_strat,full))
+df$label<-as.factor(paste(sep="_",df$analysis,df$Group))
+max<-as.numeric(df %>% subset(pheno=="I9_CHD") %>% summarize(max(CIpos)))
+colors<-c("light green","dark green","plum2","orchid4")
+
+#median risk, full sample
+df2<-df %>% subset(Group=="Group6" & analysis=="full" & pheno=="I9_CHD") %>%
+  mutate(Age=fct_relevel(Age,"1 to 4","5 to 9"))
+df2$label<-recode(df2$label,age_strat_Group6="Age Stratified, 40-60%",
+                  age_strat_Group10="Age Stratified, >95%",
+                  full_Group6="Standard, 40-60%",
+                  full_Group10="Standard, >95%")
+pdf(file="CHD_full_median_risk.pdf",width=11,height=5)
+ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
+  stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+  geom_point() + facet_wrap(~biobank) +
+  geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=label), alpha=0.2) +
+  scale_fill_manual(values=colors) +
+  scale_color_manual(values=colors)+
+  ylim(0,max) +
+  xlab("Age Range") + 
+  ylab("Lifetime Risk of Coronary Heart Disease (%)") + 
+  theme_bw() +   theme(legend.position="bottom",title = element_text(size = 22),
+                       strip.background = element_rect(color="black", fill="white"),
+                       strip.text = element_text(size = 20, margin = margin()),
+                       legend.text = element_text(size = 16),
+                       legend.title = element_blank(),
+                       axis.title.x = element_text(size = 18),
+                       axis.text.x = element_text(size = 12, angle=45, hjust=1),
+                       axis.title.y = element_text(size = 18),
+                       axis.text.y = element_text(size = 16))
+dev.off()
+
+#median risk, age stratified HR
+df2<-df %>% subset(Group=="Group6" & pheno=="I9_CHD") %>% 
+  mutate(label=fct_relevel(label,"full_Group6")) %>%
+  mutate(Age=fct_relevel(Age,"1 to 4","5 to 9"))
+df2$label<-recode(df2$label,age_strat_Group6="Age Stratified, 40-60%",
+                  age_strat_Group10="Age Stratified, >95%",
+                  full_Group6="Standard, 40-60%",
+                  full_Group10="Standard, >95%")
+pdf(file="CHD_age_full_median_risk.pdf",width=11,height=6)
+ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
+  stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+  geom_point() + facet_wrap(~biobank) +
+  geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=label), alpha=0.2) +
+  ylim(0,max)+
+  scale_fill_manual(values=colors) +
+  scale_color_manual(values=colors)+
+  xlab("Age Range") + 
+  ylab("Lifetime Risk of Coronary Heart Disease (%)") + 
+  theme_bw() +  theme(legend.position="bottom",title = element_text(size = 22),
+                      strip.background = element_rect(color="black", fill="white"),
+                      strip.text = element_text(size = 20, margin = margin()),
+                      legend.text = element_text(size = 16),
+                      legend.title = element_blank(),
+                      axis.title.x = element_text(size = 18),
+                      axis.text.x = element_text(size = 12, angle=45, hjust=1),
+                      axis.title.y = element_text(size = 18),
+                      axis.text.y = element_text(size = 16))
+dev.off()
+
+#add in top risk, full and median
+df2<-df %>% subset((Group=="Group6"  | Group =="Group10") & pheno=="I9_CHD") %>% 
+  mutate(label=fct_relevel(label,"full_Group6","age_strat_Group6","full_Group10","age_strat_Group10")) %>%
+  mutate(Age=fct_relevel(Age,"1 to 4","5 to 9"))
+df2$label<-recode(df2$label,age_strat_Group6="Age Stratified, 40-60%",
+                  age_strat_Group10="Age Stratified, >95%",
+                  full_Group6="Standard, 40-60%",
+                  full_Group10="Standard, >95%")
+pdf(file="CHD_age_full_with_top_risk.pdf",width=11,height=6)
+ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
+  stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+  geom_point() + facet_wrap(~biobank) +
+  geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=label), alpha=0.2) +
+  ylim(0,max)+
+  scale_fill_manual(values=colors) +
+  scale_color_manual(values=colors)+
+  xlab("Age Range") + 
+  ylab("Lifetime Risk of Coronary Heart Disease (%)") + 
+  theme_bw() +  theme(legend.position="bottom",title = element_text(size = 22),
+                      strip.background = element_rect(color="black", fill="white"),
+                      strip.text = element_text(size = 20, margin = margin()),
+                      legend.text = element_text(size = 16),
+                      legend.title = element_blank(),
+                      axis.title.x = element_text(size = 18),
+                      axis.text.x = element_text(size = 12, angle=45, hjust=1),
+                      axis.title.y = element_text(size = 18),
+                      axis.text.y = element_text(size = 16))
+dev.off()
+
+###### T2D PLOTS ######
+df<-as.data.frame(rbind(age_strat,full))
+df$label<-as.factor(paste(sep="_",df$analysis,df$Group))
+max<-as.numeric(df %>% subset(pheno=="T2D") %>% summarize(max(CIpos)))
+colors<-c("light green","dark green","plum2","orchid4")
+
+#median risk, full sample
+df2<-df %>% subset(Group=="Group6" & analysis=="full" & pheno=="T2D") %>%
+  mutate(Age=fct_relevel(Age,"1 to 4","5 to 9"))
+df2$label<-recode(df2$label,age_strat_Group6="Age Stratified, 40-60%",
+                  age_strat_Group10="Age Stratified, >95%",
+                  full_Group6="Standard, 40-60%",
+                  full_Group10="Standard, >95%")
+pdf(file="T2D_full_median_risk.pdf",width=11,height=5)
+ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
+  stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+  geom_point() + facet_wrap(~biobank) +
+  geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=label), alpha=0.2) +
+  scale_fill_manual(values=colors) +
+  scale_color_manual(values=colors)+
+  ylim(0,max) +
+  xlab("Age Range") + 
+  ylab("Lifetime Risk of Type 2 Diabetes (%)") + 
+  theme_bw() +   theme(legend.position="bottom",title = element_text(size = 22),
+                       strip.background = element_rect(color="black", fill="white"),
+                       strip.text = element_text(size = 20, margin = margin()),
+                       legend.text = element_text(size = 16),
+                       legend.title = element_blank(),
+                       axis.title.x = element_text(size = 18),
+                       axis.text.x = element_text(size = 12, angle=45, hjust=1),
+                       axis.title.y = element_text(size = 18),
+                       axis.text.y = element_text(size = 16))
+dev.off()
+
+#median risk, age stratified HR
+df2<-df %>% subset(Group=="Group6" & pheno=="T2D") %>% 
+  mutate(label=fct_relevel(label,"full_Group6")) %>%
+  mutate(Age=fct_relevel(Age,"1 to 4","5 to 9"))
+df2$label<-recode(df2$label,age_strat_Group6="Age Stratified, 40-60%",
+                  age_strat_Group10="Age Stratified, >95%",
+                  full_Group6="Standard, 40-60%",
+                  full_Group10="Standard, >95%")
+pdf(file="T2D_age_full_median_risk.pdf",width=11,height=6)
+ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
+  stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+  geom_point() + facet_wrap(~biobank) +
+  geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=label), alpha=0.2) +
+  ylim(0,max)+
+  scale_fill_manual(values=colors) +
+  scale_color_manual(values=colors)+
+  xlab("Age Range") + 
+  ylab("Lifetime Risk of Type 2 Diabetes (%)") + 
+  theme_bw() +  theme(legend.position="bottom",title = element_text(size = 22),
+                      strip.background = element_rect(color="black", fill="white"),
+                      strip.text = element_text(size = 20, margin = margin()),
+                      legend.text = element_text(size = 16),
+                      legend.title = element_blank(),
+                      axis.title.x = element_text(size = 18),
+                      axis.text.x = element_text(size = 12, angle=45, hjust=1),
+                      axis.title.y = element_text(size = 18),
+                      axis.text.y = element_text(size = 16))
+dev.off()
+
+#add in top risk, full and median
+df2<-df %>% subset((Group=="Group6"  | Group =="Group10") & pheno=="T2D") %>% 
+  mutate(label=fct_relevel(label,"full_Group6","age_strat_Group6","full_Group10","age_strat_Group10")) %>%
+  mutate(Age=fct_relevel(Age,"1 to 4","5 to 9"))
+df2$label<-recode(df2$label,age_strat_Group6="Age Stratified, 40-60%",
+                  age_strat_Group10="Age Stratified, >95%",
+                  full_Group6="Standard, 40-60%",
+                  full_Group10="Standard, >95%")
+pdf(file="T2D_age_full_with_top_risk.pdf",width=11,height=6)
+ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
+  stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+  geom_point() + facet_wrap(~biobank) +
+  geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=label), alpha=0.2) +
+  ylim(0,max)+
+  scale_fill_manual(values=colors) +
+  scale_color_manual(values=colors)+
+  xlab("Age Range") + 
+  ylab("Lifetime Risk of Type 2 Diabetes (%)") + 
+  theme_bw() +  theme(legend.position="bottom",title = element_text(size = 22),
+                      strip.background = element_rect(color="black", fill="white"),
+                      strip.text = element_text(size = 20, margin = margin()),
+                      legend.text = element_text(size = 16),
+                      legend.title = element_blank(),
+                      axis.title.x = element_text(size = 18),
+                      axis.text.x = element_text(size = 12, angle=45, hjust=1),
+                      axis.title.y = element_text(size = 18),
+                      axis.text.y = element_text(size = 16))
+dev.off()
+
 
 ##### PROSTATE CANCER PLOTS ######
 df<-as.data.frame(rbind(age_strat,full))
 df$label<-as.factor(paste(sep="_",df$analysis,df$Group))
-max<-as.numeric(df %>% subset(pheno=="C3_PROSTATE") %>% summarize(max(CIpos)))
+max<-as.numeric(df %>% subset(pheno=="I9_CHD") %>% summarize(max(CIpos)))
 colors<-c("light green","dark green","plum2","orchid4")
 
 #median risk, full sample
@@ -102,7 +286,7 @@ df2$label<-recode(df2$label,age_strat_Group6="Age Stratified, 40-60%",
                   age_strat_Group10="Age Stratified, >95%",
                   full_Group6="Standard, 40-60%",
                   full_Group10="Standard, >95%")
-pdf(file="prostate_cancer_full_median_risk.pdf",width=11,height=5)
+pdf(file="prostate_cancer_full_median_risk.pdf",width=11,height=6)
 ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
   stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
   geom_point() + facet_wrap(~biobank) +
@@ -177,6 +361,9 @@ ggplot(df2, aes(Age, LifetimeRisk, color=label, group=label)) +
                       axis.title.y = element_text(size = 18),
                       axis.text.y = element_text(size = 16))
 dev.off()
+
+df2[df2$Age=="75 to 79",] %>% select(LifetimeRisk,label)
+############################
 
 #Considering confidence intervals
 #riskwithintervals <- subset(all, Group=="Group1" | Group=="Group6" | Group=="Group11")
