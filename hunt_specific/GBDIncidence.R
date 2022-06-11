@@ -2,9 +2,12 @@
 library(data.table)
 library(ggplot2)
 library(dplyr)
+library(rcartocolor)
 
 ##### put custom path for incidence, prevalence, mortality
-out_dir<-"/mnt/work/workbench/bwolford/intervene/results/summary"
+output_dir<-"/mnt/work/workbench/bwolford/intervene/results/summary/"
+
+
 #Incidence data - basic pre-processing
 incidence <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/GBD_Incidence.csv",data.table=FALSE)
 
@@ -196,7 +199,7 @@ mortality$mortality_rate <- (mortality$all_cause_rate - mortality$cause_specific
 mortality <- mortality[,c("location","age","cause","mortality_rate")]
 
 #Perform the same as above but for sex specific diseases - breast cancer and prostate cancer 
-bc_pc_mortality <- fread("/Users/jermy/Documents/INTERVENE/Results/GBD_Incidence/GBD_Data/BreastCancerProstateCancer_Mortality.csv", data.table=FALSE)
+bc_pc_mortality <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/BreastCancerProstateCancer_Mortality.csv", data.table=FALSE)
 
 bc_pc_mortality <- subset(bc_pc_mortality, (sex=="Male" & cause=="Prostate cancer") | (sex=="Female" & cause=="Breast cancer") | cause=="All causes")
 bc_pc_mortality <- bc_pc_mortality[,c("location","sex","age","cause","metric","val")]
@@ -254,28 +257,66 @@ for(i in unique(incidence$location)){
 incidence <- result
 
 #Plot lifetime risk for each cause - stratified by country
-
+#removed US, customized colors
 for(i in unique(incidence$cause)){
-  disease <- subset(incidence, cause==i)
+  disease<-incidence %>% filter(cause==i,location!="United States of America")
+  my_colors = carto_pal(n=length(unique(disease$location)), name="Safe")
   disease$age <- factor(disease$age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
   disease$location <- as.factor(disease$location)
   ggplot(disease, aes(age, lifetimerisk, color=location, group=location)) +
     stat_smooth(method = "lm", formula = y ~ poly(x, 15), se = FALSE) +
-    geom_point() +
+    geom_point(size=5,alpha=0.7) +
     xlab("Age Range") + 
-    ylab("Lifetime Risk (%)") + 
+    ylab("Baseline Lifetime Risk (%)") + 
     theme_bw() +
-    labs(color='Country') +
-    scale_color_hue(labels = c("Estonia", "Finland", "Global", "Norway", "UK")) +
+    labs(color='Country') + 
+    guides(color=guide_legend(reverse = TRUE)) +
+    scale_color_manual(values=my_colors,labels = c("Estonia", "Finland", "Global", "Norway", "UK")) +
     theme(title = element_text(size = 22),
           legend.text = element_text(size = 16),
           legend.title = element_text(size = 18),
           axis.title.x = element_text(size = 18),
-          axis.text.x = element_text(size = 12, angle=-90, hjust=0),
+          axis.text.x = element_text(size = 18, angle=45, hjust=1),
           axis.title.y = element_text(size = 18),
           axis.text.y = element_text(size = 16))
   ggsave(paste0(output_dir,i,"_LifetimeRisk.png"), height=10 , width=10)
 }
+
+prscols <- c("Asthma","AllCancers","Appendicitis", "Atrial_Fibrillation", "Breast_Cancer", "CHD","Colorectal_Cancer", "Epilepsy","Gout",
+             "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer","Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", 
+             "T1D","T2D", "ILD", "Lung_Cancer")
+
+flagship_20<-c("Asthma","Breast cancer", "Diabetes mellitus type 1","Osteoarthritis hip","Atrial fibrillation and flutter","Subarachnoid hemorrhage","Rheumatoid arthritis",
+"Gout","Major depressive disorder","Prostate cancer","Appendicitis","Ischemic heart disease","Colon and rectum cancer","Idiopathic epilepsy","Total cancers",
+"Osteoarthritis knee","Malignant skin melanoma","Diabetes mellitus type 2","Interstitial lung disease and pulmonary sarcoidosis","Tracheal, bronchus, and lung cancer")
+
+  disease<-incidence %>% filter(location!="United States of America") %>% 
+    mutate(pretty_varname = as.factor(str_wrap(cause,width=30)))  %>% filter(cause %in% flagship_20)
+  my_colors = carto_pal(n=length(unique(disease$location)), name="Safe")
+  disease$age <- factor(disease$age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
+  disease$location <- as.factor(disease$location)
+  
+  pdf(file=paste0(output_dir,"LifetimeRisk_facet.pdf"),height=6,width=12)
+  ggplot(disease, aes(age, lifetimerisk, color=location, group=location)) +
+    stat_smooth(method = "lm", formula = y ~ poly(x, 15), se = FALSE) + facet_wrap(~pretty_varname,nrow=4,scales="free_y") +
+    geom_point(size=1,alpha=0.7) +
+    xlab("Age Range") + 
+    ylab("Baseline Lifetime Risk (%)") + 
+    theme_bw() +
+    labs(color='Country') +
+    guides(color=guide_legend(reverse = TRUE)) +
+    scale_color_manual(values=my_colors,labels = c("Estonia", "Finland", "Global", "Norway", "UK")) +
+    theme(title = element_text(size = 12),
+          strip.background = element_rect(color="black", fill="white"),
+          strip.text.x = element_text(margin = margin(.1, 0, .1, 0, "cm")),
+          legend.text = element_text(size = 16),
+          legend.title = element_text(size = 18),
+          axis.title.x = element_text(size = 12),
+          axis.text.x = element_text(size = 8, angle=45, hjust=1),
+          axis.title.y = element_text(size = 12),
+          axis.text.y = element_text(size = 12))
+  dev.off()
+
 
 # See how the results differ when not considering mortality as a competing interest. Plot lifetime risk for each cause - stratified by country 
 #for(i in unique(incidence$cause)){
