@@ -8,10 +8,15 @@ library(stringi)
 library(tidyverse)
 library(reshape2)
 library(ggrepel)
+library(stringr)
+library(forcats)
+
+####### Script for plotting the summary data for endpoints x biobanks
 
 #I think this doesn't work because it's a .xlsx
 #file<-"https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit?usp=sharing&ouid=115040676596308698055&rtpof=true&sd=true"
 
+options(warn=1)
 #download file to use 
 file<-drive_find(pattern="Intervene_flagship_endpoint_collection.xlsx") #takes a bit of time..would be better to know path
 drive_download(file$name,overwrite=TRUE)
@@ -19,7 +24,7 @@ drive_download(file$name,overwrite=TRUE)
 
 #read in names
 names<-read_xlsx(file$name,sheet=1)
-names2<-names[c("Endpoint","Endpoint family","PhenoID")]
+names2<-names[c("Endpoint","Endpoint family","PhenoID","FinnGen endpoint")]
 my_colors = carto_pal(length(unique(names2$`Endpoint family`)), "Safe")
 names2$Group<-names2$`Endpoint family`
 names2$`Endpoint family`<-as.factor(names2$`Endpoint family`)
@@ -63,7 +68,7 @@ my_read_func<-function(sheet){
   
   df$biobank<-unlist(strsplit(sheets[sheet],"-"))[[2]] #label biobank
   
-  df<-df %>% select("endpoint","cases","controls","age_baseline_median","age_baseline_iqr","age_onset_dist_median","age_onset_dist_iqr","follow_dist_median","follow_dist_iqr","age_corr","sex_corr","female_est","female_ci","biobank")
+  df<-df %>% select("endpoint","def","cases","controls","age_baseline_median","age_baseline_iqr","age_onset_dist_median","age_onset_dist_iqr","follow_dist_median","follow_dist_iqr","age_corr","sex_corr","female_est","female_ci","biobank")
   return(df)
 }
 #loop over sheets with lapply
@@ -71,11 +76,167 @@ list_of_biobanks<-lapply(indices,my_read_func)
 
 #do some cleaning of the dataframe
 dat<-bind_rows(list_of_biobanks) %>% left_join(names2,by=c("endpoint"="Endpoint")) 
+#dat<-bind_rows(list_of_biobanks) %>% left_join(names2,by=c("def"="FinnGen endpoint")) 
 dat<-dat[!is.na(dat$endpoint),] #remove when endpoint is NA
 dat<-dat[!is.na(dat$Group),]
+dat[dat$endpoint=="Type 2 diabetes,  definitions combined",]$endpoint<-"Type 2 diabetes"
 dat<-dat[dat$endpoint!="BMI (obesity)",]#remove BMI since it is quant
 dat$endpoint<-as.factor(dat$endpoint)
 dat$Group<-as.factor(dat$Group)
+
+############################# select top 20 traits for flagship analysis ############################################# 
+
+#mkdir summary
+setwd("/mnt/work/workbench/bwolford/intervene/results/summary")
+
+phenocols <- c("J10_ASTHMA", "C3_CANCER", "K11_APPENDACUT", "I9_AF", "C3_BREAST", "I9_CHD","C3_COLORECTAL",  "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+prscols <- c("Asthma","AllCancers","Appendicitis", "Atrial_Fibrillation", "Breast_Cancer", "CHD","Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer","Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D","T2D", "ILD", "Lung_Cancer")
+pdf<-data.frame(phenocols)
+
+sub<-dat[dat$biobank %in% c("HUNT","UKB","FINNGEN","ESTBB"),]
+#sub<-sub[sub$def %in% phenocols,]
+
+#summarize cases/controls
+#sub2 %>% group_by(biobank) %>% summarize(max(cases+controls))
+
+#calculate prevalence and total N, case, control
+sub2<-sub %>% right_join(y=pdf,by=c("def"="phenocols")) %>% mutate(prev=cases/(cases+controls)) %>% group_by(def) %>% 
+  mutate(total_cases=sum(cases)) %>% mutate(total_controls=sum(controls)) %>% 
+  mutate(n=total_cases+total_controls) %>%
+  mutate(label=paste(sep="\n",endpoint,biobank)) %>%
+  mutate(pretty_varname = as.factor(str_wrap(endpoint, width = 20))) 
+
+pdf(file="prev_vs_N_facet.pdf",height=7,width=11)
+ggplot(sub2,aes(x=n,y=prev,label=endpoint)) + geom_point(aes(color=`Endpoint family`),size=5,alpha=0.8) + theme_bw() + geom_text_repel(max.overlaps=15) +
+  scale_color_manual(values=levels(sub2$`Endpoint family`),labels=levels(sub2$Group)) +
+  labs(x="Total Cases in 4 biobanks",y="Prevalence in each biobank") + facet_wrap(~biobank) +
+  theme(legend.position="bottom",title = element_text(size = 22),
+        strip.background = element_rect(color="black", fill="white"),
+        strip.text = element_text(size = 20, margin = margin()),
+        legend.text = element_text(size = 16),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 18),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
+        axis.title.y = element_text(size = 18),
+        axis.text.y = element_text(size = 16))
+dev.off()
+
+
+pdf(file="prev_vs_biobankN_facet.pdf",height=7,width=11)
+ggplot(sub2,aes(x=cases+controls,y=prev,label=endpoint)) + geom_point(aes(color=`Endpoint family`),size=5,alpha=0.8) + theme_bw() + geom_text_repel(max.overlaps=15) +
+  scale_color_manual(values=levels(sub2$`Endpoint family`),labels=levels(sub2$Group)) +
+  labs(x="Total Cases in 4 biobanks",y="Prevalence in each biobank") + facet_wrap(~biobank) +
+  theme(legend.position="bottom",title = element_text(size = 22),
+        strip.background = element_rect(color="black", fill="white"),
+        strip.text = element_text(size = 20, margin = margin()),
+        legend.text = element_text(size = 16),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 18),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
+        axis.title.y = element_text(size = 18),
+        axis.text.y = element_text(size = 16))
+dev.off()
+
+pdf(file="prev_vs_N_shape.pdf",height=8,width=11)
+ggplot(sub2,aes(x=total_cases,y=prev,label=endpoint,shape=biobank)) + geom_point(aes(color=`Endpoint family`),size=5,alpha=0.8) + theme_bw() + geom_text_repel() +
+  scale_color_manual(values=levels(sub2$`Endpoint family`),labels=levels(sub2$Group),drop=FALSE) +
+  labs(x="Total Cases in 4 biobanks",y="Prevalence in each biobank") +
+  theme(legend.position="bottom",title = element_text(size = 22),
+        legend.text = element_text(size = 16),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 18),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
+        axis.title.y = element_text(size = 18),
+        axis.text.y = element_text(size = 16)) +
+  guides(color=guide_legend(nrow=3, byrow=TRUE),
+         shape=guide_legend(nrow=2,byrow=TRUE))
+dev.off()
+
+
+pdf(file="prev_vs_N_shape_facet.pdf",height=8,width=11)
+ggplot(sub2,aes(x=cases+controls,y=prev,label=endpoint,shape=biobank)) + geom_point(aes(color=`Endpoint family`),size=5) + 
+  theme_bw() + 
+  scale_color_manual(values=levels(sub2$`Endpoint family`),labels=levels(sub2$Group),drop=FALSE) + 
+  facet_wrap(~pretty_varname) +
+  labs(x="Cases and Controls per Biobank",y="Prevalence per Biobank") +
+  scale_x_continuous(labels = scales::comma) +
+  theme(legend.position="bottom",title = element_text(size = 22),
+        strip.background = element_rect(color="black", fill="white"),
+        strip.text = element_text(size = 10, margin = margin()),
+        legend.text = element_text(size = 16),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 18),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
+        axis.title.y = element_text(size = 18),
+        axis.text.y = element_text(size = 16)) +
+  guides(color=guide_legend(nrow=3, byrow=TRUE),
+         shape=guide_legend(nrow=2,byrow=TRUE))
+dev.off()
+
+
+pdf(file="prev_vs_cases_shape_facet.pdf",height=8,width=11)
+ggplot(sub2,aes(x=cases,y=prev,label=endpoint,shape=biobank,color=`Endpoint family`)) + geom_point(size=5) +
+  theme_bw() + 
+  scale_color_manual(values=levels(sub2$`Endpoint family`),labels=levels(sub2$Group),drop=FALSE) + 
+  facet_wrap(~pretty_varname) +
+  labs(x="Cases per Biobank",y="Prevalence per Biobank") +
+  scale_x_continuous(labels = scales::comma) +
+  theme(legend.position="bottom",title = element_text(size = 22),
+        strip.background = element_rect(color="black", fill="white"),
+        strip.text = element_text(size = 10, margin = margin()),
+        legend.text = element_text(size = 16),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 18),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
+        axis.title.y = element_text(size = 18),
+        axis.text.y = element_text(size = 16)) +
+  guides(color=guide_legend(nrow=3, byrow=TRUE),
+         shape=guide_legend(nrow=2,byrow=TRUE))
+dev.off()
+
+pdf(file="prev_vs_cases_shape_facet_free.pdf",height=9,width=12)
+ggplot(sub2,aes(x=cases,y=prev*100,label=endpoint,shape=biobank,color=`Endpoint family`)) + geom_point(size=5) +
+  theme_bw() + 
+  scale_color_manual(values=levels(sub2$`Endpoint family`),labels=levels(sub2$Group),drop=FALSE) + 
+  facet_wrap(~pretty_varname,scales="free_y") +
+  labs(x="Cases per Biobank",y="Prevalence per Biobank (%)") +
+  scale_x_continuous(labels = scales::comma) +
+  theme(legend.position="bottom",title = element_text(size = 22),
+        strip.background = element_rect(color="black", fill="white"),
+        strip.text = element_text(size = 10, margin = margin()),
+        legend.text = element_text(size = 16),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 18),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
+        axis.title.y = element_text(size = 18),
+        axis.text.y = element_text(size = 16)) +
+  guides(color=guide_legend(nrow=3, byrow=TRUE),
+         shape=guide_legend(nrow=2,byrow=TRUE))
+dev.off()
+
+
+pdf(file="prev_vs_cases_shape_facet_free_long.pdf",height=8,width=15)
+ggplot(sub2,aes(x=cases,y=prev*100,label=endpoint,shape=biobank,color=`Endpoint family`)) + geom_point(size=5) +
+  theme_bw() + 
+  scale_color_manual(values=levels(sub2$`Endpoint family`),labels=levels(sub2$Group),drop=FALSE) + 
+  facet_wrap(~pretty_varname,scales="free_y",nrow=4) +
+  labs(x="Cases per Biobank",y="Prevalence per Biobank (%)") +
+  scale_x_continuous(labels = scales::comma) +
+  scale_y_continuous(expand=expansion(mult=c(0,0.15)),limits=c(0,NA)) +
+  theme(legend.position="right",title = element_text(size = 22),
+        strip.background = element_rect(color="black", fill="white"),
+        strip.text = element_text(size = 14),
+        legend.text = element_text(size = 16),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 18),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
+        axis.title.y = element_text(size = 18),
+        axis.text.y = element_text(size = 16))
+dev.off()
+
+
+#################### Original plots #######################
+
 
 ######### number of cases 
 options(scipen=10)
@@ -223,8 +384,6 @@ ggplot(tot,aes(y=Endpoints,x=`N cases`)) + geom_bar(aes(fill = `Endpoint family`
 dev.off()
 
 
-
 #would be good to plot the disease prevalence across biobank one vs the others. Like scatter plots.
 #and also the correlation with age and sex
 #to understand the consistency across endpoints
-
