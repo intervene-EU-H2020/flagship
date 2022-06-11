@@ -3,6 +3,8 @@ library(data.table)
 library(ggplot2)
 library(dplyr)
 
+##### put custom path for incidence, prevalence, mortality
+out_dir<-"/mnt/work/workbench/bwolford/intervene/results/summary"
 #Incidence data - basic pre-processing
 incidence <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/GBD_Incidence.csv",data.table=FALSE)
 
@@ -10,7 +12,7 @@ incidence <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation
 incidence <- subset(incidence, cause!="Prostate cancer" & cause!="Breast cancer")
 incidence <- incidence[,c("location","age","cause","metric","val")]
 
-bc_pc_incidence <- fread("/Users/jermy/Documents/INTERVENE/Results/GBD_Incidence/GBD_Data/BreastCancerProstateCancer_Incidence.csv", data.table=FALSE)
+bc_pc_incidence <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/BreastCancerProstateCancer_Incidence.csv", data.table=FALSE)
 bc_pc_incidence <- subset(bc_pc_incidence, (sex=="Male" & cause=="Prostate cancer") | (sex=="Female" & cause=="Breast cancer"))
 bc_pc_incidence <- bc_pc_incidence[,c("location","age","cause","metric","val")]
 
@@ -83,11 +85,11 @@ incidence$incidence <- incidence$val / 100000
 incidence <- incidence[,c("location","age","cause","metric","incidence")]
 
 #Prevalence - use to calculate hazard (incidence/(1-prevalence)) - The code is equivalent to that defined for incidence. 
-prevalence <- fread("/Users/jermy/Documents/INTERVENE/Results/GBD_Incidence/GBD_Data/GBD_Prevalence.csv", data.table=FALSE)
+prevalence <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/GBD_Prevalence.csv", data.table=FALSE)
 prevalence <- subset(prevalence, cause!="Prostate cancer" & cause!="Breast cancer")
 prevalence <- prevalence[,c("location","age","cause","metric","val")]
 
-bc_pc_prevalence <- fread("/Users/jermy/Documents/INTERVENE/Results/GBD_Incidence/GBD_Data/BreastCancerProstateCancer_Prevalence.csv", data.table=FALSE)
+bc_pc_prevalence <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/BreastCancerProstateCancer_Prevalence.csv", data.table=FALSE)
 bc_pc_prevalence <- subset(bc_pc_prevalence, (sex=="Male" & cause=="Prostate cancer") | (sex=="Female" & cause=="Breast cancer"))
 bc_pc_prevalence <- bc_pc_prevalence[,c("location","age","cause","metric","val")]
 
@@ -144,7 +146,7 @@ incidence <- incidence[,c("location","age","cause","incidence","hazard","risk")]
 #Use all cause and cause specific mortality incidence rates to calculate the competing risk of death during the age interval
 
 #Calculate age specific and disease specific mortality
-mortality <- fread("/Users/jermy/Documents/INTERVENE/Results/GBD_Incidence/GBD_Data/GBD_Mortality.csv", data.table=FALSE)
+mortality <- fread("/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/GBD_Mortality.csv", data.table=FALSE)
 mortality <- mortality[,c("location","age","cause","metric","val")]
 
 mortality <- subset(mortality, cause!="Prostate cancer" & cause!="Breast cancer")
@@ -264,7 +266,7 @@ for(i in unique(incidence$cause)){
     ylab("Lifetime Risk (%)") + 
     theme_bw() +
     labs(color='Country') +
-    scale_color_hue(labels = c("Estonia", "Finland", "Global", "Norway", "UK", "USA")) +
+    scale_color_hue(labels = c("Estonia", "Finland", "Global", "Norway", "UK")) +
     theme(title = element_text(size = 22),
           legend.text = element_text(size = 16),
           legend.title = element_text(size = 18),
@@ -272,7 +274,7 @@ for(i in unique(incidence$cause)){
           axis.text.x = element_text(size = 12, angle=-90, hjust=0),
           axis.title.y = element_text(size = 18),
           axis.text.y = element_text(size = 16))
-  #ggsave(paste0("/Users/jermy/Documents/INTERVENE/Results/GBD_Incidence/LifetimeRisk/",i,"_LifetimeRisk.png"), height=10 , width=10)
+  ggsave(paste0(output_dir,i,"_LifetimeRisk.png"), height=10 , width=10)
 }
 
 # See how the results differ when not considering mortality as a competing interest. Plot lifetime risk for each cause - stratified by country 
