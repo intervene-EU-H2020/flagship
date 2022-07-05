@@ -9,7 +9,19 @@
 
 * If there are errors in the scripts please let me (Bradley Jermy) know on slack and I can amend.
 
-### Step 1: Download Adjusted Summary Statistics 
+### Step 1: Define phenotypes 
+
+* Use UKBBPhenotyper.R (can be found within Phenotyping folder) to define the phenotypes required for this analysis. Note this will require you to also download the file UKBB_definitions_demo_TEST.csv. The script assumes ICD code individual level data is in long format. 
+
+* Please check your ICD codes are in the correct format within the individual level data before applying the code. 
+
+* Phenotypes of interest after running this script can be found [here](https://docs.google.com/spreadsheets/d/1IP5VDUjilpKdxBmw6eTMkkkyguwCOWpcSGS2IowtqcA/edit#gid=334983519). Please subset your phenotype file to only include these individuals.
+
+* To make sure the script can separate between ICD 10 and ICD 9 codes, it places a '10x' or a '9x' at the start of the code according to whether the code is ICD9 or 10. 
+
+* The regex pattern then searches for strings starting with 10x or 9x before identifying the codes themselves. 
+
+### Step 2: Download Adjusted Summary Statistics 
 
 * All pre-adjusted summary statistics can be found [here](https://figshare.com/account/home#/projects/131369).
 
@@ -17,7 +29,7 @@
 
 * hg19 files found [here](https://figshare.com/account/projects/131369/articles/19409501) / hg38 files found [here](https://figshare.com/account/projects/131369/articles/19093313). Hg19 contains rsids whereas hg38 contains variant IDs in the format CHR_POS_REF_ALT. 
 
-### Step 2: Merge variant IDs to match those within the .bim file. 
+### Step 3: Merge variant IDs to match those within the .bim file. 
 
 #### Note - only to be performed if the genome build is hg38 and the variant ID structure is CHR_POS_REF_ALT.
 
@@ -34,7 +46,7 @@
     2. Line 19 - Adjust the path to the location of the adjusted summary statistics downloaded during step 1. Note: I have assumed you have mainted the same filename structure as when you downloaded the files. 
     3. Line 40 - Adjust the path to the location where you wish to save the amended summary statistics. Recommended to just overwrite the original summary statistics so keep the same path as specified in line 19. You may want to test the code before saving initially just to make sure it is behaving as expected. 
 
-### Step 3: Compute PRS using Plink
+### Step 4: Compute PRS using Plink
 
 * **Note: if you use a job scheduler which allows multiple jobs to be submitted, please adjust the script below and create a single job for each phenotype. This script assumes an interactive job and loops over phenotypes which will be much much slower than running in parallel.**
 
@@ -53,16 +65,6 @@
     10. Line 23 - Select 19 or 38 depending on the build of your biobanks genome. Also remove square brackets surrounding the number.
     
 * *Note: If you do not have a file containing allele frequencies, we recommend producing one before computing PRS as otherwise plink will redo this step for every phenotype.*
-
-### Step 4: Define phenotypes 
-
-* Use UKBBPhenotyper.R (can be found within Phenotyping folder) to define the phenotypes required for this analysis. Note this will require you to also download the file UKBB_definitions_demo_TEST.csv. The script assumes ICD code individual level data is in long format. 
-
-Please check your ICD codes are in the correct format within the individual level data before applying the code. 
-
-To make sure the script can separate between ICD 10 and ICD 9 codes, it places a '10x' or a '9x' at the start of the code according to whether the code is ICD9 or 10. 
-
-The regex pattern then searches for strings starting with 10x or 9x before identifying the codes themselves. 
 
 ### Step 5: Calculate hazard ratios between PRS and Phenotype - survival analysis
 
