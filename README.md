@@ -1,7 +1,5 @@
 # flagship
-Code for the flagship project (WP2)
-
-## ESHG Abstract Submission - PRS Association Analysis Across Biobanks - Very much a test run...
+## Pipeline for the flagship project (WP2)
 
 ### Step 0: Requirements and Set-up
 
@@ -9,7 +7,7 @@ Code for the flagship project (WP2)
 
 * In each step, I have highlighted what parts of the scripts need to be adjusted.
 
-* There are likely to be errors in the scripts. As and when they pop up, please let me know on slack and I can amend.
+* If there are errors in the scripts please let me (Bradley Jermy) know on slack and I can amend.
 
 ### Step 1: Download Adjusted Summary Statistics 
 
@@ -17,7 +15,7 @@ Code for the flagship project (WP2)
 
 * Download the pre-adjusted summary statistics created using MegaPRS that correspond to the build of the genome for your biobank.
 
-* hg19 files found [here](https://figshare.com/account/projects/131369/articles/19093304) / hg38 files found [here](https://figshare.com/account/projects/131369/articles/19093313). Hg19 contains rsids whereas hg38 contains variant IDs in the format CHR_POS_REF_ALT. 
+* hg19 files found [here](https://figshare.com/account/projects/131369/articles/19409501) / hg38 files found [here](https://figshare.com/account/projects/131369/articles/19093313). Hg19 contains rsids whereas hg38 contains variant IDs in the format CHR_POS_REF_ALT. 
 
 ### Step 2: Merge variant IDs to match those within the .bim file. 
 
@@ -36,21 +34,8 @@ Code for the flagship project (WP2)
     2. Line 19 - Adjust the path to the location of the adjusted summary statistics downloaded during step 1. Note: I have assumed you have mainted the same filename structure as when you downloaded the files. 
     3. Line 40 - Adjust the path to the location where you wish to save the amended summary statistics. Recommended to just overwrite the original summary statistics so keep the same path as specified in line 19. You may want to test the code before saving initially just to make sure it is behaving as expected. 
 
-### Step 3: Compute PRS
+### Step 3: Compute PRS using Plink
 
-#### Step 3a: Generate a SNP list to speed up PRS computation
-* For genome build hg19:
-    * Download pre-computed SNP list from this repository 'snplist_hg19'.
-
-* For genome build hg38:
-    * Download mapping file created by Remo from [here](https://github.com/intervene-EU-H2020/prspipe/tree/main/resources/1kg).
-    * Run script create_hg38_snplist.R
-    * For this script to work you will have to:
-        1. Line 4 - Specify the path of the mapping file downloaded in the previous step. 
-        2. Line 14 - Specify the path and name of the bim file. 
-        3. Line 32 - Specify the output path for the snp list.   
-
-#### Step 3b: Run plink to compute PRS 
 * **Note: if you use a job scheduler which allows multiple jobs to be submitted, please adjust the script below and create a single job for each phenotype. This script assumes an interactive job and loops over phenotypes which will be much much slower than running in parallel.**
 
 * Run script GeneratePRS.sh
@@ -59,7 +44,7 @@ Code for the flagship project (WP2)
     1. Line 6 - Specify the path where PRS are to be saved.
     2. Line 7 - Specify the path of the downloaded summary statistics from Step 1.
     3. Line 8 - Specify the path to the directory where the allele frequencys are stored.
-    4. Line 9 - Specify the path to the directory of the snplist created as part of Step 3a. 
+    4. Line 9 - If you want to speed up computation and calculate PRS on a subset of SNPs, i.e. hapmap, you can specify the list here. 
     5. Line 10 - Specify the path to the directory where the genotypes are stored (it is likely line 8 and line 10 will have the same path). 
     6. Line 17 - Specify the path to plink. If you do not have plink2 installed, also change to the version used by your biobank.
     7. Line 18 - Change 'genotype_plink_files' to the name of your genotype files.
@@ -69,26 +54,26 @@ Code for the flagship project (WP2)
     
 * *Note: If you do not have a file containing allele frequencies, we recommend producing one before computing PRS as otherwise plink will redo this step for every phenotype.*
 
-### Step 4: Calculate associations between PRS and Phenotype - logistic regression
+### Step 4: Calculate hazard ratios between PRS and Phenotype - survival analysis
 
 * **Note: this script has four assumptions.** 
-    1) You have a phenotype file with case control assignments for each phenotype.
+    1) You have a phenotype file with case control assignments and dates of first diagnosis for each phenotype. More generally, you have the same column names as specified in the phenotype file specifications. 
     2) You have been able to allocate genetic ancestry for the participants within your biobank. This does not have to be harmonized, any approach taken by your biobank will suffice for this analysis.
     3) You have kept the same short hand names for the phenotypes as within [FinnGen](https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit#gid=334983519) (column B).
     4) You have kept the same naming structure for the PRS files as when you downloaded them.
 
-* Run script OddsRatioCalculation.R
+* Run script HazardRatioCalculation.R - Can be found within the PRS folder. 
 
 * For this script to work you will have to:
-    1. Line 9 - Specify the path to the phenotype file. *See assumption 1.*
-    2. Line 15 - Specify the path to the files containing the individual level PRS for each participant. 
-    3. Line 21 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
-    4. Line 28 - Specify the path to file which contains the genetic principal components calculated within participants of european ancestries.
-    5. Line 31 - Amend if the column numbers selected do not automatically select the ID column and the first ten principal components. If necessary, also amend the column names of the file to be in the format 'PC1, PC2, ... PCN'.
-    6. Line 38 - If this does not subset individuals to those of european ancestries, amend to do so with the files you have available to you.
-    7. Line 88 - Change ENTER_BIOBANK_NAME to your biobank.
+    1. Amend each mention of "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
+    2. Amend each mention of "path/to/PRS" to the path of your score file.
+    3. Lines 31,113,220,305 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
+    5. Lines 41,123,230,315 - If each section does not subset individuals to those of european ancestries, remove and subset to european ancestry yourself.
+    6. Amend each mention of "file/path/to/output_ to your chosen output. 
 
 **Send results to bradley.jermy@helsinki.fi :)**
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### UKBBPhenotyper.R
 v1.0 under development :warning:  
