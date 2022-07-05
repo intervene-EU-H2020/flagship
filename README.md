@@ -54,7 +54,17 @@
     
 * *Note: If you do not have a file containing allele frequencies, we recommend producing one before computing PRS as otherwise plink will redo this step for every phenotype.*
 
-### Step 4: Calculate hazard ratios between PRS and Phenotype - survival analysis
+### Step 4: Define phenotypes 
+
+* Use UKBBPhenotyper.R (can be found within Phenotyping folder) to define the phenotypes required for this analysis. Note this will require you to also download the file UKBB_definitions_demo_TEST.csv. The script assumes ICD code individual level data is in long format. 
+
+Please check your ICD codes are in the correct format within the individual level data before applying the code. 
+
+To make sure the script can separate between ICD 10 and ICD 9 codes, it places a '10x' or a '9x' at the start of the code according to whether the code is ICD9 or 10. 
+
+The regex pattern then searches for strings starting with 10x or 9x before identifying the codes themselves. 
+
+### Step 5: Calculate hazard ratios between PRS and Phenotype - survival analysis
 
 * **Note: this script has four assumptions.** 
     1) You have a phenotype file with case control assignments and dates of first diagnosis for each phenotype. More generally, you have the same column names as specified in the phenotype file specifications. 
@@ -73,8 +83,7 @@
 
 **Send results to bradley.jermy@helsinki.fi :)**
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### UKBBPhenotyper.R
 v1.0 under development :warning:  
 Script by Bradley Jermy can work across biobanks as long as the ICD code individual level data is in long format.  
