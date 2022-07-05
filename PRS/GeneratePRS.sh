@@ -8,7 +8,7 @@ pheno=(AAA AllCancers Appendicitis Colorectal_Cancer Alcohol_Use_Disorder Alzhei
 output=/path/to/output
 score_directory=/path/to/score/file
 frequency_directory=/path/to/allele/frequency
-snplist_directory=/path/to/snplist
+snplist_directory=/path/to/snplist #Optional
 genotype_directory=/path/to/genotype
 
 #Loop through phenotypes
@@ -18,8 +18,7 @@ pheno_i=${pheno[i]}
 
 /path/to/plink2 \
 --bfile ${genotype_directory}/genotype_plink_files \
---extract ${snplist_directory}/snplist_hg[19/38] \
---exclude ${snplist_directory}/duplicatesnps \
+--extract ${snplist_directory}/snplist \ #Optional
 --read-freq ${frequency_directory}/frequency_file \
 --out ${output}/${pheno_i}_PRS \
 --score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38].txt.gz 1 2 5 header list-variants
