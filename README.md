@@ -41,16 +41,16 @@
 * Run script GeneratePRS.sh
 
 * For this script to work you will have to:
-    1. Line 6 - Specify the path where PRS are to be saved.
-    2. Line 7 - Specify the path of the downloaded summary statistics from Step 1.
-    3. Line 8 - Specify the path to the directory where the allele frequencys are stored.
-    4. Line 9 - If you want to speed up computation and calculate PRS on a subset of SNPs, i.e. hapmap, you can specify the list here. 
-    5. Line 10 - Specify the path to the directory where the genotypes are stored (it is likely line 8 and line 10 will have the same path). 
-    6. Line 17 - Specify the path to plink. If you do not have plink2 installed, also change to the version used by your biobank.
-    7. Line 18 - Change 'genotype_plink_files' to the name of your genotype files.
-    8. Line 19 - Remove square brackets and keep the number which corresponds to your biobanks genome build.
-    9. Line 20 - Change 'frequency_file' to the name of your file containing allele frequencies.
-    10. Line 21 - Select 19 or 38 depending on the build of your biobanks genome. Also remove square brackets surrounding the number.
+    1. Line 8 - Specify the path where PRS are to be saved.
+    2. Line 9 - Specify the path of the downloaded summary statistics from Step 1.
+    3. Line 10 - Specify the path to the directory where the allele frequencys are stored.
+    4. Line 11 - Optional: If you want to speed up computation and calculate PRS on a subset of SNPs, i.e. hapmap, you can specify the list here. 
+    5. Line 12 - Specify the path to the directory where the genotypes are stored (it is likely line 8 and line 10 will have the same path). 
+    6. Line 19 - Specify the path to plink. If you do not have plink2 installed, also change to the version used by your biobank.
+    7. Line 20 - Change 'genotype_plink_files' to the name of your genotype files.
+    8. Line 21 - Optional: Name of your SNP list file. 
+    9. Line 22 - Change 'frequency_file' to the name of your file containing allele frequencies.
+    10. Line 23 - Select 19 or 38 depending on the build of your biobanks genome. Also remove square brackets surrounding the number.
     
 * *Note: If you do not have a file containing allele frequencies, we recommend producing one before computing PRS as otherwise plink will redo this step for every phenotype.*
 
