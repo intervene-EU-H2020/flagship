@@ -15,7 +15,7 @@
 
 * Please check your ICD codes are in the correct format within the individual level data before applying the code. 
 
-* Phenotypes of interest after running this script can be found [here](https://docs.google.com/spreadsheets/d/1IP5VDUjilpKdxBmw6eTMkkkyguwCOWpcSGS2IowtqcA/edit#gid=334983519). Please subset your phenotype file to only include these individuals.
+* Phenotypes of interest after running this script can be found [here](https://docs.google.com/spreadsheets/d/1IP5VDUjilpKdxBmw6eTMkkkyguwCOWpcSGS2IowtqcA/edit#gid=334983519). Please subset your phenotype file to only include these phenotypes.
 
 * To make sure the script can separate between ICD 10 and ICD 9 codes, it places a '10x' or a '9x' at the start of the code according to whether the code is ICD9 or 10. 
 
