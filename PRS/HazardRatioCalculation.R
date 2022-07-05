@@ -17,7 +17,7 @@ for(i in 1:length(phenocols)){
   print(prscols[i])
   
   #Read in phenotype file
-  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH"), data.table=FALSE)
+  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
     
   pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
  
@@ -47,7 +47,6 @@ for(i in 1:length(phenocols)){
                                               labels=paste("Group",1:11))
   
   #Make all necessary variables factors
-  pheno$BATCH <- as.factor(pheno$BATCH)
   pheno[[paste0(prscols[i],"_group")]] <- as.factor(pheno[[paste0(prscols[i],"_group")]])
   pheno[[paste0(prscols[i],"_group")]] <- relevel(pheno[[paste0(prscols[i],"_group")]], ref="Group 6")
   
@@ -59,7 +58,7 @@ for(i in 1:length(phenocols)){
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
   
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
   
   #Define number of cases and controls in each PRS group.
   controls <- table(pheno[[paste0(prscols[i],"_group")]], pheno[[paste0(phenocols[i])]])[2:11,1]
@@ -100,7 +99,7 @@ for(i in 1:length(phenocols)){
   print(prscols[i])
   
   #Read in phenotype file
-  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","SEX","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH"), data.table=FALSE)
+  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","SEX","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
   
   pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
  
@@ -130,7 +129,6 @@ for(i in 1:length(phenocols)){
                                               labels=paste("Group",1:11))
   
   #Make all necessary variables factors
-  pheno$BATCH <- as.factor(pheno$BATCH)
   pheno[[paste0(prscols[i],"_group")]] <- as.factor(pheno[[paste0(prscols[i],"_group")]])
   pheno[[paste0(prscols[i],"_group")]] <- relevel(pheno[[paste0(prscols[i],"_group")]], ref="Group 6")
   
@@ -149,7 +147,7 @@ for(i in 1:length(phenocols)){
      rep(0,10)} else {table(males[[paste0(prscols[i],"_group")]], males[[paste0(phenocols[i])]])[2:11,2]}
 
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=males, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=males, na.action=na.exclude)
   
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
@@ -172,7 +170,7 @@ for(i in 1:length(phenocols)){
      rep(0,10)} else {table(females[[paste0(prscols[i],"_group")]], females[[paste0(phenocols[i])]])[2:11,2]}
 
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=females, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=females, na.action=na.exclude)
   
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
@@ -208,7 +206,7 @@ for(i in 1:length(phenocols)){
   print(prscols[i])
   
   #Read in phenotype file
-  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","SEX","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH","COHORT"), data.table=FALSE)
+  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","SEX","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
   
   pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
  
@@ -232,9 +230,6 @@ for(i in 1:length(phenocols)){
   pheno <- subset(pheno, ANCESTRY=='EUR')
   
   pheno[[paste0(prscols[i],"_prs")]] <- scale(pheno[[paste0(prscols[i],"_prs")]])
-
-  #Make all necessary variables factors
-  pheno$BATCH <- as.factor(pheno$BATCH)
  
   #Specify age as either the Age at Onset or End of Follow-up (if not a case)
   pheno$AGE <- ifelse(pheno[[phenocols[i]]]==1, time_length(difftime(pheno[[paste0(phenocols[i],"_DATE")]], pheno$DATE_OF_BIRTH), 'years'), time_length(difftime(pheno$END_OF_FOLLOWUP, pheno$DATE_OF_BIRTH), 'years'))
@@ -244,7 +239,7 @@ for(i in 1:length(phenocols)){
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
   
   #Perform survival analysis
-  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs + SEX + ", prscols[i], "_prs:SEX + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs + SEX + ", prscols[i], "_prs:SEX + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
   
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
@@ -267,8 +262,8 @@ write.csv(results, "file/path/to/output_SexInteraction.csv")
 
 #Age stratification analysis
 
-phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
-prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D", "T2D", "ILD", "Lung_Cancer")
+phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "T1D", "T2D", "ILD", "Lung_Cancer")
 
 #Ages are based on mean quartiles from biobanks to be used in the lifetime risk estimation
 ages <- data.frame(c(53.34,63.54,72.24), #C3_CANCER
@@ -285,8 +280,6 @@ ages <- data.frame(c(53.34,63.54,72.24), #C3_CANCER
                    c(31.98,44.01,57.19), #F5_DEPRESSIO
                    c(46.51,59.02,69.38), #C3_MELANOMA_SKIN
                    c(62.60,68.25,73.89), #C3_PROSTATE
-                   #RHEUMA_SEROPOS_OTH TO BE COMPLETED
-                   c(43.46,54.54,65.66), #I9_SAH
                    c(12.62,19.73,33.28), #T1D
                    c(54.36,63.04,71.13), #T2D
                    c(51.22,61.59,71.48), #ILD
@@ -298,7 +291,7 @@ for(i in 1:length(phenocols)){
   age <- c(ages[1,i],ages[2,i],ages[3,i])
 
   #Read in phenotype file
-  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH"), data.table=FALSE)
+  pheno <- fread(input="path/to/pheno_file", select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
 
   pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01")
 
@@ -328,7 +321,6 @@ for(i in 1:length(phenocols)){
                                                 labels=paste("Group",1:11))
 
   #Make all necessary variables factors
-  pheno$BATCH <- as.factor(pheno$BATCH)
   pheno[[paste0(prscols[i],"_group")]] <- as.factor(pheno[[paste0(prscols[i],"_group")]])
   pheno[[paste0(prscols[i],"_group")]] <- relevel(pheno[[paste0(prscols[i],"_group")]], ref="Group 6")
 
@@ -353,7 +345,7 @@ for(i in 1:length(phenocols)){
     pheno_split_sub <- subset(pheno_split, tgroup==j)
 
     #Perform survival analysis
-    survival <- coxph(as.formula(paste0("Surv(tstart, AGE, event) ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno_split_sub, na.action=na.exclude)
+    survival <- coxph(as.formula(paste0("Surv(tstart, AGE, event) ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno_split_sub, na.action=na.exclude)
 
     controls <- table(pheno_split_sub[[paste0(prscols[i],"_group")]], pheno_split_sub[["event"]])[2:11,1]
     cases <- if(sum(nrow(pheno_split_sub[pheno_split_sub[["event"]]==0,])) == length(pheno_split_sub[["event"]])){ 
