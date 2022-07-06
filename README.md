@@ -15,7 +15,26 @@
 
 * Please check your ICD codes are in the correct format within the individual level data before applying the code. 
 
-* Phenotypes of interest after running this script can be found [here](https://docs.google.com/spreadsheets/d/1IP5VDUjilpKdxBmw6eTMkkkyguwCOWpcSGS2IowtqcA/edit#gid=334983519). Please subset your phenotype file to only include these phenotypes.
+* Phenotypes of interest after running this script are:
+    1. C3_CANCER (All cancers)
+    2. K11_APPENDACUT (Appendicitis)
+    3. J10_ASTHMA (Asthma)
+    4. I9_AF (Atrial fibrillation)
+    5. C3_BREAST (Breast cancer
+    6. I9_CHD (Coronary heart disease)
+    7. C3_COLORECTAL (Colorectal cancer)
+    8. G6_EPLEPSY (Epilepsy)
+    9. GOUT (Gout)
+    10. COX_ARTHROSIS (Hip osteoarthritis) 
+    11. KNEE_ARTHROSIS (Knee osteoarthritis)
+    12. F5_DEPRESSIO (Major depressive disorder)
+    13. C3_MELANOMA_SKIN (Malignant skin melanoma)
+    14. C3_PROSTATE (Prostate cancer)
+    15. RHEUMA_SEROPOS_OTH (Rheumatoid arthritis)
+    16. T1D (Type 1 diabetes)
+    17. T2D (Type 2 diabetes)
+    18. ILD (Interstitial lung disease)
+    19. C3_BRONCHUS_LUNG (Lung cancer)
 
 * To make sure the script can separate between ICD 10 and ICD 9 codes, it places a '10x' or a '9x' at the start of the code according to whether the code is ICD9 or 10. 
 
