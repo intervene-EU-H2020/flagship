@@ -12,7 +12,7 @@ bim <- fread("/path/to/bim/filename.bim", data.table=FALSE)
 colnames(bim) <- c("chr","variant_id","cM","pos","a1","a2") 
 
 #Note: the below code assumes you are using the same filenames as I originally saved
-phenotypes <- c("Alcohol_Use_Disorder", "Alzheimers_Disease", "Asthma", "Atrial_Fibrillation", "BMI", "Breast_Cancer", "CHD", "Chronic_Kidney_Disease", "Educational_Attainment", "Epilepsy", "Focal_Epilepsy", "Generalised_Epilepsy", "Gout", "Heart_Failure", "Hip_Osteoarthritis", "IPF", "ILD", "Inflammatory_Bowel_Disease", "Knee_Osteoarthritis", "Lifespan", "Lung_Cancer", "MDD", "Melanoma", "Osteoporosis", "Pain", "POAG", "Prostate_Cancer", "Rheumatoid_Arthritis", "Sleep_Apnoea", "smoking", "Stroke", "Subarachnoid_Haemmorhage", "TAA", "T1D", "T2D", "Thyroid_Stimulating_Hormone")
+phenotypes <- c("AllCancers", "Appendicitis", "Colorectal_Cancer", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Epilepsy", "Gout", "Hip_Osteoarthritis", "ILD", "Knee_Osteoarthritis", "Lung_Cancer", "MDD", "Melanoma", "Prostate_Cancer", "Rheumatoid_Arthritis", "T1D", "T2D")
 
 for(i in phenotypes){ 
 #read in adjusted mega PRS summary statistics
