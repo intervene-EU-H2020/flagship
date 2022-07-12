@@ -139,7 +139,7 @@ for(i in 1:length(phenocols)){
   pheno[[paste0(phenocols[i])]] <- ifelse(pheno[[paste0(phenocols[i])]]==1 & pheno$AGE > 80, 0, pheno[[paste0(phenocols[i])]])
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
   
-  males <- subset(pheno, SEX="male")
+  males <- subset(pheno, SEX=="male")
   
   #Define number of cases and controls in each PRS group.
   controls <- table(males[[paste0(prscols[i],"_group")]], males[[paste0(phenocols[i])]])[2:11,1]
@@ -162,7 +162,7 @@ for(i in 1:length(phenocols)){
   maleresult <- matrix(c(phenotype, prs, group, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=11)
   maleresults <- rbind(maleresults, maleresult)
   
-  females <- subset(pheno, SEX="female")
+  females <- subset(pheno, SEX=="female")
   
   #Define number of cases and controls in each PRS group.
   controls <- table(females[[paste0(prscols[i],"_group")]], females[[paste0(phenocols[i])]])[2:11,1]
