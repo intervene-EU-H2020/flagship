@@ -17,12 +17,12 @@ for(i in 1:length(pheno)){
     #Read in the dataset
     score <- fread(input=paste0("/path/to/PRSscore/files/",pheno[i],"_PRS_chr",j,".sscore"), data.table=FALSE)
   
-    #Drop the FID and NMISS_ALLELE_CT columns as redundant
-    score <- score[,-c(1,3)]
-    score[[paste0("PRS_Sum_",j)]] <- score$NAMED_ALLELE_DOSAGE_SUM * score$SCORE1_AVG
-  	colnames(score)[2] <- paste0("NAMED_ALLELE_DOSAGE_SUM_",j)
+    #Take IID, ALLELE_CT and SCORE1_AVG
+    score <- score[,c("IID","ALLELE_CT","SCORE1_AVG")]
+    score[[paste0("PRS_Sum_",j)]] <- score$ALLELE_CT * score$SCORE1_AVG
+  	colnames(score)[2] <- paste0("ALLELE_CT_",j)
   	
-    #Drop allele dosage and average as when next chromosome added in cannot join. Left join with the sum and the IID
+    #Drop average score as when next chromosome added in cannot join. Left join with the sum and the IID
     score <- score[,-3]
     FinalScore <- left_join(FinalScore, score)
     print(dim(FinalScore))
