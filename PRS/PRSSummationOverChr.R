@@ -20,15 +20,15 @@ for(i in 1:length(pheno)){
     #Drop the FID and NMISS_ALLELE_CT columns as redundant
     score <- score[,-c(1,3)]
     score[[paste0("PRS_Sum_",j)]] <- score$NAMED_ALLELE_DOSAGE_SUM * score$SCORE1_AVG
-  
-    #Drop allele dosage and average as when next chromosome added in cannot join. Left with the sum and the IID
-    score <- score[,-c(2,3)]
+  	colnames(score)[2] <- paste0("NAMED_ALLELE_DOSAGE_SUM_",j)
+  	
+    #Drop allele dosage and average as when next chromosome added in cannot join. Left join with the sum and the IID
+    score <- score[,-3]
     FinalScore <- left_join(FinalScore, score)
     print(dim(FinalScore))
   }
 
-  FinalScore[[paste0(pheno[i],"_PRS")]] <- rowSums(FinalScore[,c(2:23)]) / 22
+  FinalScore[[paste0(pheno[i],"_PRS")]] <- rowSums(FinalScore[,c(seq(3,45,by=2))]) / rowSums(FinalScore[,c(seq(2,44,by=2))])
   print(head(FinalScore))  
   fwrite(FinalScore, paste0("/path/to/PRSscore/files/",pheno[i],"_PRS"), sep="\t")
 }
-
