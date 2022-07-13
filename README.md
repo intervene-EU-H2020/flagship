@@ -11,7 +11,7 @@
 
 ### Step 1: Define phenotypes 
 
-## Step 1a: Run UKBPhenotyper.R
+#### Step 1a: Run UKBPhenotyper.R
 * Run UKBBPhenotyper.R (can be found within Phenotyping folder) to define the phenotypes required for this analysis. Note this will require you to also download the file UKBB_definitions_demo_TEST.csv. The script assumes ICD code individual level data is in long format. 
 
 * Please check your ICD codes are in the correct format within the individual level data before applying the code. 
@@ -41,7 +41,7 @@
 
 * The regex pattern then searches for strings starting with 10x or 9x before identifying the codes themselves. 
 
-## Step 1b: Construct phenotype file
+#### Step 1b: Construct phenotype file
 * The phenotype file will include all variables required to construct hazard ratios, i.e. genetic principal components, ancestry allocation, variables that allow you to control for technical artefacts (genotype batch, cohort etc.). Please use whatever variables currently exist within your biobank. These do not need to be harmonised.
 
 * To learn more about the variables that are required, please read: https://docs.google.com/document/d/1GbZszpPeyf-hyb0V_YDx828YbM7woh8OBJhvzkEwo2g/edit Note: you can currently ignore the requirement to define smoking and education. 
