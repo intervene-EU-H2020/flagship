@@ -75,6 +75,7 @@
 
 * **Note: if you use a job scheduler which allows multiple jobs to be submitted, please adjust the script below and create a single job for each phenotype. This script assumes an interactive job and loops over phenotypes which will be much much slower than running in parallel.**
 
+#### If your plink files are not split by chromosome
 * Run script GeneratePRS.sh
 
 * For this script to work you will have to:
@@ -90,6 +91,9 @@
     10. Line 23 - Select 19 or 38 depending on the build of your biobanks genome. Also remove square brackets surrounding the number.
     
 * *Note: If you do not have a file containing allele frequencies, we recommend producing one before computing PRS as otherwise plink will redo this step for every phenotype.*
+
+#### If your plink files are split by chromosome
+
 
 ### Step 5: Calculate hazard ratios between PRS and Phenotype - survival analysis
 
