@@ -146,4 +146,4 @@ for(i in 1:length(phenocols)){
   }
 }
 
-write.csv(results, "file/path/to/output_AgeStratified.csv")
+write.csv(results, "file/path/to/output/HR_AgeStratified_[ENTER_BIOBANK_NAME].csv")
