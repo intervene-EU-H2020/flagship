@@ -94,7 +94,7 @@
 
 #### If your plink files are split by chromosome
 
-#####Step 4a: Run script GeneratePRS_IndividualChr.sh
+##### Step 4a: Run script GeneratePRS_IndividualChr.sh
 
 * For this script to work you will have to:
     1. Line 8 - Specify the path where PRS are to be saved.
@@ -108,7 +108,7 @@
     9. Line 22 - Change 'frequency_file' to the name of your file containing allele frequencies.
     10. Line 24 - Select 19 or 38 depending on the build of your biobanks genome. Also remove square brackets surrounding the number.
  
-#####Step 4b: Run script PRSSummationOverChr.R
+##### Step 4b: Run script PRSSummationOverChr.R
 
 * This script is required as the default output of the plink files is an average score across the number of alleles tested (dosage*effect/number_of_alleles). Computing the average across chromosomal averages to get the final PRS is not appropriate so you will need to recompute the total PRS (dosage*effect) for each chromosome and then average the final total.
 
