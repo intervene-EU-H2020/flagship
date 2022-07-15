@@ -104,4 +104,4 @@ for(i in 1:length(phenocols)){
   }
 }
 
-write.csv(results, "file/path/to/output_FullSample.csv")
+write.csv(results, "file/path/to/output/HR_FullSample[ENTER_BIOBANK_NAME].csv")
