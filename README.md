@@ -117,22 +117,59 @@
 
 ### Step 5: Calculate hazard ratios between PRS and Phenotype - survival analysis
 
-* **Note: this script has four assumptions.** 
+* **Note: the scripts have five assumptions.** 
     1) You have a phenotype file with case control assignments and dates of first diagnosis for each phenotype. More generally, you have the same column names as specified in the phenotype file specifications. 
     2) You have been able to allocate genetic ancestry for the participants within your biobank. This does not have to be harmonized, any approach taken by your biobank will suffice for this analysis.
     3) You have kept the same short hand names for the phenotypes as within [FinnGen](https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit#gid=334983519) (column B).
     4) You have kept the same naming structure for the PRS files as when you downloaded them.
+    5) A SEX column exists in your phenotype file and it is coded as a factor with two levels 'male' and 'female' and 'female' is the reference.
 
-* Run script HazardRatioCalculation.R - Can be found within the PRS folder. 
+#### Step 5a: Run script HazardRatioperStandardDeviation.R - Can be found within the PRS folder. 
 
 * For this script to work you will have to:
-    1. Amend each mention of "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
-    2. Amend each mention of "path/to/PRS" to the path of your score file.
-    3. Lines 31,113,220,305 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
-    5. Lines 41,123,230,315 - If each section does not subset individuals to those of european ancestries, remove and subset to european ancestry yourself.
-    6. Amend each mention of "file/path/to/output_ to your chosen output. 
+    1. Line 20 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
+    2. Line 25 - Amend "path/to/PRS" to the path of your score file.
+    3. Lines 31 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
+    5. Line 41 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
+    6. Line 95 - Amend "file/path/to/output/HRperSD_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
 
-**Send results to bradley.jermy@helsinki.fi :)**
+#### Step 5b: Run script HazardRatio_SexInteraction.R - Can be found within the PRS folder. 
+
+* For this script to work you will have to:
+    1. Line 20 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
+    2. Line 25 - Amend "path/to/PRS" to the path of your score file.
+    3. Lines 31 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
+    5. Line 41 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
+    6. Line 95 - Amend "file/path/to/output/HR_SexInteraction_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+    
+#### Step 5c: Run script HazardRatio_FullSample.R - Can be found within the PRS folder. 
+
+* For this script to work you will have to:
+    1. Line 27 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
+    2. Line 32 - Amend "path/to/PRS" to the path of your score file.
+    3. Lines 38 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
+    5. Line 48 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
+    6. Line 107 - Amend "file/path/to/output/HR_FullSample[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+ 
+#### Step 5d: Run script HazardRatio_SexStratified.R - Can be found within the PRS folder. 
+
+* For this script to work you will have to:
+    1. Line 28 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
+    2. Line 33 - Amend "path/to/PRS" to the path of your score file.
+    3. Lines 39 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
+    5. Line 49 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
+    6. Lines 144 and 145 - Amend "file/path/to/output/HR_[Male/Female]Sample[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+
+#### Step 5e: Run script HazardRatio_AgeStratified.R - Can be found within the PRS folder. 
+
+* For this script to work you will have to:
+    1. Line 49 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
+    2. Line 54 - Amend "path/to/PRS" to the path of your score file.
+    3. Lines 60 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
+    5. Line 70 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
+    6. Line 149 - Amend "file/path/to/output/HR_AgeStratified_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+    
+**Send all results to bradley.jermy@helsinki.fi :)**
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### UKBBPhenotyper.R
