@@ -51,7 +51,7 @@ for(i in 1:length(phenocols)){
     q <- quantile(pheno[[paste0(prscols[i],"_prs")]], probs=c(p,rev(1-p)))
     
     pheno[[paste0(prscols[i],"_group")]] <- cut(pheno[[paste0(prscols[i],"_prs")]], q, include.lowest=TRUE,
-                                                labels=paste("Group",(2*length(p)-1)))
+                                                labels=paste("Group",1:(2*length(p)-1)))
     
     #Make all necessary variables factors
     pheno[[paste0(prscols[i],"_group")]] <- as.factor(pheno[[paste0(prscols[i],"_group")]])
