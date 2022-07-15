@@ -141,7 +141,7 @@ for(i in 1:length(phenocols)){
   }
 }
 
-write.csv(maleresults, "file/path/to/output_MaleSample.csv")
-write.csv(femaleresults, "file/path/to/output_FemaleSample.csv")
+write.csv(maleresults, "file/path/to/output/HR_MaleSample_[ENTER_BIOBANK_NAME].csv")
+write.csv(femaleresults, "file/path/to/output/HR_FemaleSample_[ENTER_BIOBANK_NAME].csv")
 
 
