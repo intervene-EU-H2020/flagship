@@ -53,10 +53,10 @@ for(i in 1:length(phenocols)){
     #Read in PRS scores
     PRS <- fread(input=paste0("path/to/PRS/",prscols[i],"_PRS.sscore"), data.table=FALSE)
     
-    #Subset columns to the IDs and score only. Note: columns 1 or 2 may be redundant and can be removed if necessary. Kept in to avoid bugs.
-    PRS <- PRS[,c(1,2,5)]
+    #Subset columns to the IDs and score only. Note: columns FID or IID may be redundant and can be removed if necessary. Kept in to avoid bugs.
+    PRS <- PRS[,c("#FID","IID","SCORE1_SUM")]
     
-    #Rename ID column to the name of the ID column in the 
+    #Rename ID column to the name of the ID column in the phenotype file
     colnames(PRS) <- c("ENTER_ID", "ENTER_ID", paste0(prscols[i],"_prs"))
     
     #left_join to the phenotype file
