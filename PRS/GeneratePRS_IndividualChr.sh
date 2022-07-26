@@ -21,7 +21,7 @@ path/to/plink2 \
 --extract ${snplist_directory}/snplist_hg19 \ #Optional
 --read-freq ${frequency_directory}/frequency_file \
 --out ${output}/${pheno_i}_PRS \
---score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38]_chr${j}.txt.gz 1 2 5 header list-variants
+--score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38]_chr${j}.txt.gz 1 2 5 header cols=+scoresums list-variants
 
 done
 
