@@ -21,6 +21,6 @@ pheno_i=${pheno[i]}
 --extract ${snplist_directory}/snplist \ #Optional
 --read-freq ${frequency_directory}/frequency_file \
 --out ${output}/${pheno_i}_PRS \
---score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38].txt.gz 1 2 5 header list-variants
+--score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38].txt.gz 1 2 5 header cols=+scoresums list-variants
 
 done
