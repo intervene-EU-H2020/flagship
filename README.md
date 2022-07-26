@@ -110,10 +110,10 @@
  
 ##### Step 4b: Run script PRSSummationOverChr.R
 
-* This script is required as the default output of the plink files is an average score across the number of alleles tested (dosage*effect/number_of_alleles). Computing the average across chromosomal averages to get the final PRS is not appropriate so you will need to recompute the total PRS (dosage*effect) for each chromosome and then average the final total.
+* This script simply sums over the PRS found in individual chromosomes to get the total PRS. 
 
 * For this script to work you will have to:
-     1. Line 10, 18 and 32 - Specify the file path of the chromosome specific score files. 
+     1. Line 10, 18 and 31 - Specify the file path of the chromosome specific score files. 
 
 ### Step 5: Calculate hazard ratios between PRS and Phenotype - survival analysis
 
