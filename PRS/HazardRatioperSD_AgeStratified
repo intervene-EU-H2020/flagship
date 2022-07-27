@@ -104,7 +104,7 @@ for(i in 1:length(phenocols)){
     OR <- exp(betas)
     CIpos <- exp(betas+1.96*std_errs)
     CIneg <- exp(betas-1.96*std_errs)
-    result <- c(phenotype, prs, minage, maxage, medianAAO, groups, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg)
+    result <- c(phenotype, prs, minage, maxage, medianAAO, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg)
     results <- rbind(results, result)
 
   }
