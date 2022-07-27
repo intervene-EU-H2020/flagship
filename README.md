@@ -133,7 +133,16 @@
     5. Line 41 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
     6. Line 95 - Amend "file/path/to/output/HRperSD_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
 
-#### Step 5b: Run script HazardRatio_SexInteraction.R - Can be found within the PRS folder. 
+#### Step 5b: Run script HazardRatioperSD_AgeStratified.R - Can be found within the PRS folder. 
+
+* For this script to work you will have to:
+    1. Line 42 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
+    2. Line 47 - Amend "path/to/PRS" to the path of your score file.
+    3. Lines 53 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
+    5. Line 63 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
+    6. Line 114 - Amend "file/path/to/output/HRperSD_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+
+#### Step 5c: Run script HazardRatio_SexInteraction.R - Can be found within the PRS folder. 
 
 * For this script to work you will have to:
     1. Line 20 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
@@ -142,7 +151,7 @@
     5. Line 41 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
     6. Line 95 - Amend "file/path/to/output/HR_SexInteraction_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
     
-#### Step 5c: Run script HazardRatio_FullSample.R - Can be found within the PRS folder. 
+#### Step 5d: Run script HazardRatio_FullSample.R - Can be found within the PRS folder. 
 
 * For this script to work you will have to:
     1. Line 27 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
@@ -151,7 +160,7 @@
     5. Line 48 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
     6. Line 107 - Amend "file/path/to/output/HR_FullSample[ENTER_BIOBANK_NAME].csv" to your chosen output. 
  
-#### Step 5d: Run script HazardRatio_SexStratified.R - Can be found within the PRS folder. 
+#### Step 5e: Run script HazardRatio_SexStratified.R - Can be found within the PRS folder. 
 
 * For this script to work you will have to:
     1. Line 28 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
@@ -160,7 +169,7 @@
     5. Line 49 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
     6. Lines 144 and 145 - Amend "file/path/to/output/HR_[Male/Female]Sample[ENTER_BIOBANK_NAME].csv" to your chosen output. 
 
-#### Step 5e: Run script HazardRatio_AgeStratified.R - Can be found within the PRS folder. 
+#### Step 5f: Run script HazardRatio_AgeStratified.R - Can be found within the PRS folder. 
 
 * For this script to work you will have to:
     1. Line 49 - Amend "path/to/pheno_file" to the path of your phenotype file. *See assumption 1.*
