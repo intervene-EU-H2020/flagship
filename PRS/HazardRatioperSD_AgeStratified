@@ -89,8 +89,8 @@ for(i in 1:length(phenocols)){
     #Perform survival analysis
     survival <- coxph(as.formula(paste0("Surv(tstart, AGE, event) ~ ",prscols[i],"_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno_split_sub, na.action=na.exclude, control=coxph.control(iter.max=100))
 
-    controls <- table(pheno_split_sub[[paste0(phenocols[i])]])[1]
-    cases <- table(pheno_split_sub[[paste0(phenocols[i])]])[2]
+    controls <- table(pheno_split_sub[["event"]])[1]
+    cases <- table(pheno_split_sub[["event"]])[2]
 
     #Extract hazard ratios, betas, standard errors and p-vals - in the first instance extract all results, for the latter just take the 
     phenotype <- phenocols[i]
