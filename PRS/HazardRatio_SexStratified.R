@@ -71,7 +71,7 @@ for(i in 1:length(phenocols)){
       rep(0,(2*length(p)-2))} else {table(males[[paste0(prscols[i],"_group")]], males[[paste0(phenocols[i])]])[2:(2*length(p)-1),2]}
     
     #Perform survival analysis
-    survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + ARRAY + ASSESSMENT_CENTRE")), data=males, na.action=na.exclude)
+    survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=males, na.action=na.exclude)
     
     #Extract hazard ratios, betas, standard errors and p-vals - in the first instance extract all results, for the latter just take the 
     if(p[2] == 0.01){
