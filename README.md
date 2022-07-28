@@ -131,7 +131,8 @@
     2. Line 25 - Amend "path/to/PRS" to the path of your score file.
     3. Lines 31 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
     5. Line 41 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
-    6. Line 95 - Amend "file/path/to/output/HRperSD_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+    6. Lines 53,60,61 - Add to the formula any variables you would normally use to control for technical artefacts within your genotype data, i.e. genotype batch/assessment centre.
+    7. Line 95 - Amend "file/path/to/output/HRperSD_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
 
 #### Step 5b: Run script HazardRatioperSD_AgeStratified.R - Can be found within the PRS folder. 
 
@@ -140,7 +141,8 @@
     2. Line 47 - Amend "path/to/PRS" to the path of your score file.
     3. Lines 53 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
     5. Line 63 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
-    6. Line 114 - Amend "file/path/to/output/HRperSD_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+    6. Line 90 - Add to the formula any variables you would normally use to control for technical artefacts within your genotype data, i.e. genotype batch/assessment centre.
+    7. Line 114 - Amend "file/path/to/output/HRperSD_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
 
 #### Step 5c: Run script HazardRatio_SexInteraction.R - Can be found within the PRS folder. 
 
@@ -149,7 +151,8 @@
     2. Line 25 - Amend "path/to/PRS" to the path of your score file.
     3. Lines 31 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
     5. Line 41 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
-    6. Line 95 - Amend "file/path/to/output/HR_SexInteraction_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+    6. Line 53 - Add to the formula any variables you would normally use to control for technical artefacts within your genotype data, i.e. genotype batch/assessment centre.
+    7. Line 95 - Amend "file/path/to/output/HR_SexInteraction_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
     
 #### Step 5d: Run script HazardRatio_FullSample.R - Can be found within the PRS folder. 
 
@@ -158,7 +161,8 @@
     2. Line 32 - Amend "path/to/PRS" to the path of your score file.
     3. Lines 38 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
     5. Line 48 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
-    6. Line 107 - Amend "file/path/to/output/HR_FullSample[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+    6. Line 68 - Add to the formula any variables you would normally use to control for technical artefacts within your genotype data, i.e. genotype batch/assessment centre.
+    7. Line 107 - Amend "file/path/to/output/HR_FullSample[ENTER_BIOBANK_NAME].csv" to your chosen output. 
  
 #### Step 5e: Run script HazardRatio_SexStratified.R - Can be found within the PRS folder. 
 
@@ -167,7 +171,8 @@
     2. Line 33 - Amend "path/to/PRS" to the path of your score file.
     3. Lines 39 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
     5. Line 49 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
-    6. Lines 144 and 145 - Amend "file/path/to/output/HR_[Male/Female]Sample[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+    6. Lines 74,111 - Add to the formula any variables you would normally use to control for technical artefacts within your genotype data, i.e. genotype batch/assessment centre.
+    7. Lines 144 and 145 - Amend "file/path/to/output/HR_[Male/Female]Sample[ENTER_BIOBANK_NAME].csv" to your chosen output. 
 
 #### Step 5f: Run script HazardRatio_AgeStratified.R - Can be found within the PRS folder. 
 
@@ -176,7 +181,8 @@
     2. Line 54 - Amend "path/to/PRS" to the path of your score file.
     3. Lines 60 - Change 'ENTER_ID' to correspond to the ID column within your biobank, i.e. FINNGENID. *Note: there may be redundant info taken by choosing the two columns. If this is the case, just select one of the IDs.*
     5. Line 70 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
-    6. Line 149 - Amend "file/path/to/output/HR_AgeStratified_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
+    6. Line 104 - Add to the formula any variables you would normally use to control for technical artefacts within your genotype data, i.e. genotype batch/assessment centre.
+    7. Line 149 - Amend "file/path/to/output/HR_AgeStratified_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
     
 **Send all results to bradley.jermy@helsinki.fi :)**
 
