@@ -124,7 +124,7 @@ for(i in 1:length(phenocols)){
           OR <- exp(betas)
           CIpos <- exp(betas+1.96*std_errs)
           CIneg <- exp(betas-1.96*std_errs)
-          result <- matrix(c(phenotype, prs, k, minage, maxage, medianAAO, groups, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=15)
+          result <- matrix(c(phenotype, prs, rep(k,(2*length(p)-2)), minage, maxage, medianAAO, groups, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=10, ncol=15)
           results <- rbind(results, result)
         } else {
           phenotype <- rep(phenocols[i],2)
@@ -140,7 +140,7 @@ for(i in 1:length(phenocols)){
           OR <- exp(betas)
           CIpos <- exp(betas+1.96*std_errs)
           CIneg <- exp(betas-1.96*std_errs)
-          result <- matrix(c(phenotype, prs, k, minage, maxage, medianAAO, groups, controls[c(1,length(controls))], cases[c(1,length(cases))], betas, std_errs, pvals, OR, CIpos, CIneg), nrow=2, ncol=15)
+          result <- matrix(c(phenotype, prs, rep(k,2), minage, maxage, medianAAO, groups, controls[c(1,length(controls))], cases[c(1,length(cases))], betas, std_errs, pvals, OR, CIpos, CIneg), nrow=2, ncol=15)
           results <- rbind(results, result)
         }
       }
