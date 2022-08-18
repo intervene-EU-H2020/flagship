@@ -41,6 +41,8 @@
 
 * The regex pattern then searches for strings starting with 10x or 9x before identifying the codes themselves. 
 
+* **Note: if an individual does not have any of the ICD codes highlighted in the above definitions, they will not be included within the final dataset. These controls must be manually added to the final dataset.**
+
 #### Step 1b: Construct phenotype file
 * The phenotype file will include all variables required to construct hazard ratios, i.e. genetic principal components, ancestry allocation, variables that allow you to control for technical artefacts (genotype batch, cohort etc.). Please use whatever variables currently exist within your biobank. These do not need to be harmonised.
 
