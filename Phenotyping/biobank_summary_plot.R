@@ -13,6 +13,7 @@ library(forcats)
 
 ####### Script for plotting the summary data for endpoints x biobanks
 
+setwd("/mnt/work/workbench/bwolford/intervene/results/summary")
 #I think this doesn't work because it's a .xlsx
 #file<-"https://docs.google.com/spreadsheets/d/1DNKd1KzI8WOIfG2klXWskbCSyX6h5gTu/edit?usp=sharing&ouid=115040676596308698055&rtpof=true&sd=true"
 
