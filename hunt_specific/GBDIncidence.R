@@ -263,6 +263,7 @@ for(i in unique(incidence$cause)){
   my_colors = carto_pal(n=length(unique(disease$location)), name="Safe")
   disease$age <- factor(disease$age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
   disease$location <- as.factor(disease$location)
+  
   pdf(file=paste0(output_dir,i,"_LifetimeRisk.pdf"), height=10 , width=10,useDingbats=TRUE)
   print(ggplot(disease, aes(age, lifetimerisk, color=location, group=location)) +
     stat_smooth(method = "lm", formula = y ~ poly(x, 15), se = FALSE) +
@@ -270,7 +271,7 @@ for(i in unique(incidence$cause)){
     xlab("Age Range") + 
     ylab("Baseline Lifetime Risk (%)") + 
     theme_bw() +
-    labs(color='Country') + 
+    labs(color='Country',title=i) + 
     guides(color=guide_legend(reverse = TRUE)) +
     scale_color_manual(values=my_colors,labels = c("Estonia", "Finland", "Global", "Norway", "UK")) +
     theme(title = element_text(size = 22),
@@ -278,7 +279,7 @@ for(i in unique(incidence$cause)){
           legend.title = element_text(size = 18),
           axis.title.x = element_text(size = 18),
           axis.text.x = element_text(size = 18, angle=45, hjust=1),
-          axis.title.y = element_text(size = 18),
+          axis.title.y = element_text(size = 22),
           axis.text.y = element_text(size = 16)))
   dev.off()
 }
@@ -318,6 +319,29 @@ flagship_20<-c("Asthma","Breast cancer", "Diabetes mellitus type 1","Osteoarthri
           axis.text.y = element_text(size = 12))
   dev.off()
 
+  select<-disease%>%filter(cause=="Gout"|cause=="Ischemic heart disease" |cause=="Diabetes mellitus type 2" | cause=="Prostate cancer")
+                            
+  pdf(file=paste0(output_dir,"LifetimeRisk_facet_select.pdf"),height=4,width=12)
+  ggplot(select, aes(age, lifetimerisk, color=location, group=location)) +
+    stat_smooth(method = "lm", formula = y ~ poly(x, 15), se = FALSE) + facet_wrap(~pretty_varname,nrow=1,scales="free_y") +
+    geom_point(size=3,alpha=0.7) +
+    xlab("Age Range") + 
+    ylab("Baseline Lifetime Risk (%)") + 
+    theme_bw() +
+    labs(color='Country') +
+    guides(color=guide_legend(reverse = TRUE)) +
+    scale_color_manual(values=my_colors,labels = c("Estonia", "Finland", "Global", "Norway", "UK")) +
+    theme(title = element_text(size = 12),
+          strip.background = element_rect(color="black", fill="white"),
+          strip.text.x = element_text(size=14,margin = margin(.1, 0, .1, 0, "cm")),
+          legend.text = element_text(size = 16),
+          legend.title = element_text(size = 18),
+          axis.title.x = element_text(size = 12),
+          axis.text.x = element_text(size = 8, angle=45, hjust=1),
+          axis.title.y = element_text(size = 12),
+          axis.text.y = element_text(size = 12))
+  dev.off()
+  
 
 # See how the results differ when not considering mortality as a competing interest. Plot lifetime risk for each cause - stratified by country 
 #for(i in unique(incidence$cause)){
