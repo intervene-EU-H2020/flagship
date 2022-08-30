@@ -11,16 +11,18 @@ frequency_directory=/path/to/allele/frequency
 snplist_directory=/path/to/snplist #Optional
 genotype_directory=/path/to/genotype
 
-#Loop through phenotypes
 for i in ${!pheno[@]}; do
 
 pheno_i=${pheno[i]}
 
-/path/to/plink2 \
---bfile ${genotype_directory}/genotype_plink_files \
---extract ${snplist_directory}/snplist \ #Optional
+for j in {1..22}; do
+path/to/plink2 \
+--bfile ${genotype_directory}/genotype_plink_files \ #Include reference to chromosome number - i.e. ukb_imp_chr${j}_v3
+--extract ${snplist_directory}/snplist_hg19 \ #Optional
 --read-freq ${frequency_directory}/frequency_file \
 --out ${output}/${pheno_i}_PRS \
---score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38].txt.gz 1 2 5 header cols=+scoresums list-variants
+--score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38]_chr${j}.txt.gz 1 2 5 header cols=+scoresums list-variants
+
+done
 
 done
