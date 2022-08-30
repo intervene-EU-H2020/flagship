@@ -137,4 +137,4 @@ names(summary_stats_df)<-c("trait","cases","controls","prevalence","age_recruitm
                                  "age_onset_median","age_onset_IQR","follow_up_median","follow_up_IQR","age_corr",
                                  "sex_corr","n_cases_female","n_controls_female",
                                  "female_prev_cases","female_prev_controls")
-write.csv(format(summary_stats_df,digits=3),paste0(output_dir,"summary_stats_cases.csv"),row.names=FALSE,quote=FALSE)
+write.csv(format(summary_stats_df,digits=3),paste0(output_dir,"biobank_baseline_summary_stats.csv"),row.names=FALSE,quote=FALSE)
