@@ -74,6 +74,8 @@ for (idx in 1:length(p)){
     age_recruitment_IQR<-median(tmp$age,na.rm=TRUE)
     #we use this tmp later
     
+    #what if recruitment/baseline is birth?
+    
     #Age of onset distribution (median, IQR)	ONLY CASES
     age_onset_median<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(difftime(as.POSIXct(get(date_col)),DATE_OF_BIRTH,units="days"))/365.5) %>% summarize(median(age))
     age_onset_IQR<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(difftime(as.POSIXct(get(date_col)),DATE_OF_BIRTH,units="days"))/365.5)  %>% summarize(IQR(age))
