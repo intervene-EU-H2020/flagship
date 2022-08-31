@@ -5,10 +5,8 @@ library(tidyverse)
 library(foreign)
 library(stringr)
 library(dplyr)
-library(readstata13)
 options(scipen=999)
 library(haven)
-library(demprep)
 library(lubridate)
 
 ####### variables ######
@@ -46,7 +44,7 @@ for (idx in 1:length(p)){
     df$END_OF_FOLLOWUP<-as.POSIXct(df$END_OF_FOLLOWUP)
     
     #interquartile range for age at onset    
-    tmp<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(as.POSIXct(get(date_col))-DATE_OF_BIRTH)/365.5)
+    tmp<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(time_length(difftime(as.POSIXct(get(date_col)), DATE_OF_BIRTH), 'years')))
     if (idx==1){
       age_df<-data.frame(p[idx],t(as.data.frame(quantile(tmp$age, probs = c(.25, .5, .75)))))
     } else{
@@ -61,17 +59,17 @@ for (idx in 1:length(p)){
     #age distribution at recruitment/baseline in CASES (yrs)
     tmp<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
     age_recruitment_median_cases<-median(tmp$age,na.rm=TRUE)
-    age_recruitment_IQR_cases<-median(tmp$age,na.rm=TRUE)
+    age_recruitment_IQR_cases<-IQR(tmp$age,na.rm=TRUE)
     
     #age distribution at recruitment/baseline in CONTROLS
     tmp<-df %>% filter(get(p[idx])==0) %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
     age_recruitment_median_controls<-median(tmp$age,na.rm=TRUE)
-    age_recruitment_IQR_controls<-median(tmp$age,na.rm=TRUE)
+    age_recruitment_IQR_controls<-IQR(tmp$age,na.rm=TRUE)
     
     #Age distribution at time of recruitment/baseline (yrs) (median, IQR)	
     tmp<-df %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
     age_recruitment_median<-median(tmp$age,na.rm=TRUE)
-    age_recruitment_IQR<-median(tmp$age,na.rm=TRUE)
+    age_recruitment_IQR<-IQR(tmp$age,na.rm=TRUE)
     #we use this tmp later
     
     #what if recruitment/baseline is birth?
