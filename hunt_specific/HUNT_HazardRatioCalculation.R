@@ -15,8 +15,8 @@ options(warn=2)
 ##################################################
 
 # Set variables 
-phenocols <- c("J10_ASTHMA", "C3_CANCER", "K11_APPENDACUT", "I9_AF", "C3_BREAST", "I9_CHD","C3_COLORECTAL",  "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "I9_SAH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
-prscols <- c("Asthma","AllCancers","Appendicitis", "Atrial_Fibrillation", "Breast_Cancer", "CHD","Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer","Rheumatoid_Arthritis", "Subarachnoid_Haemmorhage", "T1D","T2D", "ILD", "Lung_Cancer")
+phenocols <- c("J10_ASTHMA", "C3_CANCER", "K11_APPENDACUT", "I9_AF", "C3_BREAST", "I9_CHD","C3_COLORECTAL",  "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+prscols <- c("Asthma","AllCancers","Appendicitis", "Atrial_Fibrillation", "Breast_Cancer", "CHD","Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer","Rheumatoid_Arthritis",  "T1D","T2D", "ILD", "Lung_Cancer")
 
 pheno_file="/home/bwolford/workbench/intervene/endpointsPhenoFormatHUNT.csv" #path to phenotype file 
 prs_path="/home/bwolford/scratch/brooke/scores/" #path to PRS files
@@ -36,24 +36,24 @@ for(i in 1:length(phenocols)){
   
   #Read in phenotype file
   pheno <- fread(input=pheno_file, select=c("ID","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10","ANCESTRY",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP","BATCH"), data.table=FALSE)
-    
+  
   pheno[,paste0(phenocols[i],"_DATE")] <- as.Date(pheno[,paste0(phenocols[i],"_DATE")], origin = "1970-01-01") 
   #if it's already in date format, this won't mess things up
- 
+  
   #Read in PRS scores
   PRS <- fread(input=paste0(prs_path,prscols[i],"_PRS.sscore"), data.table=FALSE)
-
+  
   #Subset columns to the IDs and score only. Note: columns 1 or 2 may be redundant and can be removed if necessary. Kept in to avoid bugs.
   PRS <- PRS[,c(1,2,5)]
-
+  
   #Rename ID column to the name of the ID column in the phenotype file
   colnames(PRS) <- c("FID", pheno_file_ID, paste0(prscols[i],"_prs"))
-
+  
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS)
-
+  
   pheno <- subset(pheno, !is.na(pheno[[paste0(prscols[i],"_prs")]]))
- 
+  
   #Subset to those of european ancestry/those that have principal components calculated for EUROPEAN ancestry, i.e. within ancestry principal components, not global genetic principal components.
   #As we have been unable to use the standardised method for computing ancestry, if you have this information available from your centralised QC please use this. 
   #Feel free to subset using your own code: only provided as a reminder.
@@ -61,7 +61,7 @@ for(i in 1:length(phenocols)){
   
   #Assign PRS into percentiles
   q <- quantile(pheno[[paste0(prscols[i],"_prs")]], probs=c(0,0.01,0.05,0.1,0.2,0.4,0.6,0.8,0.9,0.95,0.99,1))
-
+  
   pheno[[paste0(prscols[i],"_group")]] <- cut(pheno[[paste0(prscols[i],"_prs")]], q, include.lowest=TRUE,
                                               labels=paste("Group",1:11))
   #TODO: make flexible so if too few cases are in one group, we have fewer groups
@@ -74,7 +74,7 @@ for(i in 1:length(phenocols)){
   #Specify age as either the Age at Onset or End of Follow-up (if not a case)
   pheno$AGE <- ifelse(pheno[[phenocols[i]]]==1, time_length(difftime(pheno[[paste0(phenocols[i],"_DATE")]], pheno$DATE_OF_BIRTH), 'years'), time_length(difftime(pheno$END_OF_FOLLOWUP, pheno$DATE_OF_BIRTH), 'years'))
   
-    
+  
   #inverse normalize PRS
   pheno[[paste0(prscols[i],"_invNorm")]] <- RankNorm(pheno[[paste0(prscols[i],"_prs")]])
   
@@ -95,9 +95,9 @@ for(i in 1:length(phenocols)){
   #perform survival analysis HR per SD
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",paste0(prscols[i],"_invNorm")," + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno, na.action=na.exclude)
   survdf<-tidy(survival)
-  survdf$HR<-exp(survdf$estimate)
-  survdf$LB<-exp(survdf$estimate-1.96*survdf$std.error)
-  survdf$UB<-exp(survdf$estimate+1.96*survdf$std.error)
+  survdf$HR<-round(exp(survdf$estimate),digits=4)
+  survdf$LB<-round(exp(survdf$estimate-1.96*survdf$std.error),digits=4)
+  survdf$UB<-round(exp(survdf$estimate+1.96*survdf$std.error),digits=4)
   
   #Perform survival analysis
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10 + BATCH")), data=pheno, na.action=na.exclude)
@@ -105,8 +105,8 @@ for(i in 1:length(phenocols)){
   #Define number of cases and controls in each PRS group.
   controls <- table(pheno[[paste0(prscols[i],"_group")]], pheno[[paste0(phenocols[i])]])[2:11,1]
   cases <- if(sum(nrow(pheno[pheno[[paste0(phenocols[i])]]==0,]))==length(pheno[[paste0(phenocols[i])]])){
-     rep(0,10)} else {table(pheno[[paste0(prscols[i],"_group")]], pheno[[paste0(phenocols[i])]])[2:11,2]}
-
+    rep(0,10)} else {table(pheno[[paste0(prscols[i],"_group")]], pheno[[paste0(phenocols[i])]])[2:11,2]}
+  
   #Extract hazard ratios, betas, standard errors and p-vals
   phenotype <- rep(phenocols[i],10)
   prs <- rep(prscols[i],10)
@@ -125,7 +125,7 @@ for(i in 1:length(phenocols)){
   logreg_results <- rbind(logreg_results, lrdf)
   
   #extract survival HR per SD
-  survdf<- rep(phenocols[i],nrow(survdf))
+  survdf$pheno<- rep(phenocols[i],nrow(survdf))
   surv_sd_results <-rbind(surv_sd_results,survdf)
   
 }
