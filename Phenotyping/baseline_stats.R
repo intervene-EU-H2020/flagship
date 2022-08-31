@@ -2,19 +2,20 @@
 ###### libraries ######
 library(data.table)
 library(tidyverse)
-library(foreign)
-library(stringr)
 library(dplyr)
 options(scipen=999)
-library(haven)
 library(lubridate)
 
 ####### variables ######
 file_name<-"your/path/to/pheno/file.csv"
 #file_name<-"/mnt/work/workbench/bwolford/intervene/endpointsPhenoFormatHUNT.csv"
-output_dir<-"path/to/output/directory/"
-df<-fread(file_name)
+output_dir<-"path/to/output/directory/" #keeping the final "/" is required
+#output_dir<-getwd()
 drop<-c(NA) #if you are missing a phenotype, list the name here
+birth_as_baseline<-FALSE #if you are using birth as the baseline, change to TRUE
+
+#read in data 
+df<-fread(file_name)
 
 #if your SEX column is male/female/other you can comment this out, otherwise, replace 2 or 1 with the values you use for male/female
 df$SEX<-recode(df$SEX, `2`="female", `1`="male", .default = NA_character_)
@@ -42,6 +43,12 @@ for (idx in 1:length(p)){
     df$DATE_OF_BIRTH<-as.POSIXct(df$DATE_OF_BIRTH)
     df$START_OF_FOLLOWUP<-as.POSIXct(df$START_OF_FOLLOWUP)
     df$END_OF_FOLLOWUP<-as.POSIXct(df$END_OF_FOLLOWUP)
+    #set proper baseline
+    if (birth_as_baseline==TRUE){
+      df$BASELINE<-df$DATE_OF_BIRTH
+    } else{
+      df$BASELINE<-df$START_OF_FOLLOWUP
+    }
     
     #interquartile range for age at onset    
     tmp<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(time_length(difftime(as.POSIXct(get(date_col)), DATE_OF_BIRTH), 'years')))
@@ -57,38 +64,36 @@ for (idx in 1:length(p)){
     prev<-n_case/(n_case+n_control)*100
     
     #age distribution at recruitment/baseline in CASES (yrs)
-    tmp<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
+    tmp<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric((BASELINE-DATE_OF_BIRTH)/365.5))
     age_recruitment_median_cases<-median(tmp$age,na.rm=TRUE)
     age_recruitment_IQR_cases<-IQR(tmp$age,na.rm=TRUE)
     
     #age distribution at recruitment/baseline in CONTROLS
-    tmp<-df %>% filter(get(p[idx])==0) %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
+    tmp<-df %>% filter(get(p[idx])==0) %>% mutate(age=as.numeric((BASELINE-DATE_OF_BIRTH)/365.5))
     age_recruitment_median_controls<-median(tmp$age,na.rm=TRUE)
     age_recruitment_IQR_controls<-IQR(tmp$age,na.rm=TRUE)
     
     #Age distribution at time of recruitment/baseline (yrs) (median, IQR)	
-    tmp<-df %>% mutate(age=as.numeric((START_OF_FOLLOWUP-DATE_OF_BIRTH)/365.5))
+    tmp<-df %>% mutate(age=as.numeric((BASELINE-DATE_OF_BIRTH)/365.5))
     age_recruitment_median<-median(tmp$age,na.rm=TRUE)
     age_recruitment_IQR<-IQR(tmp$age,na.rm=TRUE)
     #we use this tmp later
-    
-    #what if recruitment/baseline is birth?
     
     #Age of onset distribution (median, IQR)	ONLY CASES
     age_onset_median<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(difftime(as.POSIXct(get(date_col)),DATE_OF_BIRTH,units="days"))/365.5) %>% summarize(median(age))
     age_onset_IQR<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(difftime(as.POSIXct(get(date_col)),DATE_OF_BIRTH,units="days"))/365.5)  %>% summarize(IQR(age))
     
     #Distribution of time of follow-up in cohort since baseline (median, IQR)	in years 
-    follow_up_median<-df %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,START_OF_FOLLOWUP,units="days")/365.5)) %>% summarize(median(follow,na.rm=TRUE))
-    follow_up_IQR<-df %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,START_OF_FOLLOWUP,units="days")/365.5))  %>% summarize(IQR(follow,na.rm=TRUE))
+    follow_up_median<-df %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,BASELINE,units="days")/365.5)) %>% summarize(median(follow,na.rm=TRUE))
+    follow_up_IQR<-df %>% filter(!is.na(get(p[idx]))) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,BASELINE,units="days")/365.5))  %>% summarize(IQR(follow,na.rm=TRUE))
     
     #time of follow up in cases
-    follow_up_median_cases<-df %>% filter(get(p[idx])==1) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,START_OF_FOLLOWUP,units="days")/365.5))  %>% summarize(median(follow,na.rm=TRUE))
-    follow_up_IQR_cases<-df %>% filter(get(p[idx])==1) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,START_OF_FOLLOWUP,units="days")/365.5)) %>% summarize(IQR(follow,na.rm=TRUE))
+    follow_up_median_cases<-df %>% filter(get(p[idx])==1) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,BASELINE,units="days")/365.5))  %>% summarize(median(follow,na.rm=TRUE))
+    follow_up_IQR_cases<-df %>% filter(get(p[idx])==1) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,BASELINE,units="days")/365.5)) %>% summarize(IQR(follow,na.rm=TRUE))
     
     #time of follow up in controls
-    follow_up_median_controls<-df %>% filter(get(p[idx])==0) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,START_OF_FOLLOWUP,units="days")/365.5))  %>% summarize(median(follow,na.rm=TRUE))
-    follow_up_IQR_controls<-df %>% filter(get(p[idx])==0) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,START_OF_FOLLOWUP,units="days")/365.5))  %>% summarize(IQR(follow,na.rm=TRUE))
+    follow_up_median_controls<-df %>% filter(get(p[idx])==0) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,BASELINE,units="days")/365.5))  %>% summarize(median(follow,na.rm=TRUE))
+    follow_up_IQR_controls<-df %>% filter(get(p[idx])==0) %>% mutate(follow=as.numeric(difftime(END_OF_FOLLOWUP,BASELINE,units="days")/365.5))  %>% summarize(IQR(follow,na.rm=TRUE))
     
     #correlations 
     age_corr<-cor.test(pull(df,p[idx]),tmp$age)$estimate #has to be age of recruitment because age of onset wouldn't have controls
