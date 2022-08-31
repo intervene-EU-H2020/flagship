@@ -51,9 +51,10 @@
 #### Step 1c: Run baseline_stats.R (in Phenotyping folder)
 * We want to calculate summary statistics on the phenotype file
 * Execute Phenotyping/baseline_stats.R after setting custom variables:  
- 1. Line 15 - Specify phenotype filename. 
- 2. Line 17 - Specify output directory. 
- 3. Line 19 - Add phenotype names as strings only if you are missing any phenotypes in your dataset. 
+ 1. Line 10 - Specify phenotype filename. 
+ 2. Line 12 - Specify output directory. 
+ 3. Line 14 - Add phenotype names as strings only if you are missing any phenotypes in your dataset. 
+ 4. Line 15 - Logical variable specifying if birth is the baseline (default is that START_OF_FOLLOWUP is another recruitment date)
 * Output files are "biobank_baseline_summary_stats.csv" and "age_quartiles.csv". 
 
 ### Step 2: Download Adjusted Summary Statistics 
