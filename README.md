@@ -49,12 +49,12 @@
 * To learn more about the variables that are required, please read: https://docs.google.com/document/d/1GbZszpPeyf-hyb0V_YDx828YbM7woh8OBJhvzkEwo2g/edit Note: you can currently ignore the requirement to define smoking and education. 
 
 #### Step 1c: Run baseline_stats.R (in Phenotyping folder)
-* We want to alculate summary statistics on phenotype file
-* Execute Phenotyping/baseline_stats.R after setting custom variables for 
- -file_name(line15)
- -output_dir(line 17)
- -drop (line 19, only if you are missing any phenotypes in your dataset)
-* Output files are "biobank_baseline_summary_stats.csv" and "age_quartiles.csv"
+* We want to calculate summary statistics on the phenotype file
+* Execute Phenotyping/baseline_stats.R after setting custom variables:  
+ 1. Line 15 - Specify phenotype filename. 
+ 2. Line 17 - Specify output directory. 
+ 3. Line 19 - Add phenotype names as strings only if you are missing any phenotypes in your dataset. 
+* Output files are "biobank_baseline_summary_stats.csv" and "age_quartiles.csv". 
 
 ### Step 2: Download Adjusted Summary Statistics 
 
