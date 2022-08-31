@@ -5,10 +5,8 @@ library(tidyverse)
 library(foreign)
 library(stringr)
 library(dplyr)
-library(readstata13)
 options(scipen=999)
 library(haven)
-library(demprep)
 library(lubridate)
 
 ####### variables ######
