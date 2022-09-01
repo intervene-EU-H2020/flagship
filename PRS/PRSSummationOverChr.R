@@ -28,5 +28,5 @@ for(i in 1:length(pheno)){
 
   FinalScore[["SCORE1_SUM"]] <- rowSums(FinalScore[,c(2:23)]) 
   print(head(FinalScore))  
-  fwrite(FinalScore, paste0("/path/to/PRSscore/files/",pheno[i],"_PRS"), sep="\t")
+  fwrite(FinalScore, paste0("/path/to/PRSscore/files/",pheno[i],"_PRS.sscore"), sep="\t")
 }
