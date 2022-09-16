@@ -26,7 +26,7 @@ df$SEX<-recode(df$SEX, `2`="female", `1`="male", .default = NA_character_)
 ###19 phenotypes of interest
 
 p<- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", 
-               "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTHER", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
+               "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 p<-p[!(p %in% drop)] #drop any phenotypes you don't have to avoid errors later
 
 #phenotype file must have "SEX", DATE_OF_BIRTH", "START_OF_FOLLOWUP","END_OF_FOLLOWUP" in YYYY-MM-DD format
