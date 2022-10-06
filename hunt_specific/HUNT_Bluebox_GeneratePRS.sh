@@ -3,6 +3,8 @@
 #command read-freq used to stop plink calculating allele frequencies every time the PRS is calculated.
 #if you do not have an allele frequency file, i suggest creating one and then referring to this as it will save you a bunch of time. 
 
+#pheno=(AllCancers Appendicitis Colorectal_Cancer Asthma Atrial_Fibrillation Breast_Cancer CHD Epilepsy Gout Hip_Osteoarthritis ILD Knee_Osteoarthritis Lung_Cancer MDD Melanoma Prostate_Cancer Rheumatoid_Arthritis T1D T2D)
+
 pheno=$1
 output=/home/bwolford/bluebox/results
 score_directory=/home/bwolford/bluebox/data/
@@ -15,11 +17,8 @@ ${plink_path} \
 --bfile ${genotype_directory}/all.log \
 --extract ${snplist_directory}/snplist_hg19_varid \
 --read-freq ${frequency_directory}/all.frq \
---score ${score_directory}/${pheno}_megaPRS_scores_hg19_varid.txt.gz 6 2 5 header list-variants \
+--score ${score_directory}/${pheno_i}_megaPRS_scores_hg[19/38].txt.gz 1 2 5 header cols=+scoresums list-variants \
 --out ${output}/${pheno}_PRS
 
 
 
-
-#--score my.scores 3 2 1 header 
-#reads variant IDs from column 3, allele codes from column 2, and scores from column 1 
