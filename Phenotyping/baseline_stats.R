@@ -8,7 +8,7 @@ library(lubridate)
 
 ####### variables ######
 file_name<-"your/path/to/pheno/file.csv"
-#file_name<-"/mnt/work/workbench/bwolford/intervene/endpointsPhenoFormatHUNT.csv"
+biobank<-"biobank_abbrev"
 output_dir<-"path/to/output/directory/" #keeping the final "/" is required
 #output_dir<-getwd()
 drop<-c(NA) #if you are missing a phenotype, list the name here
@@ -140,4 +140,4 @@ names(summary_stats_df)<-c("trait","cases","controls","prevalence","age_recruitm
                                  "age_onset_median","age_onset_IQR","follow_up_median","follow_up_IQR","age_corr",
                                  "sex_corr","n_cases_female","n_controls_female",
                                  "female_prev_cases","female_prev_controls")
-write.csv(format(summary_stats_df,digits=3),paste0(output_dir,"biobank_baseline_summary_stats.csv"),row.names=FALSE,quote=FALSE)
+write.csv(format(summary_stats_df,digits=3),paste0(output_dir,biobank,"_baseline_summary_stats.csv"),row.names=FALSE,quote=FALSE)
