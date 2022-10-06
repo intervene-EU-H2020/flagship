@@ -132,7 +132,7 @@ for (idx in 1:length(p)){
 
 
 names(age_df)<-c("trait","X25","X50","X75")
-write.csv(format(age_df,digits=3),paste0(output_dir,"age_quartiles.csv"),row.names=FALSE,quote=FALSE)
+write.csv(format(age_df,digits=3),paste0(output_dir,biobank,"_age_quartiles.csv"),row.names=FALSE,quote=FALSE)
 
 names(summary_stats_df)<-c("trait","cases","controls","prevalence","age_recruitment_median","age_recruitment_IQR",
                                  "age_recruitment_median_cases","age_recruitment_IQR_cases",
