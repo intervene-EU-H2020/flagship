@@ -1,0 +1,1009 @@
+measure,location,sex,age,cause,metric,year,val,upper,lower
+Incidence,United Kingdom,Male,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,15 to 19,Breast cancer,Number,2019,1.7561235253907344,2.2510643513129502,1.3081042158702214
+Incidence,United Kingdom,Female,15 to 19,Breast cancer,Number,2019,10.046333494981718,12.332993547643305,8.232663211696154
+Incidence,United Kingdom,Male,15 to 19,Breast cancer,Rate,2019,0.09304073236847611,0.11926306596691445,0.06930433565701306
+Incidence,United Kingdom,Female,15 to 19,Breast cancer,Rate,2019,0.5577253022001776,0.6846699402153104,0.4570388370990344
+Incidence,United Kingdom,Male,20 to 24,Breast cancer,Number,2019,1.7816080976997455,2.2748816520914557,1.3301277825490747
+Incidence,United Kingdom,Female,20 to 24,Breast cancer,Number,2019,33.77061167362409,45.067605949154306,25.359868301347486
+Incidence,United Kingdom,Male,20 to 24,Breast cancer,Rate,2019,0.08535656461487592,0.10898922326332205,0.0637262135055281
+Incidence,United Kingdom,Female,20 to 24,Breast cancer,Rate,2019,1.665093498862338,2.2221030048394548,1.2503934559633414
+Incidence,United Kingdom,Male,25 to 29,Breast cancer,Number,2019,1.8514420641157217,2.3311854191588597,1.4331996872000372
+Incidence,United Kingdom,Female,25 to 29,Breast cancer,Number,2019,294.1545600807963,399.46765621117004,214.33493857477742
+Incidence,United Kingdom,Male,25 to 29,Breast cancer,Rate,2019,0.07909156529054998,0.09958567289646329,0.061224711716116924
+Incidence,United Kingdom,Female,25 to 29,Breast cancer,Rate,2019,12.7554031961899,17.32208746793144,9.294190645220478
+Incidence,United Kingdom,Male,30 to 34,Breast cancer,Number,2019,1.6113507902004163,2.058255110899861,1.2476772312727078
+Incidence,United Kingdom,Female,30 to 34,Breast cancer,Number,2019,860.4299346722819,1142.056949180596,637.8657627575066
+Incidence,United Kingdom,Male,30 to 34,Breast cancer,Rate,2019,0.0666533850930548,0.0851395433948267,0.0516100600028332
+Incidence,United Kingdom,Female,30 to 34,Breast cancer,Rate,2019,35.958870542005705,47.728555611938994,26.65752487436535
+Incidence,United Kingdom,Male,35 to 39,Breast cancer,Number,2019,2.989355292733905,4.001323417108819,2.2627903637655566
+Incidence,United Kingdom,Female,35 to 39,Breast cancer,Number,2019,1503.7931418179612,1981.23480622691,1113.2202392005095
+Incidence,United Kingdom,Male,35 to 39,Breast cancer,Rate,2019,0.12917151630626872,0.17289915798099628,0.09777628744273462
+Incidence,United Kingdom,Female,35 to 39,Breast cancer,Rate,2019,65.53722858501057,86.34474700376724,48.51556191681026
+Incidence,United Kingdom,Male,40 to 44,Breast cancer,Number,2019,5.923871320069151,8.012122756953884,4.3028184973243215
+Incidence,United Kingdom,Female,40 to 44,Breast cancer,Number,2019,2484.3132807827237,3262.9646249147027,1883.7531281950835
+Incidence,United Kingdom,Male,40 to 44,Breast cancer,Rate,2019,0.2878142103175215,0.38927293650814954,0.2090545592628721
+Incidence,United Kingdom,Female,40 to 44,Breast cancer,Rate,2019,121.23791133878811,159.2371698678727,91.92974835618342
+Incidence,United Kingdom,Male,45 to 49,Breast cancer,Number,2019,9.48338618932636,13.192334217154318,6.664260835741854
+Incidence,United Kingdom,Female,45 to 49,Breast cancer,Number,2019,4106.929067596569,5368.964167746696,3085.253517287848
+Incidence,United Kingdom,Male,45 to 49,Breast cancer,Rate,2019,0.42425664815605535,0.5901832303975696,0.29813791278390916
+Incidence,United Kingdom,Female,45 to 49,Breast cancer,Rate,2019,181.04291169779935,236.6763315683095,136.00509551107186
+Incidence,United Kingdom,Male,50 to 54,Breast cancer,Number,2019,14.366324087463967,20.05198342815566,10.155900767310673
+Incidence,United Kingdom,Female,50 to 54,Breast cancer,Number,2019,5258.485774800863,6870.821297932844,3986.9064964831778
+Incidence,United Kingdom,Male,50 to 54,Breast cancer,Rate,2019,0.6207239909311782,0.8663835720141968,0.43880475042930206
+Incidence,United Kingdom,Female,50 to 54,Breast cancer,Rate,2019,221.751606375638,289.7441821061603,168.12880321960986
+Incidence,United Kingdom,Male,55 to 59,Breast cancer,Number,2019,20.78041151905869,28.959659585773416,14.395573398374605
+Incidence,United Kingdom,Female,55 to 59,Breast cancer,Number,2019,5818.8326623156545,7521.525600321522,4418.729319941434
+Incidence,United Kingdom,Male,55 to 59,Breast cancer,Rate,2019,0.9611252604429402,1.3394277748632468,0.6658169025694537
+Incidence,United Kingdom,Female,55 to 59,Breast cancer,Rate,2019,262.97918813513735,339.93153106469316,199.7022283649389
+Incidence,United Kingdom,Male,60 to 64,Breast cancer,Number,2019,29.169734252742998,39.84003864660954,21.264458953723814
+Incidence,United Kingdom,Female,60 to 64,Breast cancer,Number,2019,5691.485397333309,7275.218799058724,4399.516768308989
+Incidence,United Kingdom,Male,60 to 64,Breast cancer,Rate,2019,1.5998032149770074,2.1850120868228577,1.1662413343966263
+Incidence,United Kingdom,Female,60 to 64,Breast cancer,Rate,2019,302.45858767683256,386.6218130040787,233.80041154577205
+Incidence,United Kingdom,Male,65 to 69,Breast cancer,Number,2019,37.449002037007354,50.473904506880245,27.268402204744337
+Incidence,United Kingdom,Female,65 to 69,Breast cancer,Number,2019,5866.969896695616,7322.0716348135775,4618.589728666362
+Incidence,United Kingdom,Male,65 to 69,Breast cancer,Rate,2019,2.301487013694119,3.1019527740212367,1.6758223222180773
+Incidence,United Kingdom,Female,65 to 69,Breast cancer,Rate,2019,341.55792315214495,426.26971414438566,268.880860715443
+Incidence,United Kingdom,Male,70 to 74,Breast cancer,Number,2019,50.19510199672675,66.61154585010767,36.34696350187148
+Incidence,United Kingdom,Female,70 to 74,Breast cancer,Number,2019,5938.6602801415875,7343.979659826164,4751.118049300154
+Incidence,United Kingdom,Male,70 to 74,Breast cancer,Rate,2019,3.2136248759076405,4.264649582354223,2.3270299576428437
+Incidence,United Kingdom,Female,70 to 74,Breast cancer,Rate,2019,349.2678895110945,431.918337706082,279.4254757164809
+Incidence,United Kingdom,Male,75 to 79,Breast cancer,Number,2019,39.40716032033708,50.36479074625413,30.181100470229335
+Incidence,United Kingdom,Female,75 to 79,Breast cancer,Number,2019,4880.783850869349,6072.244841380212,3859.96307206184
+Incidence,United Kingdom,Male,75 to 79,Breast cancer,Rate,2019,3.721598704884753,4.7564335640880735,2.850292776971181
+Incidence,United Kingdom,Female,75 to 79,Breast cancer,Rate,2019,397.4831533092189,494.51381191312936,314.34915792613947
+Incidence,United Kingdom,Male,All Ages,Breast cancer,Number,2019,279.767894595988,354.0762952584478,218.76741475809678
+Incidence,United Kingdom,Female,All Ages,Breast cancer,Number,2019,52730.45136874729,65672.37821860766,41949.319573411274
+Incidence,United Kingdom,Male,All Ages,Breast cancer,Rate,2019,0.8412286352673962,1.0646651184580598,0.6578074801030772
+Incidence,United Kingdom,Female,All Ages,Breast cancer,Rate,2019,155.25674237590533,193.36226490832732,123.5133501192399
+Incidence,United Kingdom,Male,80 to 84,Breast cancer,Number,2019,30.640501834682233,39.07510832245521,23.083211761760605
+Incidence,United Kingdom,Female,80 to 84,Breast cancer,Number,2019,4559.368420444052,5596.207630543772,3588.795276925934
+Incidence,United Kingdom,Male,80 to 84,Breast cancer,Rate,2019,4.21693517432709,5.377757832252274,3.17685422189883
+Incidence,United Kingdom,Female,80 to 84,Breast cancer,Rate,2019,488.64810771384384,599.7708491327967,384.6273999659459
+Incidence,United Kingdom,Male,85 to 89,Breast cancer,Number,2019,21.861982318659706,27.425989828805967,16.9492769694396
+Incidence,United Kingdom,Female,85 to 89,Breast cancer,Number,2019,3230.888816223663,3983.785345330994,2509.952392625428
+Incidence,United Kingdom,Male,85 to 89,Breast cancer,Rate,2019,5.587137717368501,7.009098259031114,4.33162662277219
+Incidence,United Kingdom,Female,85 to 89,Breast cancer,Rate,2019,535.5992528140819,660.4103625035607,416.08631635315095
+Incidence,United Kingdom,Male,90 to 94,Breast cancer,Number,2019,8.030521581531119,9.576157537106367,6.428871264300018
+Incidence,United Kingdom,Female,90 to 94,Breast cancer,Number,2019,1485.409433903959,1790.115230991022,1135.6268452838674
+Incidence,United Kingdom,Male,90 to 94,Breast cancer,Rate,2019,5.3398753257205875,6.367642104992376,4.274861936168842
+Incidence,United Kingdom,Female,90 to 94,Breast cancer,Rate,2019,498.15936727525735,600.3480592395016,380.85334440119453
+Incidence,United Kingdom,Male,95 plus,Breast cancer,Number,2019,2.4700173682421447,2.971870439478432,1.9405556206144499
+Incidence,United Kingdom,Female,95 plus,Breast cancer,Number,2019,706.1299059003081,826.1612564963066,532.7655946600005
+Incidence,United Kingdom,Male,95 plus,Breast cancer,Rate,2019,7.754533869192398,9.33008418243963,6.092307073863137
+Incidence,United Kingdom,Female,95 plus,Breast cancer,Rate,2019,742.5811654596698,868.8086761096135,560.2675837599936
+Incidence,United Kingdom,Male,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Female,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,20 to 24,Prostate cancer,Number,2019,11.926340396076913,20.76670073486986,8.62877701107451
+Incidence,United Kingdom,Female,20 to 24,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,20 to 24,Prostate cancer,Rate,2019,0.5713890983943576,0.9949293761081921,0.4134033536578949
+Incidence,United Kingdom,Female,20 to 24,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,25 to 29,Prostate cancer,Number,2019,18.402299941412334,29.65860455020175,13.869694900544065
+Incidence,United Kingdom,Female,25 to 29,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,25 to 29,Prostate cancer,Rate,2019,0.7861259801330329,1.266982912224828,0.5924980862473394
+Incidence,United Kingdom,Female,25 to 29,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,30 to 34,Prostate cancer,Number,2019,21.732065157094866,31.768289918337672,16.54780365039404
+Incidence,United Kingdom,Female,30 to 34,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,30 to 34,Prostate cancer,Rate,2019,0.8989449824287107,1.3140925455539112,0.6844984567369017
+Incidence,United Kingdom,Female,30 to 34,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,35 to 39,Prostate cancer,Number,2019,27.611485967023608,40.46092241569849,20.399555594966998
+Incidence,United Kingdom,Female,35 to 39,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,35 to 39,Prostate cancer,Rate,2019,1.1931059243773803,1.748336409623055,0.8814748566625035
+Incidence,United Kingdom,Female,35 to 39,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,40 to 44,Prostate cancer,Number,2019,56.38918343131329,78.37202495829939,39.4520479736751
+Incidence,United Kingdom,Female,40 to 44,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,40 to 44,Prostate cancer,Rate,2019,2.7396962936635596,3.80774349333684,1.9167972124046289
+Incidence,United Kingdom,Female,40 to 44,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,45 to 49,Prostate cancer,Number,2019,277.78817785957233,408.8373454423882,193.20913795378826
+Incidence,United Kingdom,Female,45 to 49,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,45 to 49,Prostate cancer,Rate,2019,12.427362851544054,18.29008735441237,8.643564611304495
+Incidence,United Kingdom,Female,45 to 49,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,50 to 54,Prostate cancer,Number,2019,1246.9219232505936,1732.871138589123,850.7282251665057
+Incidence,United Kingdom,Female,50 to 54,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,50 to 54,Prostate cancer,Rate,2019,53.87560157125198,74.87194931465402,36.7573093790876
+Incidence,United Kingdom,Female,50 to 54,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,55 to 59,Prostate cancer,Number,2019,2840.436941161501,4100.502025075018,1956.9431732972628
+Incidence,United Kingdom,Female,55 to 59,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,55 to 59,Prostate cancer,Rate,2019,131.3744769848167,189.6543806739566,90.51156255410696
+Incidence,United Kingdom,Female,55 to 59,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,60 to 64,Prostate cancer,Number,2019,5473.02460344375,7587.755931159969,3839.9851408205277
+Incidence,United Kingdom,Female,60 to 64,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,60 to 64,Prostate cancer,Rate,2019,300.165996727043,416.1476490650264,210.6025553925276
+Incidence,United Kingdom,Female,60 to 64,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,65 to 69,Prostate cancer,Number,2019,8462.016055907648,11797.692119777174,6145.6536456671165
+Incidence,United Kingdom,Female,65 to 69,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,65 to 69,Prostate cancer,Rate,2019,520.0464365671758,725.0456281424157,377.69076041565665
+Incidence,United Kingdom,Female,65 to 69,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,70 to 74,Prostate cancer,Number,2019,10931.06856747925,15597.728927935937,7779.608012070883
+Incidence,United Kingdom,Female,70 to 74,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,70 to 74,Prostate cancer,Rate,2019,699.836288229759,998.6083840161901,498.0713423798139
+Incidence,United Kingdom,Female,70 to 74,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,75 to 79,Prostate cancer,Number,2019,9121.75010032567,12953.845795206693,6890.887964212868
+Incidence,United Kingdom,Female,75 to 79,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,75 to 79,Prostate cancer,Rate,2019,861.4549509200467,1223.35675402215,650.7730959209898
+Incidence,United Kingdom,Female,75 to 79,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,All Ages,Prostate cancer,Number,2019,51117.192529710606,70022.1399520668,38002.909290448864
+Incidence,United Kingdom,Female,All Ages,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,All Ages,Prostate cancer,Rate,2019,153.70329098185897,210.54820931273684,114.27020804070989
+Incidence,United Kingdom,Female,All Ages,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,80 to 84,Prostate cancer,Number,2019,6544.449435117484,8882.995183545363,4916.7966121277805
+Incidence,United Kingdom,Female,80 to 84,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,80 to 84,Prostate cancer,Rate,2019,900.6875660343823,1222.5326805995844,676.679928108264
+Incidence,United Kingdom,Female,80 to 84,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,85 to 89,Prostate cancer,Number,2019,3995.8154547081194,5035.638634143893,2896.8790809364414
+Incidence,United Kingdom,Female,85 to 89,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,85 to 89,Prostate cancer,Rate,2019,1021.1869588600233,1286.9284282537196,740.3382794771222
+Incidence,United Kingdom,Female,85 to 89,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,90 to 94,Prostate cancer,Number,2019,1682.1406694157758,2027.4370046621427,1109.4106665567156
+Incidence,United Kingdom,Female,90 to 94,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,90 to 94,Prostate cancer,Rate,2019,1118.5352487766809,1348.1391869423344,737.699859752812
+Incidence,United Kingdom,Female,90 to 94,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,95 plus,Prostate cancer,Number,2019,405.7192261483192,498.5100958488938,229.98979125538216
+Incidence,United Kingdom,Female,95 plus,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United Kingdom,Male,95 plus,Prostate cancer,Rate,2019,1273.7414404453052,1565.0551579504627,722.0449737677759
+Incidence,United Kingdom,Female,95 plus,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Female,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Female,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Female,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Female,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Female,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Female,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,15 to 19,Breast cancer,Number,2019,154.97481375902314,173.30377806154098,138.78863844523318
+Incidence,Global,Female,15 to 19,Breast cancer,Number,2019,2746.3456697585743,3247.421631189131,2358.1703978590867
+Incidence,Global,Male,15 to 19,Breast cancer,Rate,2019,0.04876763333407832,0.05453541061876989,0.04367415108597941
+Incidence,Global,Female,15 to 19,Breast cancer,Rate,2019,0.9101126600639798,1.0761644361289242,0.7814750915416758
+Incidence,Global,Male,20 to 24,Breast cancer,Number,2019,148.23023028487796,165.70760435555832,134.35582182234788
+Incidence,Global,Female,20 to 24,Breast cancer,Number,2019,6380.350200157427,7230.996613472658,5598.697848414338
+Incidence,Global,Male,20 to 24,Breast cancer,Rate,2019,0.04870095552781007,0.054443136564183585,0.044142526736262254
+Incidence,Global,Female,20 to 24,Breast cancer,Rate,2019,2.1571543550091046,2.4447523014369588,1.8928828461154223
+Incidence,Global,Male,25 to 29,Breast cancer,Number,2019,164.643729708514,182.56710269562356,148.89365023197306
+Incidence,Global,Female,25 to 29,Breast cancer,Number,2019,19263.2900686633,21493.460209192657,17144.683264060735
+Incidence,Global,Male,25 to 29,Breast cancer,Rate,2019,0.05402104217517478,0.05990185700955814,0.04885330387641967
+Incidence,Global,Female,25 to 29,Breast cancer,Rate,2019,6.406296669892245,7.147973273091407,5.701722131028008
+Incidence,Global,Male,30 to 34,Breast cancer,Number,2019,225.25636190508078,260.5363345783689,194.3294068111044
+Incidence,Global,Female,30 to 34,Breast cancer,Number,2019,49647.99859947923,54737.58360581718,44746.34670863094
+Incidence,Global,Male,30 to 34,Breast cancer,Rate,2019,0.07429921403951321,0.08593606291157913,0.06409817715565358
+Incidence,Global,Female,30 to 34,Breast cancer,Rate,2019,16.629273617178878,18.333996950561602,14.987497256229387
+Incidence,Global,Male,35 to 39,Breast cancer,Number,2019,390.4054778117829,449.9491919178626,336.88799976100717
+Incidence,Global,Female,35 to 39,Breast cancer,Number,2019,90737.85941615391,99648.90945467155,82253.80624251282
+Incidence,Global,Male,35 to 39,Breast cancer,Rate,2019,0.1432469214997842,0.16509460096413667,0.1236103784364673
+Incidence,Global,Female,35 to 39,Breast cancer,Rate,2019,33.80243088067781,37.12205022082316,30.641880005494365
+Incidence,Global,Male,40 to 44,Breast cancer,Number,2019,778.4444637764026,899.2241390857118,664.4406749874294
+Incidence,Global,Female,40 to 44,Breast cancer,Number,2019,154877.54117349468,169964.28581586294,141327.35566629484
+Incidence,Global,Male,40 to 44,Breast cancer,Rate,2019,0.3129493213816628,0.3615050234048746,0.26711765323237857
+Incidence,Global,Female,40 to 44,Breast cancer,Rate,2019,63.293197850104676,69.45863866436548,57.75569663647105
+Incidence,Global,Male,45 to 49,Breast cancer,Number,2019,1611.954150779428,1883.3538116117254,1352.7550963010654
+Incidence,Global,Female,45 to 49,Breast cancer,Number,2019,210852.34454967355,230489.78353163486,192342.0201817191
+Incidence,Global,Male,45 to 49,Breast cancer,Rate,2019,0.676234069494453,0.7900894772399505,0.5674969622173852
+Incidence,Global,Female,45 to 49,Breast cancer,Rate,2019,89.56096376075332,97.90209918788685,81.69857791221652
+Incidence,Global,Male,50 to 54,Breast cancer,Number,2019,2286.3570377981755,2674.3212722870776,1933.6350582942862
+Incidence,Global,Female,50 to 54,Breast cancer,Number,2019,244924.7973244347,269179.301344255,222829.542046872
+Incidence,Global,Male,50 to 54,Breast cancer,Rate,2019,1.050783340603974,1.2290872308588863,0.8886763845161031
+Incidence,Global,Female,50 to 54,Breast cancer,Rate,2019,111.72003556912556,122.78348884705744,101.64150235205652
+Incidence,Global,Male,55 to 59,Breast cancer,Number,2019,2849.125421327479,3286.647281299389,2448.8420073409106
+Incidence,Global,Female,55 to 59,Breast cancer,Number,2019,245664.57420338786,268913.21358003316,224528.99969023833
+Incidence,Global,Male,55 to 59,Breast cancer,Rate,2019,1.558925482951629,1.79831963940151,1.339906688694479
+Incidence,Global,Female,55 to 59,Breast cancer,Rate,2019,130.49886490638275,142.84871656532906,119.27148915611781
+Incidence,Global,Male,60 to 64,Breast cancer,Number,2019,3744.850155715755,4208.4793767835135,3232.7238694720454
+Incidence,Global,Female,60 to 64,Breast cancer,Number,2019,242693.01172880043,263675.2984872258,222949.01823986392
+Incidence,Global,Male,60 to 64,Breast cancer,Rate,2019,2.4612122697967767,2.765921371651399,2.124629643796468
+Incidence,Global,Female,60 to 64,Breast cancer,Rate,2019,151.3230866710052,164.40588775820393,139.01238181520674
+Incidence,Global,Male,65 to 69,Breast cancer,Number,2019,4215.233963644534,4791.573693666005,3645.5902925361897
+Incidence,Global,Female,65 to 69,Breast cancer,Number,2019,226476.71794219906,246386.0363145158,207198.24153972097
+Incidence,Global,Male,65 to 69,Breast cancer,Rate,2019,3.4099216340190526,3.8761527687306634,2.9491072890627583
+Incidence,Global,Female,65 to 69,Breast cancer,Rate,2019,167.8016732668666,182.55293320578082,153.51781827389007
+Incidence,Global,Male,70 to 74,Breast cancer,Number,2019,3585.3776535738803,4055.0915608352047,3146.4249120676504
+Incidence,Global,Female,70 to 74,Breast cancer,Number,2019,170979.0635147659,186400.51837218457,155972.0313090988
+Incidence,Global,Male,70 to 74,Breast cancer,Rate,2019,4.069500062214663,4.6026379794763725,3.5712768953780243
+Incidence,Global,Female,70 to 74,Breast cancer,Rate,2019,172.73492653323012,188.31475143735753,157.57378017858386
+Incidence,Global,Male,75 to 79,Breast cancer,Number,2019,2046.6441886003608,2320.257888055565,1787.6172038540628
+Incidence,Global,Female,75 to 79,Breast cancer,Number,2019,125315.6020450958,136559.20948309478,112714.76275998639
+Incidence,Global,Male,75 to 79,Breast cancer,Rate,2019,3.577736027226913,4.0560397771098735,3.1249312942339493
+Incidence,Global,Female,75 to 79,Breast cancer,Rate,2019,179.4100097160875,195.50709329367243,161.36982428284196
+Incidence,Global,Male,All Ages,Breast cancer,Number,2019,25142.505701185288,27785.65765708677,22230.647756668768
+Incidence,Global,Female,All Ages,Breast cancer,Number,2019,1977211.6222261547,2145214.803039508,1807614.7653651277
+Incidence,Global,Male,All Ages,Breast cancer,Rate,2019,0.64783999614796,0.7159453621476968,0.5728109571977945
+Incidence,Global,Female,All Ages,Breast cancer,Rate,2019,51.269719633503485,55.62609498605147,46.8720197594767
+Incidence,Global,Male,80 to 84,Breast cancer,Number,2019,1638.1362091629337,1853.499409127896,1409.0793155123492
+Incidence,Global,Female,80 to 84,Breast cancer,Number,2019,99418.75381889954,110235.61230858666,84302.16761201115
+Incidence,Global,Male,80 to 84,Breast cancer,Rate,2019,4.648810840493591,5.2599827156040835,3.9987780994208904
+Incidence,Global,Female,80 to 84,Breast cancer,Rate,2019,202.13403175638268,224.1264138117999,171.39962402122546
+Incidence,Global,Male,85 to 89,Breast cancer,Number,2019,937.8833369724392,1086.571590441629,783.3598519294206
+Incidence,Global,Female,85 to 89,Breast cancer,Number,2019,55409.89238456594,62709.42900468284,44082.241927266856
+Incidence,Global,Male,85 to 89,Breast cancer,Rate,2019,5.759786471357978,6.672919861216734,4.8108174007154325
+Incidence,Global,Female,85 to 89,Breast cancer,Rate,2019,203.7308042401882,230.56970253430143,162.08135793193125
+Incidence,Global,Male,90 to 94,Breast cancer,Number,2019,285.743178418945,333.8789669232622,234.255273564853
+Incidence,Global,Female,90 to 94,Breast cancer,Number,2019,21355.263800831035,24385.14815007343,16381.672933374184
+Incidence,Global,Male,90 to 94,Breast cancer,Rate,2019,5.383372870232574,6.290246305865268,4.413345898214201
+Incidence,Global,Female,90 to 94,Breast cancer,Rate,2019,184.8988580835782,211.13230392274517,141.83634756886852
+Incidence,Global,Male,95 plus,Breast cancer,Number,2019,79.24532794567182,94.26355141275296,60.70985811706949
+Incidence,Global,Female,95 plus,Breast cancer,Number,2019,10468.215785793716,12187.886878466117,7696.263202693355
+Incidence,Global,Male,95 plus,Breast cancer,Rate,2019,6.208788485688252,7.38545057233937,4.7565538286805165
+Incidence,Global,Female,95 plus,Breast cancer,Rate,2019,299.3598235645978,348.53729997754857,220.0902275621461
+Incidence,Global,Male,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Female,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Female,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Female,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Female,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Female,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Female,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Female,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Female,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,20 to 24,Prostate cancer,Number,2019,810.3654054311861,1007.3019451182994,705.7652816430534
+Incidence,Global,Female,20 to 24,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,20 to 24,Prostate cancer,Rate,2019,0.26624508034111943,0.33094846535691774,0.23187877080345576
+Incidence,Global,Female,20 to 24,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,25 to 29,Prostate cancer,Number,2019,1207.7118640956326,1518.3595969205446,1062.5869016072056
+Incidence,Global,Female,25 to 29,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,25 to 29,Prostate cancer,Rate,2019,0.39626078479437743,0.49818701245131325,0.3486440202012916
+Incidence,Global,Female,25 to 29,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,30 to 34,Prostate cancer,Number,2019,1509.20139877697,1810.7345737146265,1304.2421449496885
+Incidence,Global,Female,30 to 34,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,30 to 34,Prostate cancer,Rate,2019,0.497799382037936,0.5972579620985844,0.4301950252033482
+Incidence,Global,Female,30 to 34,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,35 to 39,Prostate cancer,Number,2019,1944.4230879880045,2314.9976690132394,1650.0162949495416
+Incidence,Global,Female,35 to 39,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,35 to 39,Prostate cancer,Rate,2019,0.713444450135682,0.8494150523297662,0.6054212046429134
+Incidence,Global,Female,35 to 39,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,40 to 44,Prostate cancer,Number,2019,3693.1952268889368,4468.875703859584,3154.2627689119304
+Incidence,Global,Female,40 to 44,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,40 to 44,Prostate cancer,Rate,2019,1.4847339711017222,1.7965721177812453,1.2680729826270192
+Incidence,Global,Female,40 to 44,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,45 to 49,Prostate cancer,Number,2019,13416.340461199481,16816.882778279964,11322.641530772657
+Incidence,Global,Female,45 to 49,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,45 to 49,Prostate cancer,Rate,2019,5.62831548491199,7.054883708614583,4.749983711434364
+Incidence,Global,Female,45 to 49,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,50 to 54,Prostate cancer,Number,2019,43842.27286365595,54334.90840508125,36815.20841665458
+Incidence,Global,Female,50 to 54,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,50 to 54,Prostate cancer,Rate,2019,20.1494032549303,24.971697605149867,16.919845433387945
+Incidence,Global,Female,50 to 54,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,55 to 59,Prostate cancer,Number,2019,104392.20200345379,130971.17659790651,88303.24209275779
+Incidence,Global,Female,55 to 59,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,55 to 59,Prostate cancer,Rate,2019,57.119164606236836,71.66209785019028,48.31594049710477
+Incidence,Global,Female,55 to 59,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,60 to 64,Prostate cancer,Number,2019,196936.8169155954,247154.98066009456,167966.12284756778
+Incidence,Global,Female,60 to 64,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,60 to 64,Prostate cancer,Rate,2019,129.4319639005004,162.43663848967677,110.39167530686238
+Incidence,Global,Female,60 to 64,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,65 to 69,Prostate cancer,Number,2019,265982.06278020336,351698.9124823427,231750.82500002615
+Incidence,Global,Female,65 to 69,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,65 to 69,Prostate cancer,Rate,2019,215.16670200461343,284.50751267377245,187.4752762681985
+Incidence,Global,Female,65 to 69,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,70 to 74,Prostate cancer,Number,2019,273491.35571742663,373135.26370075997,238387.3162865228
+Incidence,Global,Female,70 to 74,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,70 to 74,Prostate cancer,Rate,2019,310.42004403576186,423.5185594273794,270.5760151910873
+Incidence,Global,Female,70 to 74,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,75 to 79,Prostate cancer,Number,2019,226791.41866051656,306084.91404771945,196892.04966263875
+Incidence,Global,Female,75 to 79,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,75 to 79,Prostate cancer,Rate,2019,396.4537821117429,535.0666376103602,344.18673430202364
+Incidence,Global,Female,75 to 79,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,All Ages,Prostate cancer,Number,2019,1410451.6467865224,1825766.1384973703,1227900.2124151166
+Incidence,Global,Female,All Ages,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,All Ages,Prostate cancer,Rate,2019,36.34271779753392,47.04401153125528,31.638965437068087
+Incidence,Global,Female,All Ages,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,80 to 84,Prostate cancer,Number,2019,156515.35972415155,201705.32796225103,132209.44711236178
+Incidence,Global,Female,80 to 84,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,80 to 84,Prostate cancer,Rate,2019,444.1695976924831,572.4126662796709,375.19267782113957
+Incidence,Global,Female,80 to 84,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,85 to 89,Prostate cancer,Number,2019,82800.23637156474,105339.87305780109,66502.5806795875
+Incidence,Global,Female,85 to 89,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,85 to 89,Prostate cancer,Rate,2019,508.4978722595601,646.9196666735522,408.4097130301576
+Incidence,Global,Female,85 to 89,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,90 to 94,Prostate cancer,Number,2019,29171.583881791033,34760.61801737888,21906.34211965104
+Incidence,Global,Female,90 to 94,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,90 to 94,Prostate cancer,Rate,2019,549.5897194112533,654.8865629012975,412.7132920739699
+Incidence,Global,Female,90 to 94,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Global,Male,95 plus,Prostate cancer,Number,2019,7947.100423783023,9569.789159621734,5460.858298709091
+Incidence,Global,Female,95 plus,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Global,Male,95 plus,Prostate cancer,Rate,2019,622.6469986927119,749.7829624158792,427.85253094345927
+Incidence,Global,Female,95 plus,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Female,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Female,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Female,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Female,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Female,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Female,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,15 to 19,Breast cancer,Number,2019,0.16342327317958122,0.2817531778546556,0.09053459085874861
+Incidence,Norway,Female,15 to 19,Breast cancer,Number,2019,0.5226810453314618,0.7029228704407535,0.38572888298547453
+Incidence,Norway,Male,15 to 19,Breast cancer,Rate,2019,0.09911037233829519,0.17087322889431542,0.05490599248765325
+Incidence,Norway,Female,15 to 19,Breast cancer,Rate,2019,0.33683214653958105,0.45298566193877454,0.24857585481394084
+Incidence,Norway,Male,20 to 24,Breast cancer,Number,2019,0.15450646694860642,0.2667922856582485,0.085790847750673
+Incidence,Norway,Female,20 to 24,Breast cancer,Number,2019,1.4798500283064526,2.081239336380378,1.0370988471114055
+Incidence,Norway,Male,20 to 24,Breast cancer,Rate,2019,0.08738807740751144,0.1508963693965316,0.0485228702212549
+Incidence,Norway,Female,20 to 24,Breast cancer,Rate,2019,0.8962272225903418,1.260440797588502,0.6280881180655836
+Incidence,Norway,Male,25 to 29,Breast cancer,Number,2019,0.1933430745305057,0.33212924300816316,0.10790590305144755
+Incidence,Norway,Female,25 to 29,Breast cancer,Number,2019,10.003734561988011,14.353521376471567,6.956036731192183
+Incidence,Norway,Male,25 to 29,Breast cancer,Rate,2019,0.10098542112420664,0.17347511181504122,0.05636055539045919
+Incidence,Norway,Female,25 to 29,Breast cancer,Rate,2019,5.491045168001365,7.878641092453744,3.8181652706369182
+Incidence,Norway,Male,30 to 34,Breast cancer,Number,2019,0.5397555039820099,0.9047328781105677,0.3023283874880365
+Incidence,Norway,Female,30 to 34,Breast cancer,Number,2019,32.805081649585205,45.18046960105315,23.326595482618526
+Incidence,Norway,Male,30 to 34,Breast cancer,Rate,2019,0.2858353202194351,0.47911435829731636,0.1601023626652052
+Incidence,Norway,Female,30 to 34,Breast cancer,Rate,2019,18.226392700559376,25.102116499529945,12.960177760712126
+Incidence,Norway,Male,35 to 39,Breast cancer,Number,2019,0.7514517750691918,1.2956150460078304,0.41814046030521285
+Incidence,Norway,Female,35 to 39,Breast cancer,Number,2019,75.01348949828677,102.30784502923451,53.961956763762274
+Incidence,Norway,Male,35 to 39,Breast cancer,Rate,2019,0.40884741889400217,0.7049139878494012,0.2275004911861377
+Incidence,Norway,Female,35 to 39,Breast cancer,Rate,2019,43.71103557972108,59.61570224325581,31.44411795569188
+Incidence,Norway,Male,40 to 44,Breast cancer,Number,2019,1.2345984426441983,2.065204114182398,0.6539881828393233
+Incidence,Norway,Female,40 to 44,Breast cancer,Number,2019,150.98810347830278,203.17244571432937,108.69984263846895
+Incidence,Norway,Male,40 to 44,Breast cancer,Rate,2019,0.6805565046381663,1.138417192801679,0.36050257024021143
+Incidence,Norway,Female,40 to 44,Breast cancer,Rate,2019,88.61623329313397,119.24367836532808,63.79688460396969
+Incidence,Norway,Male,45 to 49,Breast cancer,Number,2019,3.2552841724685564,5.353598429860363,1.798999080179018
+Incidence,Norway,Female,45 to 49,Breast cancer,Number,2019,259.66831582536514,349.34296943448373,187.61742417876644
+Incidence,Norway,Male,45 to 49,Breast cancer,Rate,2019,1.6694074078101826,2.745485924957657,0.9225807124596178
+Incidence,Norway,Female,45 to 49,Breast cancer,Rate,2019,140.80625014826876,189.43271297994048,101.73634729797355
+Incidence,Norway,Male,50 to 54,Breast cancer,Number,2019,5.417812997050607,9.066808184896544,3.0935898898358447
+Incidence,Norway,Female,50 to 54,Breast cancer,Number,2019,295.3115655794778,401.66453318824887,210.63704498297264
+Incidence,Norway,Male,50 to 54,Breast cancer,Rate,2019,2.873365934646831,4.80862993769651,1.6407018496321737
+Incidence,Norway,Female,50 to 54,Breast cancer,Rate,2019,165.83050148244703,225.552395266395,118.2820142237413
+Incidence,Norway,Male,55 to 59,Breast cancer,Number,2019,5.118214172535002,8.546874506320117,2.922060569010494
+Incidence,Norway,Female,55 to 59,Breast cancer,Number,2019,294.76850544496597,400.86310385160635,217.8212651511034
+Incidence,Norway,Male,55 to 59,Breast cancer,Rate,2019,3.071143360857135,5.128483492742043,1.75335900648609
+Incidence,Norway,Female,55 to 59,Breast cancer,Rate,2019,184.6264311580045,251.07812700451626,136.4310028795732
+Incidence,Norway,Male,60 to 64,Breast cancer,Number,2019,7.884618325402047,12.551423474701444,4.505749349686245
+Incidence,Norway,Female,60 to 64,Breast cancer,Number,2019,366.0002580860294,484.0507448864076,271.6629351827987
+Incidence,Norway,Male,60 to 64,Breast cancer,Rate,2019,5.154620774562978,8.205575149350613,2.945663092916048
+Incidence,Norway,Female,60 to 64,Breast cancer,Rate,2019,242.30619422916567,320.4601396200361,179.8512719130269
+Incidence,Norway,Male,65 to 69,Breast cancer,Number,2019,9.167097570688597,15.037768601894475,5.379780910382675
+Incidence,Norway,Female,65 to 69,Breast cancer,Number,2019,368.91368459938514,482.3612639094274,275.45364250873496
+Incidence,Norway,Male,65 to 69,Breast cancer,Rate,2019,6.71876018625627,11.02149946517411,3.9429555006629573
+Incidence,Norway,Female,65 to 69,Breast cancer,Rate,2019,269.4358011896525,352.29214591327354,201.17733756757693
+Incidence,Norway,Male,70 to 74,Breast cancer,Number,2019,12.74308231523543,19.1000267488564,7.449623670736059
+Incidence,Norway,Female,70 to 74,Breast cancer,Number,2019,329.39913913051305,433.1902216112213,251.2865854973841
+Incidence,Norway,Male,70 to 74,Breast cancer,Rate,2019,10.165365589118966,15.236404337743586,5.942686882266079
+Incidence,Norway,Female,70 to 74,Breast cancer,Rate,2019,252.51825035207966,332.0847684047949,192.6369603583149
+Incidence,Norway,Male,75 to 79,Breast cancer,Number,2019,7.641143521442183,11.296492255918446,4.7375883015245845
+Incidence,Norway,Female,75 to 79,Breast cancer,Number,2019,254.42009778279578,326.9835962526664,192.08112746299616
+Incidence,Norway,Male,75 to 79,Breast cancer,Rate,2019,9.972892844615183,14.743697258422491,6.183297086414323
+Incidence,Norway,Female,75 to 79,Breast cancer,Rate,2019,292.19065448697296,375.52674426348466,220.5970001470683
+Incidence,Norway,Male,All Ages,Breast cancer,Number,2019,67.59544272515335,88.95184495994518,51.30164552696558
+Incidence,Norway,Female,All Ages,Breast cancer,Number,2019,2859.729846459576,3604.9371404925896,2282.3049788423286
+Incidence,Norway,Male,All Ages,Breast cancer,Rate,2019,2.5051290411170517,3.2966105566637474,1.901270808880595
+Incidence,Norway,Female,All Ages,Breast cancer,Rate,2019,107.89132587977721,136.00636027998183,86.10635390408247
+Incidence,Norway,Male,80 to 84,Breast cancer,Number,2019,6.494772164197773,9.709135984004954,3.9600424862112797
+Incidence,Norway,Female,80 to 84,Breast cancer,Number,2019,184.95187720627484,235.95554039912267,139.88537366067558
+Incidence,Norway,Male,80 to 84,Breast cancer,Rate,2019,13.838477244222224,20.687354995509327,8.43770288566496
+Incidence,Norway,Female,80 to 84,Breast cancer,Rate,2019,298.07302120147193,380.2717866850951,225.44272909666776
+Incidence,Norway,Male,85 to 89,Breast cancer,Number,2019,4.534744477913064,7.066833826404592,2.817762320065702
+Incidence,Norway,Female,85 to 89,Breast cancer,Number,2019,136.57044433008704,176.86730096676754,101.41436323803158
+Incidence,Norway,Male,85 to 89,Breast cancer,Rate,2019,16.3986273615037,25.555215979492257,10.18964453346855
+Incidence,Norway,Female,85 to 89,Breast cancer,Rate,2019,305.84731682674123,396.0914801179741,227.11583780950784
+Incidence,Norway,Male,90 to 94,Breast cancer,Number,2019,1.6171242219177098,2.2879663275838324,1.1403207285565669
+Incidence,Norway,Female,90 to 94,Breast cancer,Number,2019,59.72220645823225,74.6981679972644,43.945215536859706
+Incidence,Norway,Male,90 to 94,Breast cancer,Rate,2019,13.603401020201296,19.246587895350892,9.592485198080503
+Incidence,Norway,Female,90 to 94,Breast cancer,Rate,2019,236.09500763931362,295.2982749606014,173.72509512257028
+Incidence,Norway,Male,95 plus,Breast cancer,Number,2019,0.6844702499482775,0.9550269497764862,0.4475701813506761
+Incidence,Norway,Female,95 plus,Breast cancer,Number,2019,39.190811754648784,48.57871338549515,27.783691524942295
+Incidence,Norway,Male,95 plus,Breast cancer,Rate,2019,20.954558527882103,29.237454975301464,13.702035349463692
+Incidence,Norway,Female,95 plus,Breast cancer,Rate,2019,363.07527466969407,450.04757278207745,257.3963380730407
+Incidence,Norway,Male,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Female,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Female,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Female,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Female,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Female,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Female,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Female,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Female,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,20 to 24,Prostate cancer,Number,2019,1.025211136800482,2.0880338958547293,0.6180363342403673
+Incidence,Norway,Female,20 to 24,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,20 to 24,Prostate cancer,Rate,2019,0.5798542413863109,1.1809814263706877,0.349558229399012
+Incidence,Norway,Female,20 to 24,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,25 to 29,Prostate cancer,Number,2019,1.4308133193403978,2.7159041143878815,0.9124288100148825
+Incidence,Norway,Female,25 to 29,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,25 to 29,Prostate cancer,Rate,2019,0.7473310639886207,1.4185494949349833,0.47657257881597137
+Incidence,Norway,Female,25 to 29,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,30 to 34,Prostate cancer,Number,2019,1.7101273636485501,3.062892490388651,1.1151785556185347
+Incidence,Norway,Female,30 to 34,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,30 to 34,Prostate cancer,Rate,2019,0.9056226365424778,1.6219989408706854,0.590558905273702
+Incidence,Norway,Female,30 to 34,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,35 to 39,Prostate cancer,Number,2019,2.5796008673254254,4.287031417991952,1.6490430306687436
+Incidence,Norway,Female,35 to 39,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,35 to 39,Prostate cancer,Rate,2019,1.403500785244161,2.3324740031416056,0.8972059273823385
+Incidence,Norway,Female,35 to 39,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,40 to 44,Prostate cancer,Number,2019,6.191466800562377,9.222028113252913,3.6930501642415257
+Incidence,Norway,Female,40 to 44,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,40 to 44,Prostate cancer,Rate,2019,3.4129664017309316,5.083524327949466,2.0357463806990572
+Incidence,Norway,Female,40 to 44,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,45 to 49,Prostate cancer,Number,2019,30.528567565863135,48.03921023223686,18.805494326412678
+Incidence,Norway,Female,45 to 49,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,45 to 49,Prostate cancer,Rate,2019,15.655965545286932,24.63594856182148,9.644021803552372
+Incidence,Norway,Female,45 to 49,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,50 to 54,Prostate cancer,Number,2019,109.36786742005171,180.85555170783178,69.7983653474729
+Incidence,Norway,Female,50 to 54,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,50 to 54,Prostate cancer,Rate,2019,58.00383009912371,95.91770362911039,37.017934246280355
+Incidence,Norway,Female,50 to 54,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,55 to 59,Prostate cancer,Number,2019,256.6734464636608,436.1188697479373,156.4721067169597
+Incidence,Norway,Female,55 to 59,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,55 to 59,Prostate cancer,Rate,2019,154.01484276394848,261.6896296677462,93.88983256734427
+Incidence,Norway,Female,55 to 59,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,60 to 64,Prostate cancer,Number,2019,612.0809930921586,967.90302481448,374.8286775059077
+Incidence,Norway,Female,60 to 64,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,60 to 64,Prostate cancer,Rate,2019,400.1519506078436,632.7729299714275,245.0466982972696
+Incidence,Norway,Female,60 to 64,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,65 to 69,Prostate cancer,Number,2019,914.1605701728083,1346.1962610906596,597.319783689604
+Incidence,Norway,Female,65 to 69,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,65 to 69,Prostate cancer,Rate,2019,670.0076654972303,986.6557841407997,437.7883348759275
+Incidence,Norway,Female,65 to 69,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,70 to 74,Prostate cancer,Number,2019,1158.8961134428323,1789.032628741925,778.5194799376225
+Incidence,Norway,Female,70 to 74,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,70 to 74,Prostate cancer,Rate,2019,924.4704210119378,1427.1406455784336,621.0377470727725
+Incidence,Norway,Female,70 to 74,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,75 to 79,Prostate cancer,Number,2019,780.8102289302817,1145.706724395497,549.0010592801495
+Incidence,Norway,Female,75 to 79,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,75 to 79,Prostate cancer,Rate,2019,1019.0800268637602,1495.3272846777802,716.5326394429229
+Incidence,Norway,Female,75 to 79,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,All Ages,Prostate cancer,Number,2019,4822.235796618844,6754.8043396857165,3557.085819572062
+Incidence,Norway,Female,All Ages,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,All Ages,Prostate cancer,Rate,2019,178.71505016016127,250.33723926055984,131.82780715836208
+Incidence,Norway,Female,All Ages,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,80 to 84,Prostate cancer,Number,2019,491.2020526515432,664.0031785986695,364.5600752541008
+Incidence,Norway,Female,80 to 84,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,80 to 84,Prostate cancer,Rate,2019,1046.6092198590998,1414.7983400837131,776.7718678979961
+Incidence,Norway,Female,80 to 84,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,85 to 89,Prostate cancer,Number,2019,296.7980744762585,384.3923464834001,216.50133116491276
+Incidence,Norway,Female,85 to 89,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,85 to 89,Prostate cancer,Rate,2019,1073.2867196053935,1390.0467559522192,782.9161423174182
+Incidence,Norway,Female,85 to 89,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,90 to 94,Prostate cancer,Number,2019,126.05656808315564,153.80305874802193,85.74433606943836
+Incidence,Norway,Female,90 to 94,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,90 to 94,Prostate cancer,Rate,2019,1060.3997043788847,1293.8057929784623,721.289417939864
+Incidence,Norway,Female,90 to 94,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Norway,Male,95 plus,Prostate cancer,Number,2019,32.724094832552495,41.1386072399234,21.4873408618917
+Incidence,Norway,Female,95 plus,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Norway,Male,95 plus,Prostate cancer,Rate,2019,1001.8243458974326,1259.4285189599839,657.8193014715924
+Incidence,Norway,Female,95 plus,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,15 to 19,Breast cancer,Number,2019,21.10822914735376,26.544427437343725,16.810208905255934
+Incidence,United States of America,Female,15 to 19,Breast cancer,Number,2019,56.7283402451883,67.78638099993886,47.485588700923
+Incidence,United States of America,Male,15 to 19,Breast cancer,Rate,2019,0.19073156773088465,0.23985243974281864,0.1518951436428334
+Incidence,United States of America,Female,15 to 19,Breast cancer,Rate,2019,0.536704750757861,0.641324469605568,0.4492594166895422
+Incidence,United States of America,Male,20 to 24,Breast cancer,Number,2019,17.11055278262966,21.32620534805837,13.681473685055755
+Incidence,United States of America,Female,20 to 24,Breast cancer,Number,2019,175.81206970915682,222.37592076688196,137.07348185994204
+Incidence,United States of America,Male,20 to 24,Breast cancer,Rate,2019,0.15526992665899625,0.1935249189417954,0.1241527052137187
+Incidence,United States of America,Female,20 to 24,Breast cancer,Rate,2019,1.6609899039591898,2.1009033104976984,1.2950059108372967
+Incidence,United States of America,Male,25 to 29,Breast cancer,Number,2019,14.857664834919905,17.924197091479904,12.061511527218393
+Incidence,United States of America,Female,25 to 29,Breast cancer,Number,2019,984.5295227357948,1283.709235271857,752.2320039111779
+Incidence,United States of America,Male,25 to 29,Breast cancer,Rate,2019,0.12818922597289145,0.15464670773445585,0.10406452453438782
+Incidence,United States of America,Female,25 to 29,Breast cancer,Rate,2019,8.692096719905601,11.333458850693495,6.641216116745145
+Incidence,United States of America,Male,30 to 34,Breast cancer,Number,2019,14.156221030824177,17.598049029036495,11.471527319895195
+Incidence,United States of America,Female,30 to 34,Breast cancer,Number,2019,3043.1583280052205,3911.3906012048315,2353.7000411425374
+Incidence,United States of America,Male,30 to 34,Breast cancer,Rate,2019,0.12769201556747256,0.15873800964818963,0.10347552796224331
+Incidence,United States of America,Female,30 to 34,Breast cancer,Rate,2019,27.60976096682514,35.48699998726014,21.35449047310971
+Incidence,United States of America,Male,35 to 39,Breast cancer,Number,2019,34.37671154512398,44.17583051396596,26.26036479418451
+Incidence,United States of America,Female,35 to 39,Breast cancer,Number,2019,6017.839048882442,7676.065760194992,4713.711458866997
+Incidence,United States of America,Male,35 to 39,Breast cancer,Rate,2019,0.3180631547049213,0.4087274024607772,0.24296839618230132
+Incidence,United States of America,Female,35 to 39,Breast cancer,Rate,2019,55.0482215283429,70.21686106939222,43.11870598410014
+Incidence,United States of America,Male,40 to 44,Breast cancer,Number,2019,59.856208977617165,77.49177044476374,45.40573145731344
+Incidence,United States of America,Female,40 to 44,Breast cancer,Number,2019,11460.603993926321,14521.703106573501,8900.283913431835
+Incidence,United States of America,Male,40 to 44,Breast cancer,Rate,2019,0.6066211221302664,0.7853511865517908,0.4601707364741551
+Incidence,United States of America,Female,40 to 44,Breast cancer,Rate,2019,114.14317275483042,144.6305331958435,88.64337733301663
+Incidence,United States of America,Male,45 to 49,Breast cancer,Number,2019,146.32461319739545,193.6908823995656,110.3687414754346
+Incidence,United States of America,Female,45 to 49,Breast cancer,Number,2019,16869.10153305827,21247.15924016152,13279.848062107134
+Incidence,United States of America,Male,45 to 49,Breast cancer,Rate,2019,1.4354378096776006,1.900098759263988,1.0827123411332629
+Incidence,United States of America,Female,45 to 49,Breast cancer,Rate,2019,161.4708918309271,203.3776217814145,127.11458910632909
+Incidence,United States of America,Male,50 to 54,Breast cancer,Number,2019,215.61959402331686,279.662669053735,160.09151966104736
+Incidence,United States of America,Female,50 to 54,Breast cancer,Number,2019,21899.166149801797,27745.676644342966,17411.040216431218
+Incidence,United States of America,Male,50 to 54,Breast cancer,Rate,2019,2.0984854787737834,2.7217751365440286,1.5580667926088678
+Incidence,United States of America,Female,50 to 54,Breast cancer,Rate,2019,207.41281705639963,262.7866702582743,164.9045846983059
+Incidence,United States of America,Male,55 to 59,Breast cancer,Number,2019,318.6491592395385,417.6678751202927,240.38704641090908
+Incidence,United States of America,Female,55 to 59,Breast cancer,Number,2019,29108.348874414256,36575.47275399016,23194.164491272382
+Incidence,United States of America,Male,55 to 59,Breast cancer,Rate,2019,2.9418712358155683,3.8560437782825816,2.2193303098198367
+Incidence,United States of America,Female,55 to 59,Breast cancer,Rate,2019,255.48943217616713,321.02977760121604,203.5795276895466
+Incidence,United States of America,Male,60 to 64,Breast cancer,Number,2019,489.147285677601,629.191522783676,376.2654077913364
+Incidence,United States of America,Female,60 to 64,Breast cancer,Number,2019,36111.52804154709,44302.053889875344,29271.08334452437
+Incidence,United States of America,Male,60 to 64,Breast cancer,Rate,2019,4.911291027672525,6.317407396535788,3.7778987544604816
+Incidence,United States of America,Female,60 to 64,Breast cancer,Rate,2019,335.7944047961565,411.9565862757826,272.1863776604717
+Incidence,United States of America,Male,65 to 69,Breast cancer,Number,2019,521.4577554010342,673.1178725212384,402.433352192839
+Incidence,United States of America,Female,65 to 69,Breast cancer,Number,2019,36060.649283965795,43687.907275272555,29853.23163630322
+Incidence,United States of America,Male,65 to 69,Breast cancer,Rate,2019,6.300132448834505,8.132455039047425,4.862107034333927
+Incidence,United States of America,Female,65 to 69,Breast cancer,Rate,2019,389.2816985891567,471.6194269825785,322.2714219103934
+Incidence,United States of America,Male,70 to 74,Breast cancer,Number,2019,452.2148550270886,581.0484351650931,348.02130673413217
+Incidence,United States of America,Female,70 to 74,Breast cancer,Number,2019,31169.082840095547,37136.14017937195,26117.048121418968
+Incidence,United States of America,Male,70 to 74,Breast cancer,Rate,2019,7.060217774537263,9.071635847906665,5.433492925779315
+Incidence,United States of America,Female,70 to 74,Breast cancer,Rate,2019,421.50520121576557,502.19880767704564,353.1856128092214
+Incidence,United States of America,Male,75 to 79,Breast cancer,Number,2019,273.4732319742257,346.9286937664661,214.51321777836657
+Incidence,United States of America,Female,75 to 79,Breast cancer,Number,2019,23118.67035508158,27532.078553485982,19257.88939629737
+Incidence,United States of America,Male,75 to 79,Breast cancer,Rate,2019,6.473849175481394,8.212738123863437,5.078106577448222
+Incidence,United States of America,Female,75 to 79,Breast cancer,Rate,2019,442.9138418385928,527.4671293215631,368.9479389259915
+Incidence,United States of America,Male,All Ages,Breast cancer,Number,2019,2955.592912111576,3634.350219605365,2375.484067528173
+Incidence,United States of America,Female,All Ages,Breast cancer,Number,2019,251530.8920846445,305346.1344675298,207354.5509513897
+Incidence,United States of America,Male,All Ages,Breast cancer,Rate,2019,1.8324817947727992,2.2533145840092406,1.472811526134112
+Incidence,United States of America,Female,All Ages,Breast cancer,Rate,2019,150.8977207989447,183.1824129594903,124.39557175873237
+Incidence,United States of America,Male,80 to 84,Breast cancer,Number,2019,219.96608097394545,276.1708714687155,173.55015507154556
+Incidence,United States of America,Female,80 to 84,Breast cancer,Number,2019,18274.416107721634,21980.654819738727,14783.730051278844
+Incidence,United States of America,Male,80 to 84,Breast cancer,Rate,2019,8.516054642980919,10.692040435569783,6.719047761105298
+Incidence,United States of America,Female,80 to 84,Breast cancer,Rate,2019,521.3608560140052,627.0981762161545,421.7731559345381
+Incidence,United States of America,Male,85 to 89,Breast cancer,Number,2019,109.44184299039125,139.81047360076536,83.95810324040988
+Incidence,United States of America,Female,85 to 89,Breast cancer,Number,2019,10435.444123262649,12591.584164938875,8100.570440040118
+Incidence,United States of America,Male,85 to 89,Breast cancer,Rate,2019,7.4666123560910185,9.538496256775067,5.727997573138902
+Incidence,United States of America,Female,85 to 89,Breast cancer,Rate,2019,443.640160668132,535.3037547819557,344.3780953713098
+Incidence,United States of America,Male,90 to 94,Breast cancer,Number,2019,31.196198707562278,39.17717224674358,23.71018183008048
+Incidence,United States of America,Female,90 to 94,Breast cancer,Number,2019,4112.13221150211,4998.881260792496,3040.4871536014543
+Incidence,United States of America,Male,90 to 94,Breast cancer,Rate,2019,4.6687166969957845,5.863121975983345,3.5483849438383315
+Incidence,United States of America,Female,90 to 94,Breast cancer,Rate,2019,307.20878398293524,373.4559480134449,227.14842644430362
+Incidence,United States of America,Male,95 plus,Breast cancer,Number,2019,16.636706581007907,21.739195717455313,11.025626403797556
+Incidence,United States of America,Female,95 plus,Breast cancer,Number,2019,2633.6812606896365,3219.664525970633,1819.5080648636485
+Incidence,United States of America,Male,95 plus,Breast cancer,Rate,2019,7.303332050153588,9.54326891892772,4.840129282546734
+Incidence,United States of America,Female,95 plus,Breast cancer,Rate,2019,461.13754264146036,563.7387522160541,318.58201308226484
+Incidence,United States of America,Male,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Female,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,20 to 24,Prostate cancer,Number,2019,94.28651576928043,143.80955331713048,72.61434603031564
+Incidence,United States of America,Female,20 to 24,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,20 to 24,Prostate cancer,Rate,2019,0.8556041744770866,1.305001602232406,0.6589397973140935
+Incidence,United States of America,Female,20 to 24,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,25 to 29,Prostate cancer,Number,2019,129.60706085401551,195.67955465923316,100.15936345246675
+Incidence,United States of America,Female,25 to 29,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,25 to 29,Prostate cancer,Rate,2019,1.11822611400207,1.6882875558972334,0.8641567445197009
+Incidence,United States of America,Female,25 to 29,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,30 to 34,Prostate cancer,Number,2019,149.37516140058125,216.78125467861688,112.8467134734342
+Incidence,United States of America,Female,30 to 34,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,30 to 34,Prostate cancer,Rate,2019,1.3473945760965735,1.955411354971375,1.0179004878640936
+Incidence,United States of America,Female,30 to 34,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,35 to 39,Prostate cancer,Number,2019,203.085713642262,277.3795029405812,153.24951645228717
+Incidence,United States of America,Female,35 to 39,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,35 to 39,Prostate cancer,Rate,2019,1.879007032763149,2.566394392900504,1.4179083009681284
+Incidence,United States of America,Female,35 to 39,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,40 to 44,Prostate cancer,Number,2019,521.9199649442314,701.8148218263543,387.02260377209575
+Incidence,United States of America,Female,40 to 44,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,40 to 44,Prostate cancer,Rate,2019,5.2894708870562175,7.112640476498556,3.9223347118057417
+Incidence,United States of America,Female,40 to 44,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,45 to 49,Prostate cancer,Number,2019,2807.395257076555,3982.3292147901125,2063.976568191164
+Incidence,United States of America,Female,45 to 49,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,45 to 49,Prostate cancer,Rate,2019,27.540419965306185,39.066468727184635,20.247516392019758
+Incidence,United States of America,Female,45 to 49,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,50 to 54,Prostate cancer,Number,2019,11108.800210437936,15103.331551936535,8231.61987622132
+Incidence,United States of America,Female,50 to 54,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,50 to 54,Prostate cancer,Rate,2019,108.11473805892734,146.99091743683258,80.11301039351787
+Incidence,United States of America,Female,50 to 54,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,55 to 59,Prostate cancer,Number,2019,28966.93682892186,41114.46971341273,21285.626344650052
+Incidence,United States of America,Female,55 to 59,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,55 to 59,Prostate cancer,Rate,2019,267.43205113129324,379.58197069892407,196.51572917715117
+Incidence,United States of America,Female,55 to 59,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,60 to 64,Prostate cancer,Number,2019,52601.23712294641,73665.12180953291,38790.819240517914
+Incidence,United States of America,Female,60 to 64,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,60 to 64,Prostate cancer,Rate,2019,528.1435499913508,739.6358160188596,389.47983167914435
+Incidence,United States of America,Female,60 to 64,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,65 to 69,Prostate cancer,Number,2019,64534.91582056525,100891.1929310571,48809.73915385431
+Incidence,United States of America,Female,65 to 69,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,65 to 69,Prostate cancer,Rate,2019,779.6959831027185,1218.9441461039098,589.7080219390973
+Incidence,United States of America,Female,65 to 69,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,70 to 74,Prostate cancer,Number,2019,59067.65672552678,92888.28671095936,44638.541258636345
+Incidence,United States of America,Female,70 to 74,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,70 to 74,Prostate cancer,Rate,2019,922.1955344409209,1450.2211185515882,696.9205432332838
+Incidence,United States of America,Female,70 to 74,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,75 to 79,Prostate cancer,Number,2019,43564.7141894428,68417.53807740517,34080.70225793621
+Incidence,United States of America,Female,75 to 79,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,75 to 79,Prostate cancer,Rate,2019,1031.2943135216528,1619.6277027677102,806.7821651852252
+Incidence,United States of America,Female,75 to 79,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,All Ages,Prostate cancer,Number,2019,308584.2935427376,460979.3119870674,240777.8096367351
+Incidence,United States of America,Female,All Ages,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,All Ages,Prostate cancer,Rate,2019,191.32374345352505,285.80938650975554,149.2833979052157
+Incidence,United States of America,Female,All Ages,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,80 to 84,Prostate cancer,Number,2019,24796.456995286524,38923.73473815184,19488.270171384967
+Incidence,United States of America,Female,80 to 84,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,80 to 84,Prostate cancer,Rate,2019,960.0024776056223,1506.944391022989,754.4943881431773
+Incidence,United States of America,Female,80 to 84,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,85 to 89,Prostate cancer,Number,2019,13018.703367790315,19233.653904290568,10296.731971386733
+Incidence,United States of America,Female,85 to 89,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,85 to 89,Prostate cancer,Rate,2019,888.1942113745413,1312.20595313954,702.4891400235616
+Incidence,United States of America,Female,85 to 89,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,90 to 94,Prostate cancer,Number,2019,5220.799067674,6906.666913764053,3979.464787629509
+Incidence,United States of America,Female,90 to 94,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,90 to 94,Prostate cancer,Rate,2019,781.326981771052,1033.628213589433,595.5531272663977
+Incidence,United States of America,Female,90 to 94,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,95 plus,Prostate cancer,Number,2019,1798.4035404588599,2373.5145994283976,1194.7021355307106
+Incidence,United States of America,Female,95 plus,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,United States of America,Male,95 plus,Prostate cancer,Rate,2019,789.479465312969,1041.946923876245,524.4611578813915
+Incidence,United States of America,Female,95 plus,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,15 to 19,Breast cancer,Number,2019,0.027110055953108555,0.04764957995892908,0.014586414083960716
+Incidence,Estonia,Female,15 to 19,Breast cancer,Number,2019,0.1505649153856607,0.2533927797012371,0.08492092959593536
+Incidence,Estonia,Male,15 to 19,Breast cancer,Rate,2019,0.08611635575606202,0.1513611106693251,0.0463344238990979
+Incidence,Estonia,Female,15 to 19,Breast cancer,Rate,2019,0.5030106506890681,0.8465402890902813,0.2837057487380631
+Incidence,Estonia,Male,20 to 24,Breast cancer,Number,2019,0.0265121447580417,0.046366228728050504,0.013989980851389895
+Incidence,Estonia,Female,20 to 24,Breast cancer,Number,2019,0.3807432787085831,0.5994959364586353,0.23016246666466816
+Incidence,Estonia,Male,20 to 24,Breast cancer,Rate,2019,0.08122285912494046,0.14204801982272316,0.042859838546573645
+Incidence,Estonia,Female,20 to 24,Breast cancer,Rate,2019,1.22151717402289,1.9233289806847746,0.7384172526957472
+Incidence,Estonia,Male,25 to 29,Breast cancer,Number,2019,0.03208855143664261,0.05502078303547652,0.017002840181383677
+Incidence,Estonia,Female,25 to 29,Breast cancer,Number,2019,2.080035055161121,3.2533334003656065,1.2172160458230799
+Incidence,Estonia,Male,25 to 29,Breast cancer,Rate,2019,0.07039571175707882,0.12070433253622209,0.0373007500454996
+Incidence,Estonia,Female,25 to 29,Breast cancer,Rate,2019,5.021340152580924,7.853758806830807,2.938438845100988
+Incidence,Estonia,Male,30 to 34,Breast cancer,Number,2019,0.02922055752782468,0.0489009773613169,0.016854101760482364
+Incidence,Estonia,Female,30 to 34,Breast cancer,Number,2019,10.254225571213006,16.173578795085064,6.208848469700216
+Incidence,Estonia,Male,30 to 34,Breast cancer,Rate,2019,0.05700320066400505,0.09539558656739398,0.03287883004112752
+Incidence,Estonia,Female,30 to 34,Breast cancer,Rate,2019,21.74964827829626,34.30484806009575,13.169231502798247
+Incidence,Estonia,Male,35 to 39,Breast cancer,Number,2019,0.035240606443936756,0.07752302791513115,0.015916568167599333
+Incidence,Estonia,Female,35 to 39,Breast cancer,Number,2019,20.279031255741398,29.91879879087625,12.737559229587388
+Incidence,Estonia,Male,35 to 39,Breast cancer,Rate,2019,0.07470760220264643,0.16434335601579084,0.03374200285083067
+Incidence,Estonia,Female,35 to 39,Breast cancer,Rate,2019,45.56436098471374,67.2236721342665,28.619648516828192
+Incidence,Estonia,Male,40 to 44,Breast cancer,Number,2019,0.277756237072602,0.6218660829712428,0.10134108212628923
+Incidence,Estonia,Female,40 to 44,Breast cancer,Number,2019,41.45258225486967,60.877114436660655,27.288110907079247
+Incidence,Estonia,Male,40 to 44,Breast cancer,Rate,2019,0.6094312824249148,1.3644505284058166,0.2223547751563529
+Incidence,Estonia,Female,40 to 44,Breast cancer,Rate,2019,94.29706585893221,138.48433455942714,62.075476397333766
+Incidence,Estonia,Male,45 to 49,Breast cancer,Number,2019,0.35169048161314287,0.7332873902718947,0.1435711387432429
+Incidence,Estonia,Female,45 to 49,Breast cancer,Number,2019,60.81264881452188,89.92291123431468,40.464438206885255
+Incidence,Estonia,Male,45 to 49,Breast cancer,Rate,2019,0.7815366396427784,1.6295321961994844,0.31904788781433985
+Incidence,Estonia,Female,45 to 49,Breast cancer,Rate,2019,135.4422192102967,200.27673342388118,90.12258825551618
+Incidence,Estonia,Male,50 to 54,Breast cancer,Number,2019,0.4299363822869516,0.947046927663213,0.17613723768003903
+Incidence,Estonia,Female,50 to 54,Breast cancer,Number,2019,76.32568578324684,108.59090566052217,50.3966943143374
+Incidence,Estonia,Male,50 to 54,Breast cancer,Rate,2019,1.0825935449420097,2.384694417326759,0.44351919119293837
+Incidence,Estonia,Female,50 to 54,Breast cancer,Rate,2019,181.62029669894372,258.39679398203333,119.92113113807076
+Incidence,Estonia,Male,55 to 59,Breast cancer,Number,2019,0.4016893191520387,0.7516747255363779,0.19073666606132703
+Incidence,Estonia,Female,55 to 59,Breast cancer,Number,2019,92.19053594082416,131.349279854531,61.78383594443982
+Incidence,Estonia,Male,55 to 59,Breast cancer,Rate,2019,0.976781636422647,1.8278356766291453,0.46381136843388576
+Incidence,Estonia,Female,55 to 59,Breast cancer,Rate,2019,198.5964577048787,282.95205614099655,133.09447479360662
+Incidence,Estonia,Male,60 to 64,Breast cancer,Number,2019,1.1282917881939156,2.237195455548397,0.5102173920138559
+Incidence,Estonia,Female,60 to 64,Breast cancer,Number,2019,101.61674841238093,142.894046498916,69.47023310930422
+Incidence,Estonia,Male,60 to 64,Breast cancer,Rate,2019,2.998966926009783,5.946400787821681,1.3561430648838013
+Incidence,Estonia,Female,60 to 64,Breast cancer,Rate,2019,216.71617956904916,304.7475177490927,148.15789472147043
+Incidence,Estonia,Male,65 to 69,Breast cancer,Number,2019,1.194690904819631,2.5031247853852956,0.5105024507230776
+Incidence,Estonia,Female,65 to 69,Breast cancer,Number,2019,106.66727041152546,147.76810099634025,72.96729436106692
+Incidence,Estonia,Male,65 to 69,Breast cancer,Rate,2019,3.764729448742231,7.887887616286264,1.608703642204768
+Incidence,Estonia,Female,65 to 69,Breast cancer,Rate,2019,236.17090598739796,327.1718321252945,161.55613573139976
+Incidence,Estonia,Male,70 to 74,Breast cancer,Number,2019,0.7330390685826796,1.4039893964069823,0.3365920529360212
+Incidence,Estonia,Female,70 to 74,Breast cancer,Number,2019,91.92049971586684,126.60714678637589,64.05440670832813
+Incidence,Estonia,Male,70 to 74,Breast cancer,Rate,2019,3.306440625906942,6.332824234864115,1.5182296358867997
+Incidence,Estonia,Female,70 to 74,Breast cancer,Rate,2019,253.93231046891538,349.754901297518,176.95164344666512
+Incidence,Estonia,Male,75 to 79,Breast cancer,Number,2019,0.5376840355917208,1.097497430153429,0.23315801202376119
+Incidence,Estonia,Female,75 to 79,Breast cancer,Number,2019,78.08650820927733,108.34370195681343,55.487598722161046
+Incidence,Estonia,Male,75 to 79,Breast cancer,Rate,2019,3.1184085768477976,6.365160898802715,1.3522475958497178
+Incidence,Estonia,Female,75 to 79,Breast cancer,Rate,2019,228.17121894522532,316.58368529260554,162.13649870023025
+Incidence,Estonia,Male,All Ages,Breast cancer,Number,2019,6.482907205511206,9.035036729630594,4.514188081360634
+Incidence,Estonia,Female,All Ages,Breast cancer,Number,2019,817.0912006044196,1038.3133268032643,629.3315874426704
+Incidence,Estonia,Male,All Ages,Breast cancer,Rate,2019,1.0483100002419141,1.4609987550296704,0.729960858400109
+Incidence,Estonia,Female,All Ages,Breast cancer,Rate,2019,117.74564025225641,149.62450624418022,90.68883698611859
+Incidence,Estonia,Male,80 to 84,Breast cancer,Number,2019,0.5869243245512148,1.2364146557518214,0.22026794667158928
+Incidence,Estonia,Female,80 to 84,Breast cancer,Number,2019,72.76970165716601,101.9769491149216,49.60357158980364
+Incidence,Estonia,Male,80 to 84,Breast cancer,Rate,2019,5.0599784149820195,10.659349439734669,1.8989689284438525
+Incidence,Estonia,Female,80 to 84,Breast cancer,Rate,2019,253.75748089431463,355.6069782806637,172.97415110056082
+Incidence,Estonia,Male,85 to 89,Breast cancer,Number,2019,0.45267930204275275,0.9309992471395034,0.1850431130988447
+Incidence,Estonia,Female,85 to 89,Breast cancer,Number,2019,42.68365148746966,58.629233803614355,30.098070683825703
+Incidence,Estonia,Male,85 to 89,Breast cancer,Rate,2019,7.898604524916936,16.244601493743225,3.2287369089590356
+Incidence,Estonia,Female,85 to 89,Breast cancer,Rate,2019,243.9987454745492,335.1507895339153,172.05396520992758
+Incidence,Estonia,Male,90 to 94,Breast cancer,Number,2019,0.21152097201036532,0.4024056358226075,0.09373785883909647
+Incidence,Estonia,Female,90 to 94,Breast cancer,Number,2019,14.930869761638828,20.179929857594168,10.367749183797924
+Incidence,Estonia,Male,90 to 94,Breast cancer,Rate,2019,11.853411019298852,22.550385205557372,5.252970229516428
+Incidence,Estonia,Female,90 to 94,Breast cancer,Rate,2019,200.34082866561667,270.77216094078943,139.11336017516535
+Incidence,Estonia,Male,95 plus,Breast cancer,Number,2019,0.02683247347463714,0.05114389991738972,0.011808000779597915
+Incidence,Estonia,Female,95 plus,Breast cancer,Number,2019,4.489898079422192,6.621935519297315,2.759170892589219
+Incidence,Estonia,Male,95 plus,Breast cancer,Rate,2019,10.045160740243647,19.146527659431925,4.420511808726846
+Incidence,Estonia,Female,95 plus,Breast cancer,Rate,2019,297.8616848591392,439.30192532573244,183.0445316002996
+Incidence,Estonia,Male,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Female,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,20 to 24,Prostate cancer,Number,2019,0.14434749109049905,0.3359093564345509,0.07513608823128776
+Incidence,Estonia,Female,20 to 24,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,20 to 24,Prostate cancer,Rate,2019,0.4422243481574974,1.0290951028455464,0.23018763533862652
+Incidence,Estonia,Female,20 to 24,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,25 to 29,Prostate cancer,Number,2019,0.2633723528385883,0.5704409110832922,0.1404306348440702
+Incidence,Estonia,Female,25 to 29,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,25 to 29,Prostate cancer,Rate,2019,0.5777850169340262,1.251430561780024,0.30807605983291736
+Incidence,Estonia,Female,25 to 29,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,30 to 34,Prostate cancer,Number,2019,0.46150846165216375,0.8950841069501856,0.27220122262481034
+Incidence,Estonia,Female,30 to 34,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,30 to 34,Prostate cancer,Rate,2019,0.900306553789873,1.7461220208087371,0.5310076955066465
+Incidence,Estonia,Female,30 to 34,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,35 to 39,Prostate cancer,Number,2019,0.5604593773943225,1.1064834111544228,0.31191046018615326
+Incidence,Estonia,Female,35 to 39,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,35 to 39,Prostate cancer,Rate,2019,1.1881343836613198,2.3456668560984495,0.6612281947957428
+Incidence,Estonia,Female,35 to 39,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,40 to 44,Prostate cancer,Number,2019,2.2203265299363113,3.7075080069009556,1.1604195770076395
+Incidence,Estonia,Female,40 to 44,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,40 to 44,Prostate cancer,Rate,2019,4.871668981415004,8.134727713263526,2.5461030089556225
+Incidence,Estonia,Female,40 to 44,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,45 to 49,Prostate cancer,Number,2019,8.42894536688182,14.52595119066073,4.51323322859939
+Incidence,Estonia,Female,45 to 49,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,45 to 49,Prostate cancer,Rate,2019,18.73104329565456,32.27998389120961,10.029435869929666
+Incidence,Estonia,Female,45 to 49,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,50 to 54,Prostate cancer,Number,2019,23.84796493881409,39.8117868850484,13.269442614083914
+Incidence,Estonia,Female,50 to 54,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,50 to 54,Prostate cancer,Rate,2019,60.049937540601235,100.24735116646679,33.412880395401835
+Incidence,Estonia,Female,50 to 54,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,55 to 59,Prostate cancer,Number,2019,79.12440425517754,131.17060651082085,39.145154452881265
+Incidence,Estonia,Female,55 to 59,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,55 to 59,Prostate cancer,Rate,2019,192.4055766095346,318.96551282135437,95.1886599952892
+Incidence,Estonia,Female,55 to 59,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,60 to 64,Prostate cancer,Number,2019,164.87247102034644,267.39258343743546,85.92380108295846
+Incidence,Estonia,Female,60 to 64,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,60 to 64,Prostate cancer,Rate,2019,438.2262574036801,710.72174979914,228.3829770819434
+Incidence,Estonia,Female,60 to 64,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,65 to 69,Prostate cancer,Number,2019,250.08388019382667,395.6612740090698,134.47821010593034
+Incidence,Estonia,Female,65 to 69,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,65 to 69,Prostate cancer,Rate,2019,788.0683987994087,1246.8142546156746,423.7699272318274
+Incidence,Estonia,Female,65 to 69,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,70 to 74,Prostate cancer,Number,2019,225.8340982016751,335.0919896669231,116.57481416363687
+Incidence,Estonia,Female,70 to 74,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,70 to 74,Prostate cancer,Rate,2019,1018.6456206936195,1511.4634615490984,525.8214985095658
+Incidence,Estonia,Female,70 to 74,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,75 to 79,Prostate cancer,Number,2019,211.21570186144376,307.8590047435051,107.85433112322956
+Incidence,Estonia,Female,75 to 79,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,75 to 79,Prostate cancer,Rate,2019,1224.9886785736571,1785.4912872677362,625.52326080265
+Incidence,Estonia,Female,75 to 79,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,All Ages,Prostate cancer,Number,2019,1195.444007313174,1604.2246449938532,650.5045275911099
+Incidence,Estonia,Female,All Ages,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,All Ages,Prostate cancer,Rate,2019,193.3077040699132,259.40904052304404,105.18898078576296
+Incidence,Estonia,Female,All Ages,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,80 to 84,Prostate cancer,Number,2019,150.3118493863469,221.31874309811292,59.5089529815231
+Incidence,Estonia,Female,80 to 84,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,80 to 84,Prostate cancer,Rate,2019,1295.8650401693758,1908.028030297938,513.037209379472
+Incidence,Estonia,Female,80 to 84,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,85 to 89,Prostate cancer,Number,2019,59.53962855623104,87.63591948739139,22.00887032081892
+Incidence,Estonia,Female,85 to 89,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,85 to 89,Prostate cancer,Rate,2019,1038.8811182749973,1529.121095408493,384.0232189098682
+Incidence,Estonia,Female,85 to 89,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,90 to 94,Prostate cancer,Number,2019,16.641050651471073,24.94794712548308,6.00059722613116
+Incidence,Estonia,Female,90 to 94,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,90 to 94,Prostate cancer,Rate,2019,932.546835853191,1398.0565073783557,336.26710678651625
+Incidence,Estonia,Female,90 to 94,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,95 plus,Prostate cancer,Number,2019,1.8939986680477412,3.0416061070671745,0.9868141568227129
+Incidence,Estonia,Female,95 plus,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Estonia,Male,95 plus,Prostate cancer,Rate,2019,709.0483506982843,1138.6733423169692,369.42948384545844
+Incidence,Estonia,Female,95 plus,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Female,1 to 4,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Female,1 to 4,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Female,5 to 9,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Female,5 to 9,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Female,10 to 14,Breast cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Female,10 to 14,Breast cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,15 to 19,Breast cancer,Number,2019,0.138330743691513,0.23678331549984288,0.07612854685096303
+Incidence,Finland,Female,15 to 19,Breast cancer,Number,2019,0.5405562780245876,0.8994423613664507,0.29508374828221595
+Incidence,Finland,Male,15 to 19,Breast cancer,Rate,2019,0.09088035427932745,0.1555615984256415,0.05001483490911337
+Incidence,Finland,Female,15 to 19,Breast cancer,Rate,2019,0.37463637691983503,0.6233649320325181,0.20450989256542415
+Incidence,Finland,Male,20 to 24,Breast cancer,Number,2019,0.13168928671693764,0.22712506708812386,0.07381026174254995
+Incidence,Finland,Female,20 to 24,Breast cancer,Number,2019,2.474742599865624,3.8898578172800904,1.5306240769828665
+Incidence,Finland,Male,20 to 24,Breast cancer,Rate,2019,0.08197713087288307,0.14138630266269583,0.04594719614236117
+Incidence,Finland,Female,20 to 24,Breast cancer,Rate,2019,1.6255650050473915,2.5551007780461243,1.0054091829838852
+Incidence,Finland,Male,25 to 29,Breast cancer,Number,2019,0.13190167829800004,0.22275360198750224,0.0745309084374872
+Incidence,Finland,Female,25 to 29,Breast cancer,Number,2019,12.486919363483976,19.404686758232387,7.531872557049869
+Incidence,Finland,Male,25 to 29,Breast cancer,Rate,2019,0.07244100729542785,0.12233730089622484,0.04093271709293132
+Incidence,Finland,Female,25 to 29,Breast cancer,Rate,2019,7.234754939006434,11.24281732566781,4.363866746944376
+Incidence,Finland,Male,30 to 34,Breast cancer,Number,2019,0.10259601936045751,0.17957294495311013,0.05796454132019405
+Incidence,Finland,Female,30 to 34,Breast cancer,Number,2019,45.57539667936387,70.97756047897744,28.74515306253172
+Incidence,Finland,Male,30 to 34,Breast cancer,Rate,2019,0.05712286034613935,0.09998165933185324,0.03227318583607378
+Incidence,Finland,Female,30 to 34,Breast cancer,Rate,2019,26.962766618991104,41.99088845773064,17.005860835505473
+Incidence,Finland,Male,35 to 39,Breast cancer,Number,2019,0.19259775255770148,0.42381522787122056,0.0748465294517273
+Incidence,Finland,Female,35 to 39,Breast cancer,Number,2019,82.42964472323645,120.07986418950588,52.71994091298782
+Incidence,Finland,Male,35 to 39,Breast cancer,Rate,2019,0.1035626653281897,0.227891727822047,0.040246087909377184
+Incidence,Finland,Female,35 to 39,Breast cancer,Rate,2019,47.285821826269874,68.88389586115784,30.242830004583062
+Incidence,Finland,Male,40 to 44,Breast cancer,Number,2019,0.3397500756632704,0.7390390337551161,0.12685441972916728
+Incidence,Finland,Female,40 to 44,Breast cancer,Number,2019,153.297342986861,219.78764638732412,101.25793210192346
+Incidence,Finland,Male,40 to 44,Breast cancer,Rate,2019,0.19059802913096097,0.4145970622952325,0.07116467108868059
+Incidence,Finland,Female,40 to 44,Breast cancer,Rate,2019,90.83668794004888,130.23566787895558,60.00061710518639
+Incidence,Finland,Male,45 to 49,Breast cancer,Number,2019,0.7329140275327679,1.4505442852998884,0.2873504518855284
+Incidence,Finland,Female,45 to 49,Breast cancer,Number,2019,267.84824457552713,378.2252534040329,176.16922626543862
+Incidence,Finland,Male,45 to 49,Breast cancer,Rate,2019,0.4578819703405018,0.9062155320660348,0.179519815619434
+Incidence,Finland,Female,45 to 49,Breast cancer,Rate,2019,173.41559321074334,244.87805320616596,114.05895501280447
+Incidence,Finland,Male,50 to 54,Breast cancer,Number,2019,1.2267140184663528,2.540039788254192,0.5004419166146703
+Incidence,Finland,Female,50 to 54,Breast cancer,Number,2019,363.6169364750795,524.2990475529555,245.99191533131184
+Incidence,Finland,Male,50 to 54,Breast cancer,Rate,2019,0.6848463957440777,1.4180461524416392,0.2793852827257111
+Incidence,Finland,Female,50 to 54,Breast cancer,Rate,2019,205.5436668603897,296.3732927573082,139.05314968372937
+Incidence,Finland,Male,55 to 59,Breast cancer,Number,2019,1.76254469485945,3.4898937190797583,0.7997428673603533
+Incidence,Finland,Female,55 to 59,Breast cancer,Number,2019,460.9025420581821,658.0015082096683,313.1551355163066
+Incidence,Finland,Male,55 to 59,Breast cancer,Rate,2019,0.9588870689736949,1.898626439986504,0.4350885944920332
+Incidence,Finland,Female,55 to 59,Breast cancer,Rate,2019,248.63236810799813,354.9567604340791,168.93051312086635
+Incidence,Finland,Male,60 to 64,Breast cancer,Number,2019,2.4279635978629663,4.830329653811792,1.046421080414541
+Incidence,Finland,Female,60 to 64,Breast cancer,Number,2019,574.1668240181516,821.3930993266731,387.960462118138
+Incidence,Finland,Male,60 to 64,Breast cancer,Rate,2019,1.3782490018099607,2.741967395902819,0.5940075917215794
+Incidence,Finland,Female,60 to 64,Breast cancer,Rate,2019,312.7803859877342,447.45819491468217,211.34349463119577
+Incidence,Finland,Male,65 to 69,Breast cancer,Number,2019,2.6579422235591093,5.044042746391885,1.1453664155437433
+Incidence,Finland,Female,65 to 69,Breast cancer,Number,2019,640.1429241725101,899.1438505878845,438.2977078586594
+Incidence,Finland,Male,65 to 69,Breast cancer,Rate,2019,1.5553481917057121,2.9516227610026022,0.6702341260341536
+Incidence,Finland,Female,65 to 69,Breast cancer,Rate,2019,344.5922014101065,484.0137212466348,235.93789186884382
+Incidence,Finland,Male,70 to 74,Breast cancer,Number,2019,4.299178432085444,8.285450352531175,1.890831328978333
+Incidence,Finland,Female,70 to 74,Breast cancer,Number,2019,605.6949299055615,827.3662808270874,431.6576408904729
+Incidence,Finland,Male,70 to 74,Breast cancer,Rate,2019,2.627454102235075,5.063674574461212,1.155586494126695
+Incidence,Finland,Female,70 to 74,Breast cancer,Rate,2019,325.90507332033116,445.1793388096606,232.26117333626212
+Incidence,Finland,Male,75 to 79,Breast cancer,Number,2019,2.605944882657642,5.0720061083082335,1.1394899415735134
+Incidence,Finland,Female,75 to 79,Breast cancer,Number,2019,436.0417554253942,607.1861435972535,309.04765392710027
+Incidence,Finland,Male,75 to 79,Breast cancer,Rate,2019,2.7738100615128296,5.398725686374467,1.2128916025675285
+Incidence,Finland,Female,75 to 79,Breast cancer,Rate,2019,368.7393949872269,513.4679155124776,261.34663369595296
+Incidence,Finland,Male,All Ages,Breast cancer,Number,2019,20.313285978660243,28.48729971938034,13.97782222918115
+Incidence,Finland,Female,All Ages,Breast cancer,Number,2019,4370.977249723232,5543.31905659897,3362.2137058305666
+Incidence,Finland,Male,All Ages,Breast cancer,Rate,2019,0.7440464278669332,1.0434487860824964,0.5119875095495104
+Incidence,Finland,Female,All Ages,Breast cancer,Rate,2019,155.88449409560508,197.69434553867168,119.9084215338559
+Incidence,Finland,Male,80 to 84,Breast cancer,Number,2019,2.2892217605045784,4.873608633231726,0.8710497923477747
+Incidence,Finland,Female,80 to 84,Breast cancer,Number,2019,394.47657328203354,538.5328118534404,269.9326444150516
+Incidence,Finland,Male,80 to 84,Breast cancer,Rate,2019,3.5226260135949596,7.4994484360130285,1.3403606022792836
+Incidence,Finland,Female,80 to 84,Breast cancer,Rate,2019,411.196530584231,561.3586175663294,281.37378590423737
+Incidence,Finland,Male,85 to 89,Breast cancer,Number,2019,0.8828595143917786,1.9417507546207466,0.33977672895075134
+Incidence,Finland,Female,85 to 89,Breast cancer,Number,2019,212.07580741779265,296.08831028922174,147.95518315357646
+Incidence,Finland,Male,85 to 89,Breast cancer,Rate,2019,2.586889773647062,5.689574715135054,0.9955886878010106
+Incidence,Finland,Female,85 to 89,Breast cancer,Rate,2019,335.9919839438427,469.093104055344,234.4055935838633
+Incidence,Finland,Male,90 to 94,Breast cancer,Number,2019,0.31965194226423455,0.6165555563450805,0.14218941265640023
+Incidence,Finland,Female,90 to 94,Breast cancer,Number,2019,80.5817444185757,110.12743418216225,54.53788370396524
+Incidence,Finland,Male,90 to 94,Breast cancer,Rate,2019,2.3021843490577196,4.440531604744256,1.0240708631411328
+Incidence,Finland,Female,90 to 94,Breast cancer,Rate,2019,236.7440017535763,323.5473451121835,160.22880775799544
+Incidence,Finland,Male,95 plus,Breast cancer,Number,2019,0.07148532818804007,0.13836531336014476,0.03103699900964116
+Incidence,Finland,Female,95 plus,Breast cancer,Number,2019,38.62436534358809,55.85621357874304,23.16201839938933
+Incidence,Finland,Male,95 plus,Breast cancer,Rate,2019,1.9184018942304735,3.713213409997389,0.8329182952717642
+Incidence,Finland,Female,95 plus,Breast cancer,Rate,2019,322.20038283413885,465.9466437478704,193.21511509919182
+Incidence,Finland,Male,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Female,1 to 4,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Female,1 to 4,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Female,5 to 9,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Female,5 to 9,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Female,10 to 14,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Female,10 to 14,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Female,15 to 19,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Female,15 to 19,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,20 to 24,Prostate cancer,Number,2019,1.100665100379245,2.0147577522054365,0.6456593137534302
+Incidence,Finland,Female,20 to 24,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,20 to 24,Prostate cancer,Rate,2019,0.6851686210052135,1.2541951137203455,0.4019256188746078
+Incidence,Finland,Female,20 to 24,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,25 to 29,Prostate cancer,Number,2019,1.6479370819613075,2.799171038148945,1.0171996085385813
+Incidence,Finland,Female,25 to 29,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,25 to 29,Prostate cancer,Rate,2019,0.9050546112617222,1.537317585433427,0.5586506950773726
+Incidence,Finland,Female,25 to 29,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,30 to 34,Prostate cancer,Number,2019,1.9015953401206385,3.14537898523983,1.2078661862295026
+Incidence,Finland,Female,30 to 34,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,30 to 34,Prostate cancer,Rate,2019,1.05876003499651,1.7512672092888804,0.672509244539019
+Incidence,Finland,Female,30 to 34,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,35 to 39,Prostate cancer,Number,2019,2.593693300882919,4.137827042222339,1.5738831631547257
+Incidence,Finland,Female,35 to 39,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,35 to 39,Prostate cancer,Rate,2019,1.3946673194061854,2.2249709120111407,0.8463002975210348
+Incidence,Finland,Female,35 to 39,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,40 to 44,Prostate cancer,Number,2019,5.355543851463008,9.067085054936713,3.030040932446698
+Incidence,Finland,Female,40 to 44,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,40 to 44,Prostate cancer,Rate,2019,3.0044323051894377,5.08658765729469,1.6998372370720687
+Incidence,Finland,Female,40 to 44,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,45 to 49,Prostate cancer,Number,2019,25.75188285619892,42.212997015973414,14.268766667105721
+Incidence,Finland,Female,45 to 49,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,45 to 49,Prostate cancer,Rate,2019,16.08827559470742,26.372220371764495,8.914293833148307
+Incidence,Finland,Female,45 to 49,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,50 to 54,Prostate cancer,Number,2019,111.16953885662565,181.47965954070145,65.17593709293484
+Incidence,Finland,Female,50 to 54,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,50 to 54,Prostate cancer,Rate,2019,62.06341238170135,101.31594558012358,36.38623585890281
+Incidence,Finland,Female,50 to 54,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,55 to 59,Prostate cancer,Number,2019,319.2549363765406,547.9236333731478,180.82621724818225
+Incidence,Finland,Female,55 to 59,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,55 to 59,Prostate cancer,Rate,2019,173.68605238228926,298.08996524113206,98.37590045598066
+Incidence,Finland,Female,55 to 59,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,60 to 64,Prostate cancer,Number,2019,675.2091980029968,1087.4871210480578,392.2783768251598
+Incidence,Finland,Female,60 to 64,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,60 to 64,Prostate cancer,Rate,2019,383.28680214960036,617.3189912669634,222.67931931384032
+Incidence,Finland,Female,60 to 64,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,65 to 69,Prostate cancer,Number,2019,1130.6914015178468,1741.6220483323223,719.9174471324629
+Incidence,Finland,Female,65 to 69,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,65 to 69,Prostate cancer,Rate,2019,661.6467472995358,1019.1450662464841,421.2741306601872
+Incidence,Finland,Female,65 to 69,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,70 to 74,Prostate cancer,Number,2019,1411.6580104942313,2341.601650636731,866.6252920577529
+Incidence,Finland,Female,70 to 74,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,70 to 74,Prostate cancer,Rate,2019,862.7384718309725,1431.0759508954532,529.6403056277144
+Incidence,Finland,Female,70 to 74,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,75 to 79,Prostate cancer,Number,2019,1039.0454221125503,1667.0454407792668,669.9833749592603
+Incidence,Finland,Female,75 to 79,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,75 to 79,Prostate cancer,Rate,2019,1105.9768245310493,1774.430245016088,713.1411868592728
+Incidence,Finland,Female,75 to 79,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,All Ages,Prostate cancer,Number,2019,6095.952895661925,8918.394106192634,4379.632512531063
+Incidence,Finland,Female,All Ages,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,All Ages,Prostate cancer,Rate,2019,223.2859804773689,326.6679395934835,160.41963519550382
+Incidence,Finland,Female,All Ages,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,80 to 84,Prostate cancer,Number,2019,792.2114947536737,1201.4332850353758,528.4264020179683
+Incidence,Finland,Female,80 to 84,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,80 to 84,Prostate cancer,Rate,2019,1219.045209090243,1848.750617559927,813.135984522789
+Incidence,Finland,Female,80 to 84,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,85 to 89,Prostate cancer,Number,2019,400.4659756967442,587.8668761652723,275.00819457732314
+Incidence,Finland,Female,85 to 89,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,85 to 89,Prostate cancer,Rate,2019,1173.4158383479585,1722.5241223859523,805.8087097937986
+Incidence,Finland,Female,85 to 89,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,90 to 94,Prostate cancer,Number,2019,139.5764692353538,203.1064298877859,93.6115256111498
+Incidence,Finland,Female,90 to 94,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,90 to 94,Prostate cancer,Rate,2019,1005.2520272338768,1462.8049520629104,674.2051608597976
+Incidence,Finland,Female,90 to 94,Prostate cancer,Rate,2019,0.0,0.0,0.0
+Incidence,Finland,Male,95 plus,Prostate cancer,Number,2019,38.31913108435595,58.56234265072407,21.377461626445857
+Incidence,Finland,Female,95 plus,Prostate cancer,Number,2019,0.0,0.0,0.0
+Incidence,Finland,Male,95 plus,Prostate cancer,Rate,2019,1028.343794745188,1571.5967446662614,573.6920276862394
+Incidence,Finland,Female,95 plus,Prostate cancer,Rate,2019,0.0,0.0,0.0
