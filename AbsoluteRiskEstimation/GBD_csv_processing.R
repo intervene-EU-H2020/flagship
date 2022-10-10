@@ -21,16 +21,16 @@ dat<-complete(dat_all,location,age,sex,cause,measure,fill=list(0))
 
 
 dat %>% filter(str_detect(metric,"Rate")|str_detect(metric,"Number")) %>% filter(str_detect(measure,"Deaths")) %>% filter(!is.na(val)) %>%
-  filter(cause %in% gbd_phenos) %>% filter(str_detect(sex,"Both")) %>% select(measure,location,sex,age,cause,metric,year,val,upper,lower) %>%
+  filter(cause %in% c(gbd_phenos,"All causes")) %>% filter(str_detect(sex,"Both")) %>% select(measure,location,sex,age,cause,metric,year,val,upper,lower) %>%
   fwrite(paste0(output_dir,"GBD_Mortality.csv"))
 
 dat %>% filter(str_detect(metric,"Rate")|str_detect(metric,"Number")) %>%filter(str_detect(measure,"Deaths")) %>%filter(!is.na(val)) %>%
-  filter(cause %in% gbd_phenos) %>% filter(!str_detect(sex,"Both")) %>% select(measure,location,sex,age,cause,metric,year,val,upper,lower) %>%
+  filter(cause %in% c(gbd_phenos,"All causes")) %>% filter(!str_detect(sex,"Both")) %>% select(measure,location,sex,age,cause,metric,year,val,upper,lower) %>%
   fwrite(paste0(output_dir,"Sex_Stratified_Mortality.csv"))
 
 dat %>% filter(str_detect(metric,"Rate")|str_detect(metric,"Number")) %>%filter(str_detect(measure,"Deaths")) %>%filter(!is.na(val)) %>%
   filter(cause %in% gbd_bcpc) %>% 
-  filter(str_detect(cause,"Breast cancer") & str_detect(sex,"Female") | str_detect(cause,"Prostate cancer") & str_detect(sex,"Male")) %>%
+  filter(str_detect(cause,"Breast cancer") & str_detect(sex,"Female") | str_detect(cause,"Prostate cancer") & str_detect(sex,"Male") | str_detect(cause,"All causes")) %>%
 select(measure,location,sex,age,cause,metric,year,val,upper,lower) %>%
   fwrite(paste0(output_dir,"BreastCancerProstateCancer_Mortality.csv"))
 
