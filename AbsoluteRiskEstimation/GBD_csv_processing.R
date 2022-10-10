@@ -1,7 +1,7 @@
 #prepare GBD stats
 
 gbd_phenos <- c("Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2", "Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer")
-gbd_bcpc <-c("Breast cancer","Prostate cancer")
+gbd_bcpc <-c("Breast cancer","Prostate cancer","All causes")
   
 path<-"/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/"
 output_dir<-"/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/"
@@ -47,7 +47,7 @@ dat %>% filter(str_detect(metric,"Rate")|str_detect(metric,"Number")) %>%filter(
 
 dat %>% filter(str_detect(metric,"Rate")|str_detect(metric,"Number")) %>%filter(str_detect(measure,"Prevalence")) %>%filter(!is.na(val)) %>%
   filter(cause %in% gbd_bcpc) %>% 
-  filter(str_detect(cause,"Breast cancer") & str_detect(sex,"Female") | str_detect(cause,"Prostate cancer") & str_detect(sex,"Male")) %>%
+  filter(str_detect(cause,"Breast cancer") & str_detect(sex,"Female") | str_detect(cause,"Prostate cancer") & str_detect(sex,"Male"))%>%
   select(measure,location,sex,age,cause,metric,year,val,upper,lower) %>%
   fwrite(paste0(output_dir,"BreastCancerProstateCancer_Prevalence.csv"))
 
