@@ -4261,8 +4261,8 @@ Prevalence,Global,Male,15-19 years,Diabetes mellitus type 1,Number,2019,638352.6
 Prevalence,Global,Male,15-19 years,Diabetes mellitus type 1,Rate,2019,200.87745759608,267.28389094105,141.697870947634
 Prevalence,Global,Male,15-19 years,Diabetes mellitus type 2,Number,2019,895067.616648552,1370799.40982454,495141.927175941
 Prevalence,Global,Male,15-19 years,Diabetes mellitus type 2,Rate,2019,281.660795578033,431.364564159715,155.811769455598
-Prevalence,Global,Male,15-19 years,Gout,Rate,2019,5.56659292676776,11.3035581738126,1.65401937597891
 Prevalence,Global,Male,15-19 years,Gout,Number,2019,17689.636406762,35920.6855661945,5256.1776576315
+Prevalence,Global,Male,15-19 years,Gout,Rate,2019,5.56659292676776,11.3035581738126,1.65401937597891
 Prevalence,Global,Male,15-19 years,Idiopathic epilepsy,Number,2019,1219028.57705623,1821768.02849259,797438.456897444
 Prevalence,Global,Male,15-19 years,Idiopathic epilepsy,Rate,2019,383.605162849762,573.275831590414,250.93875146021
 Prevalence,Global,Male,15-19 years,Interstitial lung disease and pulmonary sarcoidosis,Number,2019,16238.2181341935,26965.8027866419,8655.89991162334
@@ -5629,8 +5629,8 @@ Prevalence,Greater London,Male,15-19 years,Interstitial lung disease and pulmona
 Prevalence,Greater London,Male,15-19 years,Interstitial lung disease and pulmonary sarcoidosis,Rate,2019,2.15707268009808,4.27239165653802,0.933034769693355
 Prevalence,Greater London,Male,15-19 years,Ischemic heart disease,Number,2019,35.314455651048,48.9008343828631,24.4554113837605
 Prevalence,Greater London,Male,15-19 years,Ischemic heart disease,Rate,2019,14.2186126058609,19.6888783183796,9.84644996424668
-Prevalence,Greater London,Male,15-19 years,Major depressive disorder,Rate,2019,2327.31684572972,3266.0197067449,1602.75593315236
 Prevalence,Greater London,Male,15-19 years,Major depressive disorder,Number,2019,5780.30570300377,8111.74136931961,3980.72968789039
+Prevalence,Greater London,Male,15-19 years,Major depressive disorder,Rate,2019,2327.31684572972,3266.0197067449,1602.75593315236
 Prevalence,Greater London,Male,15-19 years,Malignant skin melanoma,Number,2019,27.4999339175272,48.2554480664162,14.7358392224818
 Prevalence,Greater London,Male,15-19 years,Malignant skin melanoma,Rate,2019,11.072262048261,19.4290272787555,5.93307147070527
 Prevalence,Greater London,Male,15-19 years,Osteoarthritis hip,Number,2019,0,0,0
@@ -9411,8 +9411,8 @@ Prevalence,Japan,Female,90-94 years,Osteoarthritis hip,Number,2019,39625.8179114
 Prevalence,Japan,Female,90-94 years,Osteoarthritis hip,Rate,2019,3039.93066513306,3985.76502303586,2201.16490343938
 Prevalence,Japan,Female,90-94 years,Osteoarthritis knee,Number,2019,443970.605514928,518820.968583026,375001.508743669
 Prevalence,Japan,Female,90-94 years,Osteoarthritis knee,Rate,2019,34059.6088423219,39801.8225297537,28768.5818485127
-Prevalence,Japan,Female,90-94 years,Rheumatoid arthritis,Rate,2019,598.52272744595,682.887335188565,528.436060793319
 Prevalence,Japan,Female,90-94 years,Rheumatoid arthritis,Number,2019,7801.80708911832,8901.50867867319,6888.21997259142
+Prevalence,Japan,Female,90-94 years,Rheumatoid arthritis,Rate,2019,598.52272744595,682.887335188565,528.436060793319
 Prevalence,Japan,Female,90-94 years,Total cancers,Number,2019,77749.1023694481,95109.7794976395,57083.2728281553
 Prevalence,Japan,Female,90-94 years,Total cancers,Rate,2019,5964.59310965804,7296.43324699831,4379.19519854595
 Prevalence,Japan,Female,90-94 years,"Tracheal, bronchus, and lung cancer",Number,2019,3596.12961223613,5414.35543813647,2096.67406432106
@@ -9445,8 +9445,8 @@ Prevalence,Japan,Male,90-94 years,Osteoarthritis hip,Number,2019,16461.506087560
 Prevalence,Japan,Male,90-94 years,Osteoarthritis hip,Rate,2019,2991.96322909966,3873.84678706009,2213.58603760502
 Prevalence,Japan,Male,90-94 years,Osteoarthritis knee,Number,2019,111651.188760091,133704.584028689,93049.2600623005
 Prevalence,Japan,Male,90-94 years,Osteoarthritis knee,Rate,2019,20293.1766679534,24301.4944591369,16912.1806425544
-Prevalence,Japan,Male,90-94 years,Rheumatoid arthritis,Rate,2019,278.423436843863,313.718858262235,247.044776840262
 Prevalence,Japan,Male,90-94 years,Rheumatoid arthritis,Number,2019,1531.86010307486,1726.0522605488,1359.21760612004
+Prevalence,Japan,Male,90-94 years,Rheumatoid arthritis,Rate,2019,278.423436843863,313.718858262235,247.044776840262
 Prevalence,Japan,Male,90-94 years,Total cancers,Number,2019,46361.2240985872,54486.8702971967,36560.8138713343
 Prevalence,Japan,Male,90-94 years,Total cancers,Rate,2019,8426.39045426354,9903.26836018518,6645.11558949336
 Prevalence,Japan,Male,90-94 years,"Tracheal, bronchus, and lung cancer",Number,2019,4598.6779847477,6410.58469717427,2906.28555894111
