@@ -5,11 +5,6 @@ library(dplyr)
 library(ggplot2)
 library(RColorBrewer)
 library(optparse)
-library(data.table)
-library(dplyr)
-library(ggplot2)
-library(RColorBrewer)
-library(optparse)
 
 options(warn = -1)
 
