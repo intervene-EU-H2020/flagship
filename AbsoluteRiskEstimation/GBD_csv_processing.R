@@ -3,8 +3,8 @@
 gbd_phenos <- c("Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2", "Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer")
 gbd_bcpc <-c("Breast cancer","Prostate cancer")
   
-path<-"/mnt/work/workbench/bwolford/hunt_flagship/GBD/"
-output_dir<-"/mnt/work/workbench/bwolford/hunt_flagship/GBD/"
+path<-"/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/"
+output_dir<-"/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/"
 
 dat1<-fread(paste0(path,"IHME-GBD_2019_DATA-da65912d-1.csv"))
 dat2<-fread(paste0(path,"IHME-GBD_2019_DATA-da65912d-2.csv"))
