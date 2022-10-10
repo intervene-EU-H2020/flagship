@@ -197,7 +197,11 @@ for(j in 1:length(gbd_phenos)){
     incidence[[paste0("mortandrisk",i)]] <- cumsum(incidence[[paste0("hazard",i)]] + incidence$mortality_rate)
     
     #Survival
-    incidence[[paste0("survival",i)]] <- exp(-5*incidence[[paste0("mortandrisk",i)]])
+    incidence[[paste0("survival",i)]] <- 1
+    
+    for(k in 2:nrow(incidence)){
+      incidence[[paste0("survival",i)]][k] <- exp(-5*incidence[[paste0("mortandrisk",i)]][k-1])
+    }
     
     #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
     incidence[[paste0("lifetimerisk",i)]] <- cumsum(incidence[[paste0("survival",i)]]*incidence[[paste0("risk",i)]])*100
@@ -390,7 +394,11 @@ for(j in 1:length(gbd_phenos)){
       incidence[[paste0("mortandrisk",i)]] <- cumsum(incidence[[paste0("hazard",i)]] + incidence$mortality_rate)
       
       #Survival
-      incidence[[paste0("survival",i)]] <- exp(-5*incidence[[paste0("mortandrisk",i)]])
+      incidence[[paste0("survival",i)]] <- 1
+    
+      for(l in 2:nrow(incidence)){
+        incidence[[paste0("survival",i)]][k] <- exp(-5*incidence[[paste0("mortandrisk",i)]][k-1])
+      }
       
       #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
       incidence[[paste0("lifetimerisk",i)]] <- cumsum(incidence[[paste0("survival",i)]]*incidence[[paste0("risk",i)]])*100
@@ -591,7 +599,11 @@ for(j in 1:length(gbd_phenos)){
     incidence[[paste0("mortandrisk",i)]] <- cumsum(incidence[[paste0("hazard",i)]] + incidence$mortality_rate)
     
     #Survival
-    incidence[[paste0("survival",i)]] <- exp(-5*incidence[[paste0("mortandrisk",i)]])
+    incidence[[paste0("survival",i)]] <- 1
+    
+    for(k in 2:nrow(incidence)){
+      incidence[[paste0("survival",i)]][k] <- exp(-5*incidence[[paste0("mortandrisk",i)]][k-1])
+    }
     
     #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
     incidence[[paste0("lifetimerisk",i)]] <- cumsum(incidence[[paste0("survival",i)]]*incidence[[paste0("risk",i)]])*100
