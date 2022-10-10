@@ -1,0 +1,1261 @@
+measure,location,sex,age,cause,metric,year,val,upper,lower
+Deaths,Finland,Male,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Female,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Male,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Female,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Female,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Male,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Female,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Female,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Male,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Female,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,15 to 19,Breast cancer,Number,2019,0.01487636,0.017070325,0.012369877
+Deaths,Finland,Female,15 to 19,Breast cancer,Number,2019,0.036157188,0.05608929,0.021114339
+Deaths,Finland,Male,15 to 19,Breast cancer,Rate,2019,0.009773452,0.01121484,0.008126746
+Deaths,Finland,Female,15 to 19,Breast cancer,Rate,2019,0.025058997,0.038873082,0.014633443
+Deaths,Finland,Male,20 to 24,Breast cancer,Number,2019,0.015783291,0.017728646,0.013735509
+Deaths,Finland,Female,20 to 24,Breast cancer,Number,2019,0.184571216,0.255838167,0.12852544
+Deaths,Finland,Male,20 to 24,Breast cancer,Rate,2019,0.009825164,0.011036156,0.008550412
+Deaths,Finland,Female,20 to 24,Breast cancer,Rate,2019,0.121237865,0.168050435,0.08442351
+Deaths,Finland,Male,25 to 29,Breast cancer,Number,2019,0.01725327,0.019301861,0.014577376
+Deaths,Finland,Female,25 to 29,Breast cancer,Number,2019,1.012573599,1.356286637,0.718464491
+Deaths,Finland,Male,25 to 29,Breast cancer,Rate,2019,0.009475575,0.01060067,0.008005962
+Deaths,Finland,Female,25 to 29,Breast cancer,Rate,2019,0.586671671,0.785814432,0.416268767
+Deaths,Finland,Male,30 to 34,Breast cancer,Number,2019,0.017030822,0.018975638,0.01489498
+Deaths,Finland,Female,30 to 34,Breast cancer,Number,2019,4.48398945,6.001685257,3.309417763
+Deaths,Finland,Male,30 to 34,Breast cancer,Rate,2019,0.009482329,0.010565154,0.008293147
+Deaths,Finland,Female,30 to 34,Breast cancer,Rate,2019,2.652763769,3.550644662,1.957877831
+Deaths,Finland,Male,35 to 39,Breast cancer,Number,2019,0.03588284,0.067219197,0.017885664
+Deaths,Finland,Female,35 to 39,Breast cancer,Number,2019,8.991526497,11.45178581,6.890015345
+Deaths,Finland,Male,35 to 39,Breast cancer,Rate,2019,0.019294735,0.036144758,0.009617387
+Deaths,Finland,Female,35 to 39,Breast cancer,Rate,2019,5.157995298,6.569324731,3.952461995
+Deaths,Finland,Male,40 to 44,Breast cancer,Number,2019,0.060976648,0.113593317,0.028953946
+Deaths,Finland,Female,40 to 44,Breast cancer,Number,2019,16.12902361,19.77503906,12.82998871
+Deaths,Finland,Male,40 to 44,Breast cancer,Rate,2019,0.034207583,0.063725261,0.016243013
+Deaths,Finland,Female,40 to 44,Breast cancer,Rate,2019,9.557289487,11.7177442,7.602438881
+Deaths,Finland,Male,45 to 49,Breast cancer,Number,2019,0.139992973,0.244819053,0.072411731
+Deaths,Finland,Female,45 to 49,Breast cancer,Number,2019,28.95564513,34.71383233,23.54796717
+Deaths,Finland,Male,45 to 49,Breast cancer,Rate,2019,0.087459451,0.152948677,0.045238629
+Deaths,Finland,Female,45 to 49,Breast cancer,Rate,2019,18.74703485,22.47511398,15.24588933
+Deaths,Finland,Male,50 to 54,Breast cancer,Number,2019,0.277032031,0.482095816,0.139525154
+Deaths,Finland,Female,50 to 54,Breast cancer,Number,2019,48.83958384,58.77203588,40.19864633
+Deaths,Finland,Male,50 to 54,Breast cancer,Rate,2019,0.154660651,0.269143074,0.077893704
+Deaths,Finland,Female,50 to 54,Breast cancer,Rate,2019,27.6078096,33.22237924,22.7233012
+Deaths,Finland,Male,55 to 59,Breast cancer,Number,2019,0.438528777,0.70057011,0.255637458
+Deaths,Finland,Female,55 to 59,Breast cancer,Number,2019,71.47698854,85.30223433,59.11011641
+Deaths,Finland,Male,55 to 59,Breast cancer,Rate,2019,0.238575269,0.381135084,0.139075879
+Deaths,Finland,Female,55 to 59,Breast cancer,Rate,2019,38.55802757,46.01601118,31.88675887
+Deaths,Finland,Male,60 to 64,Breast cancer,Number,2019,0.584149744,0.955599325,0.326924529
+Deaths,Finland,Female,60 to 64,Breast cancer,Number,2019,92.23301264,111.5211864,75.33907617
+Deaths,Finland,Male,60 to 64,Breast cancer,Rate,2019,0.331596323,0.542452044,0.185580792
+Deaths,Finland,Female,60 to 64,Breast cancer,Rate,2019,50.24441693,60.75175064,41.04135652
+Deaths,Finland,Male,65 to 69,Breast cancer,Number,2019,0.655844848,1.093254181,0.356367895
+Deaths,Finland,Female,65 to 69,Breast cancer,Number,2019,118.7773226,142.1370579,97.45998973
+Deaths,Finland,Male,65 to 69,Breast cancer,Rate,2019,0.383780764,0.639739607,0.20853582
+Deaths,Finland,Female,65 to 69,Breast cancer,Rate,2019,63.93843863,76.51310327,52.46320961
+Deaths,Finland,Male,70 to 74,Breast cancer,Number,2019,1.225620683,2.005559807,0.662004062
+Deaths,Finland,Female,70 to 74,Breast cancer,Number,2019,148.437714,179.7100605,121.7477086
+Deaths,Finland,Male,70 to 74,Breast cancer,Rate,2019,0.749041274,1.225703102,0.404585508
+Deaths,Finland,Female,70 to 74,Breast cancer,Rate,2019,79.86958728,96.69623693,65.50854882
+Deaths,Finland,Male,75 to 79,Breast cancer,Number,2019,0.880133193,1.522819811,0.468421065
+Deaths,Finland,Female,75 to 79,Breast cancer,Number,2019,139.5393356,169.5080425,113.8510501
+Deaths,Finland,Male,75 to 79,Breast cancer,Rate,2019,0.936828067,1.620914142,0.49859499
+Deaths,Finland,Female,75 to 79,Breast cancer,Rate,2019,118.0016582,143.3447423,96.27831927
+Deaths,Finland,Male,All Ages,Breast cancer,Number,2019,6.138010646,7.64515442,4.936417135
+Deaths,Finland,Female,All Ages,Breast cancer,Number,2019,1039.393967,1144.728679,925.0617926
+Deaths,Finland,Male,All Ages,Breast cancer,Rate,2019,0.224826495,0.280031002,0.180813855
+Deaths,Finland,Female,All Ages,Breast cancer,Rate,2019,37.06846169,40.82506972,32.99097234
+Deaths,Finland,Male,80 to 84,Breast cancer,Number,2019,0.898909514,1.687881375,0.419885431
+Deaths,Finland,Female,80 to 84,Breast cancer,Number,2019,136.8459833,171.2262987,105.4425518
+Deaths,Finland,Male,80 to 84,Breast cancer,Rate,2019,1.383230796,2.597290896,0.646114486
+Deaths,Finland,Female,80 to 84,Breast cancer,Rate,2019,142.6462238,178.4837547,109.9117525
+Deaths,Finland,Male,85 to 89,Breast cancer,Number,2019,0.493932044,1.064035543,0.215054785
+Deaths,Finland,Female,85 to 89,Breast cancer,Number,2019,111.4212219,140.4631109,83.45099971
+Deaths,Finland,Male,85 to 89,Breast cancer,Rate,2019,1.447283212,3.117758398,0.630137654
+Deaths,Finland,Female,85 to 89,Breast cancer,Rate,2019,176.5247901,222.5358936,132.2115299
+Deaths,Finland,Male,90 to 94,Breast cancer,Number,2019,0.315103749,0.579944992,0.146661123
+Deaths,Finland,Female,90 to 94,Breast cancer,Number,2019,77.54541892,101.1240653,55.4660076
+Deaths,Finland,Male,90 to 94,Breast cancer,Rate,2019,2.269427531,4.176856472,1.056276836
+Deaths,Finland,Female,90 to 94,Breast cancer,Rate,2019,227.823472,297.0960241,162.9555763
+Deaths,Finland,Male,95 plus,Breast cancer,Number,2019,0.066959859,0.119415721,0.032207531
+Deaths,Finland,Female,95 plus,Breast cancer,Number,2019,34.48389903,48.26332714,22.13887994
+Deaths,Finland,Male,95 plus,Breast cancer,Rate,2019,1.796955045,3.204676423,0.864331037
+Deaths,Finland,Female,95 plus,Breast cancer,Rate,2019,287.6610494,402.6075857,184.6802019
+Deaths,Finland,Male,1 to 4,All causes,Number,2019,12.47096729,14.17966401,11.01472815
+Deaths,Finland,Female,1 to 4,All causes,Number,2019,9.549217261,10.45558561,8.750424537
+Deaths,Finland,Male,1 to 4,All causes,Rate,2019,11.52388591,13.10281926,10.17823779
+Deaths,Finland,Female,1 to 4,All causes,Rate,2019,9.23803756,10.11487015,8.465275041
+Deaths,Finland,Male,5 to 9,All causes,Number,2019,11.67334823,12.64137523,10.79723827
+Deaths,Finland,Female,5 to 9,All causes,Number,2019,11.12427509,11.68099491,10.61534012
+Deaths,Finland,Male,5 to 9,All causes,Rate,2019,7.49185182,8.113123,6.929572186
+Deaths,Finland,Female,5 to 9,All causes,Rate,2019,7.465782155,7.839410892,7.124223031
+Deaths,Finland,Male,10 to 14,All causes,Number,2019,15.20267519,16.24020978,14.2534504
+Deaths,Finland,Female,10 to 14,All causes,Number,2019,13.2563602,13.85932567,12.69935142
+Deaths,Finland,Male,10 to 14,All causes,Rate,2019,9.652681181,10.3114462,9.049986978
+Deaths,Finland,Female,10 to 14,All causes,Rate,2019,8.791951677,9.191853551,8.422529438
+Deaths,Finland,Male,15 to 19,All causes,Number,2019,55.99473534,59.10958633,53.13285957
+Deaths,Finland,Female,15 to 19,All causes,Number,2019,27.25757243,28.41179213,26.1944173
+Deaths,Finland,Male,15 to 19,All causes,Rate,2019,36.78734929,38.83374009,34.90715782
+Deaths,Finland,Female,15 to 19,All causes,Rate,2019,18.89105463,19.69099481,18.1542274
+Deaths,Finland,Male,20 to 24,All causes,Number,2019,118.2941844,122.1554071,114.6956561
+Deaths,Finland,Female,20 to 24,All causes,Number,2019,40.3184916,42.00076412,38.75571886
+Deaths,Finland,Male,20 to 24,All causes,Rate,2019,73.63862372,76.04225098,71.39852482
+Deaths,Finland,Female,20 to 24,All causes,Rate,2019,26.48369531,27.58871664,25.45716889
+Deaths,Finland,Male,25 to 29,All causes,Number,2019,154.8764515,158.9603437,151.061082
+Deaths,Finland,Female,25 to 29,All causes,Number,2019,48.37426591,50.64406289,46.27628767
+Deaths,Finland,Male,25 to 29,All causes,Rate,2019,85.05885819,87.30175055,82.96343979
+Deaths,Finland,Female,25 to 29,All causes,Rate,2019,28.02740604,29.34249621,26.81186537
+Deaths,Finland,Male,30 to 34,All causes,Number,2019,173.9411703,178.7249923,169.4922705
+Deaths,Finland,Female,30 to 34,All causes,Number,2019,63.04572772,65.91332929,60.41757763
+Deaths,Finland,Male,30 to 34,All causes,Rate,2019,96.84603011,99.50954081,94.36899558
+Deaths,Finland,Female,30 to 34,All causes,Rate,2019,37.29835321,38.99484907,35.74351874
+Deaths,Finland,Male,35 to 39,All causes,Number,2019,235.6707683,243.4292349,228.5087614
+Deaths,Finland,Female,35 to 39,All causes,Number,2019,84.63256218,88.44217364,81.13245675
+Deaths,Finland,Male,35 to 39,All causes,Rate,2019,126.7236641,130.8955065,122.8725469
+Deaths,Finland,Female,35 to 39,All causes,Rate,2019,48.54952693,50.73491313,46.54168906
+Deaths,Finland,Male,40 to 44,All causes,Number,2019,313.2730003,325.3383941,302.1979409
+Deaths,Finland,Female,40 to 44,All causes,Number,2019,124.9723551,130.4907854,119.9384295
+Deaths,Finland,Male,40 to 44,All causes,Rate,2019,175.7445273,182.5131506,169.5314764
+Deaths,Finland,Female,40 to 44,All causes,Rate,2019,74.05265219,77.32261058,71.06978819
+Deaths,Finland,Male,45 to 49,All causes,Number,2019,451.5105116,471.0612829,433.4708346
+Deaths,Finland,Female,45 to 49,All causes,Number,2019,202.7550798,211.6386093,194.5749967
+Deaths,Finland,Male,45 to 49,All causes,Rate,2019,282.0774537,294.2916362,270.8073149
+Deaths,Finland,Female,45 to 49,All causes,Rate,2019,131.2716927,137.0232425,125.9755819
+Deaths,Finland,Male,50 to 54,All causes,Number,2019,778.4604904,812.9772095,746.5520667
+Deaths,Finland,Female,50 to 54,All causes,Number,2019,370.4280493,386.5988238,355.5036262
+Deaths,Finland,Male,50 to 54,All causes,Rate,2019,434.5966974,453.8665927,416.7829538
+Deaths,Finland,Female,50 to 54,All causes,Rate,2019,209.3938206,218.5347597,200.9574131
+Deaths,Finland,Male,55 to 59,All causes,Number,2019,1255.145267,1311.145835,1203.533571
+Deaths,Finland,Female,55 to 59,All causes,Number,2019,586.7231765,611.8462431,563.6216809
+Deaths,Finland,Male,55 to 59,All causes,Rate,2019,682.8437145,713.3100171,654.765114
+Deaths,Finland,Female,55 to 59,All causes,Rate,2019,316.5058977,330.0584537,304.0438714
+Deaths,Finland,Male,60 to 64,All causes,Number,2019,1897.172223,1976.205209,1824.421318
+Deaths,Finland,Female,60 to 64,All causes,Number,2019,920.9034236,957.2615642,887.5633477
+Deaths,Finland,Male,60 to 64,All causes,Rate,2019,1076.941897,1121.805475,1035.644383
+Deaths,Finland,Female,60 to 64,All causes,Rate,2019,501.6669655,521.4732531,483.5047845
+Deaths,Finland,Male,65 to 69,All causes,Number,2019,2758.72434,2868.006325,2658.032561
+Deaths,Finland,Female,65 to 69,All causes,Number,2019,1460.524262,1512.741934,1412.562933
+Deaths,Finland,Male,65 to 69,All causes,Rate,2019,1614.322868,1678.271413,1555.401055
+Deaths,Finland,Female,65 to 69,All causes,Rate,2019,786.2076601,814.3166997,760.3898323
+Deaths,Finland,Male,70 to 74,All causes,Number,2019,3937.086473,4086.594199,3799.150995
+Deaths,Finland,Female,70 to 74,All causes,Number,2019,2336.782779,2417.5027,2262.633523
+Deaths,Finland,Male,70 to 74,All causes,Rate,2019,2406.160658,2497.532694,2321.861031
+Deaths,Finland,Female,70 to 74,All causes,Rate,2019,1257.34809,1300.780898,1217.450746
+Deaths,Finland,Male,75 to 79,All causes,Number,2019,3808.496885,3941.33181,3685.341285
+Deaths,Finland,Female,75 to 79,All causes,Number,2019,2765.803041,2857.52515,2681.411774
+Deaths,Finland,Male,75 to 79,All causes,Rate,2019,4053.825946,4195.217598,3922.737124
+Deaths,Finland,Female,75 to 79,All causes,Rate,2019,2338.905683,2416.470629,2267.540076
+Deaths,Finland,Male,All Ages,All causes,Number,2019,28219.25364,29151.71542,27356.43321
+Deaths,Finland,Female,All Ages,All causes,Number,2019,27894.06699,28708.33317,27142.17314
+Deaths,Finland,Male,All Ages,All causes,Rate,2019,1033.630644,1067.785377,1002.026773
+Deaths,Finland,Female,All Ages,All causes,Rate,2019,994.8009958,1023.840605,967.9858042
+Deaths,Finland,Male,80 to 84,All causes,Number,2019,4548.536104,4688.100144,4418.769271
+Deaths,Finland,Female,80 to 84,All causes,Number,2019,4465.794099,4597.861239,4343.870335
+Deaths,Finland,Male,80 to 84,All causes,Rate,2019,6999.230866,7213.990277,6799.547274
+Deaths,Finland,Female,80 to 84,All causes,Rate,2019,4655.077548,4792.742378,4527.986025
+Deaths,Finland,Male,85 to 89,All causes,Number,2019,4073.660887,4169.941229,3983.39385
+Deaths,Finland,Female,85 to 89,All causes,Number,2019,5650.861984,5816.754897,5497.240084
+Deaths,Finland,Male,85 to 89,All causes,Rate,2019,11936.3404,12218.45395,11671.84659
+Deaths,Finland,Female,85 to 89,All causes,Rate,2019,8952.668162,9215.492524,8709.284781
+Deaths,Finland,Male,90 to 94,All causes,Number,2019,2513.61485,2564.135361,2466.559601
+Deaths,Finland,Female,90 to 94,All causes,Number,2019,5334.978896,5461.932585,5216.988157
+Deaths,Finland,Male,90 to 94,All causes,Rate,2019,18103.45567,18467.31246,17764.55625
+Deaths,Finland,Female,90 to 94,All causes,Rate,2019,15673.82615,16046.80796,15327.17692
+Deaths,Finland,Male,95 plus,All causes,Number,2019,1057.023256,1072.712929,1042.206999
+Deaths,Finland,Female,95 plus,All causes,Number,2019,3336.013504,3388.0297,3287.161973
+Deaths,Finland,Male,95 plus,All causes,Rate,2019,28366.59589,28787.6487,27968.98232
+Deaths,Finland,Female,95 plus,All causes,Rate,2019,27828.67288,28262.5865,27421.15855
+Deaths,United Kingdom,Male,45 to 49,All causes,Rate,2019,245.2591526,249.4979683,241.2607925
+Deaths,United Kingdom,Female,45 to 49,All causes,Rate,2019,161.014315,163.7764095,158.4286947
+Deaths,United Kingdom,Male,50 to 54,All causes,Number,2019,8541.620612,8693.583299,8398.709733
+Deaths,United Kingdom,Female,50 to 54,All causes,Number,2019,6013.032741,6115.786567,5916.812873
+Deaths,United Kingdom,Male,50 to 54,All causes,Rate,2019,369.0567471,375.6225801,362.8820144
+Deaths,United Kingdom,Female,50 to 54,All causes,Rate,2019,253.5710329,257.9041864,249.513418
+Deaths,United Kingdom,Male,55 to 59,All causes,Number,2019,12693.60855,12921.18716,12479.53476
+Deaths,United Kingdom,Female,55 to 59,All causes,Number,2019,8826.537157,8973.599953,8688.728031
+Deaths,United Kingdom,Male,55 to 59,All causes,Rate,2019,587.0984708,597.6243232,577.1972362
+Deaths,United Kingdom,Female,55 to 59,All causes,Rate,2019,398.9108659,405.5572942,392.6826524
+Deaths,United Kingdom,Male,60 to 64,All causes,Number,2019,17434.76102,17725.87811,17161.19014
+Deaths,United Kingdom,Female,60 to 64,All causes,Number,2019,11872.51091,12054.21482,11702.24738
+Deaths,United Kingdom,Male,60 to 64,All causes,Rate,2019,956.2029768,972.1691853,941.1990838
+Deaths,United Kingdom,Female,60 to 64,All causes,Rate,2019,630.93246,640.5886225,621.8842652
+Deaths,United Kingdom,Male,65 to 69,All causes,Number,2019,24447.90947,24835.33144,24081.81925
+Deaths,United Kingdom,Female,65 to 69,All causes,Number,2019,17036.90883,17271.58076,16816.61559
+Deaths,United Kingdom,Male,65 to 69,All causes,Rate,2019,1502.484528,1526.294152,1479.985881
+Deaths,United Kingdom,Female,65 to 69,All causes,Rate,2019,991.8392796,1005.501197,979.0144482
+Deaths,United Kingdom,Male,70 to 74,All causes,Number,2019,38655.58572,39239.7942,38103.74968
+Deaths,United Kingdom,Female,70 to 74,All causes,Number,2019,28335.92538,28711.59798,27981.77295
+Deaths,United Kingdom,Male,70 to 74,All causes,Rate,2019,2474.834135,2512.236727,2439.504114
+Deaths,United Kingdom,Female,70 to 74,All causes,Rate,2019,1666.508672,1688.602944,1645.680056
+Deaths,United Kingdom,Male,75 to 79,All causes,Number,2019,43737.25459,44347.87302,43157.54126
+Deaths,United Kingdom,Female,75 to 79,All causes,Number,2019,35265.61422,35715.18547,34842.42763
+Deaths,United Kingdom,Male,75 to 79,All causes,Rate,2019,4130.531323,4188.197917,4075.783394
+Deaths,United Kingdom,Female,75 to 79,All causes,Rate,2019,2871.974661,2908.587017,2837.511028
+Deaths,United Kingdom,Male,All Ages,All causes,Number,2019,310673.1649,314530.0098,306911.7849
+Deaths,United Kingdom,Female,All Ages,All causes,Number,2019,311141.4793,314705.8172,307728.9043
+Deaths,United Kingdom,Male,All Ages,All causes,Rate,2019,934.1570907,945.7541627,922.8470705
+Deaths,United Kingdom,Female,All Ages,All causes,Rate,2019,916.1084581,926.6031053,906.0606532
+Deaths,United Kingdom,Male,80 to 84,All causes,Number,2019,52738.86408,53386.41002,52119.38399
+Deaths,United Kingdom,Female,80 to 84,All causes,Number,2019,49925.04459,50489.53888,49391.70281
+Deaths,United Kingdom,Male,80 to 84,All causes,Rate,2019,7258.248321,7347.367594,7172.991643
+Deaths,United Kingdom,Female,80 to 84,All causes,Rate,2019,5350.692534,5411.191937,5293.531886
+Deaths,United Kingdom,Male,85 to 89,All causes,Number,2019,50049.57379,50519.19745,49595.75355
+Deaths,United Kingdom,Female,85 to 89,All causes,Number,2019,59506.53326,60170.31023,58878.62449
+Deaths,United Kingdom,Male,85 to 89,All causes,Rate,2019,12790.87401,12910.89296,12674.89385
+Deaths,United Kingdom,Female,85 to 89,All causes,Rate,2019,9864.670858,9974.70821,9760.579542
+Deaths,United Kingdom,Male,90 to 94,All causes,Number,2019,32639.07485,32885.37183,32397.49518
+Deaths,United Kingdom,Female,90 to 94,All causes,Number,2019,53504.69235,53976.8029,53050.10445
+Deaths,United Kingdom,Male,90 to 94,All causes,Rate,2019,21703.27154,21867.0461,21542.63374
+Deaths,United Kingdom,Female,90 to 94,All causes,Rate,2019,17943.78242,18102.11337,17791.32801
+Deaths,United Kingdom,Male,95 plus,All causes,Number,2019,10788.72273,10864.69146,10716.70705
+Deaths,United Kingdom,Female,95 plus,All causes,Number,2019,29495.09373,29684.99056,29308.93579
+Deaths,United Kingdom,Male,95 plus,All causes,Rate,2019,33870.82086,34109.32205,33644.73014
+Deaths,United Kingdom,Female,95 plus,All causes,Rate,2019,31017.6653,31217.36483,30821.89767
+Deaths,Finland,Male,1 to 4,Prostate cancer,Number,2019,0,0,0
+Deaths,Finland,Male,1 to 4,Prostate cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,5 to 9,Prostate cancer,Number,2019,0,0,0
+Deaths,Finland,Male,5 to 9,Prostate cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,10 to 14,Prostate cancer,Number,2019,0,0,0
+Deaths,Finland,Male,10 to 14,Prostate cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,15 to 19,Prostate cancer,Number,2019,0,0,0
+Deaths,Finland,Male,15 to 19,Prostate cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,20 to 24,Prostate cancer,Number,2019,0.044888105,0.078698635,0.031131355
+Deaths,Finland,Male,20 to 24,Prostate cancer,Rate,2019,0.027943033,0.048990229,0.019379399
+Deaths,Finland,Male,25 to 29,Prostate cancer,Number,2019,0.073315764,0.116627591,0.052761656
+Deaths,Finland,Male,25 to 29,Prostate cancer,Rate,2019,0.040265354,0.064052408,0.028976944
+Deaths,Finland,Male,30 to 34,Prostate cancer,Number,2019,0.093936919,0.140355494,0.072360066
+Deaths,Finland,Male,30 to 34,Prostate cancer,Rate,2019,0.052301693,0.078146377,0.040288249
+Deaths,Finland,Male,35 to 39,Prostate cancer,Number,2019,0.134055176,0.187506194,0.098499448
+Deaths,Finland,Male,35 to 39,Prostate cancer,Rate,2019,0.072083454,0.100824859,0.052964613
+Deaths,Finland,Male,40 to 44,Prostate cancer,Number,2019,0.293691482,0.440876416,0.202527757
+Deaths,Finland,Male,40 to 44,Prostate cancer,Rate,2019,0.164759397,0.247329381,0.113617021
+Deaths,Finland,Male,45 to 49,Prostate cancer,Number,2019,1.359869045,1.946648984,0.903955327
+Deaths,Finland,Male,45 to 49,Prostate cancer,Rate,2019,0.849566926,1.216152835,0.564738606
+Deaths,Finland,Male,50 to 54,Prostate cancer,Number,2019,5.618392855,7.867887706,3.894252987
+Deaths,Finland,Male,50 to 54,Prostate cancer,Rate,2019,3.136620303,4.392461859,2.174072426
+Deaths,Finland,Male,55 to 59,Prostate cancer,Number,2019,17.35722829,24.51369006,11.82401446
+Deaths,Finland,Male,55 to 59,Prostate cancer,Rate,2019,9.442950189,13.3363202,6.432684855
+Deaths,Finland,Male,60 to 64,Prostate cancer,Number,2019,47.53049042,70.33500939,33.86001863
+Deaths,Finland,Male,60 to 64,Prostate cancer,Rate,2019,26.98098564,39.9261161,19.22085525
+Deaths,Finland,Male,65 to 69,Prostate cancer,Number,2019,103.7369896,148.4127049,76.86028828
+Deaths,Finland,Male,65 to 69,Prostate cancer,Rate,2019,60.70377972,86.84667041,44.97633896
+Deaths,Finland,Male,70 to 74,Prostate cancer,Number,2019,186.0321782,283.8466795,135.4380598
+Deaths,Finland,Male,70 to 74,Prostate cancer,Rate,2019,113.6940505,173.4736378,82.77332322
+Deaths,Finland,Male,75 to 79,Prostate cancer,Number,2019,221.9502433,346.6706835,169.7941708
+Deaths,Finland,Male,75 to 79,Prostate cancer,Rate,2019,236.2474441,369.0019065,180.7316734
+Deaths,Finland,Male,All Ages,Prostate cancer,Number,2019,1293.768934,1834.935544,1058.8449
+Deaths,Finland,Male,All Ages,Prostate cancer,Rate,2019,47.38889391,67.21104791,38.78396468
+Deaths,Finland,Male,80 to 84,Prostate cancer,Number,2019,288.3017519,411.4732501,220.2803195
+Deaths,Finland,Male,80 to 84,Prostate cancer,Rate,2019,443.6351552,633.1699269,338.9646199
+Deaths,Finland,Male,85 to 89,Prostate cancer,Number,2019,240.7572239,346.3680621,179.1563509
+Deaths,Finland,Male,85 to 89,Prostate cancer,Rate,2019,705.4490441,1014.902126,524.9507135
+Deaths,Finland,Male,90 to 94,Prostate cancer,Number,2019,135.4606812,190.8232802,94.57144469
+Deaths,Finland,Male,90 to 94,Prostate cancer,Rate,2019,975.6094644,1374.339746,681.1186514
+Deaths,Finland,Male,95 plus,Prostate cancer,Number,2019,45.02399832,68.79700023,27.32511212
+Deaths,Finland,Male,95 plus,Prostate cancer,Rate,2019,1208.27764,1846.257112,733.3049756
+Deaths,United Kingdom,Male,1 to 4,All causes,Number,2019,248.2970792,272.1457135,226.8376766
+Deaths,United Kingdom,Female,1 to 4,All causes,Number,2019,210.3178315,223.4821233,198.2675984
+Deaths,United Kingdom,Male,1 to 4,All causes,Rate,2019,15.53896501,17.03146381,14.19598946
+Deaths,United Kingdom,Female,1 to 4,All causes,Rate,2019,13.84036012,14.70666108,13.04737189
+Deaths,United Kingdom,Male,5 to 9,All causes,Number,2019,162.1642775,168.0659727,156.6217761
+Deaths,United Kingdom,Female,5 to 9,All causes,Number,2019,123.1195743,124.4772578,121.9094737
+Deaths,United Kingdom,Male,5 to 9,All causes,Rate,2019,7.961411819,8.251153966,7.689304195
+Deaths,United Kingdom,Female,5 to 9,All causes,Rate,2019,6.339726505,6.409636933,6.277415481
+Deaths,United Kingdom,Male,10 to 14,All causes,Number,2019,196.1515422,200.4035732,191.8337687
+Deaths,United Kingdom,Female,10 to 14,All causes,Number,2019,149.8791573,151.3590492,148.4070331
+Deaths,United Kingdom,Male,10 to 14,All causes,Rate,2019,9.651100778,9.860310347,9.438656526
+Deaths,United Kingdom,Female,10 to 14,All causes,Rate,2019,7.728936412,7.805251159,7.653022225
+Deaths,United Kingdom,Male,15 to 19,All causes,Number,2019,593.9045975,603.6114769,584.35206
+Deaths,United Kingdom,Female,15 to 19,All causes,Number,2019,296.3990776,299.5121986,293.3388267
+Deaths,United Kingdom,Male,15 to 19,All causes,Rate,2019,31.46550792,31.97978563,30.95940737
+Deaths,United Kingdom,Female,15 to 19,All causes,Rate,2019,16.4546862,16.62751208,16.28479543
+Deaths,United Kingdom,Male,20 to 24,All causes,Number,2019,1127.113506,1141.988642,1113.237944
+Deaths,United Kingdom,Female,20 to 24,All causes,Number,2019,442.347265,449.7240359,435.3547931
+Deaths,United Kingdom,Male,20 to 24,All causes,Rate,2019,53.99983136,54.71249679,53.33505533
+Deaths,United Kingdom,Female,20 to 24,All causes,Rate,2019,21.81037058,22.17408958,21.46559982
+Deaths,United Kingdom,Male,25 to 29,All causes,Number,2019,1492.538609,1508.427501,1477.710196
+Deaths,United Kingdom,Female,25 to 29,All causes,Number,2019,640.4912641,652.4469043,629.1901592
+Deaths,United Kingdom,Male,25 to 29,All causes,Rate,2019,63.75960509,64.43836103,63.12615162
+Deaths,United Kingdom,Female,25 to 29,All causes,Rate,2019,27.77357698,28.29200855,27.28352797
+Deaths,United Kingdom,Male,30 to 34,All causes,Number,2019,2000.74068,2022.781868,1980.054507
+Deaths,United Kingdom,Female,30 to 34,All causes,Number,2019,1027.581754,1045.888572,1010.356064
+Deaths,United Kingdom,Male,30 to 34,All causes,Rate,2019,82.76046399,83.67219581,81.90478224
+Deaths,United Kingdom,Female,30 to 34,All causes,Rate,2019,42.94443717,43.70951107,42.22454547
+Deaths,United Kingdom,Male,35 to 39,All causes,Number,2019,2596.318504,2630.215186,2564.529982
+Deaths,United Kingdom,Female,35 to 39,All causes,Number,2019,1504.781868,1531.319665,1479.905225
+Deaths,United Kingdom,Male,35 to 39,All causes,Rate,2019,112.1882028,113.6528952,110.8146051
+Deaths,United Kingdom,Female,35 to 39,All causes,Rate,2019,65.58031853,66.73686969,64.49616259
+Deaths,United Kingdom,Male,40 to 44,All causes,Number,2019,3491.931362,3544.943488,3441.855218
+Deaths,United Kingdom,Female,40 to 44,All causes,Number,2019,2119.988054,2156.338308,2086.113066
+Deaths,United Kingdom,Male,40 to 44,All causes,Rate,2019,169.6572078,172.2328281,167.2242336
+Deaths,United Kingdom,Female,40 to 44,All causes,Rate,2019,103.4583382,105.2322807,101.8051922
+Deaths,United Kingdom,Male,45 to 49,All causes,Number,2019,5482.264735,5577.014756,5392.889605
+Deaths,United Kingdom,Female,45 to 49,All causes,Number,2019,3652.583603,3715.241267,3593.929226
+Deaths,United Kingdom,Male,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Female,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Female,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Female,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Female,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Female,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Female,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,15 to 19,Breast cancer,Number,2019,0.192651428,0.202264815,0.183726884
+Deaths,United Kingdom,Female,15 to 19,Breast cancer,Number,2019,0.783120219,0.877116917,0.722269346
+Deaths,United Kingdom,Male,15 to 19,Breast cancer,Rate,2019,0.010206816,0.010716141,0.009733987
+Deaths,United Kingdom,Female,15 to 19,Breast cancer,Rate,2019,0.04347516,0.048693416,0.040097005
+Deaths,United Kingdom,Male,20 to 24,Breast cancer,Number,2019,0.217762758,0.227770343,0.207901853
+Deaths,United Kingdom,Female,20 to 24,Breast cancer,Number,2019,2.936629174,3.212602964,2.717392723
+Deaths,United Kingdom,Male,20 to 24,Breast cancer,Rate,2019,0.01043298,0.010912441,0.009960545
+Deaths,United Kingdom,Female,20 to 24,Breast cancer,Rate,2019,0.144793414,0.158400575,0.133983743
+Deaths,United Kingdom,Male,25 to 29,Breast cancer,Number,2019,0.247303838,0.256736281,0.238152195
+Deaths,United Kingdom,Female,25 to 29,Breast cancer,Number,2019,27.92424697,29.76874373,26.39064594
+Deaths,United Kingdom,Male,25 to 29,Breast cancer,Rate,2019,0.010564548,0.010967491,0.010173599
+Deaths,United Kingdom,Female,25 to 29,Breast cancer,Rate,2019,1.210877128,1.29085991,1.144375697
+Deaths,United Kingdom,Male,30 to 34,Breast cancer,Number,2019,0.275069344,0.31830311,0.251489337
+Deaths,United Kingdom,Female,30 to 34,Breast cancer,Number,2019,103.1518674,109.4830405,96.8428543
+Deaths,United Kingdom,Male,30 to 34,Breast cancer,Rate,2019,0.011378219,0.01316658,0.010402835
+Deaths,United Kingdom,Female,30 to 34,Breast cancer,Rate,2019,4.310896793,4.575487581,4.047232111
+Deaths,United Kingdom,Male,35 to 39,Breast cancer,Number,2019,0.576577265,0.678280736,0.512947648
+Deaths,United Kingdom,Female,35 to 39,Breast cancer,Number,2019,198.1307325,209.2959154,187.1524723
+Deaths,United Kingdom,Male,35 to 39,Breast cancer,Rate,2019,0.024914188,0.029308845,0.022164721
+Deaths,United Kingdom,Female,35 to 39,Breast cancer,Rate,2019,8.634790747,9.121383698,8.156344127
+Deaths,United Kingdom,Male,40 to 44,Breast cancer,Number,2019,1.104859905,1.265789539,0.990343243
+Deaths,United Kingdom,Female,40 to 44,Breast cancer,Number,2019,310.5965544,327.863705,294.4967446
+Deaths,United Kingdom,Male,40 to 44,Breast cancer,Rate,2019,0.053680164,0.061499009,0.048116315
+Deaths,United Kingdom,Female,40 to 44,Breast cancer,Rate,2019,15.15753984,16.00020058,14.37184693
+Deaths,United Kingdom,Male,45 to 49,Breast cancer,Number,2019,1.858434692,2.109054689,1.669371218
+Deaths,United Kingdom,Female,45 to 49,Breast cancer,Number,2019,549.9747975,580.5079016,521.979789
+Deaths,United Kingdom,Male,45 to 49,Breast cancer,Rate,2019,0.083140479,0.094352424,0.074682379
+Deaths,United Kingdom,Female,45 to 49,Breast cancer,Rate,2019,24.24415836,25.59012806,23.01007378
+Deaths,United Kingdom,Male,50 to 54,Breast cancer,Number,2019,3.337887657,3.79008309,3.003798188
+Deaths,United Kingdom,Female,50 to 54,Breast cancer,Number,2019,868.9855788,908.5770736,830.0115935
+Deaths,United Kingdom,Male,50 to 54,Breast cancer,Rate,2019,0.1442197,0.163757652,0.129784737
+Deaths,United Kingdom,Female,50 to 54,Breast cancer,Rate,2019,36.64533028,38.31491312,35.00178798
+Deaths,United Kingdom,Male,55 to 59,Breast cancer,Number,2019,5.297826365,5.918766215,4.840843597
+Deaths,United Kingdom,Female,55 to 59,Breast cancer,Number,2019,1135.174425,1183.162347,1087.069562
+Deaths,United Kingdom,Male,55 to 59,Breast cancer,Rate,2019,0.245032431,0.273751832,0.223896291
+Deaths,United Kingdom,Female,55 to 59,Breast cancer,Rate,2019,51.30363184,53.47242163,49.12955698
+Deaths,United Kingdom,Male,60 to 64,Breast cancer,Number,2019,7.142514774,7.954170637,6.471223279
+Deaths,United Kingdom,Female,60 to 64,Breast cancer,Number,2019,1134.525781,1193.320539,1081.147593
+Deaths,United Kingdom,Male,60 to 64,Breast cancer,Rate,2019,0.391728564,0.436243527,0.354911831
+Deaths,United Kingdom,Female,60 to 64,Breast cancer,Rate,2019,60.29130206,63.41579038,57.45466274
+Deaths,United Kingdom,Male,65 to 69,Breast cancer,Number,2019,9.523744406,10.59314393,8.677722825
+Deaths,United Kingdom,Female,65 to 69,Breast cancer,Number,2019,1311.006027,1377.579607,1240.787992
+Deaths,United Kingdom,Male,65 to 69,Breast cancer,Rate,2019,0.585296614,0.651018235,0.533303034
+Deaths,United Kingdom,Female,65 to 69,Breast cancer,Rate,2019,76.3229578,80.19867798,72.23506803
+Deaths,United Kingdom,Male,70 to 74,Breast cancer,Number,2019,14.63835338,16.29599377,13.34864166
+Deaths,United Kingdom,Female,70 to 74,Breast cancer,Number,2019,1731.970859,1833.016313,1622.501217
+Deaths,United Kingdom,Male,70 to 74,Breast cancer,Rate,2019,0.937186592,1.043313169,0.854615793
+Deaths,United Kingdom,Female,70 to 74,Breast cancer,Rate,2019,101.8616621,107.8044052,95.4234708
+Deaths,United Kingdom,Male,75 to 79,Breast cancer,Number,2019,13.83775653,15.53953995,12.47941889
+Deaths,United Kingdom,Female,75 to 79,Breast cancer,Number,2019,1759.512695,1877.159653,1607.022151
+Deaths,United Kingdom,Male,75 to 79,Breast cancer,Rate,2019,1.306832981,1.467548823,1.17855204
+Deaths,United Kingdom,Female,75 to 79,Breast cancer,Rate,2019,143.2918719,152.8728501,130.8732883
+Deaths,United Kingdom,Male,All Ages,Breast cancer,Number,2019,93.64485918,99.64338213,86.06311318
+Deaths,United Kingdom,Female,All Ages,Breast cancer,Number,2019,15162.19556,16011.12009,13811.23019
+Deaths,United Kingdom,Male,All Ages,Breast cancer,Rate,2019,0.281578904,0.299615746,0.258781499
+Deaths,United Kingdom,Female,All Ages,Breast cancer,Rate,2019,44.64276387,47.14229222,40.66505314
+Deaths,United Kingdom,Male,80 to 84,Breast cancer,Number,2019,12.46202957,14.08291458,10.84299531
+Deaths,United Kingdom,Female,80 to 84,Breast cancer,Number,2019,1952.978963,2114.130995,1690.623765
+Deaths,United Kingdom,Male,80 to 84,Breast cancer,Rate,2019,1.715101506,1.938177716,1.492280008
+Deaths,United Kingdom,Female,80 to 84,Breast cancer,Rate,2019,209.3095768,226.580968,181.1917852
+Deaths,United Kingdom,Male,85 to 89,Breast cancer,Number,2019,12.58462998,14.43853754,10.67452301
+Deaths,United Kingdom,Female,85 to 89,Breast cancer,Number,2019,1929.353964,2132.689843,1604.614149
+Deaths,United Kingdom,Male,85 to 89,Breast cancer,Rate,2019,3.216179568,3.689971773,2.728024808
+Deaths,United Kingdom,Female,85 to 89,Breast cancer,Rate,2019,319.8378528,353.5457738,266.0042448
+Deaths,United Kingdom,Male,90 to 94,Breast cancer,Number,2019,8.065677719,9.150350517,6.717727454
+Deaths,United Kingdom,Female,90 to 94,Breast cancer,Number,2019,1439.853173,1594.009107,1153.501348
+Deaths,United Kingdom,Male,90 to 94,Breast cancer,Rate,2019,5.363252312,6.084502788,4.46693614
+Deaths,United Kingdom,Female,90 to 94,Breast cancer,Rate,2019,482.8812376,534.5802647,386.8478877
+Deaths,United Kingdom,Male,95 plus,Breast cancer,Number,2019,2.281779563,2.584679556,1.868352504
+Deaths,United Kingdom,Female,95 plus,Breast cancer,Number,2019,705.3361421,787.8173211,551.4078197
+Deaths,United Kingdom,Male,95 plus,Breast cancer,Rate,2019,7.163567808,8.114511833,5.865627895
+Deaths,United Kingdom,Female,95 plus,Breast cancer,Rate,2019,741.7464266,828.4853815,579.8721424
+Deaths,United Kingdom,Male,1 to 4,Prostate cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,1 to 4,Prostate cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,5 to 9,Prostate cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,5 to 9,Prostate cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,10 to 14,Prostate cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,10 to 14,Prostate cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,15 to 19,Prostate cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,15 to 19,Prostate cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,20 to 24,Prostate cancer,Number,2019,0.605125632,1.060282313,0.514810601
+Deaths,United Kingdom,Male,20 to 24,Prostate cancer,Rate,2019,0.028991474,0.050797959,0.024664495
+Deaths,United Kingdom,Male,25 to 29,Prostate cancer,Number,2019,1.020387087,1.612939709,0.885035588
+Deaths,United Kingdom,Male,25 to 29,Prostate cancer,Rate,2019,0.043589812,0.068903007,0.037807745
+Deaths,United Kingdom,Male,30 to 34,Prostate cancer,Number,2019,1.338754687,1.952523882,1.181007873
+Deaths,United Kingdom,Male,30 to 34,Prostate cancer,Rate,2019,0.055377471,0.08076598,0.048852288
+Deaths,United Kingdom,Male,35 to 39,Prostate cancer,Number,2019,1.768487416,2.464296237,1.468613219
+Deaths,United Kingdom,Male,35 to 39,Prostate cancer,Rate,2019,0.076417213,0.106483456,0.063459501
+Deaths,United Kingdom,Male,40 to 44,Prostate cancer,Number,2019,3.858288403,5.012103747,3.126082427
+Deaths,United Kingdom,Male,40 to 44,Prostate cancer,Rate,2019,0.187456845,0.243515533,0.151882257
+Deaths,United Kingdom,Male,45 to 49,Prostate cancer,Number,2019,18.20406906,24.24388107,15.31235897
+Deaths,United Kingdom,Male,45 to 49,Prostate cancer,Rate,2019,0.814392367,1.084594417,0.68502642
+Deaths,United Kingdom,Male,50 to 54,Prostate cancer,Number,2019,80.61211393,96.85377228,59.05044179
+Deaths,United Kingdom,Male,50 to 54,Prostate cancer,Rate,2019,3.482997653,4.18474898,2.551385147
+Deaths,United Kingdom,Male,55 to 59,Prostate cancer,Number,2019,207.0316673,272.6002497,165.1101972
+Deaths,United Kingdom,Male,55 to 59,Prostate cancer,Rate,2019,9.575525729,12.6081712,7.63659474
+Deaths,United Kingdom,Male,60 to 64,Prostate cancer,Number,2019,523.0922001,681.8886651,410.5218196
+Deaths,United Kingdom,Male,60 to 64,Prostate cancer,Rate,2019,28.68879696,37.39792997,22.51491636
+Deaths,United Kingdom,Male,65 to 69,Prostate cancer,Number,2019,1024.481771,1373.241945,828.7785022
+Deaths,United Kingdom,Male,65 to 69,Prostate cancer,Rate,2019,62.96113018,84.39473232,50.93387958
+Deaths,United Kingdom,Male,70 to 74,Prostate cancer,Number,2019,1952.936534,2698.570393,1563.452081
+Deaths,United Kingdom,Male,70 to 74,Prostate cancer,Rate,2019,125.0322278,172.7697046,100.0963899
+Deaths,United Kingdom,Male,75 to 79,Prostate cancer,Number,2019,2728.115166,3879.712923,2316.467713
+Deaths,United Kingdom,Male,75 to 79,Prostate cancer,Rate,2019,257.6422606,366.3987578,218.7664163
+Deaths,United Kingdom,Male,All Ages,Prostate cancer,Number,2019,15967.9329,20473.1986,12525.83148
+Deaths,United Kingdom,Male,All Ages,Prostate cancer,Rate,2019,48.01366655,61.56046227,37.66367879
+Deaths,United Kingdom,Male,80 to 84,Prostate cancer,Number,2019,3425.432904,4622.590714,2709.509744
+Deaths,United Kingdom,Male,80 to 84,Prostate cancer,Rate,2019,471.4292402,636.1894947,372.8994716
+Deaths,United Kingdom,Male,85 to 89,Prostate cancer,Number,2019,3356.062931,4144.531433,2564.064324
+Deaths,United Kingdom,Male,85 to 89,Prostate cancer,Rate,2019,857.6891844,1059.193423,655.2827774
+Deaths,United Kingdom,Male,90 to 94,Prostate cancer,Number,2019,2047.209876,2313.198665,1365.651524
+Deaths,United Kingdom,Male,90 to 94,Prostate cancer,Rate,2019,1361.287108,1538.155691,908.0865795
+Deaths,United Kingdom,Male,95 plus,Prostate cancer,Number,2019,596.1626267,687.7617208,337.723234
+Deaths,United Kingdom,Male,95 plus,Prostate cancer,Rate,2019,1871.631892,2159.204071,1060.270381
+Deaths,Global,Male,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Female,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Male,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Female,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Male,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Female,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Male,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Female,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Male,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Female,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Male,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Female,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Male,15 to 19,Breast cancer,Number,2019,37.41040864,42.47220895,33.08585014
+Deaths,Global,Female,15 to 19,Breast cancer,Number,2019,678.0669238,815.2549642,556.1822215
+Deaths,Global,Male,15 to 19,Breast cancer,Rate,2019,0.011772346,0.013365198,0.010411489
+Deaths,Global,Female,15 to 19,Breast cancer,Rate,2019,0.224704886,0.270167689,0.184313463
+Deaths,Global,Male,20 to 24,Breast cancer,Number,2019,39.98768563,45.44841872,35.90418961
+Deaths,Global,Female,20 to 24,Breast cancer,Number,2019,1647.895106,1897.968411,1403.460493
+Deaths,Global,Male,20 to 24,Breast cancer,Rate,2019,0.013137931,0.014932051,0.011796301
+Deaths,Global,Female,20 to 24,Breast cancer,Rate,2019,0.557142475,0.641690612,0.474500744
+Deaths,Global,Male,25 to 29,Breast cancer,Number,2019,46.36287549,52.05941161,41.84611692
+Deaths,Global,Female,25 to 29,Breast cancer,Number,2019,4492.54386,5041.849483,3965.00105
+Deaths,Global,Male,25 to 29,Breast cancer,Rate,2019,0.015212063,0.017081147,0.013730076
+Deaths,Global,Female,25 to 29,Breast cancer,Rate,2019,1.494062991,1.676742833,1.318620699
+Deaths,Global,Male,30 to 34,Breast cancer,Number,2019,73.74364072,85.77145431,63.78723983
+Deaths,Global,Female,30 to 34,Breast cancer,Number,2019,12057.63355,13237.52129,10886.98616
+Deaths,Global,Male,30 to 34,Breast cancer,Rate,2019,0.024323817,0.028291106,0.021039769
+Deaths,Global,Female,30 to 34,Breast cancer,Rate,2019,4.03862579,4.433821499,3.646525073
+Deaths,Global,Male,35 to 39,Breast cancer,Number,2019,148.0697462,176.6812666,125.38269
+Deaths,Global,Female,35 to 39,Breast cancer,Number,2019,23866.22356,26317.52714,21728.91594
+Deaths,Global,Male,35 to 39,Breast cancer,Rate,2019,0.054329502,0.064827593,0.046005206
+Deaths,Global,Female,35 to 39,Breast cancer,Rate,2019,8.890846418,9.804026653,8.094638597
+Deaths,Global,Male,40 to 44,Breast cancer,Number,2019,290.018061,339.7453461,244.8781247
+Deaths,Global,Female,40 to 44,Breast cancer,Number,2019,38584.10939,42303.24144,35215.77694
+Deaths,Global,Male,40 to 44,Breast cancer,Rate,2019,0.116592717,0.136584022,0.098445614
+Deaths,Global,Female,40 to 44,Breast cancer,Rate,2019,15.76801679,17.28789991,14.39149357
+Deaths,Global,Male,45 to 49,Breast cancer,Number,2019,590.0120545,692.1440426,493.971001
+Deaths,Global,Female,45 to 49,Breast cancer,Number,2019,53896.62379,58818.89488,49352.16044
+Deaths,Global,Male,45 to 49,Breast cancer,Rate,2019,0.247517122,0.290362714,0.20722675
+Deaths,Global,Female,45 to 49,Breast cancer,Rate,2019,22.89295659,24.98372462,20.96266495
+Deaths,Global,Male,50 to 54,Breast cancer,Number,2019,946.5563679,1108.50804,804.9029501
+Deaths,Global,Female,50 to 54,Breast cancer,Number,2019,73755.85199,80784.13457,67099.15974
+Deaths,Global,Male,50 to 54,Breast cancer,Rate,2019,0.435026396,0.509457518,0.369924118
+Deaths,Global,Female,50 to 54,Breast cancer,Rate,2019,33.64300592,36.84888785,30.60662128
+Deaths,Global,Male,55 to 59,Breast cancer,Number,2019,1288.154389,1476.215233,1088.973708
+Deaths,Global,Female,55 to 59,Breast cancer,Number,2019,79836.49594,86938.36444,73467.73679
+Deaths,Global,Male,55 to 59,Breast cancer,Rate,2019,0.704825659,0.8077249,0.595842097
+Deaths,Global,Female,55 to 59,Breast cancer,Rate,2019,42.40974561,46.18231144,39.02661297
+Deaths,Global,Male,60 to 64,Breast cancer,Number,2019,1593.835568,1787.037663,1385.294373
+Deaths,Global,Female,60 to 64,Breast cancer,Number,2019,77489.71991,83454.75551,72017.57552
+Deaths,Global,Male,60 to 64,Breast cancer,Rate,2019,1.047509911,1.17448732,0.910451251
+Deaths,Global,Female,60 to 64,Breast cancer,Rate,2019,48.31611557,52.03541343,44.90414349
+Deaths,Global,Male,65 to 69,Breast cancer,Number,2019,1864.746068,2103.054027,1620.816249
+Deaths,Global,Female,65 to 69,Breast cancer,Number,2019,75870.59766,81422.66611,70901.00881
+Deaths,Global,Male,65 to 69,Breast cancer,Rate,2019,1.508489923,1.701269606,1.311162426
+Deaths,Global,Female,65 to 69,Breast cancer,Rate,2019,56.21422526,60.32787714,52.53214557
+Deaths,Global,Male,70 to 74,Breast cancer,Number,2019,1769.017464,2009.15493,1531.731432
+Deaths,Global,Female,70 to 74,Breast cancer,Number,2019,67200.91714,71885.66325,62286.44472
+Deaths,Global,Male,70 to 74,Breast cancer,Rate,2019,2.007882398,2.28044488,1.738556369
+Deaths,Global,Female,70 to 74,Breast cancer,Rate,2019,67.89103442,72.62389035,62.92609301
+Deaths,Global,Male,75 to 79,Breast cancer,Number,2019,1197.818606,1383.86904,1027.36464
+Deaths,Global,Female,75 to 79,Breast cancer,Number,2019,57578.84888,61581.10186,52350.96847
+Deaths,Global,Male,75 to 79,Breast cancer,Rate,2019,2.093905136,2.419139658,1.795934782
+Deaths,Global,Female,75 to 79,Breast cancer,Rate,2019,82.43364488,88.16353194,74.94906946
+Deaths,Global,Male,All Ages,Breast cancer,Number,2019,12097.67122,13322.46062,10692.89732
+Deaths,Global,Female,All Ages,Breast cancer,Number,2019,688562.2622,739571.4732,635323.1315
+Deaths,Global,Male,All Ages,Breast cancer,Rate,2019,0.311717351,0.343276161,0.27552093
+Deaths,Global,Female,All Ages,Breast cancer,Rate,2019,17.85463616,19.17732106,16.47412875
+Deaths,Global,Male,80 to 84,Breast cancer,Number,2019,1033.192249,1181.85203,890.7057538
+Deaths,Global,Female,80 to 84,Breast cancer,Number,2019,51647.49288,56051.56388,44454.74542
+Deaths,Global,Male,80 to 84,Breast cancer,Rate,2019,2.932061021,3.353937541,2.52770346
+Deaths,Global,Female,80 to 84,Breast cancer,Rate,2019,105.0075118,113.9616839,90.38351999
+Deaths,Global,Male,85 to 89,Breast cancer,Number,2019,749.4278092,878.8956348,631.1926982
+Deaths,Global,Female,85 to 89,Breast cancer,Number,2019,37468.3635,41322.43131,30428.14831
+Deaths,Global,Male,85 to 89,Breast cancer,Rate,2019,4.602431866,5.39752759,3.876319176
+Deaths,Global,Female,85 to 89,Breast cancer,Rate,2019,137.7634841,151.9341006,111.8780575
+Deaths,Global,Male,90 to 94,Breast cancer,Number,2019,340.0973987,398.8869465,277.3210507
+Deaths,Global,Female,90 to 94,Breast cancer,Number,2019,22280.36032,25077.93679,17245.28905
+Deaths,Global,Male,90 to 94,Breast cancer,Rate,2019,6.407400938,7.514990133,5.224700827
+Deaths,Global,Female,90 to 94,Breast cancer,Rate,2019,192.9085597,217.1306297,149.3137374
+Deaths,Global,Male,95 plus,Breast cancer,Number,2019,89.22082667,104.5269434,69.91481554
+Deaths,Global,Female,95 plus,Breast cancer,Number,2019,10210.51781,11731.89004,7615.224144
+Deaths,Global,Male,95 plus,Breast cancer,Rate,2019,6.990358368,8.189576588,5.477752606
+Deaths,Global,Female,95 plus,Breast cancer,Rate,2019,291.9904283,335.4971473,217.7727516
+Deaths,Global,Male,1 to 4,Prostate cancer,Number,2019,0,0,0
+Deaths,Global,Male,1 to 4,Prostate cancer,Rate,2019,0,0,0
+Deaths,Global,Male,5 to 9,Prostate cancer,Number,2019,0,0,0
+Deaths,Global,Male,5 to 9,Prostate cancer,Rate,2019,0,0,0
+Deaths,Global,Male,10 to 14,Prostate cancer,Number,2019,0,0,0
+Deaths,Global,Male,10 to 14,Prostate cancer,Rate,2019,0,0,0
+Deaths,Global,Male,15 to 19,Prostate cancer,Number,2019,0,0,0
+Deaths,Global,Male,15 to 19,Prostate cancer,Rate,2019,0,0,0
+Deaths,Global,Male,20 to 24,Prostate cancer,Number,2019,119.0086749,150.1105633,103.7748577
+Deaths,Global,Male,20 to 24,Prostate cancer,Rate,2019,0.039100231,0.049318738,0.034095169
+Deaths,Global,Male,25 to 29,Prostate cancer,Number,2019,198.1108402,252.9346318,173.6281486
+Deaths,Global,Male,25 to 29,Prostate cancer,Rate,2019,0.065001893,0.082990056,0.056968908
+Deaths,Global,Male,30 to 34,Prostate cancer,Number,2019,242.1673794,293.7171432,206.9062479
+Deaths,Global,Male,30 to 34,Prostate cancer,Rate,2019,0.079877193,0.096880517,0.068246559
+Deaths,Global,Male,35 to 39,Prostate cancer,Number,2019,316.3995017,375.7031743,265.5171385
+Deaths,Global,Male,35 to 39,Prostate cancer,Rate,2019,0.116092773,0.137852377,0.097423102
+Deaths,Global,Male,40 to 44,Prostate cancer,Number,2019,652.4962755,774.0425917,539.7857628
+Deaths,Global,Male,40 to 44,Prostate cancer,Rate,2019,0.26231578,0.311179686,0.217004033
+Deaths,Global,Male,45 to 49,Prostate cancer,Number,2019,2045.938295,2449.27837,1709.20662
+Deaths,Global,Male,45 to 49,Prostate cancer,Rate,2019,0.858295615,1.027501607,0.717032645
+Deaths,Global,Male,50 to 54,Prostate cancer,Number,2019,5698.831736,6749.166403,4705.772041
+Deaths,Global,Male,50 to 54,Prostate cancer,Rate,2019,2.619117377,3.101839084,2.162718588
+Deaths,Global,Male,55 to 59,Prostate cancer,Number,2019,13619.91116,15555.27298,11472.86517
+Deaths,Global,Male,55 to 59,Prostate cancer,Rate,2019,7.452261111,8.511212341,6.277484925
+Deaths,Global,Male,60 to 64,Prostate cancer,Number,2019,31684.26584,37146.90977,26568.1332
+Deaths,Global,Male,60 to 64,Prostate cancer,Rate,2019,20.82371807,24.41390878,17.46126352
+Deaths,Global,Male,65 to 69,Prostate cancer,Number,2019,51838.74475,61856.63798,44256.32223
+Deaths,Global,Male,65 to 69,Prostate cancer,Rate,2019,41.93505241,50.03904644,35.80123712
+Deaths,Global,Male,70 to 74,Prostate cancer,Number,2019,72260.11783,88784.90771,62198.60093
+Deaths,Global,Male,70 to 74,Prostate cancer,Rate,2019,82.0171771,100.773258,70.59708482
+Deaths,Global,Male,75 to 79,Prostate cancer,Number,2019,90801.41215,115231.1751,78023.56397
+Deaths,Global,Male,75 to 79,Prostate cancer,Rate,2019,158.7298297,201.4354663,136.39289
+Deaths,Global,Male,All Ages,Prostate cancer,Number,2019,486836.0667,593688.8455,420498.0541
+Deaths,Global,Male,All Ages,Prostate cancer,Rate,2019,12.54417039,15.29741641,10.83485715
+Deaths,Global,Male,80 to 84,Prostate cancer,Number,2019,96271.24446,119991.8048,81713.15333
+Deaths,Global,Male,80 to 84,Prostate cancer,Rate,2019,273.204879,340.5206476,231.8909691
+Deaths,Global,Male,85 to 89,Prostate cancer,Number,2019,73881.81317,92608.20083,60146.65059
+Deaths,Global,Male,85 to 89,Prostate cancer,Rate,2019,453.7275066,568.731143,369.3762867
+Deaths,Global,Male,90 to 94,Prostate cancer,Number,2019,35765.60006,42721.00045,27177.5006
+Deaths,Global,Male,90 to 94,Prostate cancer,Rate,2019,673.8203239,804.8593709,512.02139
+Deaths,Global,Male,95 plus,Prostate cancer,Number,2019,11440.00456,13642.24782,7992.08328
+Deaths,Global,Male,95 plus,Prostate cancer,Rate,2019,896.3123809,1068.855835,626.1713584
+Deaths,Global,Male,1 to 4,All causes,Number,2019,669534.3774,811046.2697,555031.4373
+Deaths,Global,Female,1 to 4,All causes,Number,2019,619380.6572,730039.8805,526318.1894
+Deaths,Global,Male,1 to 4,All causes,Rate,2019,244.1829736,295.793161,202.4231039
+Deaths,Global,Female,1 to 4,All causes,Rate,2019,241.3201155,284.4346304,205.061564
+Deaths,Global,Male,5 to 9,All causes,Number,2019,210032.2566,234560.2585,189341.622
+Deaths,Global,Female,5 to 9,All causes,Number,2019,167707.9098,185044.5046,152349.8263
+Deaths,Global,Male,5 to 9,All causes,Rate,2019,62.14905863,69.40695441,56.02664922
+Deaths,Global,Female,5 to 9,All causes,Rate,2019,52.94570921,58.41890548,48.09713276
+Deaths,Global,Male,10 to 14,All causes,Number,2019,170078.7927,184434.356,156649.4381
+Deaths,Global,Female,10 to 14,All causes,Number,2019,129193.242,140301.0135,119021.6579
+Deaths,Global,Male,10 to 14,All causes,Rate,2019,51.33149571,55.66414954,47.27838098
+Deaths,Global,Female,10 to 14,All causes,Rate,2019,41.56094415,45.13426938,38.28878663
+Deaths,Global,Male,15 to 19,All causes,Number,2019,302328.2051,325494.3985,279931.8051
+Deaths,Global,Female,15 to 19,All causes,Number,2019,196976.7814,215401.3409,181494.5037
+Deaths,Global,Male,15 to 19,All causes,Rate,2019,95.13694965,102.4269111,88.08922754
+Deaths,Global,Female,15 to 19,All causes,Rate,2019,65.2762194,71.38194201,60.1455408
+Deaths,Global,Male,20 to 24,All causes,Number,2019,437270.7244,465080.7271,408762.1776
+Deaths,Global,Female,20 to 24,All causes,Number,2019,255140.5916,281182.5255,229824.5375
+Deaths,Global,Male,20 to 24,All causes,Rate,2019,143.6650409,152.8020011,134.2985746
+Deaths,Global,Female,20 to 24,All causes,Rate,2019,86.26135259,95.06595883,77.70216155
+Deaths,Global,Male,25 to 29,All causes,Number,2019,495910.7066,525232.2828,468014.9685
+Deaths,Global,Female,25 to 29,All causes,Number,2019,294137.5384,324940.623,262069.6847
+Deaths,Global,Male,25 to 29,All causes,Rate,2019,162.7126235,172.3332881,153.5597888
+Deaths,Global,Female,25 to 29,All causes,Rate,2019,97.81985973,108.0638886,87.15521297
+Deaths,Global,Male,30 to 34,All causes,Number,2019,618820.3528,656281.47,582463.5177
+Deaths,Global,Female,30 to 34,All causes,Number,2019,356455.4838,389242.9765,323139.5445
+Deaths,Global,Male,30 to 34,All causes,Rate,2019,204.1135063,216.4697902,192.121462
+Deaths,Global,Female,30 to 34,All causes,Rate,2019,119.3924416,130.3743986,108.2334848
+Deaths,Global,Male,35 to 39,All causes,Number,2019,742489.0392,793689.7671,694549.0259
+Deaths,Global,Female,35 to 39,All causes,Number,2019,428556.2515,465062.4736,391365.3582
+Deaths,Global,Male,35 to 39,All causes,Rate,2019,272.4328299,291.2193149,254.8427608
+Deaths,Global,Female,35 to 39,All causes,Rate,2019,159.6493808,173.2489858,145.7947163
+Deaths,Global,Male,40 to 44,All causes,Number,2019,908128.8706,973155.4537,843653.5043
+Deaths,Global,Female,40 to 44,All causes,Number,2019,531918.9584,572351.1701,489963.4692
+Deaths,Global,Male,40 to 44,All causes,Rate,2019,365.084893,391.2268029,339.1645826
+Deaths,Global,Female,40 to 44,All causes,Rate,2019,217.3772364,233.9005099,200.231451
+Deaths,Global,Male,45 to 49,All causes,Number,2019,1185308.021,1276286.512,1095074.585
+Deaths,Global,Female,45 to 49,All causes,Number,2019,677581.2817,728935.4689,625069.9231
+Deaths,Global,Male,45 to 49,All causes,Rate,2019,497.250909,535.4174754,459.3969018
+Deaths,Global,Female,45 to 49,All causes,Rate,2019,287.8072461,309.6202855,265.5026903
+Deaths,Global,Male,50 to 54,All causes,Number,2019,1584255.509,1707815.802,1460110.148
+Deaths,Global,Female,50 to 54,All causes,Number,2019,967034.3615,1046891.867,888529.88
+Deaths,Global,Male,50 to 54,All causes,Rate,2019,728.1055707,784.892457,671.049794
+Deaths,Global,Female,50 to 54,All causes,Rate,2019,441.1032058,477.5294209,405.2941592
+Deaths,Global,Male,55 to 59,All causes,Number,2019,2020793.822,2175646.678,1865951.104
+Deaths,Global,Female,55 to 59,All causes,Number,2019,1211913.575,1306401.569,1119676.248
+Deaths,Global,Male,55 to 59,All causes,Rate,2019,1105.696142,1190.425322,1020.972508
+Deaths,Global,Female,55 to 59,All causes,Rate,2019,643.7775834,693.9703146,594.7804235
+Deaths,Global,Male,60 to 64,All causes,Number,2019,2521854.5,2698992.66,2344896.338
+Deaths,Global,Female,60 to 64,All causes,Number,2019,1608452.94,1722411.338,1495407.45
+Deaths,Global,Male,60 to 64,All causes,Rate,2019,1657.427929,1773.847704,1541.126453
+Deaths,Global,Female,60 to 64,All causes,Rate,2019,1002.896877,1073.951814,932.4111539
+Deaths,Global,Male,65 to 69,All causes,Number,2019,2994125.655,3199423.097,2783559.555
+Deaths,Global,Female,65 to 69,All causes,Number,2019,2059116.528,2195564.486,1923797.587
+Deaths,Global,Male,65 to 69,All causes,Rate,2019,2422.103716,2588.179477,2251.765864
+Deaths,Global,Female,65 to 69,All causes,Rate,2019,1525.645559,1626.742907,1425.384724
+Deaths,Global,Male,70 to 74,All causes,Number,2019,3275869.194,3495363.798,3054916.953
+Deaths,Global,Female,70 to 74,All causes,Number,2019,2451907.509,2603174.383,2303395.927
+Deaths,Global,Male,70 to 74,All causes,Rate,2019,3718.199636,3967.331916,3467.4129
+Deaths,Global,Female,70 to 74,All causes,Rate,2019,2477.08728,2629.907584,2327.050564
+Deaths,Global,Male,75 to 79,All causes,Number,2019,3275897.767,3466837.654,3077758.302
+Deaths,Global,Female,75 to 79,All causes,Number,2019,2800540.104,2953980.731,2648781.238
+Deaths,Global,Male,75 to 79,All causes,Rate,2019,5726.592599,6060.374365,5380.225259
+Deaths,Global,Female,75 to 79,All causes,Rate,2019,4009.436328,4229.111962,3792.168412
+Deaths,Global,Male,All Ages,All causes,Number,2019,30682313.85,32516044.05,28786401.55
+Deaths,Global,Female,All Ages,All causes,Number,2019,25844645.66,27278915.75,24401225.31
+Deaths,Global,Male,All Ages,All causes,Rate,2019,790.5827016,837.831921,741.7312536
+Deaths,Global,Female,All Ages,All causes,Rate,2019,670.1597959,707.3508705,632.7314519
+Deaths,Global,Male,80 to 84,All causes,Number,2019,3295828.905,3460001.579,3126142.576
+Deaths,Global,Female,80 to 84,All causes,Number,2019,3441838.404,3600447.203,3288850.467
+Deaths,Global,Male,80 to 84,All causes,Rate,2019,9353.120366,9819.020395,8871.573324
+Deaths,Global,Female,80 to 84,All causes,Rate,2019,6997.801184,7320.277928,6686.752541
+Deaths,Global,Male,85 to 89,All causes,Number,2019,2442924.462,2518481.014,2362269.861
+Deaths,Global,Female,85 to 89,All causes,Number,2019,2975553.047,3099899.894,2855948.339
+Deaths,Global,Male,85 to 89,All causes,Rate,2019,15002.63701,15466.64953,14507.31605
+Deaths,Global,Female,85 to 89,All causes,Rate,2019,10940.49797,11397.69581,10500.736
+Deaths,Global,Male,90 to 94,All causes,Number,2019,1091887.887,1113911.716,1067788.523
+Deaths,Global,Female,90 to 94,All causes,Number,2019,1991689.706,2048582.509,1937129.086
+Deaths,Global,Male,90 to 94,All causes,Rate,2019,20571.05845,20985.9852,20117.02886
+Deaths,Global,Female,90 to 94,All causes,Rate,2019,17244.51431,17737.10548,16772.11573
+Deaths,Global,Male,95 plus,All causes,Number,2019,376507.9203,381448.6534,371146.2919
+Deaths,Global,Female,95 plus,All causes,Number,2019,987364.8795,1002752.058,972792.3828
+Deaths,Global,Male,95 plus,All causes,Rate,2019,29499.0014,29886.10267,29078.92343
+Deaths,Global,Female,95 plus,All causes,Rate,2019,28235.69768,28675.72518,27818.96763
+Deaths,United States of America,Male,1 to 4,All causes,Number,2019,2076.931924,2247.756877,1922.371481
+Deaths,United States of America,Female,1 to 4,All causes,Number,2019,1564.883775,1648.03274,1488.066879
+Deaths,United States of America,Male,1 to 4,All causes,Rate,2019,26.58270943,28.76910275,24.60448602
+Deaths,United States of America,Female,1 to 4,All causes,Rate,2019,20.96990033,22.08412078,19.94053145
+Deaths,United States of America,Male,5 to 9,All causes,Number,2019,1260.748862,1291.698169,1231.627375
+Deaths,United States of America,Female,5 to 9,All causes,Number,2019,990.2035238,995.1276375,985.9273568
+Deaths,United States of America,Male,5 to 9,All causes,Rate,2019,12.52541027,12.83288846,12.23609129
+Deaths,United States of America,Female,5 to 9,All causes,Rate,2019,10.26933758,10.32040525,10.22498973
+Deaths,United States of America,Male,10 to 14,All causes,Number,2019,1805.583529,1835.349434,1777.012206
+Deaths,United States of America,Female,10 to 14,All causes,Number,2019,1221.842985,1230.622159,1212.997166
+Deaths,United States of America,Male,10 to 14,All causes,Rate,2019,16.52360249,16.79600195,16.26213512
+Deaths,United States of America,Female,10 to 14,All causes,Rate,2019,11.67398238,11.75786215,11.58946584
+Deaths,United States of America,Male,15 to 19,All causes,Number,2019,7630.026697,7732.002837,7531.89709
+Deaths,United States of America,Female,15 to 19,All causes,Number,2019,3351.105805,3378.190733,3323.405421
+Deaths,United States of America,Male,15 to 19,All causes,Rate,2019,68.94405701,69.86550186,68.057369
+Deaths,United States of America,Female,15 to 19,All causes,Rate,2019,31.70468937,31.96093888,31.44261705
+Deaths,United States of America,Male,20 to 24,All causes,Number,2019,14982.12471,15152.12177,14820.91139
+Deaths,United States of America,Female,20 to 24,All causes,Number,2019,4803.744252,4872.29219,4739.625181
+Deaths,United States of America,Male,20 to 24,All causes,Rate,2019,135.9554793,137.4981198,134.492547
+Deaths,United States of America,Female,20 to 24,All causes,Rate,2019,45.38352069,46.03112944,44.77775381
+Deaths,United States of America,Male,25 to 29,All causes,Number,2019,17865.53356,18028.21302,17711.33459
+Deaths,United States of America,Female,25 to 29,All causes,Number,2019,7220.624787,7336.83967,7112.230435
+Deaths,United States of America,Male,25 to 29,All causes,Rate,2019,154.1405694,155.5441382,152.8101688
+Deaths,United States of America,Female,25 to 29,All causes,Rate,2019,63.74859014,64.77461423,62.79161102
+Deaths,United States of America,Male,30 to 34,All causes,Number,2019,19161.5619,19342.03957,18989.27113
+Deaths,United States of America,Female,30 to 34,All causes,Number,2019,9509.118808,9656.143132,9372.190003
+Deaths,United States of America,Male,30 to 34,All causes,Rate,2019,172.8412162,174.4691619,171.2871182
+Deaths,United States of America,Female,30 to 34,All causes,Rate,2019,86.2736897,87.60760204,85.0313713
+Deaths,United States of America,Male,35 to 39,All causes,Number,2019,21902.5729,22148.40559,21666.86702
+Deaths,United States of America,Female,35 to 39,All causes,Number,2019,11979.73637,12162.29913,11809.02124
+Deaths,United States of America,Male,35 to 39,All causes,Rate,2019,202.6488608,204.923375,200.4680426
+Deaths,United States of America,Female,35 to 39,All causes,Rate,2019,109.5847158,111.2547097,108.0230979
+Deaths,United States of America,Male,40 to 44,All causes,Number,2019,25938.01075,26279.48576,25613.72956
+Deaths,United States of America,Female,40 to 44,All causes,Number,2019,16469.63184,16712.37442,16241.23438
+Deaths,United States of America,Male,40 to 44,All causes,Rate,2019,262.872398,266.3331242,259.5859249
+Deaths,United States of America,Female,40 to 44,All causes,Rate,2019,164.0311482,166.4487702,161.7563981
+Deaths,United States of America,Male,45 to 49,All causes,Number,2019,39293.75559,39881.06599,38738.52327
+Deaths,United States of America,Female,45 to 49,All causes,Number,2019,24894.98521,25263.48117,24548.52397
+Deaths,United States of America,Male,45 to 49,All causes,Rate,2019,385.4699577,391.2314461,380.0231538
+Deaths,United States of America,Female,45 to 49,All causes,Rate,2019,238.29458,241.82182,234.978256
+Deaths,United States of America,Male,50 to 54,All causes,Number,2019,62056.60451,63008.76171,61159.85293
+Deaths,United States of America,Female,50 to 54,All causes,Number,2019,39272.45984,39849.61068,38731.18534
+Deaths,United States of America,Male,50 to 54,All causes,Rate,2019,603.9566303,613.223358,595.2291295
+Deaths,United States of America,Female,50 to 54,All causes,Rate,2019,371.9598944,377.4262432,366.8333399
+Deaths,United States of America,Male,55 to 59,All causes,Number,2019,99274.2338,100803.2682,97835.2907
+Deaths,United States of America,Female,55 to 59,All causes,Number,2019,61817.32115,62701.38558,60986.84247
+Deaths,United States of America,Male,55 to 59,All causes,Rate,2019,916.5315658,930.648102,903.2467817
+Deaths,United States of America,Female,55 to 59,All causes,Rate,2019,542.5822106,550.3418098,535.2929437
+Deaths,United States of America,Male,60 to 64,All causes,Number,2019,132369.1418,134272.408,130576.6428
+Deaths,United States of America,Female,60 to 64,All causes,Number,2019,86707.32224,87843.23339,85639.74047
+Deaths,United States of America,Male,60 to 64,All causes,Rate,2019,1329.054453,1348.164228,1311.056839
+Deaths,United States of America,Female,60 to 64,All causes,Rate,2019,806.2753154,816.8379427,796.3480705
+Deaths,United States of America,Male,65 to 69,All causes,Number,2019,155411.3602,157535.1637,153409.6129
+Deaths,United States of America,Female,65 to 69,All causes,Number,2019,107887.4253,109161.6758,106692.6208
+Deaths,United States of America,Male,65 to 69,All causes,Rate,2019,1877.644245,1903.30355,1853.459595
+Deaths,United States of America,Female,65 to 69,All causes,Rate,2019,1164.665668,1178.421449,1151.767521
+Deaths,United States of America,Male,70 to 74,All causes,Number,2019,182273.7315,184648.3103,180028.3484
+Deaths,United States of America,Female,70 to 74,All causes,Number,2019,140502.6309,142093.8651,139012.7104
+Deaths,United States of America,Male,70 to 74,All causes,Rate,2019,2845.754013,2882.827195,2810.697904
+Deaths,United States of America,Female,70 to 74,All causes,Rate,2019,1900.042744,1921.561296,1879.894278
+Deaths,United States of America,Male,75 to 79,All causes,Number,2019,187589.9967,189845.297,185448.4084
+Deaths,United States of America,Female,75 to 79,All causes,Number,2019,157243.6482,158955.6492,155636.6466
+Deaths,United States of America,Male,75 to 79,All causes,Rate,2019,4440.761301,4494.150344,4390.064128
+Deaths,United States of America,Female,75 to 79,All causes,Rate,2019,3012.517038,3045.316022,2981.729659
+Deaths,United States of America,Male,All Ages,All causes,Number,2019,1525215.232,1542874.136,1508745.727
+Deaths,United States of America,Male,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Female,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Female,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Female,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Female,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Female,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Female,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,15 to 19,Breast cancer,Number,2019,1.070475517,1.132422383,1.027755475
+Deaths,United States of America,Female,15 to 19,Breast cancer,Number,2019,4.581373162,5.158001115,4.137107627
+Deaths,United States of America,Male,15 to 19,Breast cancer,Rate,2019,0.009672696,0.01023244,0.009286682
+Deaths,United States of America,Female,15 to 19,Breast cancer,Rate,2019,0.043344204,0.04879966,0.039141024
+Deaths,United States of America,Male,20 to 24,Breast cancer,Number,2019,0.961884244,1.005365558,0.906203719
+Deaths,United States of America,Female,20 to 24,Breast cancer,Number,2019,15.78264349,17.18226793,14.5592189
+Deaths,United States of America,Male,20 to 24,Breast cancer,Rate,2019,0.008728631,0.009123202,0.008223357
+Deaths,United States of America,Female,20 to 24,Breast cancer,Rate,2019,0.149107007,0.162330002,0.137548666
+Deaths,United States of America,Male,25 to 29,Breast cancer,Number,2019,0.942484945,1.019358362,0.850785452
+Deaths,United States of America,Female,25 to 29,Breast cancer,Number,2019,96.25928394,105.4958097,86.67252243
+Deaths,United States of America,Male,25 to 29,Breast cancer,Rate,2019,0.008131588,0.008794838,0.007340422
+Deaths,United States of America,Female,25 to 29,Breast cancer,Rate,2019,0.849842475,0.931388811,0.765204019
+Deaths,United States of America,Male,30 to 34,Breast cancer,Number,2019,1.265911919,1.468791323,1.107580006
+Deaths,United States of America,Female,30 to 34,Breast cancer,Number,2019,368.8641515,399.3944469,335.7534807
+Deaths,United States of America,Male,30 to 34,Breast cancer,Rate,2019,0.011418785,0.013248799,0.009990599
+Deaths,United States of America,Female,30 to 34,Breast cancer,Rate,2019,3.346605715,3.623598913,3.046201462
+Deaths,United States of America,Male,35 to 39,Breast cancer,Number,2019,3.560922511,4.180017535,2.988958508
+Deaths,United States of America,Female,35 to 39,Breast cancer,Number,2019,786.9825177,841.7091221,733.0752665
+Deaths,United States of America,Male,35 to 39,Breast cancer,Rate,2019,0.032946672,0.038674716,0.027654698
+Deaths,United States of America,Female,35 to 39,Breast cancer,Rate,2019,7.198927659,7.699539625,6.70581073
+Deaths,United States of America,Male,40 to 44,Breast cancer,Number,2019,6.136053741,7.252469377,5.171181217
+Deaths,United States of America,Female,40 to 44,Breast cancer,Number,2019,1375.695577,1471.406221,1280.936853
+Deaths,United States of America,Male,40 to 44,Breast cancer,Rate,2019,0.062186695,0.073501165,0.052408059
+Deaths,United States of America,Female,40 to 44,Breast cancer,Rate,2019,13.70139462,14.65463553,12.75763446
+Deaths,United States of America,Male,45 to 49,Breast cancer,Number,2019,16.34794462,18.8619757,14.25784504
+Deaths,United States of America,Female,45 to 49,Breast cancer,Number,2019,2155.886227,2307.080824,2023.042236
+Deaths,United States of America,Male,45 to 49,Breast cancer,Rate,2019,0.160372594,0.185035125,0.139868812
+Deaths,United States of America,Female,45 to 49,Breast cancer,Rate,2019,20.63612405,22.0833574,19.36454253
+Deaths,United States of America,Male,50 to 54,Breast cancer,Number,2019,29.38381029,33.33127924,25.73017795
+Deaths,United States of America,Female,50 to 54,Breast cancer,Number,2019,3423.834921,3625.979607,3230.261433
+Deaths,United States of America,Male,50 to 54,Breast cancer,Rate,2019,0.285973543,0.324391695,0.250415112
+Deaths,United States of America,Female,50 to 54,Breast cancer,Rate,2019,32.4280496,34.34261559,30.5946637
+Deaths,United States of America,Male,55 to 59,Breast cancer,Number,2019,51.20907967,57.23589748,45.84075401
+Deaths,United States of America,Female,55 to 59,Breast cancer,Number,2019,5112.422314,5401.178263,4839.176895
+Deaths,United States of America,Male,55 to 59,Breast cancer,Rate,2019,0.472778647,0.528420162,0.423216543
+Deaths,United States of America,Female,55 to 59,Breast cancer,Rate,2019,44.87268857,47.40715365,42.47436233
+Deaths,United States of America,Male,60 to 64,Breast cancer,Number,2019,82.29832056,92.12229501,73.4351462
+Deaths,United States of America,Female,60 to 64,Breast cancer,Number,2019,6225.111533,6574.780338,5884.824639
+Deaths,United States of America,Male,60 to 64,Breast cancer,Rate,2019,0.826317584,0.924955354,0.737326742
+Deaths,United States of America,Female,60 to 64,Breast cancer,Rate,2019,57.88615812,61.13766351,54.72189337
+Deaths,United States of America,Male,65 to 69,Breast cancer,Number,2019,96.06453259,108.2112927,85.38831697
+Deaths,United States of America,Female,65 to 69,Breast cancer,Number,2019,6531.433438,6904.402652,6167.269803
+Deaths,United States of America,Male,65 to 69,Breast cancer,Rate,2019,1.160629548,1.307383905,1.031641971
+Deaths,United States of America,Female,65 to 69,Breast cancer,Rate,2019,70.50808993,74.53436489,66.57687292
+Deaths,United States of America,Male,70 to 74,Breast cancer,Number,2019,100.8043041,113.9520133,89.23057473
+Deaths,United States of America,Female,70 to 74,Breast cancer,Number,2019,6781.917937,7165.751964,6391.025463
+Deaths,United States of America,Male,70 to 74,Breast cancer,Rate,2019,1.573810173,1.779079171,1.393114982
+Deaths,United States of America,Female,70 to 74,Breast cancer,Rate,2019,91.71311518,96.90377285,86.42700484
+Deaths,United States of America,Male,75 to 79,Breast cancer,Number,2019,73.86177655,84.44497121,64.63948985
+Deaths,United States of America,Female,75 to 79,Breast cancer,Number,2019,6033.731172,6447.340765,5532.382174
+Deaths,United States of America,Male,75 to 79,Breast cancer,Rate,2019,1.748507515,1.999040284,1.530191109
+Deaths,United States of America,Female,75 to 79,Breast cancer,Rate,2019,115.5958804,123.5199267,105.9908985
+Deaths,United States of America,Male,All Ages,Breast cancer,Number,2019,619.0934044,661.9394853,574.1782271
+Deaths,United States of America,Female,All Ages,Breast cancer,Number,2019,54402.35156,57271.29459,50419.87962
+Deaths,United States of America,Male,All Ages,Breast cancer,Rate,2019,0.383840883,0.410405659,0.355993257
+Deaths,United States of America,Female,All Ages,Breast cancer,Rate,2019,32.63690908,34.35803749,30.24775547
+Deaths,United States of America,Male,80 to 84,Breast cancer,Number,2019,67.65847612,78.69202113,58.15484858
+Deaths,United States of America,Female,80 to 84,Breast cancer,Number,2019,5445.445648,5961.020061,4637.710833
+Deaths,United States of America,Male,80 to 84,Breast cancer,Rate,2019,2.619418763,3.04658586,2.251482893
+Deaths,United States of America,Female,80 to 84,Breast cancer,Rate,2019,155.3561103,170.065216,132.3118
+Deaths,United States of America,Male,85 to 89,Breast cancer,Number,2019,48.55918885,57.96325393,39.807304
+Deaths,United States of America,Female,85 to 89,Breast cancer,Number,2019,4589.148649,5119.439343,3678.240055
+Deaths,United States of America,Male,85 to 89,Breast cancer,Rate,2019,3.312925199,3.954512609,2.715832444
+Deaths,United States of America,Female,85 to 89,Breast cancer,Rate,2019,195.0976518,217.6418048,156.3723584
+Deaths,United States of America,Male,90 to 94,Breast cancer,Number,2019,26.29854455,31.87878113,20.6829172
+Deaths,United States of America,Female,90 to 94,Breast cancer,Number,2019,3405.186465,3915.674649,2569.218126
+Deaths,United States of America,Male,90 to 94,Breast cancer,Rate,2019,3.93575048,4.770869654,3.095334844
+Deaths,United States of America,Female,90 to 94,Breast cancer,Rate,2019,254.3943481,292.531851,191.9409046
+Deaths,United States of America,Male,95 plus,Breast cancer,Number,2019,12.66969362,15.66909308,8.589561475
+Deaths,United States of America,Female,95 plus,Breast cancer,Number,2019,2050.067705,2422.289178,1497.209285
+Deaths,United States of America,Male,95 plus,Breast cancer,Rate,2019,5.56185679,6.878560315,3.770723449
+Deaths,United States of America,Female,95 plus,Breast cancer,Rate,2019,358.9512512,424.1243979,262.1499498
+Deaths,United States of America,Male,1 to 4,Prostate cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,1 to 4,Prostate cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,5 to 9,Prostate cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,5 to 9,Prostate cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,10 to 14,Prostate cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,10 to 14,Prostate cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,15 to 19,Prostate cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,15 to 19,Prostate cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,20 to 24,Prostate cancer,Number,2019,2.647824167,4.022522912,2.28919247
+Deaths,United States of America,Male,20 to 24,Prostate cancer,Rate,2019,0.024027714,0.036502435,0.020773306
+Deaths,United States of America,Male,25 to 29,Prostate cancer,Number,2019,3.951068803,5.738231976,3.286651855
+Deaths,United States of America,Male,25 to 29,Prostate cancer,Rate,2019,0.034089102,0.04950842,0.028356634
+Deaths,United States of America,Male,30 to 34,Prostate cancer,Number,2019,5.055248202,7.015122323,4.079472822
+Deaths,United States of America,Male,30 to 34,Prostate cancer,Rate,2019,0.045599375,0.063277841,0.036797681
+Deaths,United States of America,Male,35 to 39,Prostate cancer,Number,2019,7.215432621,9.897008458,5.863568508
+Deaths,United States of America,Male,35 to 39,Prostate cancer,Rate,2019,0.066759244,0.091569949,0.054251411
+Deaths,United States of America,Male,40 to 44,Prostate cancer,Number,2019,19.94519753,26.8802217,16.0614729
+Deaths,United States of America,Male,40 to 44,Prostate cancer,Rate,2019,0.202137394,0.272421367,0.162777244
+Deaths,United States of America,Male,45 to 49,Prostate cancer,Number,2019,103.0975495,136.5483603,82.25448493
+Deaths,United States of America,Male,45 to 49,Prostate cancer,Rate,2019,1.011382278,1.339533212,0.806912761
+Deaths,United States of America,Male,50 to 54,Prostate cancer,Number,2019,402.9561304,515.0786701,320.2070909
+Deaths,United States of America,Male,50 to 54,Prostate cancer,Rate,2019,3.921710325,5.012926188,3.116367663
+Deaths,United States of America,Male,55 to 59,Prostate cancer,Number,2019,1173.831342,1562.352201,969.6080247
+Deaths,United States of America,Male,55 to 59,Prostate cancer,Rate,2019,10.83718742,14.4241366,8.951732259
+Deaths,United States of America,Male,60 to 64,Prostate cancer,Number,2019,2812.357484,3934.712663,2442.814958
+Deaths,United States of America,Male,60 to 64,Prostate cancer,Rate,2019,28.23751962,39.50654448,24.52712207
+Deaths,United States of America,Male,65 to 69,Prostate cancer,Number,2019,4459.755825,6745.365775,3942.377921
+Deaths,United States of America,Male,65 to 69,Prostate cancer,Rate,2019,53.88174228,81.49595506,47.63090166
+Deaths,United States of America,Male,70 to 74,Prostate cancer,Number,2019,6374.146007,9868.925524,5611.049904
+Deaths,United States of America,Male,70 to 74,Prostate cancer,Rate,2019,99.51654271,154.0788911,87.60268227
+Deaths,United States of America,Male,75 to 79,Prostate cancer,Number,2019,8413.497121,13235.36391,7398.867444
+Deaths,United States of America,Male,75 to 79,Prostate cancer,Rate,2019,199.1701747,313.3167701,175.151153
+Deaths,United States of America,Male,All Ages,Prostate cancer,Number,2019,48323.44114,70587.71595,41349.29288
+Deaths,United States of America,Male,All Ages,Prostate cancer,Rate,2019,29.9607655,43.76472277,25.6367601
+Deaths,United States of America,Male,80 to 84,Prostate cancer,Number,2019,8795.452616,13640.69899,7461.66051
+Deaths,United States of America,Male,80 to 84,Prostate cancer,Rate,2019,340.5186598,528.103867,288.8804871
+Deaths,United States of America,Male,85 to 89,Prostate cancer,Number,2019,8183.693366,11901.25442,6648.312258
+Deaths,United States of America,Male,85 to 89,Prostate cancer,Rate,2019,558.3281891,811.9568431,453.577618
+Deaths,United States of America,Male,90 to 94,Prostate cancer,Number,2019,5346.185564,7397.156413,4066.03112
+Deaths,United States of America,Male,90 to 94,Prostate cancer,Rate,2019,800.0918971,1107.033199,608.5083494
+Deaths,United States of America,Male,95 plus,Prostate cancer,Number,2019,2219.653361,2969.846459,1501.949163
+Deaths,United States of America,Male,95 plus,Prostate cancer,Rate,2019,974.4035248,1303.730081,659.3392392
+Deaths,United States of America,Female,All Ages,All causes,Number,2019,1421240.524,1435492.14,1407677.234
+Deaths,United States of America,Male,All Ages,All causes,Rate,2019,945.6407659,956.5893712,935.4295942
+Deaths,United States of America,Female,All Ages,All causes,Rate,2019,852.626705,861.1764955,844.4898534
+Deaths,United States of America,Male,80 to 84,All causes,Number,2019,186084.7069,188058.6256,184198.9109
+Deaths,United States of America,Female,80 to 84,All causes,Number,2019,185809.2987,187606.3122,184111.4573
+Deaths,United States of America,Male,80 to 84,All causes,Rate,2019,7204.326801,7280.747672,7131.317625
+Deaths,United States of America,Female,80 to 84,All causes,Rate,2019,5301.055556,5352.32354,5252.616905
+Deaths,United States of America,Male,85 to 89,All causes,Number,2019,172475.6532,173893.5467,171114.9867
+Deaths,United States of America,Female,85 to 89,All causes,Number,2019,203808.2292,205813.9369,201911.8972
+Deaths,United States of America,Male,85 to 89,All causes,Rate,2019,11767.06101,11863.79605,11674.23025
+Deaths,United States of America,Female,85 to 89,All causes,Rate,2019,8664.462624,8749.730913,8583.844198
+Deaths,United States of America,Male,90 to 94,All causes,Number,2019,119745.5181,120610.2227,118917.0448
+Deaths,United States of America,Female,90 to 94,All causes,Number,2019,196657.8154,198211.5912,195216.779
+Deaths,United States of America,Male,90 to 94,All causes,Rate,2019,17920.70582,18050.11455,17796.71933
+Deaths,United States of America,Female,90 to 94,All causes,Rate,2019,14691.89346,14807.97279,14584.23665
+Deaths,United States of America,Male,95 plus,All causes,Number,2019,64248.57418,64672.59339,63846.89479
+Deaths,United States of America,Female,95 plus,All causes,Number,2019,150195.8432,151123.3192,149340.1555
+Deaths,United States of America,Male,95 plus,All causes,Rate,2019,28204.42067,28390.56046,28028.08782
+Deaths,United States of America,Female,95 plus,All causes,Rate,2019,26298.14894,26460.54293,26148.32453
+Deaths,Estonia,Male,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Female,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Female,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Female,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Female,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Female,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Female,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,15 to 19,Breast cancer,Number,2019,0.003021105,0.00383801,0.002284728
+Deaths,Estonia,Female,15 to 19,Breast cancer,Number,2019,0.012809606,0.020683195,0.007681076
+Deaths,Estonia,Male,15 to 19,Breast cancer,Rate,2019,0.009596679,0.012191619,0.007257544
+Deaths,Estonia,Female,15 to 19,Breast cancer,Rate,2019,0.042794618,0.069098882,0.025661112
+Deaths,Estonia,Male,20 to 24,Breast cancer,Number,2019,0.003258789,0.004130628,0.002497041
+Deaths,Estonia,Female,20 to 24,Breast cancer,Number,2019,0.036419179,0.055081302,0.023691288
+Deaths,Estonia,Male,20 to 24,Breast cancer,Rate,2019,0.009983656,0.01265463,0.007649958
+Deaths,Estonia,Female,20 to 24,Breast cancer,Rate,2019,0.116841598,0.176714233,0.076007421
+Deaths,Estonia,Male,25 to 29,Breast cancer,Number,2019,0.004296687,0.005478343,0.003125904
+Deaths,Estonia,Female,25 to 29,Breast cancer,Number,2019,0.223292613,0.339533246,0.140289722
+Deaths,Estonia,Male,25 to 29,Breast cancer,Rate,2019,0.009426052,0.012018363,0.006857594
+Deaths,Estonia,Female,25 to 29,Breast cancer,Rate,2019,0.539042918,0.819655379,0.33866853
+Deaths,Estonia,Male,30 to 34,Breast cancer,Number,2019,0.004957078,0.006392779,0.003731244
+Deaths,Estonia,Female,30 to 34,Breast cancer,Number,2019,1.322195304,1.996568218,0.839988065
+Deaths,Estonia,Male,30 to 34,Breast cancer,Rate,2019,0.009670224,0.012470977,0.007278877
+Deaths,Estonia,Female,30 to 34,Breast cancer,Rate,2019,2.804432437,4.234806051,1.781650389
+Deaths,Estonia,Male,35 to 39,Breast cancer,Number,2019,0.006794525,0.013236796,0.003953553
+Deaths,Estonia,Female,35 to 39,Breast cancer,Number,2019,2.945702064,4.266561701,1.915626747
+Deaths,Estonia,Male,35 to 39,Breast cancer,Rate,2019,0.014403915,0.028061075,0.008381254
+Deaths,Estonia,Female,35 to 39,Breast cancer,Rate,2019,6.618611634,9.586412441,4.304165593
+Deaths,Estonia,Male,40 to 44,Breast cancer,Number,2019,0.051319261,0.107726252,0.02253687
+Deaths,Estonia,Female,40 to 44,Breast cancer,Number,2019,5.800274498,8.397598123,3.949412143
+Deaths,Estonia,Male,40 to 44,Breast cancer,Rate,2019,0.112600759,0.236364621,0.04944866
+Deaths,Estonia,Female,40 to 44,Breast cancer,Rate,2019,13.19456682,19.10300445,8.98419246
+Deaths,Estonia,Male,45 to 49,Breast cancer,Number,2019,0.072423679,0.129649447,0.034613832
+Deaths,Estonia,Female,45 to 49,Breast cancer,Number,2019,9.674119417,13.39989663,6.712495958
+Deaths,Estonia,Male,45 to 49,Breast cancer,Rate,2019,0.16094197,0.288110707,0.076919847
+Deaths,Estonia,Female,45 to 49,Breast cancer,Rate,2019,21.54624454,29.84431319,14.95010276
+Deaths,Estonia,Male,50 to 54,Breast cancer,Number,2019,0.109686311,0.209544498,0.05158983
+Deaths,Estonia,Female,50 to 54,Breast cancer,Number,2019,15.66031626,21.69395252,11.06960389
+Deaths,Estonia,Male,50 to 54,Breast cancer,Rate,2019,0.276193636,0.527639741,0.12990484
+Deaths,Estonia,Female,50 to 54,Breast cancer,Rate,2019,37.26440524,51.62170575,26.34060504
+Deaths,Estonia,Male,55 to 59,Breast cancer,Number,2019,0.120181808,0.200499381,0.064978559
+Deaths,Estonia,Female,55 to 59,Breast cancer,Number,2019,22.13910706,30.12515904,15.79106923
+Deaths,Estonia,Male,55 to 59,Breast cancer,Rate,2019,0.292244224,0.48755121,0.158007345
+Deaths,Estonia,Female,55 to 59,Breast cancer,Rate,2019,47.69196962,64.8954886,34.01705372
+Deaths,Estonia,Male,60 to 64,Breast cancer,Number,2019,0.328767795,0.571766128,0.170810338
+Deaths,Estonia,Female,60 to 64,Breast cancer,Number,2019,26.68132547,36.65616911,18.94704929
+Deaths,Estonia,Male,60 to 64,Breast cancer,Rate,2019,0.873855287,1.519737824,0.454008937
+Deaths,Estonia,Female,60 to 64,Breast cancer,Rate,2019,56.90277451,78.175941,40.40802525
+Deaths,Estonia,Male,65 to 69,Breast cancer,Number,2019,0.374624006,0.663266186,0.19394553
+Deaths,Estonia,Female,65 to 69,Breast cancer,Number,2019,30.92004792,41.29400161,22.13666826
+Deaths,Estonia,Male,65 to 69,Breast cancer,Rate,2019,1.180521273,2.090095213,0.611164315
+Deaths,Estonia,Female,65 to 69,Breast cancer,Rate,2019,68.45975998,91.42862412,49.01256945
+Deaths,Estonia,Male,70 to 74,Breast cancer,Number,2019,0.279352987,0.484385207,0.138878574
+Deaths,Estonia,Female,70 to 74,Breast cancer,Number,2019,31.45189911,41.43172888,23.018951
+Deaths,Estonia,Male,70 to 74,Breast cancer,Rate,2019,1.260047526,2.184864348,0.626424675
+Deaths,Estonia,Female,70 to 74,Breast cancer,Rate,2019,86.88653166,114.456021,63.59033546
+Deaths,Estonia,Male,75 to 79,Breast cancer,Number,2019,0.248090233,0.457738802,0.1180577
+Deaths,Estonia,Female,75 to 79,Breast cancer,Number,2019,31.93075214,41.84330862,23.28249827
+Deaths,Estonia,Male,75 to 79,Breast cancer,Rate,2019,1.438850065,2.654749839,0.684699788
+Deaths,Estonia,Female,75 to 79,Breast cancer,Rate,2019,93.30265631,122.2674563,68.03218804
+Deaths,Estonia,Male,All Ages,Breast cancer,Number,2019,2.528490805,3.430251854,1.79714812
+Deaths,Estonia,Female,All Ages,Breast cancer,Number,2019,257.5554823,323.4621554,203.6251698
+Deaths,Estonia,Male,All Ages,Breast cancer,Rate,2019,0.408866287,0.554684374,0.290605478
+Deaths,Estonia,Female,All Ages,Breast cancer,Rate,2019,37.11462704,46.61200434,29.34308432
+Deaths,Estonia,Male,80 to 84,Breast cancer,Number,2019,0.308538674,0.607726476,0.123005234
+Deaths,Estonia,Female,80 to 84,Breast cancer,Number,2019,32.43119251,43.11384554,22.67315966
+Deaths,Estonia,Male,80 to 84,Breast cancer,Rate,2019,2.65996648,5.239317443,1.060449876
+Deaths,Estonia,Female,80 to 84,Breast cancer,Rate,2019,113.091816,150.3436263,79.0642774
+Deaths,Estonia,Male,85 to 89,Breast cancer,Number,2019,0.336794412,0.675699313,0.15016839
+Deaths,Estonia,Female,85 to 89,Breast cancer,Number,2019,26.42284445,35.78196065,19.09764956
+Deaths,Estonia,Male,85 to 89,Breast cancer,Rate,2019,5.876579408,11.78998383,2.620223019
+Deaths,Estonia,Female,85 to 89,Breast cancer,Rate,2019,151.0447366,204.5456095,109.170663
+Deaths,Estonia,Male,90 to 94,Breast cancer,Number,2019,0.245625204,0.47431751,0.115418634
+Deaths,Estonia,Female,90 to 94,Breast cancer,Number,2019,15.5356285,20.92202788,10.95864628
+Deaths,Estonia,Male,90 to 94,Breast cancer,Rate,2019,13.764576,26.58025038,6.46793788
+Deaths,Estonia,Female,90 to 94,Breast cancer,Rate,2019,208.4554174,280.7295535,147.0419549
+Deaths,Norway,Male,1 to 4,All causes,Number,2019,14.8337152,16.36947411,13.46746817
+Deaths,Norway,Female,1 to 4,All causes,Number,2019,12.71289133,13.54194974,11.95153464
+Deaths,Norway,Male,1 to 4,All causes,Rate,2019,12.18559554,13.44719027,11.06325138
+Deaths,Norway,Female,1 to 4,All causes,Rate,2019,11.00179189,11.71926268,10.34291048
+Deaths,Norway,Male,5 to 9,All causes,Number,2019,11.90394821,12.65585483,11.22079544
+Deaths,Norway,Female,5 to 9,All causes,Number,2019,10.06218886,10.37806879,9.767188465
+Deaths,Norway,Male,5 to 9,All causes,Rate,2019,7.220116459,7.676171313,6.805762966
+Deaths,Norway,Female,5 to 9,All causes,Rate,2019,6.43194159,6.633858025,6.243371755
+Deaths,Norway,Male,10 to 14,All causes,Number,2019,14.48635994,15.0436188,13.93874875
+Deaths,Norway,Female,10 to 14,All causes,Number,2019,11.45648719,11.70977309,11.21015513
+Deaths,Norway,Male,10 to 14,All causes,Rate,2019,8.837901999,9.177876926,8.503812964
+Deaths,Norway,Female,10 to 14,All causes,Rate,2019,7.345652349,7.508053804,7.187709551
+Deaths,Norway,Male,15 to 19,All causes,Number,2019,53.79498457,55.38203293,52.31156097
+Deaths,Norway,Female,15 to 19,All causes,Number,2019,25.07475831,25.62388129,24.56049584
+Deaths,Norway,Male,15 to 19,All causes,Rate,2019,32.62473482,33.58722291,31.72509144
+Deaths,Norway,Female,15 to 19,All causes,Rate,2019,16.1589649,16.51283706,15.82755795
+Deaths,Norway,Male,20 to 24,All causes,Number,2019,96.25673433,98.64096919,93.95437902
+Deaths,Norway,Female,20 to 24,All causes,Number,2019,31.09683393,32.07239584,30.17793752
+Deaths,Norway,Male,20 to 24,All causes,Rate,2019,54.44232282,55.79083401,53.14012228
+Deaths,Norway,Female,20 to 24,All causes,Rate,2019,18.83287399,19.42369409,18.27637166
+Deaths,Norway,Male,25 to 29,All causes,Number,2019,109.6262941,111.8245486,107.5031801
+Deaths,Norway,Female,25 to 29,All causes,Number,2019,38.96701625,40.34048128,37.67268723
+Deaths,Norway,Male,25 to 29,All causes,Rate,2019,57.2591364,58.40731127,56.15020835
+Deaths,Norway,Female,25 to 29,All causes,Rate,2019,21.38897678,22.14287109,20.6785202
+Deaths,Norway,Male,30 to 34,All causes,Number,2019,123.6721833,126.2329242,121.1941289
+Deaths,Norway,Female,30 to 34,All causes,Number,2019,53.1491102,54.94303842,51.46285943
+Deaths,Norway,Male,30 to 34,All causes,Rate,2019,65.49239027,66.84846757,64.18010078
+Deaths,Norway,Female,30 to 34,All causes,Rate,2019,29.52946634,30.52616681,28.5925911
+Deaths,Norway,Male,35 to 39,All causes,Number,2019,156.6934821,160.5430578,153.0289451
+Deaths,Norway,Female,35 to 39,All causes,Number,2019,78.02282224,80.61865249,75.58914554
+Deaths,Norway,Male,35 to 39,All causes,Rate,2019,85.25327616,87.34774071,83.25948692
+Deaths,Norway,Female,35 to 39,All causes,Rate,2019,45.46460086,46.97721451,44.04647554
+Deaths,Norway,Male,40 to 44,All causes,Number,2019,194.7576671,200.3411757,189.4672578
+Deaths,Norway,Female,40 to 44,All causes,Number,2019,121.9430651,125.9040679,118.2496837
+Deaths,Norway,Male,40 to 44,All causes,Rate,2019,107.3576578,110.4354951,104.4413878
+Deaths,Norway,Female,40 to 44,All causes,Rate,2019,71.56944726,73.89419427,69.40176949
+Deaths,Norway,Male,45 to 49,All causes,Number,2019,329.2874655,340.0515719,319.2826851
+Deaths,Norway,Female,45 to 49,All causes,Number,2019,221.3966856,228.6316015,214.6792191
+Deaths,Norway,Male,45 to 49,All causes,Rate,2019,168.8684935,174.3886503,163.7377419
+Deaths,Norway,Female,45 to 49,All causes,Rate,2019,120.0532956,123.9764596,116.4107208
+Deaths,Norway,Male,50 to 54,All causes,Number,2019,514.7148848,532.0566291,498.7013969
+Deaths,Norway,Female,50 to 54,All causes,Number,2019,341.828335,353.0036733,331.4885734
+Deaths,Norway,Male,50 to 54,All causes,Rate,2019,272.9817764,282.1790627,264.4889379
+Deaths,Norway,Female,50 to 54,All causes,Rate,2019,191.9517243,198.2271709,186.145491
+Deaths,Norway,Male,55 to 59,All causes,Number,2019,720.0295073,744.482498,697.3550422
+Deaths,Norway,Female,55 to 59,All causes,Number,2019,469.8848694,484.9543516,455.9814123
+Deaths,Norway,Male,55 to 59,All causes,Rate,2019,432.0479305,446.7207514,418.4422996
+Deaths,Norway,Female,55 to 59,All causes,Rate,2019,294.3094832,303.7481602,285.6011388
+Deaths,Norway,Male,60 to 64,All causes,Number,2019,1171.793563,1208.826441,1136.926175
+Deaths,Norway,Female,60 to 64,All causes,Number,2019,769.878511,792.5657867,748.8521492
+Deaths,Norway,Male,60 to 64,All causes,Rate,2019,766.0677025,790.278188,743.2729195
+Deaths,Norway,Female,60 to 64,All causes,Rate,2019,509.6890723,524.7089181,495.7688152
+Deaths,Norway,Male,65 to 69,All causes,Number,2019,1652.873247,1702.609303,1606.069112
+Deaths,Norway,Female,65 to 69,All causes,Number,2019,1112.064851,1141.62696,1084.529513
+Deaths,Norway,Male,65 to 69,All causes,Rate,2019,1211.42585,1247.87846,1177.122107
+Deaths,Norway,Female,65 to 69,All causes,Rate,2019,812.1956345,833.7862964,792.0852232
+Deaths,Norway,Male,70 to 74,All causes,Number,2019,2650.027468,2726.327941,2578.10137
+Deaths,Norway,Female,70 to 74,All causes,Number,2019,1781.14068,1826.768465,1738.549731
+Deaths,Norway,Male,70 to 74,All causes,Rate,2019,2113.970338,2174.836476,2056.593711
+Deaths,Norway,Female,70 to 74,All causes,Rate,2019,1365.427151,1400.405532,1332.776818
+Deaths,Norway,Male,75 to 79,All causes,Number,2019,2699.730184,2771.963018,2631.53274
+Deaths,Norway,Female,75 to 79,All causes,Number,2019,2173.657243,2227.232394,2123.460715
+Deaths,Norway,Male,75 to 79,All causes,Rate,2019,3523.572062,3617.847259,3434.563683
+Deaths,Norway,Female,75 to 79,All causes,Rate,2019,2496.352835,2557.881616,2438.704259
+Deaths,Norway,Male,All Ages,All causes,Number,2019,20346.63702,20841.87096,19886.28498
+Deaths,Norway,Female,All Ages,All causes,Number,2019,21039.24244,21489.75494,20611.02963
+Deaths,Norway,Male,All Ages,All causes,Rate,2019,754.0589902,772.4126673,736.9980582
+Deaths,Norway,Female,All Ages,All causes,Rate,2019,793.7644057,810.7612528,777.6088769
+Deaths,Norway,Male,80 to 84,All causes,Number,2019,3187.092741,3261.402863,3116.204477
+Deaths,Norway,Female,80 to 84,All causes,Number,2019,2855.809395,2919.286025,2796.31372
+Deaths,Norway,Male,80 to 84,All causes,Rate,2019,6790.770987,6949.10432,6639.728639
+Deaths,Norway,Female,80 to 84,All causes,Rate,2019,4602.493076,4704.793585,4506.608375
+Deaths,Norway,Male,85 to 89,All causes,Number,2019,3229.926889,3288.984319,3173.508342
+Deaths,Norway,Female,85 to 89,All causes,Number,2019,3943.631239,4030.800785,3861.557525
+Deaths,Norway,Male,85 to 89,All causes,Rate,2019,11680.12172,11893.68629,11476.09992
+Deaths,Norway,Female,85 to 89,All causes,Rate,2019,8831.698828,9026.913625,8647.896063
+Deaths,Norway,Male,90 to 94,All causes,Number,2019,2330.418275,2365.364416,2296.745329
+Deaths,Norway,Female,90 to 94,All causes,Number,2019,3937.630634,4008.601495,3870.577558
+Deaths,Norway,Male,90 to 94,All causes,Rate,2019,19603.69767,19897.66789,19320.43768
+Deaths,Norway,Female,90 to 94,All causes,Rate,2019,15566.3193,15846.8827,15301.24375
+Deaths,Norway,Male,95 plus,All causes,Number,2019,1022.914698,1036.066592,1010.889021
+Deaths,Norway,Female,95 plus,All causes,Number,2019,2997.4082,3032.899239,2962.357867
+Deaths,Norway,Male,95 plus,All causes,Rate,2019,31315.78898,31718.42463,30947.63163
+Deaths,Norway,Female,95 plus,All causes,Rate,2019,27768.87635,28097.67583,27444.15969
+Deaths,Estonia,Male,1 to 4,All causes,Number,2019,4.521414618,5.652340238,3.68090738
+Deaths,Estonia,Female,1 to 4,All causes,Number,2019,4.379648124,5.255068957,3.699611609
+Deaths,Estonia,Male,1 to 4,All causes,Rate,2019,15.6152094,19.5209871,12.71242396
+Deaths,Estonia,Female,1 to 4,All causes,Rate,2019,16.00706158,19.20661433,13.52161388
+Deaths,Estonia,Male,5 to 9,All causes,Number,2019,4.323236518,4.977616778,3.803852066
+Deaths,Estonia,Female,5 to 9,All causes,Number,2019,3.240006467,3.581901554,2.961168464
+Deaths,Estonia,Male,5 to 9,All causes,Rate,2019,11.48117215,13.21900268,10.10184851
+Deaths,Estonia,Female,5 to 9,All causes,Rate,2019,9.030557728,9.983488949,8.253379439
+Deaths,Estonia,Male,10 to 14,All causes,Number,2019,5.051482595,5.889554342,4.363181199
+Deaths,Estonia,Female,10 to 14,All causes,Number,2019,3.763558168,4.334255126,3.284252661
+Deaths,Estonia,Male,10 to 14,All causes,Rate,2019,13.57427456,15.82632943,11.72468051
+Deaths,Estonia,Female,10 to 14,All causes,Rate,2019,10.71521793,12.34004795,9.350588312
+Deaths,Estonia,Male,15 to 19,All causes,Number,2019,15.97749663,19.5775295,12.9328354
+Deaths,Estonia,Female,15 to 19,All causes,Number,2019,6.655541128,7.794377868,5.700871669
+Deaths,Estonia,Male,15 to 19,All causes,Rate,2019,50.75326242,62.18893453,41.08175418
+Deaths,Estonia,Female,15 to 19,All causes,Rate,2019,22.23498127,26.03963263,19.0456001
+Deaths,Estonia,Male,20 to 24,All causes,Number,2019,35.19960242,42.81186207,28.67100784
+Deaths,Estonia,Female,20 to 24,All causes,Number,2019,10.52438668,13.56099793,8.099553103
+Deaths,Estonia,Male,20 to 24,All causes,Rate,2019,107.8378371,131.1588283,87.83677262
+Deaths,Estonia,Female,20 to 24,All causes,Rate,2019,33.76479584,43.50698434,25.98533913
+Deaths,Estonia,Male,25 to 29,All causes,Number,2019,72.41460812,84.84501121,61.43797926
+Deaths,Estonia,Female,25 to 29,All causes,Number,2019,16.84579278,22.39952308,12.50406422
+Deaths,Estonia,Male,25 to 29,All causes,Rate,2019,158.8628234,186.1325827,134.7823471
+Deaths,Estonia,Female,25 to 29,All causes,Rate,2019,40.66684141,54.07390821,30.18562577
+Deaths,Estonia,Male,30 to 34,All causes,Number,2019,112.6457394,132.7315211,94.9772393
+Deaths,Estonia,Female,30 to 34,All causes,Number,2019,26.09703137,34.33080002,19.57404388
+Deaths,Estonia,Male,30 to 34,All causes,Rate,2019,219.7482947,258.9314568,185.2807437
+Deaths,Estonia,Female,30 to 34,All causes,Rate,2019,55.35291274,72.81708602,41.51737903
+Deaths,Estonia,Male,35 to 39,All causes,Number,2019,116.8914247,142.1968755,95.05918961
+Deaths,Estonia,Female,35 to 39,All causes,Number,2019,35.88061434,46.99668742,26.95124924
+Deaths,Estonia,Male,35 to 39,All causes,Rate,2019,247.8015828,301.4473552,201.518783
+Deaths,Estonia,Female,35 to 39,All causes,Rate,2019,80.61910075,105.5954796,60.55597202
+Deaths,Estonia,Male,40 to 44,All causes,Number,2019,157.8203377,197.8355715,123.9225256
+Deaths,Estonia,Female,40 to 44,All causes,Number,2019,54.54003558,70.81764014,41.28053973
+Deaths,Estonia,Male,40 to 44,All causes,Rate,2019,346.2771955,434.0755308,271.9012344
+Deaths,Estonia,Female,40 to 44,All causes,Rate,2019,124.0686357,161.0972179,93.90570049
+Deaths,Estonia,Male,45 to 49,All causes,Number,2019,233.8201769,301.2338578,177.9293109
+Deaths,Estonia,Female,45 to 49,All causes,Number,2019,89.71793865,116.2967194,67.94671898
+Deaths,Estonia,Male,45 to 49,All causes,Rate,2019,519.6018798,669.4104881,395.3995999
+Deaths,Estonia,Female,45 to 49,All causes,Rate,2019,199.8202175,259.0166038,151.3312541
+Deaths,Estonia,Male,50 to 54,All causes,Number,2019,309.055642,399.9763129,233.6926211
+Deaths,Estonia,Female,50 to 54,All causes,Number,2019,130.7498422,169.0030381,99.25615091
+Deaths,Estonia,Male,50 to 54,All causes,Rate,2019,778.2119794,1007.153133,588.4454854
+Deaths,Estonia,Female,50 to 54,All causes,Rate,2019,311.1249495,402.1500968,236.1843381
+Deaths,Estonia,Male,55 to 59,All causes,Number,2019,491.266709,635.3205056,371.6075048
+Deaths,Estonia,Female,55 to 59,All causes,Number,2019,221.7405484,284.7390314,169.5510504
+Deaths,Estonia,Male,55 to 59,All causes,Rate,2019,1194.605575,1544.898939,903.6321588
+Deaths,Estonia,Female,55 to 59,All causes,Rate,2019,477.6725398,613.383602,365.2461467
+Deaths,Estonia,Male,60 to 64,All causes,Number,2019,690.5074583,876.3529822,533.3907862
+Deaths,Estonia,Female,60 to 64,All causes,Number,2019,335.1393749,421.7280476,261.9735747
+Deaths,Estonia,Male,60 to 64,All causes,Rate,2019,1835.348844,2329.320869,1417.737276
+Deaths,Estonia,Female,60 to 64,All causes,Rate,2019,714.7456111,899.4116886,558.7062481
+Deaths,Estonia,Male,65 to 69,All causes,Number,2019,833.2737304,1043.021474,653.2251606
+Deaths,Estonia,Female,65 to 69,All causes,Number,2019,496.8287758,611.6505966,397.9160397
+Deaths,Estonia,Male,65 to 69,All causes,Rate,2019,2625.825759,3286.786266,2058.453771
+Deaths,Estonia,Female,65 to 69,All causes,Rate,2019,1100.023481,1354.249293,881.0218095
+Deaths,Estonia,Male,70 to 74,All causes,Number,2019,826.0606076,1022.24519,655.4114731
+Deaths,Estonia,Female,70 to 74,All causes,Number,2019,655.4004104,800.3015826,529.6575308
+Deaths,Estonia,Male,70 to 74,All causes,Rate,2019,3726.022895,4610.931629,2956.294165
+Deaths,Estonia,Female,70 to 74,All causes,Rate,2019,1810.557395,2210.849925,1463.19005
+Deaths,Estonia,Male,75 to 79,All causes,Number,2019,945.3475347,1149.44068,764.0631762
+Deaths,Estonia,Female,75 to 79,All causes,Number,2019,1098.614895,1329.292072,896.2178556
+Deaths,Estonia,Male,75 to 79,All causes,Rate,2019,5482.736449,6666.416406,4431.340721
+Deaths,Estonia,Female,75 to 79,All causes,Rate,2019,3210.18708,3884.233004,2618.776601
+Deaths,Estonia,Male,All Ages,All causes,Number,2019,7139.056476,8693.443093,5780.928769
+Deaths,Estonia,Female,All Ages,All causes,Number,2019,8749.612746,10394.54933,7285.191047
+Deaths,Estonia,Male,All Ages,All causes,Rate,2019,1154.411757,1405.761804,934.7974985
+Deaths,Estonia,Female,All Ages,All causes,Rate,2019,1260.849161,1497.890156,1049.820979
+Deaths,Estonia,Male,80 to 84,All causes,Number,2019,989.954547,1174.112586,821.3369899
+Deaths,Estonia,Female,80 to 84,All causes,Number,2019,1732.496604,2048.399238,1447.881727
+Deaths,Estonia,Male,80 to 84,All causes,Rate,2019,8534.573249,10122.23228,7080.891465
+Deaths,Estonia,Female,80 to 84,All causes,Rate,2019,6041.442578,7143.036436,5048.953224
+Deaths,Estonia,Male,85 to 89,All causes,Number,2019,787.9681693,896.9616105,683.4243462
+Deaths,Estonia,Female,85 to 89,All causes,Number,2019,1892.166893,2226.014113,1586.135913
+Deaths,Estonia,Male,85 to 89,All causes,Rate,2019,13748.91434,15650.69356,11924.77458
+Deaths,Estonia,Female,85 to 89,All causes,Rate,2019,10816.46794,12724.88721,9067.058684
+Deaths,Estonia,Male,90 to 94,All causes,Number,2019,399.10748,441.7069589,356.374087
+Deaths,Estonia,Female,90 to 94,All causes,Number,2019,1430.828557,1625.705181,1246.344198
+Deaths,Estonia,Male,90 to 94,All causes,Rate,2019,22365.56005,24752.78968,19970.82601
+Deaths,Estonia,Female,90 to 94,All causes,Rate,2019,19198.706,21813.53988,16723.31441
+Deaths,Estonia,Male,95 plus,All causes,Number,2019,92.9971303,100.8482454,84.92364899
+Deaths,Estonia,Female,95 plus,All causes,Number,2019,492.109447,539.6031626,447.0177184
+Deaths,Estonia,Male,95 plus,All causes,Rate,2019,34814.94627,37754.13535,31792.51088
+Deaths,Estonia,Female,95 plus,All causes,Rate,2019,32646.74307,35797.49569,29655.33926
+Deaths,Estonia,Male,95 plus,Breast cancer,Number,2019,0.030758252,0.056458816,0.013890165
+Deaths,Estonia,Female,95 plus,Breast cancer,Number,2019,4.367556225,6.296139967,2.764299458
+Deaths,Estonia,Male,95 plus,Breast cancer,Rate,2019,11.51483787,21.13625058,5.200002885
+Deaths,Estonia,Female,95 plus,Breast cancer,Rate,2019,289.7454759,417.6885144,183.3847628
+Deaths,Estonia,Male,1 to 4,Prostate cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,1 to 4,Prostate cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,5 to 9,Prostate cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,5 to 9,Prostate cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,10 to 14,Prostate cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,10 to 14,Prostate cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,15 to 19,Prostate cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,15 to 19,Prostate cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,20 to 24,Prostate cancer,Number,2019,0.009567104,0.021872413,0.005466934
+Deaths,Estonia,Male,20 to 24,Prostate cancer,Rate,2019,0.029309872,0.067008532,0.01674855
+Deaths,Estonia,Male,25 to 29,Prostate cancer,Number,2019,0.018999952,0.040985965,0.011041244
+Deaths,Estonia,Male,25 to 29,Prostate cancer,Rate,2019,0.041682004,0.089914814,0.024222228
+Deaths,Estonia,Male,30 to 34,Prostate cancer,Number,2019,0.036908891,0.071834772,0.024658074
+Deaths,Estonia,Male,30 to 34,Prostate cancer,Rate,2019,0.072001532,0.140134627,0.048102749
+Deaths,Estonia,Male,35 to 39,Prostate cancer,Number,2019,0.047062871,0.090476431,0.028864634
+Deaths,Estonia,Male,35 to 39,Prostate cancer,Rate,2019,0.09976997,0.191803657,0.061190989
+Deaths,Estonia,Male,40 to 44,Prostate cancer,Number,2019,0.198373017,0.323212339,0.111326725
+Deaths,Estonia,Male,40 to 44,Prostate cancer,Rate,2019,0.435254752,0.709167551,0.244264501
+Deaths,Estonia,Male,45 to 49,Prostate cancer,Number,2019,0.72629807,1.17261403,0.41859404
+Deaths,Estonia,Male,45 to 49,Prostate cancer,Rate,2019,1.61400033,2.605816411,0.930211638
+Deaths,Estonia,Male,50 to 54,Prostate cancer,Number,2019,1.969447559,2.993303163,1.149510477
+Deaths,Estonia,Male,50 to 54,Prostate cancer,Rate,2019,4.959131869,7.537232984,2.894504103
+Deaths,Estonia,Male,55 to 59,Prostate cancer,Number,2019,7.410817223,11.58290445,3.74162164
+Deaths,Estonia,Male,55 to 59,Prostate cancer,Rate,2019,18.02076836,28.16596763,9.098442836
+Deaths,Estonia,Male,60 to 64,Prostate cancer,Number,2019,18.15761549,26.54902734,10.50582434
+Deaths,Estonia,Male,60 to 64,Prostate cancer,Rate,2019,48.26241658,70.56654647,27.9241771
+Deaths,Estonia,Male,65 to 69,Prostate cancer,Number,2019,31.7257821,45.17743468,17.59110022
+Deaths,Estonia,Male,65 to 69,Prostate cancer,Rate,2019,99.97480159,142.3638684,55.43336168
+Deaths,Estonia,Male,70 to 74,Prostate cancer,Number,2019,38.13449024,52.94577445,20.1975687
+Deaths,Estonia,Male,70 to 74,Prostate cancer,Rate,2019,172.0091509,238.8168204,91.10300469
+Deaths,Estonia,Male,75 to 79,Prostate cancer,Number,2019,55.68637595,75.83215954,29.3564492
+Deaths,Estonia,Male,75 to 79,Prostate cancer,Rate,2019,322.964531,439.8041249,170.2587336
+Deaths,Estonia,Male,All Ages,Prostate cancer,Number,2019,280.1690574,364.3042183,138.4197598
+Deaths,Estonia,Male,All Ages,Prostate cancer,Rate,2019,45.30436968,58.90933543,22.38298557
+Deaths,Estonia,Male,80 to 84,Prostate cancer,Number,2019,63.04840284,88.25765306,25.7517033
+Deaths,Estonia,Male,80 to 84,Prostate cancer,Rate,2019,543.5514326,760.8848377,222.009989
+Deaths,Estonia,Male,85 to 89,Prostate cancer,Number,2019,42.03564874,59.96278173,15.99522299
+Deaths,Estonia,Male,85 to 89,Prostate cancer,Rate,2019,733.4617771,1046.264534,279.0936986
+Deaths,Estonia,Male,90 to 94,Prostate cancer,Number,2019,18.52262391,27.31059694,6.809700514
+Deaths,Estonia,Male,90 to 94,Prostate cancer,Rate,2019,1037.988206,1530.456898,381.6083973
+Deaths,Estonia,Male,95 plus,Prostate cancer,Number,2019,2.440643463,3.891509571,1.227859218
+Deaths,Estonia,Male,95 plus,Prostate cancer,Rate,2019,913.6934738,1456.848143,459.668514
+Deaths,Norway,Male,60 to 64,Prostate cancer,Number,2019,50.50077704,73.10876748,40.32978594
+Deaths,Norway,Male,60 to 64,Prostate cancer,Rate,2019,33.01521313,47.79533468,26.36586121
+Deaths,Norway,Male,65 to 69,Prostate cancer,Number,2019,98.95754446,139.1486358,79.52656286
+Deaths,Norway,Male,65 to 69,Prostate cancer,Rate,2019,72.52808261,101.9849857,58.28670418
+Deaths,Norway,Male,70 to 74,Prostate cancer,Number,2019,189.4977584,269.9105437,155.608021
+Deaths,Norway,Male,70 to 74,Prostate cancer,Rate,2019,151.1654672,215.3120638,124.1310684
+Deaths,Norway,Male,75 to 79,Prostate cancer,Number,2019,232.7996235,331.8090172,197.5496113
+Deaths,Norway,Male,75 to 79,Prostate cancer,Rate,2019,303.8400853,433.0629001,257.833281
+Deaths,Norway,Male,All Ages,Prostate cancer,Number,2019,1370.079601,1773.233843,1096.01901
+Deaths,Norway,Male,All Ages,Prostate cancer,Rate,2019,50.77599997,65.71714625,40.61914444
+Deaths,Norway,Male,80 to 84,Prostate cancer,Number,2019,277.914742,373.7773817,216.2745711
+Deaths,Norway,Male,80 to 84,Prostate cancer,Rate,2019,592.1557732,796.4112768,460.8184328
+Deaths,Norway,Male,85 to 89,Prostate cancer,Number,2019,275.2583076,342.7332463,212.3031875
+Deaths,Norway,Male,85 to 89,Prostate cancer,Rate,2019,995.3942139,1239.398343,767.7347371
+Deaths,Norway,Male,90 to 94,Prostate cancer,Number,2019,168.4618136,199.5050231,117.0230487
+Deaths,Norway,Male,90 to 94,Prostate cancer,Rate,2019,1417.116617,1678.255014,984.4088896
+Deaths,Norway,Male,95 plus,Prostate cancer,Number,2019,51.92013342,62.94983127,34.85925285
+Deaths,Norway,Male,95 plus,Prostate cancer,Rate,2019,1589.497096,1927.163268,1067.190655
+Deaths,Norway,Male,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Female,1 to 4,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Male,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Female,1 to 4,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Female,5 to 9,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Male,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Female,5 to 9,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Female,10 to 14,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Male,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Female,10 to 14,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,15 to 19,Breast cancer,Number,2019,0.015695469,0.016807903,0.013993349
+Deaths,Norway,Female,15 to 19,Breast cancer,Number,2019,0.037611738,0.043729593,0.032738207
+Deaths,Norway,Male,15 to 19,Breast cancer,Rate,2019,0.009518741,0.010193392,0.008486466
+Deaths,Norway,Female,15 to 19,Breast cancer,Rate,2019,0.02423819,0.028180729,0.021097533
+Deaths,Norway,Male,20 to 24,Breast cancer,Number,2019,0.016558137,0.01822755,0.014541842
+Deaths,Norway,Female,20 to 24,Breast cancer,Number,2019,0.118813471,0.133404139,0.104188888
+Deaths,Norway,Male,20 to 24,Breast cancer,Rate,2019,0.009365198,0.01030941,0.008224792
+Deaths,Norway,Female,20 to 24,Breast cancer,Rate,2019,0.07195585,0.080792255,0.063098906
+Deaths,Norway,Male,25 to 29,Breast cancer,Number,2019,0.022617472,0.026075778,0.019567049
+Deaths,Norway,Female,25 to 29,Breast cancer,Number,2019,0.877942771,0.991708863,0.776895561
+Deaths,Norway,Male,25 to 29,Breast cancer,Rate,2019,0.011813379,0.013619693,0.010220106
+Deaths,Norway,Female,25 to 29,Breast cancer,Rate,2019,0.481902371,0.544348526,0.426437606
+Deaths,Norway,Male,30 to 34,Breast cancer,Number,2019,0.080226019,0.098455904,0.065452709
+Deaths,Norway,Female,30 to 34,Breast cancer,Number,2019,3.651060597,4.106726184,3.248209358
+Deaths,Norway,Male,30 to 34,Breast cancer,Rate,2019,0.042484847,0.052138745,0.034661427
+Deaths,Norway,Female,30 to 34,Breast cancer,Rate,2019,2.028516952,2.281683214,1.804694162
+Deaths,Norway,Male,35 to 39,Breast cancer,Number,2019,0.126645518,0.153621395,0.102593026
+Deaths,Norway,Female,35 to 39,Breast cancer,Number,2019,9.185798678,10.16234164,8.326971144
+Deaths,Norway,Male,35 to 39,Breast cancer,Rate,2019,0.068904878,0.083581825,0.055818477
+Deaths,Norway,Female,35 to 39,Breast cancer,Rate,2019,5.352647578,5.921687952,4.852201042
+Deaths,Norway,Male,40 to 44,Breast cancer,Number,2019,0.199578052,0.242630195,0.164176023
+Deaths,Norway,Female,40 to 44,Breast cancer,Number,2019,17.16058466,18.93735824,15.63038228
+Deaths,Norway,Male,40 to 44,Breast cancer,Rate,2019,0.110014833,0.133746773,0.09049992
+Deaths,Norway,Female,40 to 44,Breast cancer,Rate,2019,10.07169664,11.11450052,9.173607526
+Deaths,Norway,Male,45 to 49,Breast cancer,Number,2019,0.563269117,0.662580588,0.476217207
+Deaths,Norway,Female,45 to 49,Breast cancer,Number,2019,31.97629159,34.99431382,29.34451683
+Deaths,Norway,Male,45 to 49,Breast cancer,Rate,2019,0.288861306,0.339791208,0.244218474
+Deaths,Norway,Female,45 to 49,Breast cancer,Rate,2019,17.3392803,18.97581571,15.91218923
+Deaths,Norway,Male,50 to 54,Breast cancer,Number,2019,1.126366842,1.323712898,0.954705722
+Deaths,Norway,Female,50 to 54,Breast cancer,Number,2019,45.32230706,49.6744286,41.57272784
+Deaths,Norway,Male,50 to 54,Breast cancer,Rate,2019,0.597374644,0.702038175,0.506333257
+Deaths,Norway,Female,50 to 54,Breast cancer,Rate,2019,25.45047937,27.89438805,23.34492485
+Deaths,Norway,Male,55 to 59,Breast cancer,Number,2019,1.181455872,1.372692984,1.009375605
+Deaths,Norway,Female,55 to 59,Breast cancer,Number,2019,53.72626074,58.96795565,49.14760883
+Deaths,Norway,Male,55 to 59,Breast cancer,Rate,2019,0.708923119,0.823673415,0.605667736
+Deaths,Norway,Female,55 to 59,Breast cancer,Rate,2019,33.65111128,36.93421449,30.78330097
+Deaths,Norway,Male,60 to 64,Breast cancer,Number,2019,1.718499194,1.981611587,1.48850556
+Deaths,Norway,Female,60 to 64,Breast cancer,Number,2019,68.66024866,75.23494077,63.23754993
+Deaths,Norway,Male,60 to 64,Breast cancer,Rate,2019,1.123480083,1.295491529,0.97312024
+Deaths,Norway,Female,60 to 64,Breast cancer,Rate,2019,45.45571535,49.80841343,41.86568101
+Deaths,Norway,Male,65 to 69,Breast cancer,Number,2019,2.090710281,2.443671718,1.785065427
+Deaths,Norway,Female,65 to 69,Breast cancer,Number,2019,78.94945913,87.24708358,72.26986012
+Deaths,Norway,Male,65 to 69,Breast cancer,Rate,2019,1.532325896,1.791018817,1.308312302
+Deaths,Norway,Female,65 to 69,Breast cancer,Rate,2019,57.66067149,63.72083456,52.78223194
+Deaths,Norway,Male,70 to 74,Breast cancer,Number,2019,3.372264207,3.938351228,2.853961897
+Deaths,Norway,Female,70 to 74,Breast cancer,Number,2019,96.97663132,107.7707723,88.25806666
+Deaths,Norway,Male,70 to 74,Breast cancer,Rate,2019,2.690110421,3.141687314,2.276652174
+Deaths,Norway,Female,70 to 74,Breast cancer,Rate,2019,74.34254179,82.61735877,67.65886708
+Deaths,Norway,Male,75 to 79,Breast cancer,Number,2019,2.461924077,2.845051447,2.071135414
+Deaths,Norway,Female,75 to 79,Breast cancer,Number,2019,92.35053871,103.6479755,81.79362803
+Deaths,Norway,Male,75 to 79,Breast cancer,Rate,2019,3.213197729,3.713239143,2.703157124
+Deaths,Norway,Female,75 to 79,Breast cancer,Rate,2019,106.0606634,119.0352888,93.93650075
+Deaths,Norway,Male,All Ages,Breast cancer,Number,2019,19.839017,21.91881892,17.65524917
+Deaths,Norway,Female,All Ages,Breast cancer,Number,2019,777.4242196,850.5729754,688.0611736
+Deaths,Norway,Male,All Ages,Breast cancer,Rate,2019,0.735246278,0.812325027,0.654314487
+Deaths,Norway,Female,All Ages,Breast cancer,Rate,2019,29.33050824,32.09025013,25.95903679
+Deaths,Norway,Male,80 to 84,Breast cancer,Number,2019,2.40330782,2.898193425,1.961634528
+Deaths,Norway,Female,80 to 84,Breast cancer,Number,2019,79.23690928,89.81287419,65.70272037
+Deaths,Norway,Male,80 to 84,Breast cancer,Rate,2019,5.120752466,6.175210269,4.179674682
+Deaths,Norway,Female,80 to 84,Breast cancer,Rate,2019,127.7001634,144.7446501,105.8881297
+Deaths,Norway,Male,85 to 89,Breast cancer,Number,2019,2.343641268,2.84513154,1.869562698
+Deaths,Norway,Female,85 to 89,Breast cancer,Number,2019,89.91982507,102.6578613,70.49275013
+Deaths,Norway,Male,85 to 89,Breast cancer,Rate,2019,8.475119161,10.28861762,6.760747416
+Deaths,Norway,Female,85 to 89,Breast cancer,Rate,2019,201.3740042,229.9006317,157.8673818
+Deaths,Norway,Male,90 to 94,Breast cancer,Number,2019,1.519489371,1.840748472,1.204062115
+Deaths,Norway,Female,90 to 94,Breast cancer,Number,2019,67.01889887,77.31232964,50.30977123
+Deaths,Norway,Male,90 to 94,Breast cancer,Rate,2019,12.78208747,15.48454924,10.12868374
+Deaths,Norway,Female,90 to 94,Breast cancer,Rate,2019,264.9404364,305.6326305,198.8855825
+Deaths,Norway,Male,95 plus,Breast cancer,Number,2019,0.596768288,0.733840237,0.454105313
+Deaths,Norway,Female,95 plus,Breast cancer,Number,2019,42.25503729,50.37527994,31.01313649
+Deaths,Norway,Male,95 plus,Breast cancer,Rate,2019,18.26962679,22.46598475,13.90210365
+Deaths,Norway,Female,95 plus,Breast cancer,Rate,2019,391.4631666,466.6914968,287.3148716
+Deaths,Norway,Male,1 to 4,Prostate cancer,Number,2019,0,0,0
+Deaths,Norway,Male,1 to 4,Prostate cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,5 to 9,Prostate cancer,Number,2019,0,0,0
+Deaths,Norway,Male,5 to 9,Prostate cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,10 to 14,Prostate cancer,Number,2019,0,0,0
+Deaths,Norway,Male,10 to 14,Prostate cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,15 to 19,Prostate cancer,Number,2019,0,0,0
+Deaths,Norway,Male,15 to 19,Prostate cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,20 to 24,Prostate cancer,Number,2019,0.046512603,0.092131475,0.03375356
+Deaths,Norway,Male,20 to 24,Prostate cancer,Rate,2019,0.026307293,0.052109097,0.019090843
+Deaths,Norway,Male,25 to 29,Prostate cancer,Number,2019,0.070401406,0.128973832,0.052535239
+Deaths,Norway,Male,25 to 29,Prostate cancer,Rate,2019,0.036771504,0.067364589,0.027439789
+Deaths,Norway,Male,30 to 34,Prostate cancer,Number,2019,0.093240855,0.158570325,0.07689678
+Deaths,Norway,Male,30 to 34,Prostate cancer,Rate,2019,0.049377041,0.083973205,0.0407218
+Deaths,Norway,Male,35 to 39,Prostate cancer,Number,2019,0.147039154,0.230029873,0.119142683
+Deaths,Norway,Male,35 to 39,Prostate cancer,Rate,2019,0.080000581,0.125153899,0.064822761
+Deaths,Norway,Male,40 to 44,Prostate cancer,Number,2019,0.376728331,0.473594144,0.252214216
+Deaths,Norway,Male,40 to 44,Prostate cancer,Rate,2019,0.207666644,0.261062678,0.139029841
+Deaths,Norway,Male,45 to 49,Prostate cancer,Number,2019,1.79457614,2.462291363,1.327080811
+Deaths,Norway,Male,45 to 49,Prostate cancer,Rate,2019,0.920312496,1.262736899,0.680566863
+Deaths,Norway,Male,50 to 54,Prostate cancer,Number,2019,6.141678738,9.464557302,4.870235446
+Deaths,Norway,Male,50 to 54,Prostate cancer,Rate,2019,3.25727198,5.019578297,2.582955268
+Deaths,Norway,Male,55 to 59,Prostate cancer,Number,2019,16.09872403,24.86697109,12.90212922
+Deaths,Norway,Male,55 to 59,Prostate cancer,Rate,2019,9.659910227,14.92122654,7.74181915
