@@ -1099,8 +1099,8 @@ Incidence,Estonia,Both,60-64 years,Diabetes mellitus type 1,Number,2019,5.641507
 Incidence,Estonia,Both,60-64 years,Diabetes mellitus type 1,Rate,2019,6.67539227984725,12.2108897170452,3.18912010842469
 Incidence,Estonia,Both,60-64 years,Diabetes mellitus type 2,Number,2019,363.041582263754,482.293781696136,265.923540484784
 Incidence,Estonia,Both,60-64 years,Diabetes mellitus type 2,Rate,2019,429.573981260974,570.680798184989,314.657712994624
-Incidence,Estonia,Both,60-64 years,Gout,Rate,2019,252.623663139356,367.422548332848,155.070344616964
 Incidence,Estonia,Both,60-64 years,Gout,Number,2019,213.497321495503,310.516160486687,131.05305658102
+Incidence,Estonia,Both,60-64 years,Gout,Rate,2019,252.623663139356,367.422548332848,155.070344616964
 Incidence,Estonia,Both,60-64 years,Idiopathic epilepsy,Number,2019,31.530299799521,63.9694698925678,8.07886054280837
 Incidence,Estonia,Both,60-64 years,Idiopathic epilepsy,Rate,2019,37.3086640124657,75.6927613899063,9.55942365000231
 Incidence,Estonia,Both,60-64 years,Interstitial lung disease and pulmonary sarcoidosis,Number,2019,805.990048217418,1181.90895399636,502.354446253153
@@ -1567,8 +1567,8 @@ Incidence,Finland,Both,35-39 years,Appendicitis,Number,2019,1112.92607017785,160
 Incidence,Finland,Both,35-39 years,Appendicitis,Rate,2019,308.893609211438,446.244536254796,204.810537397889
 Incidence,Finland,Both,35-39 years,Asthma,Number,2019,865.163000579861,1515.30060135419,413.536682928777
 Incidence,Finland,Both,35-39 years,Asthma,Rate,2019,240.126751422584,420.573014088671,114.777469909374
-Incidence,Finland,Both,35-39 years,Atrial fibrillation and flutter,Rate,2019,13.1384517984423,22.4848475607768,6.69221206384684
 Incidence,Finland,Both,35-39 years,Atrial fibrillation and flutter,Number,2019,47.3370930709436,81.0116243526244,24.1116586776509
+Incidence,Finland,Both,35-39 years,Atrial fibrillation and flutter,Rate,2019,13.1384517984423,22.4848475607768,6.69221206384684
 Incidence,Finland,Both,35-39 years,Colon and rectum cancer,Number,2019,21.4416045265313,30.9398289338161,14.4514582051209
 Incidence,Finland,Both,35-39 years,Colon and rectum cancer,Rate,2019,5.9511361868144,8.58737672145971,4.01101492989078
 Incidence,Finland,Both,35-39 years,Diabetes mellitus type 1,Number,2019,83.910863713845,145.793197779044,42.1535020718686
@@ -2801,8 +2801,8 @@ Incidence,Greater London,Both,15-19 years,Diabetes mellitus type 2,Number,2019,9
 Incidence,Greater London,Both,15-19 years,Diabetes mellitus type 2,Rate,2019,198.21936764353,279.934113642915,131.51477567908
 Incidence,Greater London,Both,15-19 years,Gout,Number,2019,12.0432955451387,25.3676269864736,3.28707813382247
 Incidence,Greater London,Both,15-19 years,Gout,Rate,2019,2.47009752886277,5.20293739346904,0.674184532389989
-Incidence,Greater London,Both,15-19 years,Idiopathic epilepsy,Rate,2019,54.4104467537965,92.5159544957542,27.1542477224274
 Incidence,Greater London,Both,15-19 years,Idiopathic epilepsy,Number,2019,265.285513362175,451.074084975884,132.394217963395
+Incidence,Greater London,Both,15-19 years,Idiopathic epilepsy,Rate,2019,54.4104467537965,92.5159544957542,27.1542477224274
 Incidence,Greater London,Both,15-19 years,Interstitial lung disease and pulmonary sarcoidosis,Number,2019,40.5192801072912,69.4560199042222,20.2858276260905
 Incidence,Greater London,Both,15-19 years,Interstitial lung disease and pulmonary sarcoidosis,Rate,2019,8.31056360687911,14.2455312573738,4.16065291284566
 Incidence,Greater London,Both,15-19 years,Ischemic heart disease,Number,2019,26.1897304855514,52.6629390555501,7.39357785622082
@@ -4127,8 +4127,8 @@ Incidence,Japan,Both,10-14 years,Diabetes mellitus type 2,Number,2019,0,0,0
 Incidence,Japan,Both,10-14 years,Diabetes mellitus type 2,Rate,2019,0,0,0
 Incidence,Japan,Both,10-14 years,Gout,Number,2019,0,0,0
 Incidence,Japan,Both,10-14 years,Gout,Rate,2019,0,0,0
-Incidence,Japan,Both,10-14 years,Idiopathic epilepsy,Rate,2019,54.6984893943116,98.72946006003,25.7396002121111
 Incidence,Japan,Both,10-14 years,Idiopathic epilepsy,Number,2019,3027.43773206773,5464.45241837872,1424.62868268145
+Incidence,Japan,Both,10-14 years,Idiopathic epilepsy,Rate,2019,54.6984893943116,98.72946006003,25.7396002121111
 Incidence,Japan,Both,10-14 years,Interstitial lung disease and pulmonary sarcoidosis,Number,2019,2504.0355158734,4059.37079698352,1366.84095795628
 Incidence,Japan,Both,10-14 years,Interstitial lung disease and pulmonary sarcoidosis,Rate,2019,45.2418752191586,73.3430280446191,24.6955155676873
 Incidence,Japan,Both,10-14 years,Ischemic heart disease,Number,2019,0,0,0
@@ -5609,8 +5609,8 @@ Incidence,Northern Ireland,Both,25-29 years,Total cancers,Number,2019,117.943571
 Incidence,Northern Ireland,Both,25-29 years,Total cancers,Rate,2019,91.0626046109576,119.634556917859,68.4016447021045
 Incidence,Northern Ireland,Both,25-29 years,"Tracheal, bronchus, and lung cancer",Number,2019,0.661833067573431,0.948958129295643,0.436531166244322
 Incidence,Northern Ireland,Both,25-29 years,"Tracheal, bronchus, and lung cancer",Rate,2019,0.510992182789675,0.732677482620624,0.337039692369495
-Incidence,Northern Ireland,Both,30-34 years,Appendicitis,Rate,2019,322.123974751641,512.975588994451,191.867782498111
 Incidence,Northern Ireland,Both,30-34 years,Appendicitis,Number,2019,446.791529298176,711.506022102738,266.123935765647
+Incidence,Northern Ireland,Both,30-34 years,Appendicitis,Rate,2019,322.123974751641,512.975588994451,191.867782498111
 Incidence,Northern Ireland,Both,30-34 years,Asthma,Number,2019,348.308056364422,591.300374184078,161.830216070754
 Incidence,Northern Ireland,Both,30-34 years,Asthma,Rate,2019,251.120194087763,426.310738485806,116.674979307494
 Incidence,Northern Ireland,Both,30-34 years,Atrial fibrillation and flutter,Number,2019,5.77641218419953,10.201833431331,2.9109666625255
@@ -7459,8 +7459,8 @@ Incidence,Scotland,Both,All ages,Diabetes mellitus type 2,Number,2019,25873.7577
 Incidence,Scotland,Both,All ages,Diabetes mellitus type 2,Rate,2019,468.727615349407,518.032796262431,419.291209573621
 Incidence,Scotland,Both,All ages,Gout,Number,2019,7280.743891644,9279.97424513981,5716.60633769539
 Incidence,Scotland,Both,All ages,Gout,Rate,2019,131.897567772277,168.115518158534,103.561735321987
-Incidence,Scotland,Both,All ages,Idiopathic epilepsy,Rate,2019,42.1524904654032,68.359834426858,12.6633161437491
 Incidence,Scotland,Both,All ages,Idiopathic epilepsy,Number,2019,2326.81688265424,3773.46190186346,699.014873577805
+Incidence,Scotland,Both,All ages,Idiopathic epilepsy,Rate,2019,42.1524904654032,68.359834426858,12.6633161437491
 Incidence,Scotland,Both,All ages,Interstitial lung disease and pulmonary sarcoidosis,Number,2019,3384.96052324894,4135.79706035021,2702.24118287337
 Incidence,Scotland,Both,All ages,Interstitial lung disease and pulmonary sarcoidosis,Rate,2019,61.3217641859529,74.9238788204033,48.9536570520131
 Incidence,Scotland,Both,All ages,Ischemic heart disease,Number,2019,19880.4867713873,22758.4652211505,17294.9215955015

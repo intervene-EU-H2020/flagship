@@ -1,6 +1,16 @@
 measure,location,sex,age,cause,metric,year,val,upper,lower
+Deaths,England,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,England,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,England,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,England,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,England,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,England,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,England,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,England,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,England,Female,15-19 years,Breast cancer,Number,2019,0.662045892078987,0.726549281090794,0.624743569568404
 Deaths,England,Female,15-19 years,Breast cancer,Rate,2019,0.0435398748772543,0.0477819818374133,0.0410866635905842
+Deaths,England,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,England,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,England,Female,20-24 years,Breast cancer,Number,2019,2.38064223568452,2.57401800609596,2.24517779026717
 Deaths,England,Female,20-24 years,Breast cancer,Rate,2019,0.13985258188698,0.151212583974252,0.131894623248119
 Deaths,England,Male,20-24 years,Prostate cancer,Number,2019,0.514820135282903,0.902055751735738,0.438897842926842
@@ -25,6 +35,10 @@ Deaths,England,Female,45-49 years,Breast cancer,Number,2019,453.190077958007,474
 Deaths,England,Female,45-49 years,Breast cancer,Rate,2019,23.8238096618293,24.9679615242821,22.6953829263223
 Deaths,England,Male,45-49 years,Prostate cancer,Number,2019,14.8240436110072,20.59037416054,12.8524998324843
 Deaths,England,Male,45-49 years,Prostate cancer,Rate,2019,0.78777339996154,1.09420543304964,0.683002408568424
+Deaths,England,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,England,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,England,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,England,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,England,Female,50-54 years,Breast cancer,Number,2019,711.559722080932,742.454904972647,680.538095614547
 Deaths,England,Female,50-54 years,Breast cancer,Rate,2019,35.9158666789686,37.4752962466176,34.3500548914869
 Deaths,England,Male,50-54 years,Prostate cancer,Number,2019,67.6268727581572,80.8932220255691,49.3032147523513
@@ -65,8 +79,18 @@ Deaths,England,Female,All ages,Breast cancer,Number,2019,12694.5786417829,13431.
 Deaths,England,Female,All ages,Breast cancer,Rate,2019,44.4737654497256,47.056214447209,40.3454822117391
 Deaths,England,Male,All ages,Prostate cancer,Number,2019,13520.8932539222,16990.7837432693,10454.1408476638
 Deaths,England,Male,All ages,Prostate cancer,Rate,2019,48.2307442257647,60.6082844917946,37.2912487255626
+Deaths,Estonia,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Estonia,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Estonia,Female,15-19 years,Breast cancer,Number,2019,0.0128096056884014,0.0206831948062887,0.0076810762721152
 Deaths,Estonia,Female,15-19 years,Breast cancer,Rate,2019,0.0427946183603862,0.0690988817095357,0.025661112110564
+Deaths,Estonia,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Estonia,Female,20-24 years,Breast cancer,Number,2019,0.0364191793367375,0.0550813022375764,0.0236912876889665
 Deaths,Estonia,Female,20-24 years,Breast cancer,Rate,2019,0.116841597767755,0.176714233482878,0.0760074212864556
 Deaths,Estonia,Male,20-24 years,Prostate cancer,Number,2019,0.00956710423784989,0.0218724128347358,0.00546693354778784
@@ -91,6 +115,10 @@ Deaths,Estonia,Female,45-49 years,Breast cancer,Number,2019,9.67411941730478,13.
 Deaths,Estonia,Female,45-49 years,Breast cancer,Rate,2019,21.5462445449719,29.8443131943822,14.9501027617227
 Deaths,Estonia,Male,45-49 years,Prostate cancer,Number,2019,0.726298070469147,1.17261402992462,0.418594039671858
 Deaths,Estonia,Male,45-49 years,Prostate cancer,Rate,2019,1.61400032997731,2.60581641090118,0.930211638481302
+Deaths,Estonia,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Estonia,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Estonia,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Estonia,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Estonia,Female,50-54 years,Breast cancer,Number,2019,15.6603162568456,21.6939525168849,11.0696038927991
 Deaths,Estonia,Female,50-54 years,Breast cancer,Rate,2019,37.2644052363284,51.6217057502581,26.3406050364141
 Deaths,Estonia,Male,50-54 years,Prostate cancer,Number,2019,1.96944755937536,2.99330316252741,1.1495104771447
@@ -131,8 +159,18 @@ Deaths,Estonia,Female,All ages,Breast cancer,Number,2019,257.55548231935,323.462
 Deaths,Estonia,Female,All ages,Breast cancer,Rate,2019,37.1146270376401,46.6120043412194,29.3430843161729
 Deaths,Estonia,Male,All ages,Prostate cancer,Number,2019,280.169057419081,364.304218257722,138.419759796082
 Deaths,Estonia,Male,All ages,Prostate cancer,Rate,2019,45.3043696817212,58.9093354298241,22.3829855688756
+Deaths,Finland,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Finland,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Finland,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Finland,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Finland,Female,15-19 years,Breast cancer,Number,2019,0.0361571879790698,0.0560892900306603,0.021114339143217
 Deaths,Finland,Female,15-19 years,Breast cancer,Rate,2019,0.02505899654628,0.0388730817776879,0.0146334430645752
+Deaths,Finland,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Finland,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Finland,Female,20-24 years,Breast cancer,Number,2019,0.184571216325287,0.255838167046365,0.128525440173587
 Deaths,Finland,Female,20-24 years,Breast cancer,Rate,2019,0.121237865390005,0.168050435357851,0.084423510475732
 Deaths,Finland,Male,20-24 years,Prostate cancer,Number,2019,0.04488810526389,0.0786986345975981,0.0311313550586833
@@ -157,6 +195,10 @@ Deaths,Finland,Female,45-49 years,Breast cancer,Number,2019,28.9556451256265,34.
 Deaths,Finland,Female,45-49 years,Breast cancer,Rate,2019,18.7470348525818,22.4751139824908,15.2458893348766
 Deaths,Finland,Male,45-49 years,Prostate cancer,Number,2019,1.35986904468864,1.94664898426479,0.903955326844086
 Deaths,Finland,Male,45-49 years,Prostate cancer,Rate,2019,0.849566926264421,1.21615283511087,0.564738605902392
+Deaths,Finland,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Finland,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Finland,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Finland,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Finland,Female,50-54 years,Breast cancer,Number,2019,48.8395838377728,58.7720358772033,40.1986463256825
 Deaths,Finland,Female,50-54 years,Breast cancer,Rate,2019,27.607809601133,33.2223792438191,22.7233011990655
 Deaths,Finland,Male,50-54 years,Prostate cancer,Number,2019,5.61839285494527,7.86788770577661,3.89425298703898
@@ -197,8 +239,18 @@ Deaths,Finland,Female,All ages,Breast cancer,Number,2019,1039.39396702517,1144.7
 Deaths,Finland,Female,All ages,Breast cancer,Rate,2019,37.0684616869151,40.8250697229242,32.9909723394107
 Deaths,Finland,Male,All ages,Prostate cancer,Number,2019,1293.76893449261,1834.93554420731,1058.8449004598
 Deaths,Finland,Male,All ages,Prostate cancer,Rate,2019,47.3888939094196,67.2110479056801,38.7839646761176
+Deaths,Global,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Global,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Global,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Global,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Global,Female,15-19 years,Breast cancer,Number,2019,678.066923791452,815.254964166492,556.182221510272
 Deaths,Global,Female,15-19 years,Breast cancer,Rate,2019,0.224704886390899,0.270167689463925,0.184313463040326
+Deaths,Global,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Global,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Global,Female,20-24 years,Breast cancer,Number,2019,1647.89510558796,1897.96841126967,1403.46049336335
 Deaths,Global,Female,20-24 years,Breast cancer,Rate,2019,0.5571424752719,0.641690611894479,0.47450074374715
 Deaths,Global,Male,20-24 years,Prostate cancer,Number,2019,119.008674933468,150.110563261471,103.774857721859
@@ -223,6 +275,10 @@ Deaths,Global,Female,45-49 years,Breast cancer,Number,2019,53896.623794451,58818
 Deaths,Global,Female,45-49 years,Breast cancer,Rate,2019,22.8929565890817,24.9837246244279,20.9626649497588
 Deaths,Global,Male,45-49 years,Prostate cancer,Number,2019,2045.93829485146,2449.27837028765,1709.20661995144
 Deaths,Global,Male,45-49 years,Prostate cancer,Rate,2019,0.858295614917438,1.02750160658322,0.717032644915952
+Deaths,Global,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Global,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Global,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Global,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Global,Female,50-54 years,Breast cancer,Number,2019,73755.8519871361,80784.1345693681,67099.1597421252
 Deaths,Global,Female,50-54 years,Breast cancer,Rate,2019,33.6430059244637,36.8488878468103,30.6066212769743
 Deaths,Global,Male,50-54 years,Prostate cancer,Number,2019,5698.83173557228,6749.16640255612,4705.7720407044
@@ -263,8 +319,18 @@ Deaths,Global,Female,All ages,Breast cancer,Number,2019,688562.262218344,739571.
 Deaths,Global,Female,All ages,Breast cancer,Rate,2019,17.854636164033,19.1773210593228,16.4741287488916
 Deaths,Global,Male,All ages,Prostate cancer,Number,2019,486836.066667471,593688.845530212,420498.05413361
 Deaths,Global,Male,All ages,Prostate cancer,Rate,2019,12.5441703902914,15.2974164139594,10.8348571541658
+Deaths,Greater London,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Greater London,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Greater London,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Greater London,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Greater London,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Greater London,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Greater London,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Greater London,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Greater London,Female,15-19 years,Breast cancer,Number,2019,0.0828367486677116,0.0944490900678236,0.0741703306717813
 Deaths,Greater London,Female,15-19 years,Breast cancer,Rate,2019,0.0346313614010413,0.039486105197816,0.0310082127563078
+Deaths,Greater London,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Greater London,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Greater London,Female,20-24 years,Breast cancer,Number,2019,0.328596902543786,0.38089548285853,0.280020836101074
 Deaths,Greater London,Female,20-24 years,Breast cancer,Rate,2019,0.109347542145851,0.126750996563297,0.0931828326446214
 Deaths,Greater London,Male,20-24 years,Prostate cancer,Number,2019,0.0835783719351029,0.147149046148546,0.064036260661834
@@ -289,6 +355,10 @@ Deaths,Greater London,Female,45-49 years,Breast cancer,Number,2019,66.0035739958
 Deaths,Greater London,Female,45-49 years,Breast cancer,Rate,2019,22.0138532064533,25.7092759095438,18.677831627189
 Deaths,Greater London,Male,45-49 years,Prostate cancer,Number,2019,2.18730345600557,3.20781134726569,1.72412293991563
 Deaths,Greater London,Male,45-49 years,Prostate cancer,Rate,2019,0.727414720328202,1.06679719616872,0.573378331528119
+Deaths,Greater London,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Greater London,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Greater London,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Greater London,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Greater London,Female,50-54 years,Breast cancer,Number,2019,100.067124197953,116.23281923606,85.0821756555162
 Deaths,Greater London,Female,50-54 years,Breast cancer,Rate,2019,35.7821680880509,41.5627241073229,30.4238253572697
 Deaths,Greater London,Male,50-54 years,Prostate cancer,Number,2019,9.20254786085717,11.3863073420592,6.64587441385671
@@ -329,8 +399,18 @@ Deaths,Greater London,Female,All ages,Breast cancer,Number,2019,1333.89127437903
 Deaths,Greater London,Female,All ages,Breast cancer,Rate,2019,29.1389805703658,33.4880029956836,25.0405007371649
 Deaths,Greater London,Male,All ages,Prostate cancer,Number,2019,1288.38873155414,1741.97041910475,1035.20191328806
 Deaths,Greater London,Male,All ages,Prostate cancer,Rate,2019,28.563032107465,38.6187458742552,22.9499876572878
+Deaths,Italy,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Italy,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Italy,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Italy,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Italy,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Italy,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Italy,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Italy,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Italy,Female,15-19 years,Breast cancer,Number,2019,0.808768032859444,0.954455417799663,0.698078155152194
 Deaths,Italy,Female,15-19 years,Breast cancer,Rate,2019,0.0580076652292959,0.0684568728022818,0.0500686009865952
+Deaths,Italy,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Italy,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Italy,Female,20-24 years,Breast cancer,Number,2019,2.27606402415414,2.5537090184107,2.05353388342408
 Deaths,Italy,Female,20-24 years,Breast cancer,Rate,2019,0.160676802927458,0.180276915029988,0.144967477008653
 Deaths,Italy,Male,20-24 years,Prostate cancer,Number,2019,0.427545339268892,0.544303291889848,0.267471466359764
@@ -355,6 +435,10 @@ Deaths,Italy,Female,45-49 years,Breast cancer,Number,2019,563.855086657514,597.2
 Deaths,Italy,Female,45-49 years,Breast cancer,Rate,2019,23.1063602586671,24.4756056548048,21.6605429911076
 Deaths,Italy,Male,45-49 years,Prostate cancer,Number,2019,13.7290413559104,18.9089771523851,10.4701157609731
 Deaths,Italy,Male,45-49 years,Prostate cancer,Rate,2019,0.573391084660535,0.789730225013834,0.437282609693736
+Deaths,Italy,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Italy,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Italy,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Italy,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Italy,Female,50-54 years,Breast cancer,Number,2019,836.163204023525,884.489773642001,784.412427073444
 Deaths,Italy,Female,50-54 years,Breast cancer,Rate,2019,33.320693949536,35.2464840681871,31.2584508466263
 Deaths,Italy,Male,50-54 years,Prostate cancer,Number,2019,48.4769696408952,73.8752136739577,40.2573682385133
@@ -395,8 +479,18 @@ Deaths,Italy,Female,All ages,Breast cancer,Number,2019,14308.8004328529,15346.07
 Deaths,Italy,Female,All ages,Breast cancer,Rate,2019,46.1996322172052,49.5487462913022,40.2120081872922
 Deaths,Italy,Male,All ages,Prostate cancer,Number,2019,11673.7561357512,16862.4969601039,9583.27615792359
 Deaths,Italy,Male,All ages,Prostate cancer,Rate,2019,39.7858274690239,57.4697969488171,32.6611732653452
+Deaths,Japan,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Japan,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Japan,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Japan,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Japan,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Japan,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Japan,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Japan,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Japan,Female,15-19 years,Breast cancer,Number,2019,1.09854771493619,1.2591345203399,1.01583946188797
 Deaths,Japan,Female,15-19 years,Breast cancer,Rate,2019,0.0377970131410278,0.0433222183839083,0.0349513243422337
+Deaths,Japan,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Japan,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Japan,Female,20-24 years,Breast cancer,Number,2019,3.19679362594855,3.47741069484559,2.95748541918967
 Deaths,Japan,Female,20-24 years,Breast cancer,Rate,2019,0.106156945736571,0.115475486262257,0.0982101617737241
 Deaths,Japan,Male,20-24 years,Prostate cancer,Number,2019,0.787938298203089,1.1340872766162,0.666307545299343
@@ -421,6 +515,10 @@ Deaths,Japan,Female,45-49 years,Breast cancer,Number,2019,816.073703420408,864.5
 Deaths,Japan,Female,45-49 years,Breast cancer,Rate,2019,16.5590286479016,17.5431446072722,15.7066831912816
 Deaths,Japan,Male,45-49 years,Prostate cancer,Number,2019,18.9311065370521,27.0780928246472,15.7203630955915
 Deaths,Japan,Male,45-49 years,Prostate cancer,Rate,2019,0.375018572246116,0.536407509533157,0.311414872224225
+Deaths,Japan,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Japan,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Japan,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Japan,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Japan,Female,50-54 years,Breast cancer,Number,2019,1099.21385058912,1162.5961743646,1045.39002293557
 Deaths,Japan,Female,50-54 years,Breast cancer,Rate,2019,25.4775826913285,26.9466584260392,24.2300538150572
 Deaths,Japan,Male,50-54 years,Prostate cancer,Number,2019,46.2993026766824,68.5357927304228,38.6471533961598
@@ -461,8 +559,18 @@ Deaths,Japan,Female,All ages,Breast cancer,Number,2019,15911.1766687832,17287.60
 Deaths,Japan,Female,All ages,Breast cancer,Rate,2019,24.2852338813076,26.3860792906088,20.4123344714944
 Deaths,Japan,Male,All ages,Prostate cancer,Number,2019,16408.0449023003,20570.0823244299,12234.7288597212
 Deaths,Japan,Male,All ages,Prostate cancer,Rate,2019,26.3496254417855,33.0334276742157,19.6477109098026
+Deaths,Massachusetts,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Massachusetts,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Massachusetts,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Massachusetts,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Massachusetts,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Massachusetts,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Massachusetts,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Massachusetts,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Massachusetts,Female,15-19 years,Breast cancer,Number,2019,0.0739056818047785,0.114491228705835,0.0451981113379703
 Deaths,Massachusetts,Female,15-19 years,Breast cancer,Rate,2019,0.0364502895972435,0.0564670853547566,0.0222917129953458
+Deaths,Massachusetts,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Massachusetts,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Massachusetts,Female,20-24 years,Breast cancer,Number,2019,0.304174240063617,0.450634836913135,0.198079867490876
 Deaths,Massachusetts,Female,20-24 years,Breast cancer,Rate,2019,0.137880448631524,0.204270202070964,0.0897884744901568
 Deaths,Massachusetts,Male,20-24 years,Prostate cancer,Number,2019,0.0495026666621867,0.0752318285030386,0.0329405298385276
@@ -487,6 +595,10 @@ Deaths,Massachusetts,Female,45-49 years,Breast cancer,Number,2019,39.72634426864
 Deaths,Massachusetts,Female,45-49 years,Breast cancer,Rate,2019,18.3303793729353,25.5941087975714,12.618300136519
 Deaths,Massachusetts,Male,45-49 years,Prostate cancer,Number,2019,1.71810447802152,2.82794072962138,1.06778745482329
 Deaths,Massachusetts,Male,45-49 years,Prostate cancer,Rate,2019,0.842576432813516,1.38685175590503,0.523654152699766
+Deaths,Massachusetts,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Massachusetts,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Massachusetts,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Massachusetts,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Massachusetts,Female,50-54 years,Breast cancer,Number,2019,67.3377391935493,93.7982335268491,46.6411796167669
 Deaths,Massachusetts,Female,50-54 years,Breast cancer,Rate,2019,28.4079163821828,39.5708618486326,19.6766144273286
 Deaths,Massachusetts,Male,50-54 years,Prostate cancer,Number,2019,7.14427465101294,11.7589257958816,4.40635323341349
@@ -527,8 +639,18 @@ Deaths,Massachusetts,Female,All ages,Breast cancer,Number,2019,1111.34873111884,
 Deaths,Massachusetts,Female,All ages,Breast cancer,Rate,2019,32.3731536099858,40.75788255591,25.2960621931542
 Deaths,Massachusetts,Male,All ages,Prostate cancer,Number,2019,1035.71846960861,1581.6961657429,778.879281858955
 Deaths,Massachusetts,Male,All ages,Prostate cancer,Rate,2019,32.0441315059202,48.9361553595043,24.0977745087008
+Deaths,Northern Ireland,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Northern Ireland,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Northern Ireland,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Northern Ireland,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Northern Ireland,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Northern Ireland,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Northern Ireland,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Northern Ireland,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Northern Ireland,Female,15-19 years,Breast cancer,Number,2019,0.0305998093929639,0.0494701466559279,0.0185878716390169
 Deaths,Northern Ireland,Female,15-19 years,Breast cancer,Rate,2019,0.0546072100795054,0.0882824679203838,0.0331711808556582
+Deaths,Northern Ireland,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Northern Ireland,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Northern Ireland,Female,20-24 years,Breast cancer,Number,2019,0.0951544941566046,0.130331140108094,0.0663526613375024
 Deaths,Northern Ireland,Female,20-24 years,Breast cancer,Rate,2019,0.157904759108854,0.216278878528644,0.110109365801325
 Deaths,Northern Ireland,Male,20-24 years,Prostate cancer,Number,2019,0.018268331818571,0.0311347821556946,0.0133143612790717
@@ -553,6 +675,10 @@ Deaths,Northern Ireland,Female,45-49 years,Breast cancer,Number,2019,17.05334478
 Deaths,Northern Ireland,Female,45-49 years,Breast cancer,Rate,2019,25.7897417286582,31.735145521988,20.9896072355635
 Deaths,Northern Ireland,Male,45-49 years,Prostate cancer,Number,2019,0.637030164722835,0.899158522747163,0.42941147138483
 Deaths,Northern Ireland,Male,45-49 years,Prostate cancer,Rate,2019,0.985906693949553,1.39159251098246,0.664583354983245
+Deaths,Northern Ireland,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Northern Ireland,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Northern Ireland,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Northern Ireland,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Northern Ireland,Female,50-54 years,Breast cancer,Number,2019,27.5984519437151,33.1122479146861,22.2777858004214
 Deaths,Northern Ireland,Female,50-54 years,Breast cancer,Rate,2019,40.6197121629982,48.7349791251855,32.7886958546645
 Deaths,Northern Ireland,Male,50-54 years,Prostate cancer,Number,2019,2.43315916263441,3.35942372604192,1.59076271271253
@@ -593,8 +719,18 @@ Deaths,Northern Ireland,Female,All ages,Breast cancer,Number,2019,423.310264556,
 Deaths,Northern Ireland,Female,All ages,Breast cancer,Rate,2019,43.1126184445435,47.4737824558525,39.0811667749594
 Deaths,Northern Ireland,Male,All ages,Prostate cancer,Number,2019,398.277717335674,500.981584451869,310.989216148645
 Deaths,Northern Ireland,Male,All ages,Prostate cancer,Rate,2019,41.7789561156901,52.5524947054547,32.6224748420374
+Deaths,Norway,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Norway,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Norway,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Norway,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Norway,Female,15-19 years,Breast cancer,Number,2019,0.0376117379476509,0.0437295932915514,0.0327382074257801
 Deaths,Norway,Female,15-19 years,Breast cancer,Rate,2019,0.0242381898887446,0.028180728777634,0.0210975331506245
+Deaths,Norway,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Norway,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Norway,Female,20-24 years,Breast cancer,Number,2019,0.118813470502634,0.133404138895371,0.104188888271574
 Deaths,Norway,Female,20-24 years,Breast cancer,Rate,2019,0.0719558500105279,0.0807922550240308,0.0630989060879834
 Deaths,Norway,Male,20-24 years,Prostate cancer,Number,2019,0.046512603011445,0.092131474692052,0.0337535595178166
@@ -619,6 +755,10 @@ Deaths,Norway,Female,45-49 years,Breast cancer,Number,2019,31.976291592433,34.99
 Deaths,Norway,Female,45-49 years,Breast cancer,Rate,2019,17.3392802986644,18.9758157052662,15.9121892270602
 Deaths,Norway,Male,45-49 years,Prostate cancer,Number,2019,1.79457614039325,2.46229136335141,1.32708081070904
 Deaths,Norway,Male,45-49 years,Prostate cancer,Rate,2019,0.920312496214443,1.26273689926393,0.680566862609845
+Deaths,Norway,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Norway,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Norway,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Norway,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Norway,Female,50-54 years,Breast cancer,Number,2019,45.3223070599406,49.6744285969751,41.5727278440704
 Deaths,Norway,Female,50-54 years,Breast cancer,Rate,2019,25.4504793719928,27.8943880471671,23.3449248519868
 Deaths,Norway,Male,50-54 years,Prostate cancer,Number,2019,6.141678738105,9.46455730244742,4.87023544577238
@@ -659,8 +799,18 @@ Deaths,Norway,Female,All ages,Breast cancer,Number,2019,777.4242196479,850.57297
 Deaths,Norway,Female,All ages,Breast cancer,Rate,2019,29.3305082410863,32.0902501287528,25.9590367934923
 Deaths,Norway,Male,All ages,Prostate cancer,Number,2019,1370.07960125306,1773.23384257065,1096.01900986893
 Deaths,Norway,Male,All ages,Prostate cancer,Rate,2019,50.7759999693576,65.7171462546291,40.6191444355658
+Deaths,Scotland,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Scotland,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Scotland,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Scotland,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Scotland,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Scotland,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Scotland,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Scotland,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Scotland,Female,15-19 years,Breast cancer,Number,2019,0.053473093029612,0.0862050144224076,0.0326156534814698
 Deaths,Scotland,Female,15-19 years,Breast cancer,Rate,2019,0.038138402074213,0.0614836605586749,0.0232623331831704
+Deaths,Scotland,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Scotland,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Scotland,Female,20-24 years,Breast cancer,Number,2019,0.281107910496033,0.38223354736792,0.196902666382863
 Deaths,Scotland,Female,20-24 years,Breast cancer,Rate,2019,0.164359649343057,0.223486317769171,0.115126085012314
 Deaths,Scotland,Male,20-24 years,Prostate cancer,Number,2019,0.0463545510887216,0.0781995902101635,0.0338671298356534
@@ -685,6 +835,10 @@ Deaths,Scotland,Female,45-49 years,Breast cancer,Number,2019,52.1275200802888,62
 Deaths,Scotland,Female,45-49 years,Breast cancer,Rate,2019,26.6988587334253,32.2118558113819,21.9421777451543
 Deaths,Scotland,Male,45-49 years,Prostate cancer,Number,2019,1.77896217830369,2.49943639210769,1.22131156795305
 Deaths,Scotland,Male,45-49 years,Prostate cancer,Rate,2019,0.953355978955009,1.33946221988021,0.654507835903066
+Deaths,Scotland,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Scotland,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Scotland,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Scotland,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Scotland,Female,50-54 years,Breast cancer,Number,2019,86.7217175418655,104.76252120647,71.0025615531693
 Deaths,Scotland,Female,50-54 years,Breast cancer,Rate,2019,41.7424982658104,50.4262309803987,34.1762638761214
 Deaths,Scotland,Male,50-54 years,Prostate cancer,Number,2019,7.02578927883028,9.67523076914487,4.96655147075116
@@ -725,8 +879,18 @@ Deaths,Scotland,Female,All ages,Breast cancer,Number,2019,1266.95474304663,1375.
 Deaths,Scotland,Female,All ages,Breast cancer,Rate,2019,44.7474363636233,48.5719666832965,40.4345511171812
 Deaths,Scotland,Male,All ages,Prostate cancer,Number,2019,1210.60753604181,1792.46814407611,1034.89761967833
 Deaths,Scotland,Male,All ages,Prostate cancer,Rate,2019,45.0265508614339,66.6678966171207,38.4913102896905
+Deaths,Taiwan (Province of China),Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Taiwan (Province of China),Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Taiwan (Province of China),Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Taiwan (Province of China),Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Taiwan (Province of China),Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Taiwan (Province of China),Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Taiwan (Province of China),Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Taiwan (Province of China),Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Taiwan (Province of China),Female,15-19 years,Breast cancer,Number,2019,0.273191952042899,0.439156263594309,0.161145519741249
 Deaths,Taiwan (Province of China),Female,15-19 years,Breast cancer,Rate,2019,0.0459781882637015,0.0739099714092316,0.0271207807884168
+Deaths,Taiwan (Province of China),Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Taiwan (Province of China),Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Taiwan (Province of China),Female,20-24 years,Breast cancer,Number,2019,1.16302284493348,1.77306344826461,0.732536103877744
 Deaths,Taiwan (Province of China),Female,20-24 years,Breast cancer,Rate,2019,0.158929080840186,0.242292183108529,0.100102324024598
 Deaths,Taiwan (Province of China),Male,20-24 years,Prostate cancer,Number,2019,0.35783813010996,0.50968526980841,0.23426887329564
@@ -751,6 +915,10 @@ Deaths,Taiwan (Province of China),Female,45-49 years,Breast cancer,Number,2019,2
 Deaths,Taiwan (Province of China),Female,45-49 years,Breast cancer,Rate,2019,22.975941699611,31.8547063125975,16.4558227648195
 Deaths,Taiwan (Province of China),Male,45-49 years,Prostate cancer,Number,2019,5.16776495250044,8.13480986825784,3.19213338938029
 Deaths,Taiwan (Province of China),Male,45-49 years,Prostate cancer,Rate,2019,0.594470704942651,0.935782916097569,0.367205127109681
+Deaths,Taiwan (Province of China),Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Taiwan (Province of China),Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Taiwan (Province of China),Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Taiwan (Province of China),Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Taiwan (Province of China),Female,50-54 years,Breast cancer,Number,2019,304.43065671814,418.653638952987,221.21883523929
 Deaths,Taiwan (Province of China),Female,50-54 years,Breast cancer,Rate,2019,33.0827298513355,45.4954352760325,24.0400327718126
 Deaths,Taiwan (Province of China),Male,50-54 years,Prostate cancer,Number,2019,14.9876916849852,23.1189433620258,9.53337613691338
@@ -791,8 +959,18 @@ Deaths,Taiwan (Province of China),Female,All ages,Breast cancer,Number,2019,2316
 Deaths,Taiwan (Province of China),Female,All ages,Breast cancer,Rate,2019,19.456689664487,25.1010335598537,15.2527803757428
 Deaths,Taiwan (Province of China),Male,All ages,Prostate cancer,Number,2019,1964.08543592967,2536.27662250703,1264.27464777126
 Deaths,Taiwan (Province of China),Male,All ages,Prostate cancer,Rate,2019,16.7671264087191,21.651843631194,10.7929382534655
+Deaths,United Kingdom,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,United Kingdom,Female,15-19 years,Breast cancer,Number,2019,0.783120219145188,0.877116917387359,0.722269345585414
 Deaths,United Kingdom,Female,15-19 years,Breast cancer,Rate,2019,0.0434751604752112,0.0486934161661177,0.0400970054635124
+Deaths,United Kingdom,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,United Kingdom,Female,20-24 years,Breast cancer,Number,2019,2.93662917356742,3.21260296351392,2.71739272337857
 Deaths,United Kingdom,Female,20-24 years,Breast cancer,Rate,2019,0.144793413656041,0.158400575052387,0.133983743062831
 Deaths,United Kingdom,Male,20-24 years,Prostate cancer,Number,2019,0.605125631553456,1.06028231335207,0.514810601443784
@@ -817,6 +995,10 @@ Deaths,United Kingdom,Female,45-49 years,Breast cancer,Number,2019,549.974797526
 Deaths,United Kingdom,Female,45-49 years,Breast cancer,Rate,2019,24.2441583640358,25.5901280584673,23.0100737802495
 Deaths,United Kingdom,Male,45-49 years,Prostate cancer,Number,2019,18.204069063596,24.2438810652373,15.3123589675913
 Deaths,United Kingdom,Male,45-49 years,Prostate cancer,Rate,2019,0.814392366770333,1.08459441740422,0.685026420021186
+Deaths,United Kingdom,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,United Kingdom,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,United Kingdom,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,United Kingdom,Female,50-54 years,Breast cancer,Number,2019,868.985578791495,908.57707358431,830.011593488871
 Deaths,United Kingdom,Female,50-54 years,Breast cancer,Rate,2019,36.6453302845675,38.3149131160343,35.0017879764124
 Deaths,United Kingdom,Male,50-54 years,Prostate cancer,Number,2019,80.6121139276196,96.8537722822517,59.0504417873584
@@ -857,8 +1039,18 @@ Deaths,United Kingdom,Female,All ages,Breast cancer,Number,2019,15162.1955563991
 Deaths,United Kingdom,Female,All ages,Breast cancer,Rate,2019,44.6427638726446,47.1422922184642,40.6650531437965
 Deaths,United Kingdom,Male,All ages,Prostate cancer,Number,2019,15967.9329025377,20473.1986014846,12525.8314750391
 Deaths,United Kingdom,Male,All ages,Prostate cancer,Rate,2019,48.0136665539883,61.5604622680399,37.6636787882795
+Deaths,United States of America,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,United States of America,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,United States of America,Female,15-19 years,Breast cancer,Number,2019,4.58137316193943,5.15800111517393,4.13710762682237
 Deaths,United States of America,Female,15-19 years,Breast cancer,Rate,2019,0.0433442038032484,0.0487996597637633,0.0391410238359738
+Deaths,United States of America,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,United States of America,Female,20-24 years,Breast cancer,Number,2019,15.7826434940936,17.1822679304531,14.5592189021148
 Deaths,United States of America,Female,20-24 years,Breast cancer,Rate,2019,0.149107006958302,0.162330001613751,0.137548665719877
 Deaths,United States of America,Male,20-24 years,Prostate cancer,Number,2019,2.64782416692444,4.02252291154138,2.28919247013801
@@ -883,6 +1075,10 @@ Deaths,United States of America,Female,45-49 years,Breast cancer,Number,2019,215
 Deaths,United States of America,Female,45-49 years,Breast cancer,Rate,2019,20.6361240461132,22.0833573986971,19.3645425313317
 Deaths,United States of America,Male,45-49 years,Prostate cancer,Number,2019,103.097549535549,136.548360271516,82.2544849265229
 Deaths,United States of America,Male,45-49 years,Prostate cancer,Rate,2019,1.01138227844686,1.33953321249375,0.806912761285119
+Deaths,United States of America,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,United States of America,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,United States of America,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,United States of America,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,United States of America,Female,50-54 years,Breast cancer,Number,2019,3423.83492149996,3625.97960692346,3230.26143262653
 Deaths,United States of America,Female,50-54 years,Breast cancer,Rate,2019,32.428049604565,34.3426155916835,30.5946636957121
 Deaths,United States of America,Male,50-54 years,Prostate cancer,Number,2019,402.956130382316,515.07867005948,320.207090855326
@@ -923,8 +1119,18 @@ Deaths,United States of America,Female,All ages,Breast cancer,Number,2019,54402.
 Deaths,United States of America,Female,All ages,Breast cancer,Rate,2019,32.6369090803121,34.3580374917373,30.2477554747543
 Deaths,United States of America,Male,All ages,Prostate cancer,Number,2019,48323.4411368849,70587.7159486386,41349.2928784864
 Deaths,United States of America,Male,All ages,Prostate cancer,Rate,2019,29.9607654969142,43.7647227669325,25.6367600950907
+Deaths,Wales,Female,1-4 years,Breast cancer,Number,2019,0,0,0
+Deaths,Wales,Female,1-4 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Wales,Male,1-4 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Wales,Male,1-4 years,Prostate cancer,Rate,2019,0,0,0
+Deaths,Wales,Female,10-14 years,Breast cancer,Number,2019,0,0,0
+Deaths,Wales,Female,10-14 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Wales,Male,10-14 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Wales,Male,10-14 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Wales,Female,15-19 years,Breast cancer,Number,2019,0.0370014246436246,0.058478805948434,0.0228688627371469
 Deaths,Wales,Female,15-19 years,Breast cancer,Rate,2019,0.0437834894823693,0.0691975027946914,0.0270605421485613
+Deaths,Wales,Male,15-19 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Wales,Male,15-19 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Wales,Female,20-24 years,Breast cancer,Number,2019,0.17972453323026,0.248897794176983,0.124973181067077
 Deaths,Wales,Female,20-24 years,Breast cancer,Rate,2019,0.189969580070659,0.263086004957025,0.132097172827209
 Deaths,Wales,Male,20-24 years,Prostate cancer,Number,2019,0.025682613363262,0.0465346198585872,0.018136044952754
@@ -949,6 +1155,10 @@ Deaths,Wales,Female,45-49 years,Breast cancer,Number,2019,27.603854704054,32.797
 Deaths,Wales,Female,45-49 years,Breast cancer,Rate,2019,26.3245407377821,31.2778515320409,21.7531679365805
 Deaths,Wales,Male,45-49 years,Prostate cancer,Number,2019,0.96403310956227,1.33730551555119,0.644251516960351
 Deaths,Wales,Male,45-49 years,Prostate cancer,Rate,2019,0.942210627137543,1.30703339541326,0.629667819298395
+Deaths,Wales,Female,5-9 years,Breast cancer,Number,2019,0,0,0
+Deaths,Wales,Female,5-9 years,Breast cancer,Rate,2019,0,0,0
+Deaths,Wales,Male,5-9 years,Prostate cancer,Number,2019,0,0,0
+Deaths,Wales,Male,5-9 years,Prostate cancer,Rate,2019,0,0,0
 Deaths,Wales,Female,50-54 years,Breast cancer,Number,2019,43.1056872249821,52.2313154509411,35.8053247562887
 Deaths,Wales,Female,50-54 years,Breast cancer,Rate,2019,37.6606510630385,45.6335456501285,31.2824578067244
 Deaths,Wales,Male,50-54 years,Prostate cancer,Number,2019,3.5262927279976,5.06654762837972,2.46717768814129
