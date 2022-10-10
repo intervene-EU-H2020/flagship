@@ -15,7 +15,7 @@ dat6<-fread(paste0(path,"IHME-GBD_2019_DATA-da65912d-6.csv"))
 dat_all<-rbind(dat1,dat2,dat3,dat4,dat5,dat6)
 
 #### fill in the gaps
-dat<-complete(dat_all,location,age,sex,cause,measure,fill=list(0))
+dat<-complete(dat_all,location,age,sex,cause,measure,metric,year,fill=list(val=0,upper=0,lower=0))
 
 ####### Mortality
 
