@@ -462,7 +462,7 @@ for(j in 1:length(gbd_phenos)){
       incidence[[paste0("survival",i)]] <- 1
       
       for(r in 2:nrow(incidence)){
-        incidence[[paste0("survival",i)]][k] <- exp(-5*incidence[[paste0("mortandrisk",i)]][r-1])
+        incidence[[paste0("survival",i)]][r] <- exp(-5*incidence[[paste0("mortandrisk",i)]][r-1])
       }
       
       #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
