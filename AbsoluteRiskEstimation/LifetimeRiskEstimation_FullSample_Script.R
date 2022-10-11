@@ -296,7 +296,6 @@ for(j in 1:length(gbd_phenos)){
   lifetimerisks <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),11),
                               Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16), rep("Group10",16), rep("Group11",16)))
   k <- 0 
-  stop<-FALSE
   
   while(k < nk){
     
@@ -345,7 +344,6 @@ for(j in 1:length(gbd_phenos)){
     incidence <- incidence[,c("location","age","cause","metric","population","incidence_sample")]
     
     #### read in GBD prevalence data
-    
     prevalence <- fread(paste0(path,"GBD_Prevalence.csv"), data.table=FALSE)
     prevalence <- subset(prevalence, cause!="Breast cancer" & cause!="Prostate cancer" & location==country)
     prevalence$val <- as.numeric(prevalence$val)
@@ -443,17 +441,13 @@ for(j in 1:length(gbd_phenos)){
     colnames(hazrats) <- c("phenotype","prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
     hazrats <- subset(hazrats, phenotype==hr_phenos[j])
     if(nrow(hazrats)<1) { #if hazard ratios don't exist for trait
-     stop<-TRUE
      break
     }
-    #hazrats$beta <- log(hazrats$HR)
+    hazrats$beta <- log(hazrats$HR)
     hazrats$beta_pos <- log(hazrats$CIpos)
     hazrats$SD <- (hazrats[,"beta_pos"] - hazrats[,"beta"]) / 1.96
     
-    if (!is.finite(hazrats[hazrats$group=="< 5%",]$HR)){ #give up, must be small sample
-      stop<-TRUE
-      break
-    }else if(is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR) | !is.finite(hazrats[hazrats$group=="< 1%",]$beta_pos)){
+    if(is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR) & is.finite(hazrats[hazrats$group=="< 5%",]$beta_pos)){
       #Hazard Ratios, #Sample from the hazard ratio distribution
       hr01 <- exp(rnorm(1, mean=hazrats[hazrats$group=="< 5%",]$beta, sd=hazrats[hazrats$group=="< 5%",]$SD))
       hr02 <- exp(rnorm(1, mean=hazrats[hazrats$group=="5-10%",]$beta, sd=hazrats[hazrats$group=="5-10%",]$SD))
@@ -487,7 +481,7 @@ for(j in 1:length(gbd_phenos)){
       incidence$i8 <- incidence$i5 * hr08
       incidence$i9 <- incidence$i5 * hr09
       
-      groups<-9
+      no_groups<-9
     } else {
       #Hazard Ratios
       hr01 <- exp(rnorm(1, mean=hazrats[hazrats$group=="< 1%",]$beta, sd=hazrats[hazrats$group=="< 1%",]$SD))
@@ -528,85 +522,84 @@ for(j in 1:length(gbd_phenos)){
       incidence$i10 <- incidence$i6 * hr10
       incidence$i11 <- incidence$i6 * hr11
       
-      groups<-11
+      no_groups<-11
     } 
-    if(stop){break}
 
     ###################################################
-    
-    lifetimerisk <- data.frame(NULL)
-    for(i in 1:groups){
-      #Calculate hazard
-      incidence[[paste0("hazard",i)]] <- incidence[[paste0("i",i)]] / (1 - incidence$prevalence_sample)
-      
-      #Calculate probability of experiencing the endpoint within the age interval. hazard multiplied by 5 as that is the age interval and current probabilities are per year. 
-      incidence[[paste0("risk",i)]] <- 1 - exp(-5*incidence[[paste0("hazard",i)]])
-      
-      #Mortality and risk
-      incidence[[paste0("mortandrisk",i)]] <- cumsum(incidence[[paste0("hazard",i)]] + incidence$mortality_rate_sample)
-      
-      #Survival
-      incidence[[paste0("survival",i)]] <- 1
-      
-      for(r in 2:nrow(incidence)){
-        incidence[[paste0("survival",i)]][r] <- exp(-5*incidence[[paste0("mortandrisk",i)]][r-1])
+    if (exists("no_groups")){
+      lifetimerisk <- data.frame(NULL)
+      for(i in 1:no_groups){
+        #Calculate hazard
+        incidence[[paste0("hazard",i)]] <- incidence[[paste0("i",i)]] / (1 - incidence$prevalence_sample)
+        
+        #Calculate probability of experiencing the endpoint within the age interval. hazard multiplied by 5 as that is the age interval and current probabilities are per year. 
+        incidence[[paste0("risk",i)]] <- 1 - exp(-5*incidence[[paste0("hazard",i)]])
+        
+        #Mortality and risk
+        incidence[[paste0("mortandrisk",i)]] <- cumsum(incidence[[paste0("hazard",i)]] + incidence$mortality_rate_sample)
+        
+        #Survival
+        incidence[[paste0("survival",i)]] <- 1
+        
+        for(r in 2:nrow(incidence)){
+          incidence[[paste0("survival",i)]][r] <- exp(-5*incidence[[paste0("mortandrisk",i)]][r-1])
+        }
+        
+        #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
+        incidence[[paste0("lifetimerisk",i)]] <- cumsum(incidence[[paste0("survival",i)]]*incidence[[paste0("risk",i)]])*100
+        
+        result <- data.frame(incidence$age, paste0("Group", i), incidence[[paste0("lifetimerisk",i)]])
+        lifetimerisk <- rbind(lifetimerisk, result)
       }
-      
-      #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
-      incidence[[paste0("lifetimerisk",i)]] <- cumsum(incidence[[paste0("survival",i)]]*incidence[[paste0("risk",i)]])*100
-      
-      result <- data.frame(incidence$age, paste0("Group", i), incidence[[paste0("lifetimerisk",i)]])
-      lifetimerisk <- rbind(lifetimerisk, result)
+      colnames(lifetimerisk) <- c("Age","Group",paste0("LifetimeRisk",k))
+      k<-k+1
+      lifetimerisks <- suppressMessages(left_join(lifetimerisks, lifetimerisk))
     }
-    
-    colnames(lifetimerisk) <- c("Age","Group",paste0("LifetimeRisk",k))
-    k<-k+1
-    lifetimerisks <- suppressMessages(left_join(lifetimerisks, lifetimerisk))
   }
   
   lifetimerisk_percentile <- as.matrix(lifetimerisks[,-c(1,2)])
   confidenceintervals <- apply(lifetimerisk_percentile, 1, quantile, c(0.025, 0.975))
-  
+
   bootstrapped_lifetimerisk <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),11),
-                                          Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16), rep("Group10",16), rep("Group11",16)))
-  
+                                      Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16), rep("Group10",16), rep("Group11",16)))
+
   bootstrapped_lifetimerisk$CIneg <- confidenceintervals[1,]
   bootstrapped_lifetimerisk$CIpos <- confidenceintervals[2,]
-  
+
   #Add in actual lifetime risks (written earlier)
   if(file.exists(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".csv"))){
     lifetimeriskactual <- fread(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".csv"), select=c("LifetimeRisk"), data.table=FALSE)
     bootstrapped_lifetimerisk <- cbind(bootstrapped_lifetimerisk, lifetimeriskactual)
-  
+
     #Plot all as well as overall lifetime risk
     bootstrapped_lifetimerisk$Age <- factor(bootstrapped_lifetimerisk$Age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
     bootstrapped_lifetimerisk$Group <- factor(bootstrapped_lifetimerisk$Group, levels=c("Group1","Group2","Group3","Group4","Group5","Group6","Group7","Group8","Group9","Group10","Group11"))
-    
+  
     write.csv(bootstrapped_lifetimerisk, paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".csv"))
-    
+  
     #Considering confidence intervals
     riskwithintervals <- subset(bootstrapped_lifetimerisk, Group=="Group1" | Group=="Group6" | Group=="Group11")
-    
+  
     #colors<-c("light green","dark green","plum2","orchid4")
     #colors<-brewer.pal(3,"RdYlBu")
     colors<-c(brewer.pal(11,"RdYlBu")[11],"dark grey",brewer.pal(11,"RdYlBu")[1])
     ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
-      stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
-      geom_point() +
-      geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
-      xlab("Age Range") + 
-      ylab("Absolute Cumulative Risk (%)") + 
-      theme_bw() +
-      labs(color='PRS Group', fill='PRS Group') +
-      scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
-      scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
-      theme(title = element_text(size = 22),
-            legend.text = element_text(size = 16),
-            legend.title = element_text(size = 18),
-            axis.title.x = element_text(size = 18),
-            axis.text.x = element_text(size = 12, angle=-90, hjust=0),
-            axis.title.y = element_text(size = 18),
-            axis.text.y = element_text(size = 16))
-    ggsave(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".png"), height=10 , width=10, dpi=1200)
+    stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+    geom_point() +
+    geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
+    xlab("Age Range") + 
+    ylab("Absolute Cumulative Risk (%)") + 
+    theme_bw() +
+    labs(color='PRS Group', fill='PRS Group') +
+    scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
+    scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
+    theme(title = element_text(size = 22),
+          legend.text = element_text(size = 16),
+          legend.title = element_text(size = 18),
+          axis.title.x = element_text(size = 18),
+          axis.text.x = element_text(size = 12, angle=-90, hjust=0),
+          axis.title.y = element_text(size = 18),
+          axis.text.y = element_text(size = 16))
+  ggsave(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".png"), height=10 , width=10, dpi=1200)
   }
 }
