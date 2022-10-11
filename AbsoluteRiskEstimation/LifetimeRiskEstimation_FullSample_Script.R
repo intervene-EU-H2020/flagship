@@ -441,23 +441,19 @@ for(j in 1:length(gbd_phenos)){
     hazrats <- fread(full_HR_path, data.table = FALSE)
     colnames(hazrats) <- c("phenotype","prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
     hazrats <- subset(hazrats, phenotype==hr_phenos[j])
-    if(nrow(hazrats)<1) {
-      k<-nk
-      break
+    if(nrow(hazrats)<1) { #if hazard ratios don't exist for trait
+     stop<-TRUE
+     break
     }
-    
     #hazrats$beta <- log(hazrats$HR)
     hazrats$beta_pos <- log(hazrats$CIpos)
     hazrats$SD <- (hazrats[,"beta_pos"] - hazrats[,"beta"]) / 1.96
     
-    if (!is.finite(hazrats[hazrats$group=="< 1%",]$beta_pos)){
-      k<-nk
+    if (!is.finite(hazrats[hazrats$group=="< 5%",]$HR)){ #give up, must be small sample
+      stop<-TRUE
       break
-    } 
-    #Sample from the hazard ratio distribution
-    else if (is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR )){
-      #Hazard Ratios
-      
+    }else if(is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR) | !is.finite(hazrats[hazrats$group=="< 1%",]$beta_pos)){
+      #Hazard Ratios, #Sample from the hazard ratio distribution
       hr01 <- exp(rnorm(1, mean=hazrats[hazrats$group=="< 5%",]$beta, sd=hazrats[hazrats$group=="< 5%",]$SD))
       hr02 <- exp(rnorm(1, mean=hazrats[hazrats$group=="5-10%",]$beta, sd=hazrats[hazrats$group=="5-10%",]$SD))
       hr03 <- exp(rnorm(1, mean=hazrats[hazrats$group=="10-20%",]$beta, sd=hazrats[hazrats$group=="10-20%",]$SD))
@@ -466,7 +462,7 @@ for(j in 1:length(gbd_phenos)){
       hr07 <- exp(rnorm(1, mean=hazrats[hazrats$group=="80-90%",]$beta, sd=hazrats[hazrats$group=="80-90%",]$SD))
       hr08 <- exp(rnorm(1, mean=hazrats[hazrats$group=="90-95%",]$beta, sd=hazrats[hazrats$group=="90-95%",]$SD))
       hr09 <- exp(rnorm(1, mean=hazrats[hazrats$group=="> 95%",]$beta, sd=hazrats[hazrats$group=="> 95%",]$SD))
-    
+  
       #Proportions - 0.2 by definition of PRS group
       props01 <- 0.04
       props02 <- 0.05
@@ -491,8 +487,7 @@ for(j in 1:length(gbd_phenos)){
       incidence$i9 <- incidence$i5 * hr09
       
       groups<-9
-    }else {
-
+    } else {
       #Hazard Ratios
       hr01 <- exp(rnorm(1, mean=hazrats[hazrats$group=="< 1%",]$beta, sd=hazrats[hazrats$group=="< 1%",]$SD))
       hr02 <- exp(rnorm(1, mean=hazrats[hazrats$group=="1-5%",]$beta, sd=hazrats[hazrats$group=="1-5%",]$SD))
@@ -533,7 +528,9 @@ for(j in 1:length(gbd_phenos)){
       incidence$i11 <- incidence$i6 * hr11
       
       groups<-11
-    }
+    } 
+    if(stop){break}
+
     ###################################################
     
     lifetimerisk <- data.frame(NULL)
