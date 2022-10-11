@@ -16,7 +16,8 @@ option_list <- list(
   make_option("--output_dir",type="character",default=""),
   make_option("--biobank",type="character",default=""),
   make_option("--k",type="numeric",default=""),
-  make_option("--hr",type="character",default="")
+  make_option("--hr",type="character",default=""),
+  make_option("--ancestry",type="character",default="EUR")
 )
 
 parser <- OptionParser(usage="%prog [options]", option_list=option_list, description="This script creates a key for old reference genome coords to new reference genome coordinates after liftover\n")
@@ -32,6 +33,7 @@ full_HR_path<-opt$hr  #must go straight to csv
 #   * Line 233 - Enter file path and biobank name
 output_dir<-opt$output_dir
 biobank<-opt$biobank
+ancestry<-opt$ancestry
 nk<-opt$k
 
 gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
@@ -398,7 +400,7 @@ for(j in 1:length(gbd_phenos)){
     colnames(hazrats) <- c("phenotype","prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
     hazrats <- subset(hazrats, phenotype==hr_phenos[j])
     
-    hazrats$beta <- log(hazrats$HR)
+    #hazrats$beta <- log(hazrats$HR)
     hazrats$beta_pos <- log(hazrats$CIpos)
     
     hazrats$SD <- (hazrats[,"beta_pos"] - hazrats[,"beta"]) / 1.96
@@ -459,8 +461,8 @@ for(j in 1:length(gbd_phenos)){
       #Survival
       incidence[[paste0("survival",i)]] <- 1
       
-      for(k in 2:nrow(incidence)){
-        incidence[[paste0("survival",i)]][k] <- exp(-5*incidence[[paste0("mortandrisk",i)]][k-1])
+      for(r in 2:nrow(incidence)){
+        incidence[[paste0("survival",i)]][k] <- exp(-5*incidence[[paste0("mortandrisk",i)]][r-1])
       }
       
       #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
