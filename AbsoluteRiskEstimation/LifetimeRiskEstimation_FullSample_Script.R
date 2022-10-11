@@ -558,7 +558,7 @@ for(j in 1:length(gbd_phenos)){
   }
   
   lifetimerisk_percentile <- as.matrix(lifetimerisks[,-c(1,2)])
-  confidenceintervals <- apply(lifetimerisk_percentile, 1, quantile, c(0.025, 0.975))
+  confidenceintervals <- apply(lifetimerisk_percentile, 1, quantile, c(0.025, 0.975), na.rm=TRUE)
 
   bootstrapped_lifetimerisk <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),11),
                                       Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16), rep("Group10",16), rep("Group11",16)))
