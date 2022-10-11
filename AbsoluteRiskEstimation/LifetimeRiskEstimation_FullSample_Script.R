@@ -144,50 +144,88 @@ for(j in 1:length(gbd_phenos)){
   colnames(hazrats) <- c("phenotype", "prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
   hazrats <- subset(hazrats, phenotype==hr_phenos[j])
   
+  #use top and bottom 5% instead
+  if (is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR )){
+    #Hazard Ratios
+    hr01 <- hazrats[hazrats$group=="1-5%",]$HR
+    hr02 <- hazrats[hazrats$group=="5-10%",]$HR
+    hr03 <- hazrats[hazrats$group=="10-20%",]$HR
+    hr04 <- hazrats[hazrats$group=="20-40%",]$HR
+    hr06 <- hazrats[hazrats$group=="60-80%",]$HR
+    hr07 <- hazrats[hazrats$group=="80-90%",]$HR
+    hr08 <- hazrats[hazrats$group=="90-95%",]$HR
+    hr09 <- hazrats[hazrats$group=="95-99%",]$HR
+    
+    #Proportions - 0.2 by definition of PRS group
+    props01 <- 0.04
+    props02 <- 0.05
+    props03 <- 0.1
+    props04 <- 0.1
+    props05 <- 0.2
+    props06 <- 0.2
+    props07 <- 0.1
+    props08 <- 0.05
+    props09 <- 0.04
+
+    #Estimate incidence attributable to different distributions of PRS, now group 5 is reference
+    incidence$i5 <- (incidence$incidence*incidence$population) / ((props05 * incidence$population) + (hr01 * (props01 * incidence$population)) + (hr02 * (props02 * incidence$population)) + (hr03 * (props03 * incidence$population)) + (hr04 * (props04 * incidence$population)) + (hr05 * (props05 * incidence$population)) + (hr07 * (props07 * incidence$population)) + (hr08 * (props08 * incidence$population)) + (hr09 * (props09 * incidence$population)) )
+    incidence$i5[is.na(incidence$i5)] <- 0
+    incidence$i1 <- incidence$i5 * hr01
+    incidence$i2 <- incidence$i5 * hr02
+    incidence$i3 <- incidence$i5 * hr03
+    incidence$i4 <- incidence$i5 * hr04
+    incidence$i7 <- incidence$i5 * hr07
+    incidence$i8 <- incidence$i5 * hr08
+    incidence$i9 <- incidence$i5 * hr09
+    
+    groups<-9
+  }else {
   #Hazard Ratios
-  hr01 <- hazrats[hazrats$group=="< 1%",]$HR
-  hr02 <- hazrats[hazrats$group=="1-5%",]$HR
-  hr03 <- hazrats[hazrats$group=="5-10%",]$HR
-  hr04 <- hazrats[hazrats$group=="10-20%",]$HR
-  hr05 <- hazrats[hazrats$group=="20-40%",]$HR
-  hr07 <- hazrats[hazrats$group=="60-80%",]$HR
-  hr08 <- hazrats[hazrats$group=="80-90%",]$HR
-  hr09 <- hazrats[hazrats$group=="90-95%",]$HR
-  hr10 <- hazrats[hazrats$group=="95-99%",]$HR
-  hr11 <- hazrats[hazrats$group=="> 99%",]$HR
-  
-  #Proportions - 0.2 by definition of PRS group
-  props01 <- 0.01
-  props02 <- 0.04
-  props03 <- 0.05
-  props04 <- 0.1
-  props05 <- 0.2
-  props06 <- 0.2
-  props07 <- 0.2
-  props08 <- 0.1
-  props09 <- 0.05
-  props10 <- 0.04
-  props11 <- 0.01
-  
-  #Estimate incidence attributable to different distributions of PRS 
-  incidence$i6 <- (incidence$incidence*incidence$population) / ((props06 * incidence$population) + (hr01 * (props01 * incidence$population)) + (hr02 * (props02 * incidence$population)) + (hr03 * (props03 * incidence$population)) + (hr04 * (props04 * incidence$population)) + (hr05 * (props05 * incidence$population)) + (hr07 * (props07 * incidence$population)) + (hr08 * (props08 * incidence$population)) + (hr09 * (props09 * incidence$population)) + (hr10 * (props10 * incidence$population)) + (hr11 * (props11 * incidence$population))) 
-  incidence$i6[is.na(incidence$i6)] <- 0
-  incidence$i1 <- incidence$i6 * hr01
-  incidence$i2 <- incidence$i6 * hr02
-  incidence$i3 <- incidence$i6 * hr03
-  incidence$i4 <- incidence$i6 * hr04
-  incidence$i5 <- incidence$i6 * hr05
-  incidence$i7 <- incidence$i6 * hr07
-  incidence$i8 <- incidence$i6 * hr08
-  incidence$i9 <- incidence$i6 * hr09
-  incidence$i10 <- incidence$i6 * hr10
-  incidence$i11 <- incidence$i6 * hr11
-  
+    hr01 <- hazrats[hazrats$group=="< 1%",]$HR
+    hr02 <- hazrats[hazrats$group=="1-5%",]$HR
+    hr03 <- hazrats[hazrats$group=="5-10%",]$HR
+    hr04 <- hazrats[hazrats$group=="10-20%",]$HR
+    hr05 <- hazrats[hazrats$group=="20-40%",]$HR
+    hr07 <- hazrats[hazrats$group=="60-80%",]$HR
+    hr08 <- hazrats[hazrats$group=="80-90%",]$HR
+    hr09 <- hazrats[hazrats$group=="90-95%",]$HR
+    hr10 <- hazrats[hazrats$group=="95-99%",]$HR
+    hr11 <- hazrats[hazrats$group=="> 99%",]$HR
+    
+    #Proportions - 0.2 by definition of PRS group
+    props01 <- 0.01
+    props02 <- 0.04
+    props03 <- 0.05
+    props04 <- 0.1
+    props05 <- 0.2
+    props06 <- 0.2
+    props07 <- 0.2
+    props08 <- 0.1
+    props09 <- 0.05
+    props10 <- 0.04
+    props11 <- 0.01
+    
+    #Estimate incidence attributable to different distributions of PRS 
+    incidence$i6 <- (incidence$incidence*incidence$population) / ((props06 * incidence$population) + (hr01 * (props01 * incidence$population)) + (hr02 * (props02 * incidence$population)) + (hr03 * (props03 * incidence$population)) + (hr04 * (props04 * incidence$population)) + (hr05 * (props05 * incidence$population)) + (hr07 * (props07 * incidence$population)) + (hr08 * (props08 * incidence$population)) + (hr09 * (props09 * incidence$population)) + (hr10 * (props10 * incidence$population)) + (hr11 * (props11 * incidence$population))) 
+    incidence$i6[is.na(incidence$i6)] <- 0
+    incidence$i1 <- incidence$i6 * hr01
+    incidence$i2 <- incidence$i6 * hr02
+    incidence$i3 <- incidence$i6 * hr03
+    incidence$i4 <- incidence$i6 * hr04
+    incidence$i5 <- incidence$i6 * hr05
+    incidence$i7 <- incidence$i6 * hr07
+    incidence$i8 <- incidence$i6 * hr08
+    incidence$i9 <- incidence$i6 * hr09
+    incidence$i10 <- incidence$i6 * hr10
+    incidence$i11 <- incidence$i6 * hr11
+    
+    groups<-11
+  }
   ###################################################
   
   lifetimerisk <- data.frame(NULL)
   
-  for(i in 1:11){
+  for(i in 1:groups){
     #Calculate hazard
     incidence[[paste0("hazard",i)]] <- incidence[[paste0("i",i)]] / (1 - incidence$prevalence)
     
