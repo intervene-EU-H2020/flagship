@@ -262,7 +262,7 @@ for(j in 1:length(gbd_phenos)){
   lifetimerisk$Age <- factor(lifetimerisk$Age,levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
   lifetimerisk$Group <- factor(lifetimerisk$Group, levels=c("Group1","Group2","Group3","Group4","Group5","Group6","Group7","Group8","Group9","Group10","Group11"))
   
-  write.csv(lifetimerisk, paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".csv"))
+  write.csv(lifetimerisk, paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,"_",ancestry,".csv"))
   
   #Not considering confidence intervals
   ggplot(lifetimerisk, aes(Age, LifetimeRisk, color=Group, group=Group)) +
@@ -280,7 +280,7 @@ for(j in 1:length(gbd_phenos)){
           axis.text.x = element_text(size = 12, angle=-90, hjust=0),
           axis.title.y = element_text(size = 18),
           axis.text.y = element_text(size = 16))
-  ggsave(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".png"), height=10 , width=10)
+  ggsave(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,"_",ancestry,".png"), height=10 , width=10)
   
 }
 
@@ -567,15 +567,15 @@ for(j in 1:length(gbd_phenos)){
   bootstrapped_lifetimerisk$CIpos <- confidenceintervals[2,]
 
   #Add in actual lifetime risks (written earlier)
-  if(file.exists(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".csv"))){
-    lifetimeriskactual <- fread(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".csv"), select=c("LifetimeRisk"), data.table=FALSE)
+  if(file.exists(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,"_",ancestry,".csv"))){
+    lifetimeriskactual <- fread(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,"_",ancestry,".csv"), select=c("LifetimeRisk"), data.table=FALSE)
     bootstrapped_lifetimerisk <- cbind(bootstrapped_lifetimerisk, lifetimeriskactual)
 
     #Plot all as well as overall lifetime risk
     bootstrapped_lifetimerisk$Age <- factor(bootstrapped_lifetimerisk$Age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
     bootstrapped_lifetimerisk$Group <- factor(bootstrapped_lifetimerisk$Group, levels=c("Group1","Group2","Group3","Group4","Group5","Group6","Group7","Group8","Group9","Group10","Group11"))
   
-    write.csv(bootstrapped_lifetimerisk, paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".csv"))
+    write.csv(bootstrapped_lifetimerisk, paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,"_",ancestry,".csv"))
   
     #Considering confidence intervals
     riskwithintervals <- subset(bootstrapped_lifetimerisk, Group=="Group1" | Group=="Group6" | Group=="Group11")
@@ -600,6 +600,6 @@ for(j in 1:length(gbd_phenos)){
           axis.text.x = element_text(size = 12, angle=-90, hjust=0),
           axis.title.y = element_text(size = 18),
           axis.text.y = element_text(size = 16))
-  ggsave(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".png"), height=10 , width=10, dpi=1200)
+  ggsave(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,"_",ancestry,".png"), height=10 , width=10, dpi=1200)
   }
 }
