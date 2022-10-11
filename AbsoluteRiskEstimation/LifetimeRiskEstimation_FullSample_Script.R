@@ -143,6 +143,9 @@ for(j in 1:length(gbd_phenos)){
   hazrats <- fread(full_HR_path, data.table = FALSE)
   colnames(hazrats) <- c("phenotype", "prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
   hazrats <- subset(hazrats, phenotype==hr_phenos[j])
+  if(nrow(hazrats)<1) {
+    next
+  }
   
   #use top and bottom 5% instead
   if (is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR )){
@@ -437,6 +440,9 @@ for(j in 1:length(gbd_phenos)){
     hazrats <- fread(full_HR_path, data.table = FALSE)
     colnames(hazrats) <- c("phenotype","prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
     hazrats <- subset(hazrats, phenotype==hr_phenos[j])
+    if(nrow(hazrats)<1) {
+      next
+    }
     
     #hazrats$beta <- log(hazrats$HR)
     hazrats$beta_pos <- log(hazrats$CIpos)
