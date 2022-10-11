@@ -441,15 +441,20 @@ for(j in 1:length(gbd_phenos)){
     colnames(hazrats) <- c("phenotype","prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
     hazrats <- subset(hazrats, phenotype==hr_phenos[j])
     if(nrow(hazrats)<1) {
-      next
+      k<-nk
+      break
     }
     
     #hazrats$beta <- log(hazrats$HR)
     hazrats$beta_pos <- log(hazrats$CIpos)
     hazrats$SD <- (hazrats[,"beta_pos"] - hazrats[,"beta"]) / 1.96
     
+    if (!is.finite(hazrats[hazrats$group=="< 1%",]$beta_pos)){
+      k<-nk
+      break
+    } 
     #Sample from the hazard ratio distribution
-    if (is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR )){
+    else if (is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR )){
       #Hazard Ratios
       
       hr01 <- exp(rnorm(1, mean=hazrats[hazrats$group=="< 5%",]$beta, sd=hazrats[hazrats$group=="< 5%",]$SD))
@@ -569,39 +574,39 @@ for(j in 1:length(gbd_phenos)){
   bootstrapped_lifetimerisk$CIpos <- confidenceintervals[2,]
   
   #Add in actual lifetime risks (written earlier)
-  lifetimeriskactual <- fread(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".csv"), select=c("LifetimeRisk"), data.table=FALSE)
-  bootstrapped_lifetimerisk <- cbind(bootstrapped_lifetimerisk, lifetimeriskactual)
+  if(file.exists(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".csv"))){
+    lifetimeriskactual <- fread(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,".csv"), select=c("LifetimeRisk"), data.table=FALSE)
+    bootstrapped_lifetimerisk <- cbind(bootstrapped_lifetimerisk, lifetimeriskactual)
   
-  
-  #Plot all as well as overall lifetime risk
-  bootstrapped_lifetimerisk$Age <- factor(bootstrapped_lifetimerisk$Age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
-  bootstrapped_lifetimerisk$Group <- factor(bootstrapped_lifetimerisk$Group, levels=c("Group1","Group2","Group3","Group4","Group5","Group6","Group7","Group8","Group9","Group10","Group11"))
-  
-  write.csv(bootstrapped_lifetimerisk, paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".csv"))
-  
-  #Considering confidence intervals
-  riskwithintervals <- subset(bootstrapped_lifetimerisk, Group=="Group1" | Group=="Group6" | Group=="Group11")
-  
-  #colors<-c("light green","dark green","plum2","orchid4")
-  #colors<-brewer.pal(3,"RdYlBu")
-  colors<-c(brewer.pal(12,"RdYlBu")[11],"dark grey",brewer.pal(12,"RdYlBu")[1])
-  ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
-    stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
-    geom_point() +
-    geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
-    xlab("Age Range") + 
-    ylab("Absolute Cumulative Risk (%)") + 
-    theme_bw() +
-    labs(color='PRS Group', fill='PRS Group') +
-    scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
-    scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
-    theme(title = element_text(size = 22),
-          legend.text = element_text(size = 16),
-          legend.title = element_text(size = 18),
-          axis.title.x = element_text(size = 18),
-          axis.text.x = element_text(size = 12, angle=-90, hjust=0),
-          axis.title.y = element_text(size = 18),
-          axis.text.y = element_text(size = 16))
-  ggsave(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".png"), height=10 , width=10, dpi=1200)
-  
+    #Plot all as well as overall lifetime risk
+    bootstrapped_lifetimerisk$Age <- factor(bootstrapped_lifetimerisk$Age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
+    bootstrapped_lifetimerisk$Group <- factor(bootstrapped_lifetimerisk$Group, levels=c("Group1","Group2","Group3","Group4","Group5","Group6","Group7","Group8","Group9","Group10","Group11"))
+    
+    write.csv(bootstrapped_lifetimerisk, paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".csv"))
+    
+    #Considering confidence intervals
+    riskwithintervals <- subset(bootstrapped_lifetimerisk, Group=="Group1" | Group=="Group6" | Group=="Group11")
+    
+    #colors<-c("light green","dark green","plum2","orchid4")
+    #colors<-brewer.pal(3,"RdYlBu")
+    colors<-c(brewer.pal(12,"RdYlBu")[11],"dark grey",brewer.pal(12,"RdYlBu")[1])
+    ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
+      stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
+      geom_point() +
+      geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
+      xlab("Age Range") + 
+      ylab("Absolute Cumulative Risk (%)") + 
+      theme_bw() +
+      labs(color='PRS Group', fill='PRS Group') +
+      scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
+      scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
+      theme(title = element_text(size = 22),
+            legend.text = element_text(size = 16),
+            legend.title = element_text(size = 18),
+            axis.title.x = element_text(size = 18),
+            axis.text.x = element_text(size = 12, angle=-90, hjust=0),
+            axis.title.y = element_text(size = 18),
+            axis.text.y = element_text(size = 16))
+    ggsave(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_BootstrappedConfidenceIntervals_",biobank,".png"), height=10 , width=10, dpi=1200)
+  }
 }
