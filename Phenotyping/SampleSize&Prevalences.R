@@ -8,69 +8,90 @@ color <- brewer.pal(n = 9, name = 'Paired')
 color <- color[-1]
 
 #Read in full sample hazard ratios per standard deviation
+bbj<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/Biobank_Japan_HazardRatios/HRperSD_BBJ.csv")
+ukb<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/UKB_HazardRatios/PRS_HRsperSD_UKBiobank_AllAncestries.csv")
+finngen<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/FinnGen_HazardRatios/HRperSD_FinnGen.csv")
+gnh<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/GNH_HazardRatios/HRperSD_GNH.csv")
+estbb<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/EstBB_HazardRatios/HRperSD_EstBB.csv")
+gs<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/GenerationScotland_HazardRatios/HRperSD_GS.csv")
+ge<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/GenomicsEngland_HazardRatios/HRperSD_GenomicsEngland.csv")
+mgb_eur<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/MGB_HazardRatios/HRperSD_MGBB_AFR.csv")
+mgb_afr<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/MGB_HazardRatios/HRperSD_MGBB_AFR.csv")
+hunt<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/HUNT_HazardRatios/HRperSD_HUNT.csv")
 
 #Biobank Japan
-bbj <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/BiobankJapan/HRperSD_BBJ.csv", data.table=FALSE)
+#bbj <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/BiobankJapan/HRperSD_BBJ.csv", data.table=FALSE)
 dropbbj <- c("I9_AF","C3_BRONCHUS_LUNG","RHEUMA_SEROPOS_OTH","ILD","GOUT")
 bbj <- subset(bbj, !(Phenotype %in% dropbbj))
 bbj$Biobank <- "Biobank Japan"
 bbj$Ancestry <- "EAS"
 
 #UKB
-ukb <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/UKBiobank/PRS_HRsperSD_UKBiobank_AllAncestries.csv", data.table=FALSE)
+#ukb <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/UKBiobank/PRS_HRsperSD_UKBiobank_AllAncestries.csv", data.table=FALSE)
 ukb$Biobank <- "UK Biobank"
 ukb <- subset(ukb, (Phenotype %in% bbj$Phenotype & Ancestry=="EAS") | Ancestry=="EUR" | Ancestry=="SAS")
-ukb <- ukb[,names(bbj)]
+#ukb <- ukb[,names(bbj)]
 
 #FinnGen
-finngen <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/FinnGen/R10_HRperSD_FinnGen.csv", data.table=FALSE)
+#finngen <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/FinnGen/R10_HRperSD_FinnGen.csv", data.table=FALSE)
 finngen$Biobank <- "FinnGen"
 finngen$Ancestry <- "EUR"
-finngen <- finngen[,names(bbj)]
+#finngen <- finngen[,names(bbj)]
 
 #Genes&Health
-gnh <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/Genes_and_Health/HRperSD_GNH.csv", data.table=FALSE)
+#gnh <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/Genes_and_Health/HRperSD_GNH.csv", data.table=FALSE)
 gnh$Biobank <- "Genes & Health"
 gnh$Ancestry <- "SAS"
-gnh <- gnh[,names(bbj)]
+#gnh <- gnh[,names(bbj)]
 
 #Estonian Biobank
-estbb <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/EstonianBiobank/HRperSD_EstBB.csv", data.table=FALSE)
+#estbb <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/EstonianBiobank/HRperSD_EstBB.csv", data.table=FALSE)
 estbb$Biobank <- "Estonian Biobank"
 estbb$Ancestry <- "EUR"
-estbb <- estbb[,names(bbj)]
+#estbb <- estbb[,names(bbj)]
 
 #Generation Scotland
-gs <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/GenerationScotland/HRperSD_GS.csv", data.table=FALSE)
+#gs <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/GenerationScotland/HRperSD_GS.csv", data.table=FALSE)
 dropgs <- c("C3_COLORECTAL","I9_AF","GOUT")
 gs <- subset(gs, !(Phenotype %in% dropgs))
 gs$Biobank <- "Generation Scotland"
 gs$Ancestry <- "EUR"
-gs <- gs[,names(bbj)]
+#gs <- gs[,names(bbj)]
 
 #Mass General Brigham
-mgb <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/PartnersBiobank/HRperSD_MGBB_EUR.csv", data.table=FALSE)
+#mgb <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/PartnersBiobank/HRperSD_MGBB_EUR.csv", data.table=FALSE)
 dropmgb <- c("I9_AF")
-mgb <- subset(mgb, !(Phenotype %in% dropmgb))
-mgb$Biobank <- "Mass General Brigham"
-mgb$Ancestry <- "EUR"
-mgb <- mgb[,names(bbj)]
+mgb_eur <- subset(mgb_eur, !(Phenotype %in% dropmgb))
+mgb_eur$Biobank <- "Mass General Brigham"
+mgb_eur$Ancestry <- "EUR"
+#mgb_eur <- mgb_eur[,names(bbj)]
+
+mgb_afr<- subset(mgb_afr, !(Phenotype %in% dropmgb))
+mgb_afr$Biobank <- "Mass General Brigham"
+mgb_afr$Ancestry <- "AFR"
+#mgb_afr <- mgb_afr[,names(bbj)]
 
 #Genomics England
-ge <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/GenomicsEngland/HRperSD_GenomicsEngland.csv", data.table=FALSE)
+#ge <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/GenomicsEngland/HRperSD_GenomicsEngland.csv", data.table=FALSE)
 ge$Biobank <- "Genomics England"
 ge$Ancestry <- "EUR"
-ge <- ge[,names(bbj)]
+#ge <- ge[,names(bbj)]
+
+#HUNT
+drophunt <- c("I9_CHD","T1D")
+hunt$Biobank <- "HUNT"
+hunt$Ancestry <- "EUR"
 
 
 #Combine into one dataset
-all <- rbind(ukb, finngen) %>%
-        rbind(., gnh) %>% 
-          rbind(., estbb) %>%
-            rbind(., gs) %>%
-              rbind(., mgb) %>% 
-                rbind(., bbj) %>% 
-                  rbind(., ge)
+all <- rbind(ukb, finngen,fill=TRUE) %>%
+        rbind(., gnh,fill=TRUE) %>% 
+          rbind(., estbb,fill=TRUE) %>%
+            rbind(., gs,fill=TRUE) %>%
+              rbind(., mgb_eur,fill=TRUE) %>% 
+              rbind(., mgb_afr,fill=TRUE) %>% 
+                rbind(., bbj,fill=TRUE) %>% 
+                  rbind(., ge,fill=TRUE) %>% rbind(.,hunt,fill=TRUE)
 
 full <- subset(all, Sample=="Full Sample")
 
