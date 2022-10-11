@@ -78,7 +78,8 @@ mgb_afr$Ancestry <- "AFR"
 #ge <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/GenomicsEngland/HRperSD_GenomicsEngland.csv", data.table=FALSE)
 ge$Biobank <- "Genomics England"
 ge$Ancestry <- "EUR"
-#ge <- ge[,names(bbj)]
+ge[ge$Phenotype=="Knee_ARTHROSIS"]$Phenotype<-"KNEE_ARTHROSIS"
+names(ge)<-names(bbj)
 
 #HUNT
 drophunt <- c("I9_CHD","T1D")
@@ -123,7 +124,7 @@ summies$Phenotype <- as.factor(summies$Phenotype)
 sample$Phenotype <- factor(sample$Phenotype, levels=summies$Phenotype)
 sample$Ancestry <- factor(sample$Ancestry, levels=c("AFR","SAS","EAS","EUR"))
 sample$Biobank <- factor(sample$Biobank, levels=c("Generation Scotland","HUNT","Genes & Health","Genomics England","Mass General Brigham","UK Biobank","Biobank Japan","Estonian Biobank","FinnGen"))
-color<-brewer.pal("Dark2",n=length(unique(sample$Biobank)))
+color<-c(brewer.pal("Dark2",n=length(unique(sample$Biobank))),"#000000")
 caseno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Biobank)) + 
             geom_bar(stat="identity") + 
               theme_bw() + 
