@@ -13,45 +13,48 @@ output_dir<-"/mnt/work/workbench/bwolford/intervene/2022_10_06/MetaAnalysis/"
 
 #Read in full sample hazard ratios per standard deviation
 
-#identify folder
-folder_id = drive_get(as_id("1bwedgU4lb4Y4i1pLsHXzjVaLBusjfcOQ"))
+run_googledrive<-FALSE
 
-#find files in folder
-files = drive_ls(folder_id)
-
-#loop dirs and download files inside them
-for (i in seq_along(files$name)) {
-  #list files
-  i_dir = drive_ls(files[i, ])
+if (run_googledrive==TRUE){
+  #identify folder
+  folder_id = drive_get(as_id("1bwedgU4lb4Y4i1pLsHXzjVaLBusjfcOQ"))
   
-  #mkdir
-  try({dir.create(paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/",files$name[i]))})
+  #find files in folder
+  files = drive_ls(folder_id)
   
-  #download files
-  for (file_i in seq_along(i_dir$name)) {
+  #loop dirs and download files inside them
+  for (i in seq_along(files$name)) {
+    #list files
+    i_dir = drive_ls(files[i, ])
+    
+    #mkdir
+    try({dir.create(paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/",files$name[i]))})
+    
+    #download files
+    for (file_i in seq_along(i_dir$name)) {
+      #fails if already exists
+      try({
+        drive_download(
+          as_id(i_dir$id[file_i]),
+          path = paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/",files$name[i], "/",i_dir$name[file_i])
+        )
+      })
+    }
+  }
+  
+  #estb has weird file structure so do it separately
+  dir<-drive_ls(as_id("1CySw57_ICg0e-DW3M4wiuRTccmp8QYAn"))
+  dir.create("/mnt/work/workbench/bwolford/intervene/GoogleDrive/EstBB_HazardRatios/")
+  for (idx in seq_along(dir$name)) {
     #fails if already exists
     try({
       drive_download(
-        as_id(i_dir$id[file_i]),
-        path = paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/",files$name[i], "/",i_dir$name[file_i])
+        as_id(dir$id[idx]),
+        path = paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/EstBB_HazardRatios/",dir$name[idx])
       )
     })
   }
 }
-
-#estb has weird file structure so do it separately
-dir<-drive_ls(as_id("1CySw57_ICg0e-DW3M4wiuRTccmp8QYAn"))
-dir.create("/mnt/work/workbench/bwolford/intervene/GoogleDrive/EstBB_HazardRatios/")
-for (idx in seq_along(dir$name)) {
-  #fails if already exists
-  try({
-    drive_download(
-      as_id(dir$id[idx]),
-      path = paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/EstBB_HazardRatios/",dir$name[idx])
-    )
-  })
-}
-
 ### full sample, HR per std dev
 file<-"HRperSD"
 estbb<-fread(paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/EstBB_HazardRatios/",file,"_EstBB.csv"))
@@ -236,7 +239,7 @@ fwrite(diffs, paste0(output_dir,"FullSampleIndBiobankComparisonwMAEffectSize.csv
 ######################################################################################################################################
 # Main analysis
 meta <- fread(paste0(output_dir,"metaanalysisFE.csv"), data.table=FALSE)
-meta$Ancestry <- factor(meta$Ancestry, levels=c("EUR","SAS","EAS","AFR"))
+meta$Ancestry <- factor(meta$Ancestry, levels=c("AFR","SAS","EAS","EUR"))
 orderPheno <- subset(meta, Ancestry=="EUR")
 meta$Phenotype <- factor(meta$Phenotype, levels=c(meta[order(orderPheno$HR),"Phenotype"]))
 colors<-brewer.pal(n=4,name="Dark2")
