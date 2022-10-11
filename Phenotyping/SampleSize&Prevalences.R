@@ -2,10 +2,11 @@ library(data.table)
 library(dplyr)
 library(RColorBrewer)
 library(ggplot2)
-library(ggpubr)
+#library(ggpubr)
+library(rcartocolor)
 
-color <- brewer.pal(n = 9, name = 'Paired')
-color <- color[-1]
+#color <- brewer.pal(n = 9, name = 'Paired')
+#color <- color[-1]
 
 #Read in full sample hazard ratios per standard deviation
 bbj<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/Biobank_Japan_HazardRatios/HRperSD_BBJ.csv")
@@ -19,6 +20,8 @@ mgb_eur<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/MGB_HazardRat
 mgb_afr<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/MGB_HazardRatios/HRperSD_MGBB_AFR.csv")
 hunt<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/HUNT_HazardRatios/HRperSD_HUNT.csv")
 
+
+output_dir<-"/mnt/work/workbench/bwolford/intervene/2022_10_06/"
 #Biobank Japan
 #bbj <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/BiobankJapan/HRperSD_BBJ.csv", data.table=FALSE)
 dropbbj <- c("I9_AF","C3_BRONCHUS_LUNG","RHEUMA_SEROPOS_OTH","ILD","GOUT")
@@ -29,7 +32,7 @@ bbj$Ancestry <- "EAS"
 #UKB
 #ukb <- fread("/Users/jermy/Documents/INTERVENE/Results/HazardRatios/UKBiobank/PRS_HRsperSD_UKBiobank_AllAncestries.csv", data.table=FALSE)
 ukb$Biobank <- "UK Biobank"
-ukb <- subset(ukb, (Phenotype %in% bbj$Phenotype & Ancestry=="EAS") | Ancestry=="EUR" | Ancestry=="SAS")
+ukb <- subset(ukb, (Phenotype %in% bbj$Phenotype & Ancestry=="EAS") | Ancestry=="EUR" | Ancestry=="SAS" | Ancestry=="AFR")
 #ukb <- ukb[,names(bbj)]
 
 #FinnGen
@@ -106,17 +109,25 @@ summies <- full %>%
   group_by(Phenotype) %>%
   summarize(count=sum(Cases))
 
+max<- full %>%
+  group_by(Phenotype,Biobank) %>% summarize(total_case=sum(Cases),total_control=sum(Controls)) %>% group_by(Biobank) %>%
+  summarize(total=max(total_case+total_control))
+
+
+#group_by(Category) %>% 
+ # summarise(Frequency = sum(Frequency))
+
 summies <- summies[order(summies$count),]
 summies$Phenotype <- as.factor(summies$Phenotype) 
 
-sample$Phenotype <- factor(sample$Phenotype, levels=c(summies$Phenotype))
-sample$Ancestry <- factor(sample$Ancestry, levels=c("SAS","EAS","EUR"))
-sample$Biobank <- factor(sample$Biobank, levels=c("Generation Scotland","Genes & Health","Genomics England","Mass General Brigham","UK Biobank","Biobank Japan","Estonian Biobank","FinnGen"))
-
+sample$Phenotype <- factor(sample$Phenotype, levels=summies$Phenotype)
+sample$Ancestry <- factor(sample$Ancestry, levels=c("AFR","SAS","EAS","EUR"))
+sample$Biobank <- factor(sample$Biobank, levels=c("Generation Scotland","HUNT","Genes & Health","Genomics England","Mass General Brigham","UK Biobank","Biobank Japan","Estonian Biobank","FinnGen"))
+color<-brewer.pal("Dark2",n=length(unique(sample$Biobank)))
 caseno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Biobank)) + 
             geom_bar(stat="identity") + 
               theme_bw() + 
-                scale_fill_manual(values=color) + 
+                scale_fill_manual(values=rev(color)) + 
                   xlab("") + 
                     ylab("Number of Cases (per 1000)") + 
                       theme(legend.text = element_text(size = 28),
@@ -129,19 +140,36 @@ caseno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Biobank)) +
                       guides(fill = guide_legend(reverse=TRUE, byrow = TRUE)) + 
                           scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Breast Cancer","Appendicitis","Hip Osteoarthritis","Atrial Fibrillation","CHD","Asthma","Knee Osteoarthritis","Major Depression","Type 2 Diabetes","All Cancers")) + 
                             coord_flip()
-ggsave(filename="/Users/jermy/Documents/INTERVENE/Write-up/supplementary_figure_2a.png", plot = caseno, height=10, width = 16, dpi=300)
+ggsave(filename=paste0(output_dir,"prevalences.png"), plot = caseno, height=10, width = 16, dpi=300)
 
 ancno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Ancestry)) + 
           geom_bar(stat="identity") + 
             theme_bw() + 
-              scale_fill_manual(values=c("#56B4E9", "#009E73", "#D55E00")) + 
+              scale_fill_manual(values=brewer.pal("Dark2",n=4)) + 
                 xlab("") + 
                   ylab("Number of Cases (per 1000)") + 
+  theme( axis.title.x = element_text(size = 18),
+         axis.text.x = element_text(size = 14),
+         axis.title.y = element_text(size = 18),
+         axis.text.y = element_text(size = 18)) +
                     scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Atrial Fibrillation","Breast Cancer","Appendicitis","Hip Osteoarthritis","CHD","Asthma","Knee Osteoarthritis","Type 2 Diabetes","Major Depression","All Cancers")) + 
                       coord_flip()
+ggsave(filename=paste0(output_dir,"ancestry.png"), ancno, height=10, width = 16, dpi=300)
 
-supp_fig_2 <- ggarrange(ancno, caseno, labels=c("A","B"), align = "hv", nrow = 2, ncol = 1)
-ggsave(filename="/Users/jermy/Documents/INTERVENE/Write-up/supplementary_figure_2.png", plot = supp_fig_2, height=10, width = 10, dpi=300)
+eur <- ggplot(data=sample[sample$Ancestry=="EUR",], aes(x=Phenotype, y=Cases, fill=Ancestry)) + 
+  geom_bar(stat="identity") + 
+  theme_bw() + 
+  scale_fill_manual(values="#E7298A") + 
+  xlab("") + 
+  ylab("Number of Cases (per 1000)") + 
+  theme( axis.title.x = element_text(size = 18),
+         axis.text.x = element_text(size = 14),
+         axis.title.y = element_text(size = 18),
+         axis.text.y = element_text(size = 18)) +
+  scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Atrial Fibrillation","Breast Cancer","Appendicitis","Hip Osteoarthritis","CHD","Asthma","Knee Osteoarthritis","Type 2 Diabetes","Major Depression","All Cancers")) + 
+  coord_flip()
+ggsave(filename=paste0(output_dir,"ancestry_EUR.png"), eur, height=10, width = 16, dpi=300)
+
 
 ##################################################################################################################################################################################
 ##################################################################################################################################################################################
@@ -197,7 +225,7 @@ relprevplot <- ggplot(data=prev, aes(x=Phenotype, y=RelPrev)) +
                               ylab("Relative Difference to Mean Prevalence (%)") + 
                                 coord_flip()
 
-supp_fig_3 <- ggarrange(prevplot, relprevplot, labels=c("A","B"), align = "hv", nrow = 2, ncol = 1)
+#supp_fig_3 <- ggarrange(prevplot, relprevplot, labels=c("A","B"), align = "hv", nrow = 2, ncol = 1)
 ggsave(filename="/Users/jermy/Documents/INTERVENE/Write-up/supplementary_figure_3.png", plot = supp_fig_3, height=10, width = 10, dpi=300)
 
 
