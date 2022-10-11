@@ -6,7 +6,9 @@ library(ggplot2)
 library(RColorBrewer)
 library(optparse)
 
-options(warn = -1)
+#options(warn = -1)
+
+print(R.version)
 
 option_list <- list(
   make_option("--country", type="character", default=""),
