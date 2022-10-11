@@ -177,6 +177,7 @@ for(j in 1:length(gbd_phenos)){
     incidence$i2 <- incidence$i5 * hr02
     incidence$i3 <- incidence$i5 * hr03
     incidence$i4 <- incidence$i5 * hr04
+    incidence$i6 <- incidence$i5 * hr06
     incidence$i7 <- incidence$i5 * hr07
     incidence$i8 <- incidence$i5 * hr08
     incidence$i9 <- incidence$i5 * hr09
@@ -484,6 +485,7 @@ for(j in 1:length(gbd_phenos)){
       incidence$i2 <- incidence$i5 * hr02
       incidence$i3 <- incidence$i5 * hr03
       incidence$i4 <- incidence$i5 * hr04
+      incidence$i6 <- incidence$i6 * hr06
       incidence$i7 <- incidence$i5 * hr07
       incidence$i8 <- incidence$i5 * hr08
       incidence$i9 <- incidence$i5 * hr09
