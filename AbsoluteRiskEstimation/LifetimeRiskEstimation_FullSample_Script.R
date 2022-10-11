@@ -485,7 +485,7 @@ for(j in 1:length(gbd_phenos)){
       incidence$i2 <- incidence$i5 * hr02
       incidence$i3 <- incidence$i5 * hr03
       incidence$i4 <- incidence$i5 * hr04
-      incidence$i6 <- incidence$i6 * hr06
+      incidence$i6 <- incidence$i5 * hr06
       incidence$i7 <- incidence$i5 * hr07
       incidence$i8 <- incidence$i5 * hr08
       incidence$i9 <- incidence$i5 * hr09
@@ -591,7 +591,7 @@ for(j in 1:length(gbd_phenos)){
     
     #colors<-c("light green","dark green","plum2","orchid4")
     #colors<-brewer.pal(3,"RdYlBu")
-    colors<-c(brewer.pal(12,"RdYlBu")[11],"dark grey",brewer.pal(12,"RdYlBu")[1])
+    colors<-c(brewer.pal(11,"RdYlBu")[11],"dark grey",brewer.pal(11,"RdYlBu")[1])
     ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
       stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
       geom_point() +
