@@ -111,9 +111,9 @@ mgb_afr$Ancestry <- "AFR"
 mgb_afr$Biobank <-  "Mass General Brigham"
 
 #Genomics England
-names(ge)<-names(hunt)
 ge$Biobank <- "Genomics England"
 ge$Ancestry <- "EUR"
+names(ge)<-names(hunt)
 ge<-ge %>% mutate(Phenotype=case_when(Phenotype=="Knee_ARTHROSIS"~"KNEE_ARTHROSIS")) #fix phenotype typo
 
 #Combine into one dataset
@@ -252,7 +252,7 @@ figure2a <- ggplot(meta) +
               ylab("Hazard Ratio (95% CI)") +
               xlab("") +
               geom_hline(yintercept = 1.0) +
-              scale_color_manual(values=colors) +
+              scale_color_manual(values=colors)+
               scale_x_discrete(labels=c("Appendicitis","Epilepsy","All Cancers","Lung Cancer","Major Depression","ILD","Knee Osteoarthritis","Skin Melanoma","Hip Osteoarthritis","CHD","Asthma","Colorectal Cancer","Atrial Fibrillation","Breast Cancer","Rheumatoid Arthritis","Gout","Type 2 Diabetes","Prostate Cancer","Type 1 Diabetes")) + 
               theme(title = element_text(size = 18),
                     legend.text = element_text(size = 14),
@@ -260,7 +260,7 @@ figure2a <- ggplot(meta) +
                     axis.title.x = element_text(size = 18),
                     axis.text.x = element_text(size = 14),
                     axis.title.y = element_text(size = 18),
-                    axis.text.y = element_text(size = 14)) + ylim(NA,2.5) +
+                    axis.text.y = element_text(size = 14)) + ylim(0.5,2.5) +
               coord_flip() 
 ggsave(paste0(output_dir,"all_ancestry_HR_meta.png"), height=6 , width=8)
 
@@ -272,7 +272,7 @@ figure2a <- ggplot(meta[meta$Ancestry=="EUR",]) +
   ylab("Hazard Ratio (95% CI)") +
   xlab("") +
   geom_hline(yintercept = 1.0) +
-  scale_color_manual(values=colors) +
+  scale_color_manual(values=colors[4])+
   scale_x_discrete(labels=c("Appendicitis","Epilepsy","All Cancers","Lung Cancer","Major Depression","ILD","Knee Osteoarthritis","Skin Melanoma","Hip Osteoarthritis","CHD","Asthma","Colorectal Cancer","Atrial Fibrillation","Breast Cancer","Rheumatoid Arthritis","Gout","Type 2 Diabetes","Prostate Cancer","Type 1 Diabetes")) + 
   theme(title = element_text(size = 18),
         legend.text = element_text(size = 14),
@@ -280,7 +280,7 @@ figure2a <- ggplot(meta[meta$Ancestry=="EUR",]) +
         axis.title.x = element_text(size = 18),
         axis.text.x = element_text(size = 14),
         axis.title.y = element_text(size = 18),
-        axis.text.y = element_text(size = 14)) + ylim(NA,2.5) +
+        axis.text.y = element_text(size = 14)) + ylim(0.5,2.5) + 
   coord_flip() 
 ggsave(paste0(output_dir,"EUR_HR_meta.png"), height=6 , width=8)
 
@@ -292,7 +292,7 @@ figure2a <- ggplot(meta[meta$Ancestry!="AFR",]) +
   ylab("Hazard Ratio (95% CI)") +
   xlab("") +
   geom_hline(yintercept = 1.0) +
-  scale_color_manual(values=colors) +
+  scale_color_manual(values=colors[2:4]) +
   scale_x_discrete(labels=c("Appendicitis","Epilepsy","All Cancers","Lung Cancer","Major Depression","ILD","Knee Osteoarthritis","Skin Melanoma","Hip Osteoarthritis","CHD","Asthma","Colorectal Cancer","Atrial Fibrillation","Breast Cancer","Rheumatoid Arthritis","Gout","Type 2 Diabetes","Prostate Cancer","Type 1 Diabetes")) + 
   theme(title = element_text(size = 18),
         legend.text = element_text(size = 14),
@@ -300,7 +300,7 @@ figure2a <- ggplot(meta[meta$Ancestry!="AFR",]) +
         axis.title.x = element_text(size = 18),
         axis.text.x = element_text(size = 14),
         axis.title.y = element_text(size = 18),
-        axis.text.y = element_text(size = 14)) + ylim(NA,2.5) +
+        axis.text.y = element_text(size = 14)) + ylim(0.5,2.5) +
   coord_flip()
 ggsave(paste0(output_dir,"EUR_SAS_EAS_HR_meta.png"), height=6 , width=8)
 
