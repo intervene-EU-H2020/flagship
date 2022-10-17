@@ -9,6 +9,7 @@ library(optparse)
 #options(warn = -1)
 
 print(R.version)
+set.seed(1234)
 
 option_list <- list(
   make_option("--country", type="character", default=""),
