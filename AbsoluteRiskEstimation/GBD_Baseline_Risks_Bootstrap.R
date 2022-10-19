@@ -10,7 +10,7 @@ library(stringr)
 output_dir<-"/mnt/work/workbench/bwolford/intervene/2022_10_06/RiskEstimates/"
 path<-"/mnt/scratch/brooke/flagship/AbsoluteRiskEstimation/"
 
-gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "'Tracheal, bronchus, and lung cancer'", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
+gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
 hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
 nk<-3
 #countries<-c("Massachusetts","Norway","Estonia","Finland","England","United Kingdom","Japan","Scotland","United States of America","Global")
@@ -205,22 +205,21 @@ for(j in 1:length(gbd_phenos)){
         k<-k+1
         lifetimerisks <- suppressMessages(right_join(lifetimerisks, lifetimerisk))
       }
-  }
-  lifetimerisk_percentile <- as.matrix(lifetimerisks[,-c(1,2,3)])
-  confidenceintervals <- apply(lifetimerisk_percentile, 1, quantile, c(0.025, 0.975), na.rm=TRUE)
-  bootstrapped_lifetimerisk <- point %>% filter(cause==gbd_phenos[j] & location==countries[c] & age!=c("80-84 years","85-89 years","90-94 years","All ages"))
-
-  bootstrapped_lifetimerisk$CIneg <- confidenceintervals[1,]
-  bootstrapped_lifetimerisk$CIpos <- confidenceintervals[2,]
-  bootstrapped_lifetimerisk$location<-countries[c]
-  bootstrapped_lifetimerisk$cause<-gbd_phenos[j]
+    lifetimerisk_percentile <- as.matrix(lifetimerisks[,-c(1,2,3)])
+    confidenceintervals <- apply(lifetimerisk_percentile, 1, quantile, c(0.025, 0.975), na.rm=TRUE)
+    bootstrapped_lifetimerisk <- point %>% filter(cause==gbd_phenos[j] & location==countries[c] & age!=c("80-84 years","85-89 years","90-94 years","All ages"))
   
-  result<-rbind(result,bootstrapped_lifetimerisk)
+    bootstrapped_lifetimerisk$CIneg <- confidenceintervals[1,]
+    bootstrapped_lifetimerisk$CIpos <- confidenceintervals[2,]
+    bootstrapped_lifetimerisk$location<-countries[c]
+    bootstrapped_lifetimerisk$cause<-gbd_phenos[j]
+    
+    result<-rbind(result,bootstrapped_lifetimerisk)
   }
 }
  
 #fwrite(result,paste0(output_dir,"GBD_LifetimeRisks.tab"),quote=FALSE,row.names=FALSE,sep="\t")
-fwrite(lifetimerisks,paste0(output_dir,"GBD_LifetimeRisks.tab"),quote=FALSE,row.names=FALSE,sep="\t")
+fwrite(result,paste0(output_dir,"GBD_LifetimeRisks.tab"),quote=FALSE,row.names=FALSE,sep="\t")
 
 
 ############################# PLOTTING #############################
