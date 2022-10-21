@@ -16,7 +16,7 @@ gnh<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/GNH_HazardRatios/
 estbb<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/EstBB_HazardRatios/HRperSD_EstBB.csv")
 gs<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/GenerationScotland_HazardRatios/HRperSD_GS.csv")
 ge<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/GenomicsEngland_HazardRatios/HRperSD_GenomicsEngland.csv")
-mgb_eur<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/MGB_HazardRatios/HRperSD_MGBB_AFR.csv")
+mgb_eur<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/MGB_HazardRatios/HRperSD_MGBB_EUR.csv")
 mgb_afr<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/MGB_HazardRatios/HRperSD_MGBB_AFR.csv")
 hunt<-fread("/mnt/work/workbench/bwolford/intervene/GoogleDrive/HUNT_HazardRatios/HRperSD_HUNT.csv")
 
@@ -111,7 +111,7 @@ summies <- full %>%
   summarize(count=sum(Cases))
 
 max<- full %>%
-  group_by(Phenotype,Biobank) %>% summarize(total_case=sum(Cases),total_control=sum(Controls)) %>% group_by(Biobank) %>%
+  group_by(Phenotype,Biobank,Ancestry) %>% summarize(total_case=sum(Cases),total_control=sum(Controls)) %>% group_by(Biobank) %>%
   summarize(total=max(total_case+total_control))
 
 
@@ -121,9 +121,16 @@ max<- full %>%
 summies <- summies[order(summies$count),]
 summies$Phenotype <- as.factor(summies$Phenotype) 
 
-sample$Phenotype <- factor(sample$Phenotype, levels=summies$Phenotype)
+gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
+hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
+labels<-c("ILD","Lung Cancer","All Cancers","Appendicitis", "Asthma", "Atrial Fibrillation", "Breast Cancer","Coronary Heart Disease","Colorectal Cancer","Epilepsy","Gout","Hip Osteoarthritis","Knee Osteoarthritis","Major Depression","Skin Melanoma","Prostate Cancer","Rheumatoid Arthritis","Type 1 Diabetes","Type 2 Diabetes")
+label_df<-data.frame(gbd=gbd_phenos,hr=hr_phenos,pretty=labels)
+sample<-sample %>% left_join(label_df,by=c("Phenotype"="hr"))
+sample$Phenotype <- factor(sample$Phenotype, levels=summies$Phenotype) #summies is sorted by count
 sample$Ancestry <- factor(sample$Ancestry, levels=c("AFR","SAS","EAS","EUR"))
 sample$Biobank <- factor(sample$Biobank, levels=c("Generation Scotland","HUNT","Genes & Health","Genomics England","Mass General Brigham","UK Biobank","Biobank Japan","Estonian Biobank","FinnGen"))
+
+#would like to use pretty in case the order changes, so need to change labels in scale_x_discrete
 color<-c(brewer.pal("Dark2",n=length(unique(sample$Biobank))),"#000000")
 caseno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Biobank)) + 
             geom_bar(stat="identity") + 
@@ -131,7 +138,7 @@ caseno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Biobank)) +
                 scale_fill_manual(values=rev(color)) + 
                   xlab("") + 
                     ylab("Number of Cases (per 1000)") + 
-                      theme(legend.text = element_text(size = 28),
+                      theme(legend.text = element_text(size = 2),
                             legend.title = element_blank(),
                             legend.spacing.y = unit(2.0, 'cm'),
                             axis.title.x = element_text(size = 24),
@@ -139,23 +146,26 @@ caseno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Biobank)) +
                             axis.title.y = element_text(size = 20),
                             axis.text.y = element_text(size = 26)) +
                       guides(fill = guide_legend(reverse=TRUE, byrow = TRUE)) + 
-                          scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Breast Cancer","Appendicitis","Hip Osteoarthritis","Atrial Fibrillation","CHD","Asthma","Knee Osteoarthritis","Major Depression","Type 2 Diabetes","All Cancers")) + 
+                          scale_x_discrete(labels=aes(label)) +
                             coord_flip()
 ggsave(filename=paste0(output_dir,"prevalences.png"), plot = caseno, height=10, width = 16, dpi=300)
 
+#levels(sample$Phenotype)
 ancno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Ancestry)) + 
           geom_bar(stat="identity") + 
             theme_bw() + 
               scale_fill_manual(values=brewer.pal("Dark2",n=4)) + 
                 xlab("") + 
                   ylab("Number of Cases (per 1000)") + 
-  theme( axis.title.x = element_text(size = 18),
-         axis.text.x = element_text(size = 14),
-         axis.title.y = element_text(size = 18),
-         axis.text.y = element_text(size = 18)) +
+  theme( legend.text=element_text(size=32),
+         legend.title=element_text(size=32),
+      axis.title.x = element_text(size = 28),
+         axis.text.x = element_text(size = 28),
+         axis.title.y = element_text(size = 28),
+         axis.text.y = element_text(size = 28)) +
                     scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Atrial Fibrillation","Breast Cancer","Appendicitis","Hip Osteoarthritis","CHD","Asthma","Knee Osteoarthritis","Type 2 Diabetes","Major Depression","All Cancers")) + 
                       coord_flip()
-ggsave(filename=paste0(output_dir,"ancestry.png"), ancno, height=10, width = 16, dpi=300)
+ggsave(filename=paste0(output_dir,"ancestry.png"), ancno, height=8, width = 16, dpi=300)
 
 eur <- ggplot(data=sample[sample$Ancestry=="EUR",], aes(x=Phenotype, y=Cases, fill=Ancestry)) + 
   geom_bar(stat="identity") + 
