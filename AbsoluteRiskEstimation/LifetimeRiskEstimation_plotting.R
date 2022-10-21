@@ -101,8 +101,8 @@ ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=
  rel_differences$comparison<-factor(rel_differences$comparison,levels=c("<1%","40-60%",">99%"))
  rel_differences<-rel_differences %>% filter(str_detect(ancestry,"EUR")|str_detect(ancestry,"EAS"))
  png(file="/mnt/work/workbench/bwolford/intervene/2022_10_06/RiskEstimates/cumulative_risk_differences.png",units="in",res=300,height=6,width=10)
- ggplot(rel_differences,aes(x=LifetimeRisk,y=pheno,color=biobank)) + geom_point(size=3,alpha=0.8) +
-   theme_bw() + geom_errorbarh(aes(xmin=CIneg,xmax=CIpos),height=0.4) + facet_wrap(~comparison) +
+ ggplot(rel_differences,aes(x=LifetimeRisk,y=pheno,color=biobank)) + geom_point(size=3,alpha=0.5) +
+   theme_bw() + geom_errorbarh(aes(xmin=CIneg,xmax=CIpos),height=0.4,alpha=0.5) + facet_wrap(~comparison) +
    labs(x="Cumulative Risk at age 80",y='Trait') +
    theme(title = element_text(size = 22),
          legend.text = element_text(size = 16),
@@ -116,8 +116,8 @@ ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=
  
  differences<-differences %>% filter(str_detect(ancestry,"EUR")|str_detect(ancestry,"EAS"))
  png(file="/mnt/work/workbench/bwolford/intervene/2022_10_06/RiskEstimates/cumulative_risk_top_vs_bottom.png",units="in",res=300,height=6,width=10)
- ggplot(differences,aes(x=LifetimeRisk,y=pheno,color=biobank)) + geom_point(size=3,alpha=0.8) +
-   theme_bw() + geom_errorbarh(aes(xmin=CIneg,xmax=CIpos),height=0.4) + 
+ ggplot(differences,aes(x=LifetimeRisk,y=pheno,color=biobank)) + geom_point(size=3,alpha=0.5) +
+   theme_bw() + geom_errorbarh(aes(xmin=CIneg,xmax=CIpos),height=0.4,alpha=0.5) + 
    labs(x="Difference in absolute cumulative risk between >99% and <1% ",y='Trait') +
    theme(title = element_text(size = 22),
          legend.text = element_text(size = 16),

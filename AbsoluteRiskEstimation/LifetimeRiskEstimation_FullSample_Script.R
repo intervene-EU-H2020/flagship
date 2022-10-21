@@ -144,12 +144,12 @@ for(j in 1:length(gbd_phenos)){
   hazrats <- fread(full_HR_path, data.table = FALSE)
   colnames(hazrats) <- c("phenotype", "prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
   hazrats <- subset(hazrats, phenotype==hr_phenos[j])
-  if(nrow(hazrats)<1) {
+  if(nrow(hazrats)<1){
     next
   }
   
   #use top and bottom 5% instead
-  if (is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR )){
+  if (is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR)){
     #Hazard Ratios
     hr01 <- hazrats[hazrats$group=="< 5%",]$HR
     hr02 <- hazrats[hazrats$group=="5-10%",]$HR
@@ -170,7 +170,7 @@ for(j in 1:length(gbd_phenos)){
     props07 <- 0.1
     props08 <- 0.05
     props09 <- 0.04
-
+    
     #Estimate incidence attributable to different distributions of PRS, now group 5 is reference
     incidence$i5 <- (incidence$incidence*incidence$population) / ((props05 * incidence$population) + (hr01 * (props01 * incidence$population)) + (hr02 * (props02 * incidence$population)) + (hr03 * (props03 * incidence$population)) + (hr04 * (props04 * incidence$population)) + (hr06 * (props06 * incidence$population)) + (hr07 * (props07 * incidence$population)) + (hr08 * (props08 * incidence$population)) + (hr09 * (props09 * incidence$population)) )
     incidence$i5[is.na(incidence$i5)] <- 0
@@ -185,7 +185,7 @@ for(j in 1:length(gbd_phenos)){
     
     groups<-9
   }else {
-  #Hazard Ratios
+    #Hazard Ratios
     hr01 <- hazrats[hazrats$group=="< 1%",]$HR
     hr02 <- hazrats[hazrats$group=="1-5%",]$HR
     hr03 <- hazrats[hazrats$group=="5-10%",]$HR
@@ -231,6 +231,7 @@ for(j in 1:length(gbd_phenos)){
   lifetimerisk <- data.frame(NULL)
   
   for(i in 1:groups){
+    print(i)
     #Calculate hazard
     incidence[[paste0("hazard",i)]] <- incidence[[paste0("i",i)]] / (1 - incidence$prevalence)
     
@@ -447,7 +448,10 @@ for(j in 1:length(gbd_phenos)){
     hazrats$beta <- log(hazrats$HR)
     hazrats$beta_pos <- log(hazrats$CIpos)
     hazrats$SD <- (hazrats[,"beta_pos"] - hazrats[,"beta"]) / 1.96
-    
+    if (sum(complete.cases(hazrats))<nrow(hazrats)) { #if there are NAs then skip trait
+      print("test")
+      next
+    }
     if(is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR) & is.finite(hazrats[hazrats$group=="< 5%",]$beta_pos)){
       #Hazard Ratios, #Sample from the hazard ratio distribution
       hr01 <- exp(rnorm(1, mean=hazrats[hazrats$group=="< 5%",]$beta, sd=hazrats[hazrats$group=="< 5%",]$SD))
