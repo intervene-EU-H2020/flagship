@@ -13,8 +13,11 @@ path<-"/mnt/scratch/brooke/flagship/AbsoluteRiskEstimation/"
 gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
 hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
 nk<-3
-#countries<-c("Massachusetts","Norway","Estonia","Finland","England","United Kingdom","Japan","Scotland","United States of America","Global")
-countries<-c("Global")
+
+gbd_phenos<-c("I9_CHD","GOUT","C3_PROSTATE","T2D")
+hr_phenos<-c("Ischemic heart disease","Gout","Prostate cancer","Diabetes mellitus type 2")
+countries<-c("Massachusetts","Norway","Estonia","Finland","England","United Kingdom","Japan","Scotland","United States of America","Global")
+#countries<-c("Global")
 result<-c()
 point_estimates<-c()
 for(j in 1:length(gbd_phenos)){
@@ -218,7 +221,6 @@ for(j in 1:length(gbd_phenos)){
   }
 }
  
-#fwrite(result,paste0(output_dir,"GBD_LifetimeRisks.tab"),quote=FALSE,row.names=FALSE,sep="\t")
 fwrite(result,paste0(output_dir,"GBD_LifetimeRisks.tab"),quote=FALSE,row.names=FALSE,sep="\t")
 
 
@@ -244,12 +246,13 @@ for(i in unique(incidence$cause)){
           guides(color=guide_legend(reverse = TRUE)) +
           scale_color_manual(values=my_colors) +
           theme(title = element_text(size = 22),
-                legend.text = element_text(size = 16),
-                legend.title = element_text(size = 18),
-                axis.title.x = element_text(size = 18),
+                legend.position="bottom",
+                legend.text = element_text(size = 28),
+                legend.title = element_text(size = 28),
+                axis.title.x = element_text(size = 28),
                 axis.text.x = element_text(size = 18, angle=45, hjust=1),
-                axis.title.y = element_text(size = 22),
-                axis.text.y = element_text(size = 16)))
+                axis.title.y = element_text(size = 28),
+                axis.text.y = element_text(size = 28)))
   dev.off()
 }
 
