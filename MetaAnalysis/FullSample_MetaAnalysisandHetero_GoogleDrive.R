@@ -57,6 +57,7 @@ if (run_googledrive==TRUE){
 }
 ### full sample, HR per std dev
 file<-"HRperSD"
+xlabel<-"HR per Standard Deviation (95% CI)"
 estbb<-fread(paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/EstBB_HazardRatios/",file,"_EstBB.csv"))
 finngen<-fread(paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/FinnGen_HazardRatios/",file,"_FinnGen.csv"))
 hunt<-fread(paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/HUNT_HazardRatios/",file,"_HUNT.csv"))
@@ -196,7 +197,7 @@ by(df,df$Phenotype, function(x){
                   axis.text.x = element_text(size = 12),
                   axis.title.y = element_text(size = 18),
                   axis.text.y = element_text(size = 12)) +
-          labs(title=pheno,x="Hazard Ratio (95% CI)",y="Study"))
+          labs(title=pheno,x=xlabel,y="Study"))
     dev.off()
   })
 })

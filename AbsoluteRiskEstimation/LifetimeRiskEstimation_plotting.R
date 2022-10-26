@@ -59,6 +59,7 @@ ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=
         axis.text.y = element_text(size = 16))
  dev.off()
  
+ #4 traits, finngen
  colors<-c("#3C884B","#2C6687","#824A85")
  traits<-c("T2D","GOUT","I9_CHD","C3_PROSTATE")
  riskwithintervals <- results %>% filter(Group %in% c("Group1","Group6","Group11")) %>% filter(trait %in% traits) %>%
@@ -97,29 +98,114 @@ ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=
  ggarrange(x1,x2,x3,nrow=3,common.legend = TRUE)
  dev.off()
  
+ #4 traits, 3 biobanks
  colors<-c("#3C884B","#2C6687","#824A85")
  traits<-c("T2D","GOUT","I9_CHD","C3_PROSTATE")
  biobanks<-c("FinnGen_EUR","HUNT_EUR","EstBB_EUR")
  riskwithintervals <- results %>% filter(Group %in% c("Group1","Group6","Group11")) %>% filter(trait %in% traits) %>% filter(biobank %in% biobanks) %>%
-   filter(Age!="1 to 4" & Age!="5 to 9" & Age!="10 to 14" & Age!="15 to 19") %>% mutate(biobank_pretty=biobank) %>% 
+   filter(Age!="1 to 4" & Age!="5 to 9" & Age!="10 to 14") %>% mutate(biobank_pretty=biobank) %>% 
    mutate(biobank_pretty=recode(biobank_pretty,"FinnGen_EUR"="FinnGen","HUNT_EUR"="HUNT","EstBB_EUR"="Estonian Biobank"))
- pdf(file=paste0(output_dir,"Risks_poster.pdf"),height=8,width=10,useDingbats=TRUE)
+ riskwithintervals$pretty<-as.factor(riskwithintervals$pretty)
+ riskwithintervals$pretty<-factor(riskwithintervals$pretty,c("Type 2 Diabetes","Gout","Coronary Heart Disease","Prostate Cancer"))
+ pdf(file=paste0(output_dir,"Risks_poster.pdf"),height=12,width=14,useDingbats=TRUE)
  ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
    stat_smooth(method = "lm", formula = y ~ poly(x, length(unique(riskwithintervals$Age))-1), se = FALSE) +
    geom_point(alpha=0.5) +
    geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
    xlab("Age Range") + 
    ylab("Lifetime Risk (%)") + 
-   theme_bw() + facet_wrap(~pretty+biobank_pretty,ncol=3) +
+   theme_bw() + facet_grid(biobank_pretty~pretty,labeller=label_value,scales="free_x") +
    scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
    scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
    theme(strip.background =element_rect(fill="white"),
          legend.position="bottom",axis.text.x = element_text(size = 16, angle=45, hjust=1),
          legend.text = element_text(size = 18),
+         strip.text.x = element_text(size = 18),
+         strip.text.y=element_text(size=18),
+         axis.title.x=element_text(size=18),
+         axis.title.y=element_text(size=18),
+         axis.text.y=element_text(size=20),
          legend.title=element_text(size=18))
  dev.off()
  
+ #BBJ CHD
+ colors<-c("#3C884B","#2C6687","#824A85")
+ riskwithintervals <-  results %>% filter(biobank=="BBJ_EAS"&trait=="I9_CHD" & Age!="1 to 4" & Age!="5 to 9" & Age!="10 to 14") 
+ pdf(file=paste0(output_dir,"BBJ_CHD_poster.pdf"),height=6,width=6,useDingbats=TRUE)
+ ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=as.integer(Group), color=as.integer(Group), group=as.integer(Group))) +
+   stat_smooth(method = "lm", formula = y ~ poly(x, length(unique(riskwithintervals$Age))-1), se = FALSE) +
+   geom_point(alpha=0.5) +
+   geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=as.integer(Group)), alpha=0.2) +
+   xlab("Age Range") + 
+   ylab("Lifetime Risk (%)") + 
+   theme_bw() + labs(title="Coronary Heart Disease\nin Biobank Japan (EAS)") +
+   scale_color_gradient2(name="PRS Percentile",high=colors[3],mid=colors[2],low=colors[1],midpoint=6,labels=c("<1%","40-60%",">99%"),breaks=c(1,6,11)) +
+   scale_fill_gradient2(name="PRS Percentile",high=colors[3],mid=colors[2],low=colors[1],midpoint=6,labels=c("<1%","40-60%",">99%"),breaks=c(1,6,11)) +
+   theme(strip.background =element_rect(fill="white"),
+         axis.text.x = element_text(size = 16, angle=45, hjust=1),
+         axis.title.x=element_text(size=18),
+         legend.title=element_text(size=18),
+         legend.text=element_text(size=18),
+         axis.title.y=element_text(size=18),
+         axis.text.y=element_text(size=20),
+         legend.key.width=unit(0.5,"in"),
+         plot.title = element_text(size=22,hjust = 0.5),
+         legend.position="bottom")
+ dev.off()
  
+ #UKB CHD
+ colors<-c("#3C884B","#2C6687","#824A85")
+ riskwithintervals <-  results %>% filter(biobank=="UKB_SAS"&trait=="I9_CHD" & Age!="1 to 4" & Age!="5 to 9" & Age!="10 to 14") 
+ pdf(file=paste0(output_dir,"UKB_CHD_poster.pdf"),height=6,width=6,useDingbats=TRUE)
+ ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=as.integer(Group), color=as.integer(Group), group=as.integer(Group))) +
+   stat_smooth(method = "lm", formula = y ~ poly(x, length(unique(riskwithintervals$Age))-1), se = FALSE) +
+   geom_point(alpha=0.5) +
+   geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=as.integer(Group)), alpha=0.2) +
+   xlab("Age Range") + 
+   ylab("Lifetime Risk (%)") + 
+   theme_bw() + labs(title="Coronary Heart Disease\nin UK Biobank (SAS)") +
+   scale_color_gradient2(name="PRS Percentile",high=colors[3],mid=colors[2],low=colors[1],midpoint=6,labels=c("<1%","40-60%",">99%"),breaks=c(1,6,11)) +
+   scale_fill_gradient2(name="PRS Percentile",high=colors[3],mid=colors[2],low=colors[1],midpoint=6,labels=c("<1%","40-60%",">99%"),breaks=c(1,6,11)) +
+   theme(strip.background =element_rect(fill="white"),
+         axis.text.x = element_text(size = 16, angle=45, hjust=1),
+         axis.title.x=element_text(size=18),
+         legend.title=element_text(size=18),
+         legend.text=element_text(size=18),
+         axis.title.y=element_text(size=18),
+         axis.text.y=element_text(size=20),
+         legend.key.width=unit(0.5,"in"),
+         plot.title = element_text(size=22,hjust = 0.5),
+         legend.position="bottom")
+ dev.off()
+ 
+ 
+ ### all CHD
+ colors<-c("#3C884B","#2C6687","#824A85")
+ riskwithintervals <- results %>% filter(Group %in% c("Group1","Group6","Group11")) %>% filter(trait %in% c("I9_CHD")) %>% 
+   filter(Age!="1 to 4" & Age!="5 to 9" & Age!="10 to 14") %>% mutate(biobank_pretty=biobank) %>% 
+   mutate(biobank_pretty=recode(biobank_pretty,"FinnGen_EUR"="FinnGen (EUR)","HUNT_EUR"="HUNT (EUR)","EstBB_EUR"="Estonian Biobank (EUR)","BBJ_EAS"="BioBank Japan (EAS)","MGB_AFR"="Mass Gen Brigham (AFR)","UKB_SAS"="UK Biobank (SAS)"))
+ pdf(file=paste0(output_dir,"CHD_talk.pdf"),height=8,width=12,useDingbats=TRUE)
+ ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
+   stat_smooth(method = "lm", formula = y ~ poly(x, length(unique(riskwithintervals$Age))-1), se = FALSE) +
+   geom_point(alpha=0.5) +
+   geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
+   xlab("Age Range") + 
+   ylab("Lifetime Risk (%)") + facet_wrap(~biobank_pretty) +
+   theme_bw() + labs(title="Coronary Heart Disease\nAcross Biobanks and Populations") +
+   scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   theme(strip.background =element_rect(fill="white"),
+         axis.text.x = element_text(size = 16, angle=45, hjust=1),
+         axis.title.x=element_text(size=18),
+         legend.title=element_text(size=18),
+         legend.text=element_text(size=18),
+         axis.title.y=element_text(size=18),
+         axis.text.y=element_text(size=20),
+         strip.text = element_text(size = 20),
+         legend.key.width=unit(0.5,"in"),
+         plot.title = element_text(size=22,hjust = 0.5),
+         legend.position="bottom")
+ dev.off()
 ############################# comparisons across strata 
  
  hr_phenos <- c("C3_PROSTATE","C3_BREAST", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")

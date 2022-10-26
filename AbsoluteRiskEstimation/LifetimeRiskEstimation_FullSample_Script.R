@@ -37,6 +37,7 @@ biobank<-opt$biobank
 ancestry<-opt$ancestry
 nk<-opt$k
 #path<-"/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/"
+#full_HR_path<-"/mnt/work/workbench/bwolford/intervene/GoogleDrive/GenerationScotland_HazardRatios/HR_FullSampleGS.csv"
 gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
 hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
 
@@ -437,7 +438,7 @@ for(j in 1:length(gbd_phenos)){
     
     #######################################################################################################################################################################################
     #Hazard Ratios
-    
+    no_groups<-0
     #Read in the hazard ratios and allocate to variables...
     hazrats <- fread(full_HR_path, data.table = FALSE)
     colnames(hazrats) <- c("phenotype","prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
@@ -531,8 +532,7 @@ for(j in 1:length(gbd_phenos)){
     } 
 
     ###################################################
-    if (exists("no_groups")){
-      lifetimerisk <- data.frame(NULL)
+    if (no_groups!=0){
       for(i in 1:no_groups){
         #Calculate hazard
         incidence[[paste0("hazard",i)]] <- incidence[[paste0("i",i)]] / (1 - incidence$prevalence_sample)
