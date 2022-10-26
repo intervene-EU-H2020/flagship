@@ -104,7 +104,7 @@ full <- subset(all, Sample=="Full Sample")
 
 #For Sample Size graphs (Supplementary Figure 2)
 sample <- full[,c("Phenotype","Cases","Ancestry","Biobank")]
-sample$Cases <- sample$Cases/1000
+sample$Casesper <- sample$Cases/1000
 
 summies <- full %>% 
   group_by(Phenotype) %>%
@@ -132,7 +132,7 @@ sample$Biobank <- factor(sample$Biobank, levels=c("Generation Scotland","HUNT","
 
 #would like to use pretty in case the order changes, so need to change labels in scale_x_discrete
 color<-c(brewer.pal("Dark2",n=length(unique(sample$Biobank))),"#000000")
-caseno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Biobank)) + 
+caseno <- ggplot(data=sample, aes(x=Phenotype, y=Casesper, fill=Biobank)) + 
             geom_bar(stat="identity") + 
               theme_bw() + 
                 scale_fill_manual(values=rev(color)) + 
@@ -148,10 +148,10 @@ caseno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Biobank)) +
                       guides(fill = guide_legend(reverse=TRUE, byrow = TRUE)) + 
                           scale_x_discrete(labels=aes(label)) +
                             coord_flip()
-ggsave(filename=paste0(output_dir,"prevalences.png"), plot = caseno, height=10, width = 16, dpi=300)
+ggsave(filename=paste0(output_dir,"prevalences_per1000.png"), plot = caseno, height=10, width = 16, dpi=300)
 
 #levels(sample$Phenotype)
-ancno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Ancestry)) + 
+ancno <- ggplot(data=sample, aes(x=Phenotype, y=Casesper, fill=Ancestry)) + 
           geom_bar(stat="identity") + 
             theme_bw() + 
               scale_fill_manual(values=brewer.pal("Dark2",n=4)) + 
@@ -165,9 +165,9 @@ ancno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Ancestry)) +
          axis.text.y = element_text(size = 28)) +
                     scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Atrial Fibrillation","Breast Cancer","Appendicitis","Hip Osteoarthritis","CHD","Asthma","Knee Osteoarthritis","Type 2 Diabetes","Major Depression","All Cancers")) + 
                       coord_flip()
-ggsave(filename=paste0(output_dir,"ancestry.png"), ancno, height=8, width = 16, dpi=300)
+ggsave(filename=paste0(output_dir,"ancestry_per1000.png"), ancno, height=8, width = 16, dpi=300)
 
-eur <- ggplot(data=sample[sample$Ancestry=="EUR",], aes(x=Phenotype, y=Cases, fill=Ancestry)) + 
+eur <- ggplot(data=sample[sample$Ancestry=="EUR",], aes(x=Phenotype, y=Casesper, fill=Ancestry)) + 
   geom_bar(stat="identity") + 
   theme_bw() + 
   scale_fill_manual(values="#E7298A") + 
@@ -179,7 +179,43 @@ eur <- ggplot(data=sample[sample$Ancestry=="EUR",], aes(x=Phenotype, y=Cases, fi
          axis.text.y = element_text(size = 18)) +
   scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Atrial Fibrillation","Breast Cancer","Appendicitis","Hip Osteoarthritis","CHD","Asthma","Knee Osteoarthritis","Type 2 Diabetes","Major Depression","All Cancers")) + 
   coord_flip()
-ggsave(filename=paste0(output_dir,"ancestry_EUR.png"), eur, height=10, width = 16, dpi=300)
+ggsave(filename=paste0(output_dir,"ancestry_EUR_per1000.png"), eur, height=10, width = 16, dpi=300)
+
+
+####### not dividing cases by 100
+
+eur <- ggplot(data=sample[sample$Ancestry=="EUR",], aes(x=Phenotype, y=Cases, fill=Ancestry)) + 
+  geom_bar(stat="identity") + 
+  theme_bw() + 
+  scale_fill_manual(values="#E7298A") + 
+  xlab("") + 
+  ylab("Number of Cases") + 
+  theme( legend.text=element_text(size=32),
+         legend.title=element_text(size=32),
+         axis.title.x = element_text(size = 28),
+         axis.text.x = element_text(size = 28),
+         axis.title.y = element_text(size = 28),
+         axis.text.y = element_text(size = 28)) +
+  scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Atrial Fibrillation","Breast Cancer","Appendicitis","Hip Osteoarthritis","CHD","Asthma","Knee Osteoarthritis","Type 2 Diabetes","Major Depression","All Cancers")) + 
+  coord_flip()
+ggsave(filename=paste0(output_dir,"ancestry_EUR.png"), eur, height=8, width = 16, dpi=300)
+
+ancno <- ggplot(data=sample, aes(x=Phenotype, y=Cases, fill=Ancestry)) + 
+  geom_bar(stat="identity") + 
+  theme_bw() + 
+  scale_fill_manual(values=brewer.pal("Dark2",n=4)) + 
+  xlab("") + 
+  ylab("Number of Cases") + 
+  theme( legend.text=element_text(size=32),
+         legend.title=element_text(size=32),
+         axis.title.x = element_text(size = 28),
+         axis.text.x = element_text(size = 28),
+         axis.title.y = element_text(size = 28),
+         axis.text.y = element_text(size = 28)) +
+  scale_x_discrete(labels=c("ILD","Type 1 Diabetes","Lung Cancer","Skin Melanoma","Rheumatoid Arthritis","Colorectal Cancer","Epilepsy","Gout","Prostate Cancer","Atrial Fibrillation","Breast Cancer","Appendicitis","Hip Osteoarthritis","CHD","Asthma","Knee Osteoarthritis","Type 2 Diabetes","Major Depression","All Cancers")) + 
+  coord_flip()
+ggsave(filename=paste0(output_dir,"ancestry.png"), ancno, height=8, width = 16, dpi=300)
+
 
 
 ##################################################################################################################################################################################

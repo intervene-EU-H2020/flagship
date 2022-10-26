@@ -2,8 +2,12 @@ library(data.table)
 library(dplyr)
 library(ggplot2)
 library(RColorBrewer)
+library(gridExtra)
+library(ggpubr)
+library(grid)
 
 results_dir<-"/mnt/work/workbench/bwolford/intervene/2022_10_06/RiskEstimates/" #set this to your directory of choice
+results_dir<-"/home/bwolford/scratch/brooke/results2/"
 files<-list.files(path=results_dir,pattern=".csv")
 my_files<-files[grepl("Bootstrapped",files)&!grepl("Male",files)&!grepl("Female",files)&!grepl("AgeStrat",files)] #remove male and female for now
 #"","Age","Group","CIneg","CIpos","LifetimeRisk"
@@ -22,30 +26,97 @@ results <- results[!is.na(results$CIpos),]
 results$Age <- factor(results$Age,levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
 results$Group <- factor(results$Group, levels=c("Group1","Group2","Group3","Group4","Group5","Group6","Group7","Group8","Group9","Group10","Group11"))
 
-traits<-c("T2D","GOUT","I9_CHD","C3_PROSTATE")
+gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
+hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
+labels<-c("ILD","Lung Cancer","All Cancers","Appendicitis", "Asthma", "Atrial Fibrillation", "Breast Cancer","Coronary Heart Disease","Colorectal Cancer","Epilepsy","Gout","Hip Osteoarthritis","Knee Osteoarthritis","Major Depression","Skin Melanoma","Prostate Cancer","Rheumatoid Arthritis","Type 1 Diabetes","Type 2 Diabetes")
+label_df<-data.frame(gbd=gbd_phenos,hr=hr_phenos,pretty=labels)
+results<-results %>% left_join(label_df,by=c("trait"="hr"))
 
-riskwithintervals <- results %>% filter(Group %in% c("Group1","Group6","Group11")) %>% filter(trait %in% traits)
-pdf(file=paste0(output_dir,"Risks_Facet.pdf"),height=10,width=10,useDingbats=TRUE)
+
+traits<-c("T2D","GOUT","I9_CHD","C3_PROSTATE")
+riskwithintervals <- results %>% filter(Group %in% c("Group1","Group6","Group11")) %>% filter(trait %in% traits) %>% filter(biobank!="MGB_AFR")
+pdf(file=paste0(output_dir,"Risks_Facet.pdf"),height=10,width=12,useDingbats=TRUE)
 #colors<-c(brewer.pal(11,"RdYlBu")[11],"dark grey",brewer.pal(11,"RdYlBu")[1])
-colors<-c("#824A85","#2C6687","#3C884B")
+colors<-c("#3C884B","#2C6687","#824A85")
 ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
   stat_smooth(method = "lm", formula = y ~ poly(x, 13), se = FALSE) +
   geom_point(alpha=0.5) +
   geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
   xlab("Age Range") + 
-  ylab("Absolute Cumulative Risk (%)") + 
-  theme_bw() + facet_wrap(~trait~biobank,ncol=4) +
+  ylab("Lifetime Risk (%)") + 
+  theme_bw() + facet_wrap(~pretty~biobank,ncol=4,scales="free_y") +
   labs(color='PRS Group', fill='PRS Group') +
-  scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
-  scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("0-1%", "40-60%", "99-100%")) +
+  scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+  scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
   theme(title = element_text(size = 22),
         strip.background =element_rect(fill="white"),
         legend.text = element_text(size = 16),
+        legend.position="bottom",
         legend.title = element_text(size = 18),
         axis.title.x = element_text(size = 18),
-        axis.text.x = element_text(size = 12, angle=-90, hjust=0),
+        axis.text.x = element_text(size = 12, angle=45, hjust=1),
         axis.title.y = element_text(size = 18),
         axis.text.y = element_text(size = 16))
+ dev.off()
+ 
+ colors<-c("#3C884B","#2C6687","#824A85")
+ traits<-c("T2D","GOUT","I9_CHD","C3_PROSTATE")
+ riskwithintervals <- results %>% filter(Group %in% c("Group1","Group6","Group11")) %>% filter(trait %in% traits) %>%
+   filter(Age!="1 to 4" & Age!="5 to 9" & Age!="10 to 14" & Age!="15 to 19")
+ pdf(file=paste0(output_dir,"Risks_poster.pdf"),height=8,width=8,useDingbats=TRUE)
+ x1<-ggplot(riskwithintervals %>% filter(biobank=="FinnGen_EUR"), aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
+   stat_smooth(method = "lm", formula = y ~ poly(x, length(unique(riskwithintervals$Age))-1), se = FALSE) +
+   geom_point(alpha=0.5) +
+   geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
+   xlab("Age Range") + 
+   ylab("Lifetime Risk (%)") + 
+   theme_bw() + facet_wrap(~pretty,ncol=4) +
+   scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   theme(axis.text.x = element_text(size = 12, angle=45, hjust=1))
+ x2<-ggplot(riskwithintervals %>% filter(biobank=="HUNT_EUR"), aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
+   stat_smooth(method = "lm", formula = y ~ poly(x, length(unique(riskwithintervals$Age))-1), se = FALSE) +
+   geom_point(alpha=0.5) +
+   geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
+                 xlab("Age Range") + 
+                 ylab("Lifetime Risk (%)") + 
+                 theme_bw() + facet_wrap(~pretty,ncol=4) +
+                 scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+                 scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   theme(axis.text.x = element_text(size = 12, angle=45, hjust=1))
+ x3<-ggplot(riskwithintervals %>% filter(biobank=="EstBB_EUR"), aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
+   stat_smooth(method = "lm", formula = y ~ poly(x, length(unique(riskwithintervals$Age))-1), se = FALSE) +
+   geom_point(alpha=0.5) +
+   geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
+   xlab("Age Range") + 
+   ylab("Lifetime Risk (%)") + 
+   theme_bw() + facet_wrap(~pretty,ncol=4) +
+   scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   theme(axis.text.x = element_text(size = 12, angle=45, hjust=1))
+ ggarrange(x1,x2,x3,nrow=3,common.legend = TRUE)
+ dev.off()
+ 
+ colors<-c("#3C884B","#2C6687","#824A85")
+ traits<-c("T2D","GOUT","I9_CHD","C3_PROSTATE")
+ biobanks<-c("FinnGen_EUR","HUNT_EUR","EstBB_EUR")
+ riskwithintervals <- results %>% filter(Group %in% c("Group1","Group6","Group11")) %>% filter(trait %in% traits) %>% filter(biobank %in% biobanks) %>%
+   filter(Age!="1 to 4" & Age!="5 to 9" & Age!="10 to 14" & Age!="15 to 19") %>% mutate(biobank_pretty=biobank) %>% 
+   mutate(biobank_pretty=recode(biobank_pretty,"FinnGen_EUR"="FinnGen","HUNT_EUR"="HUNT","EstBB_EUR"="Estonian Biobank"))
+ pdf(file=paste0(output_dir,"Risks_poster.pdf"),height=8,width=10,useDingbats=TRUE)
+ ggplot(riskwithintervals, aes(Age, LifetimeRisk, fill=Group, color=Group, group=Group)) +
+   stat_smooth(method = "lm", formula = y ~ poly(x, length(unique(riskwithintervals$Age))-1), se = FALSE) +
+   geom_point(alpha=0.5) +
+   geom_ribbon(aes(ymin=CIneg, ymax=CIpos, fill=Group), alpha=0.2) +
+   xlab("Age Range") + 
+   ylab("Lifetime Risk (%)") + 
+   theme_bw() + facet_wrap(~pretty+biobank_pretty,ncol=3) +
+   scale_color_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   scale_fill_manual(values=colors,guide = guide_legend(reverse = TRUE),labels = c("< 1%", "40-60%", "> 99%")) +
+   theme(strip.background =element_rect(fill="white"),
+         legend.position="bottom",axis.text.x = element_text(size = 16, angle=45, hjust=1),
+         legend.text = element_text(size = 18),
+         legend.title=element_text(size=18))
  dev.off()
  
  
