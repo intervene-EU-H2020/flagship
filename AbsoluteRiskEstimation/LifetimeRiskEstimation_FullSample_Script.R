@@ -39,6 +39,7 @@ nk<-opt$k
 #path<-"/mnt/work/workbench/bwolford/flagship/AbsoluteRiskEstimation/"
 #full_HR_path<-"/mnt/work/workbench/bwolford/intervene/GoogleDrive/GenerationScotland_HazardRatios/HR_FullSampleGS.csv"
 #full_HR_path<-"/mnt/work/workbench/bwolford/intervene/GoogleDrive/Biobank_Japan_HazardRatios/HR_FullSampleBBJ.csv"
+#full_HR_path<-"/mnt/work/workbench/bwolford/intervene/GoogleDrive/UKB_HazardRatios/HR_FullSample_UKB_EUR.csv"
 gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
 hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
 no_group_list<-c() 
