@@ -151,7 +151,7 @@ for(j in 1:length(gbd_phenos)){
   }
   hazrats <- subset(hazrats, phenotype==hr_phenos[j])
   if(nrow(hazrats)<1){
-    no_group_list[j]<-groups
+    no_group_list[j]<-0
     next
   }
   
