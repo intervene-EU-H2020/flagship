@@ -144,7 +144,11 @@ for(j in 1:length(gbd_phenos)){
   
   #Read in the hazard ratios and allocate to variables...
   hazrats <- fread(full_HR_path, data.table = FALSE)
-  colnames(hazrats) <- c("phenotype", "prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
+  if (sum(seq(1:20) %in% hazrats$V1)==20){ #quick check if first column is row numbers...need better way to have consistent formatting
+    colnames(hazrats) <- c("row","phenotype","prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
+  } else{
+    colnames(hazrats) <- c("phenotype","prs", "group","controls","cases", "beta", "se", "pval", "HR", "CIpos", "CIneg")
+  }
   hazrats <- subset(hazrats, phenotype==hr_phenos[j])
   if(nrow(hazrats)<1){
     no_group_list[j]<-groups
