@@ -40,7 +40,8 @@ nk<-opt$k
 #full_HR_path<-"/mnt/work/workbench/bwolford/intervene/GoogleDrive/GenerationScotland_HazardRatios/HR_FullSampleGS.csv"
 gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
 hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
-
+gbd_phenos<-gbd_phenos[2]
+hr_phenos<-hr_phenos[2]
 ################# Actual Lifetime Risk Estimates ###########
 for(j in 1:length(gbd_phenos)){
   
@@ -245,14 +246,14 @@ for(j in 1:length(gbd_phenos)){
     #Survival
     incidence[[paste0("survival",i)]] <- 1
     
-    for(k in 2:nrow(incidence)){
-      incidence[[paste0("survival",i)]][k] <- exp(-5*incidence[[paste0("mortandrisk",i)]][k-1])
+    for(r in 2:nrow(incidence)){
+      incidence[[paste0("survival",i)]][k] <- exp(-5*incidence[[paste0("mortandrisk",i)]][r-1])
     }
     
     #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
     incidence[[paste0("lifetimerisk",i)]] <- cumsum(incidence[[paste0("survival",i)]]*incidence[[paste0("risk",i)]])*100
     
-    result <- data.frame(incidence$age, paste0("Group", i), incidence[[paste0("lifetimerisk",i)]])
+    result <- data.frame(Age=incidence$age, Group=paste0("Group", i), LifetimeRisk=incidence[[paste0("lifetimerisk",i)]])
     lifetimerisk <- rbind(lifetimerisk, result)
   }
   
@@ -296,8 +297,6 @@ for(j in 1:length(gbd_phenos)){
   
   print(gbd_phenos[j])
   
-  lifetimerisks <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),11),
-                              Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16), rep("Group10",16), rep("Group11",16)))
   k <- 0 
   
   while(k < nk){
@@ -449,10 +448,6 @@ for(j in 1:length(gbd_phenos)){
     hazrats$beta <- log(hazrats$HR)
     hazrats$beta_pos <- log(hazrats$CIpos)
     hazrats$SD <- (hazrats[,"beta_pos"] - hazrats[,"beta"]) / 1.96
-    if (sum(complete.cases(hazrats))<nrow(hazrats)) { #if there are NAs then skip trait
-      print("test")
-      next
-    }
     if(is.na(hazrats[hazrats$group=="< 1%",]$HR) | is.na(hazrats[hazrats$group=="> 99%",]$HR) & is.finite(hazrats[hazrats$group=="< 5%",]$beta_pos)){
       #Hazard Ratios, #Sample from the hazard ratio distribution
       hr01 <- exp(rnorm(1, mean=hazrats[hazrats$group=="< 5%",]$beta, sd=hazrats[hazrats$group=="< 5%",]$SD))
@@ -488,6 +483,10 @@ for(j in 1:length(gbd_phenos)){
       incidence$i9 <- incidence$i5 * hr09
       
       no_groups<-9
+      lifetimerisks <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),no_groups),
+                                  Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16)))
+      
+
     } else {
       #Hazard Ratios
       hr01 <- exp(rnorm(1, mean=hazrats[hazrats$group=="< 1%",]$beta, sd=hazrats[hazrats$group=="< 1%",]$SD))
@@ -529,10 +528,14 @@ for(j in 1:length(gbd_phenos)){
       incidence$i11 <- incidence$i6 * hr11
       
       no_groups<-11
+      lifetimerisks <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),no_groups),
+                                  Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16), rep("Group10",16), rep("Group11",16)))
+      
     } 
 
     ###################################################
     if (no_groups!=0){
+      lifetimerisk<-data.frame(NULL)
       for(i in 1:no_groups){
         #Calculate hazard
         incidence[[paste0("hazard",i)]] <- incidence[[paste0("i",i)]] / (1 - incidence$prevalence_sample)
@@ -553,7 +556,7 @@ for(j in 1:length(gbd_phenos)){
         #Calculate lifetime risk as the cumulative sum of the product of survival and risk.
         incidence[[paste0("lifetimerisk",i)]] <- cumsum(incidence[[paste0("survival",i)]]*incidence[[paste0("risk",i)]])*100
         
-        result <- data.frame(incidence$age, paste0("Group", i), incidence[[paste0("lifetimerisk",i)]])
+        result <- data.frame(Age=incidence$age, Group=paste0("Group", i), LifetimeRisk=incidence[[paste0("lifetimerisk",i)]])
         lifetimerisk <- rbind(lifetimerisk, result)
       }
       colnames(lifetimerisk) <- c("Age","Group",paste0("LifetimeRisk",k))
@@ -561,20 +564,26 @@ for(j in 1:length(gbd_phenos)){
       lifetimerisks <- suppressMessages(left_join(lifetimerisks, lifetimerisk))
     }
   }
-  
+  lifetimerisks<-lifetimerisks[complete.cases(lifetimerisks),]
   lifetimerisk_percentile <- as.matrix(lifetimerisks[,-c(1,2)])
   confidenceintervals <- apply(lifetimerisk_percentile, 1, quantile, c(0.025, 0.975), na.rm=TRUE)
 
+  if (no_groups==11){
   bootstrapped_lifetimerisk <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),11),
                                       Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16), rep("Group10",16), rep("Group11",16)))
-
+  } else if (no_groups==9){
+    bootstrapped_lifetimerisk <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),9),
+                                            Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16)))
+  } else{
+    next
+  }
   bootstrapped_lifetimerisk$CIneg <- confidenceintervals[1,]
   bootstrapped_lifetimerisk$CIpos <- confidenceintervals[2,]
 
   #Add in actual lifetime risks (written earlier)
   if(file.exists(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,"_",ancestry,".csv"))){
-    lifetimeriskactual <- fread(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,"_",ancestry,".csv"), select=c("LifetimeRisk"), data.table=FALSE)
-    bootstrapped_lifetimerisk <- cbind(bootstrapped_lifetimerisk, lifetimeriskactual)
+    lifetimeriskactual <- fread(paste0(output_dir,hr_phenos[j],"_LifetimeRisk_",biobank,"_",ancestry,".csv"), data.table=FALSE)
+    bootstrapped_lifetimerisk <- left_join(bootstrapped_lifetimerisk, lifetimeriskactual)
 
     #Plot all as well as overall lifetime risk
     bootstrapped_lifetimerisk$Age <- factor(bootstrapped_lifetimerisk$Age, levels=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
