@@ -40,7 +40,7 @@ nk<-opt$k
 #full_HR_path<-"/mnt/work/workbench/bwolford/intervene/GoogleDrive/GenerationScotland_HazardRatios/HR_FullSampleGS.csv"
 gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
 hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
-no_groups_list<-c()
+no_group_list<-c()
 ################# Actual Lifetime Risk Estimates ###########
 for(j in 1:length(gbd_phenos)){
   
@@ -295,10 +295,10 @@ print("bootstrap")
 for(j in 1:length(gbd_phenos)){
   
   print(gbd_phenos[j])
-  if (no_groups_list[j]==9){
+  if (no_group_list[j]==9){
     lifetimerisks <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),9),
                                 Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16)))
-  } else if (no_groups_list[j]==11){
+  } else if (no_group_list[j]==11){
     lifetimerisks <- data.frame(Age=rep(c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"),11),
                                 Group=c(rep("Group1",16), rep("Group2",16), rep("Group3",16), rep("Group4",16), rep("Group5",16), rep("Group6",16), rep("Group7",16), rep("Group8",16), rep("Group9",16), rep("Group10",16), rep("Group11",16)))
   }
