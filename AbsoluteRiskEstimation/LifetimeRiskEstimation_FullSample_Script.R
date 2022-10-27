@@ -41,7 +41,8 @@ nk<-opt$k
 #full_HR_path<-"/mnt/work/workbench/bwolford/intervene/GoogleDrive/Biobank_Japan_HazardRatios/HR_FullSampleBBJ.csv"
 gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal, bronchus, and lung cancer", "Total cancers", "Appendicitis", "Asthma", "Atrial fibrillation and flutter", "Breast cancer", "Ischemic heart disease", "Colon and rectum cancer", "Idiopathic epilepsy", "Gout", "Osteoarthritis hip", "Osteoarthritis knee", "Major depressive disorder", "Malignant skin melanoma", "Prostate cancer", "Rheumatoid arthritis", "Diabetes mellitus type 1", "Diabetes mellitus type 2")
 hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
-no_group_list<-c()
+no_group_list<-c() 
+no_group_list<-rep(0,length(gbd_phenos))
 ################# Actual Lifetime Risk Estimates ###########
 for(j in 1:length(gbd_phenos)){
   
@@ -191,6 +192,7 @@ for(j in 1:length(gbd_phenos)){
     incidence$i9 <- incidence$i5 * hr09
     
     groups<-9
+    no_group_list[j]<-groups
   }else {
     #Hazard Ratios
     hr01 <- hazrats[hazrats$group=="< 1%",]$HR
@@ -232,9 +234,9 @@ for(j in 1:length(gbd_phenos)){
     incidence$i11 <- incidence$i6 * hr11
     
     groups<-11
+    no_group_list[j]<-groups
   }
   ###################################################
-  no_group_list[j]<-groups
   lifetimerisk <- data.frame(NULL)
   
   for(i in 1:groups){
