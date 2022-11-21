@@ -28,7 +28,7 @@ ages <- data.frame(c(53.34,63.54,72.24), #C3_CANCER
                    c(54.36,63.04,71.13), #T2D
                    c(51.22,61.59,71.48), #ILD
                    c(60.79,68.02,75.52), #C3_BRONCHUS_LUNG
-                   c(49.51,58.8,67.61) #RHEUMA_SEROPOS_OTH)
+                   c(49.51,58.8,67.61)) #RHEUMA_SEROPOS_OTH)
 
 results <- c()
 
