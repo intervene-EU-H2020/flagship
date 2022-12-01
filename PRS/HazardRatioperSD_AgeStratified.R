@@ -6,8 +6,8 @@ library(dplyr)
 library(lubridate)
 library(survival)
 
-phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
-prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "T1D","T2D", "ILD", "Lung_Cancer")
+phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG", "RHEUMA_SEROPOS_OTH")
+prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "Breast_Cancer", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Prostate_Cancer", "T1D","T2D", "ILD", "Lung_Cancer", "Rheumatoid_Arthritis")
 
 #Ages are based on mean quartiles from biobanks to be used in the lifetime risk estimation
 ages <- data.frame(c(53.34,63.54,72.24), #C3_CANCER
@@ -27,7 +27,8 @@ ages <- data.frame(c(53.34,63.54,72.24), #C3_CANCER
                    c(12.62,19.73,33.28), #T1D
                    c(54.36,63.04,71.13), #T2D
                    c(51.22,61.59,71.48), #ILD
-                   c(60.79,68.02,75.52)) #C3_BRONCHUS_LUNG
+                   c(60.79,68.02,75.52), #C3_BRONCHUS_LUNG
+                   c(49.51,58.8,67.61)) #RHEUMA_SEROPOS_OTH)
 
 results <- c()
 
