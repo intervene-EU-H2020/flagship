@@ -51,6 +51,9 @@ for(i in 1:length(phenocols)){
   
   #Perform survival analysis
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
+  survival2 <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
+  survival3 <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs")), data=pheno, na.action=na.exclude)
+
   
   if(phenocols[i] != "C3_BREAST" & phenocols[i] != "C3_PROSTATE"){
     
@@ -59,6 +62,15 @@ for(i in 1:length(phenocols)){
     
     malesurvival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=males, na.action=na.exclude)
     femalesurvival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=females, na.action=na.exclude)
+    
+    
+    malesurvival2 <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~  PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=males, na.action=na.exclude)
+    femalesurvival2 <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~  PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=females, na.action=na.exclude)
+    
+    malesurvival3 <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs")), data=males, na.action=na.exclude)
+    femalesurvival3 <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_prs")), data=females, na.action=na.exclude)
+    
+    
     
     #Extract hazard ratios, betas, standard errors and p-vals
     phenotype <- rep(phenocols[i],3)
@@ -69,10 +81,19 @@ for(i in 1:length(phenocols)){
     betas <- c(summary(survival)$coefficients[paste0(prscols[i],"_prs"),"coef"],summary(malesurvival)$coefficients[paste0(prscols[i],"_prs"),"coef"],summary(femalesurvival)$coefficients[paste0(prscols[i],"_prs"),"coef"])
     std_errs <- c(summary(survival)$coefficients[paste0(prscols[i],"_prs"),"se(coef)"],summary(malesurvival)$coefficients[paste0(prscols[i],"_prs"),"se(coef)"],summary(femalesurvival)$coefficients[paste0(prscols[i],"_prs"),"se(coef)"])
     pvals <- c(summary(survival)$coefficients[paste0(prscols[i],"_prs"),"Pr(>|z|)"],summary(malesurvival)$coefficients[paste0(prscols[i],"_prs"),"Pr(>|z|)"],summary(femalesurvival)$coefficients[paste0(prscols[i],"_prs"),"Pr(>|z|)"])
+   #Following c.statistics are for models 1. PRS+variables, 2. variables only and 3. PRS only
+    cstats <- c(summary(survival)$conc[1],summary(malesurvival)$conc[1],summary(femalesurvival)$conc[1])
+    cstats2 <- c(summary(survival2)$conc[1],summary(malesurvival2)$conc[1],summary(femalesurvival2)$conc[1])
+    cstats3 <- c(summary(survival3)$conc[1],summary(malesurvival3)$conc[1],summary(femalesurvival3)$conc[1])
+    cstats_se <- c(summary(survival)$conc[2],summary(malesurvival)$conc[2],summary(femalesurvival)$conc[2])
+    cstats2_se <- c(summary(survival2)$conc[2],summary(malesurvival2)$conc[2],summary(femalesurvival2)$conc[2])
+    cstats3_se <- c(summary(survival3)$conc[2],summary(malesurvival3)$conc[2],summary(femalesurvival3)$conc[2])
+
+
     OR <- exp(betas)
     CIpos <- exp(betas+1.96*std_errs)
     CIneg <- exp(betas-1.96*std_errs)
-    result <- matrix(c(phenotype, prs, test, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg), nrow=3, ncol=11)
+    result <- matrix(c(phenotype, prs, test, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg,cstats,cstats_se,cstats2,cstats2_se,cstats3,cstats3_se), nrow=3, ncol=17) #ncol=11 before ctstats
     results <- rbind(results, result)
   } else {
     phenotype <- phenocols[i]
@@ -83,10 +104,19 @@ for(i in 1:length(phenocols)){
     betas <- summary(survival)$coefficients[paste0(prscols[i],"_prs"),"coef"]
     std_errs <- summary(survival)$coefficients[paste0(prscols[i],"_prs"),"se(coef)"]
     pvals <- summary(survival)$coefficients[paste0(prscols[i],"_prs"),"Pr(>|z|)"]
+    #Following c.statistics are for models 1. PRS+variables, 2. variables only and 3. PRS only
+    cstats <- summary(survival)$conc[1]
+    cstats2 <- summary(survival2)$conc[1]
+    cstats3 <- summary(survival3)$conc[1]
+    cstats_se <- summary(survival)$conc[2]
+    cstats2_se <- summary(survival2)$conc[2]
+    cstats3_se <- summary(survival3)$conc[2]
+
+
     OR <- exp(betas)
     CIpos <- exp(betas+1.96*std_errs)
     CIneg <- exp(betas-1.96*std_errs)
-    result <- c(phenotype, prs, test, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg)
+    result <- c(phenotype, prs, test, controls, cases, betas, std_errs, pvals, OR, CIpos, CIneg,cstats,cstats_se,cstats2,cstats2_se,cstats3,cstats3_se)
     results <- rbind(results, result)
   }
   
