@@ -73,7 +73,7 @@ ukb$Biobank <- "UK Biobank"
 ukb<-fread(paste0("/mnt/work/workbench/bwolford/intervene/GoogleDrive/UKB_HazardRatios/PRS_HRsperSD_UKBiobank_AllAncestries.csv")) #all ancestries
 
 #HUNT 
-drophunt <-c("T1D","C3_CANCER") #these are weird on first pass 
+drophunt <-c("T1D","C3_CANCER","I9_CHD") #these are weird on first pass or overlap with GWAS
 hunt<-subset(hunt,!(Phenotype %in% drophunt))
 hunt$Biobank<-"HUNT"
 hunt$Ancestry<-"EUR"
