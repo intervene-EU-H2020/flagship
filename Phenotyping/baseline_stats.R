@@ -5,6 +5,7 @@ library(tidyverse)
 library(dplyr)
 options(scipen=999)
 library(lubridate)
+library(survival)
 
 ####### variables ######
 file_name<-"your/path/to/pheno/file.csv"
@@ -150,25 +151,53 @@ for (idx in 1:length(p)){
     
     counts<-rbind(counts,counts_f,counts_m)
     
-    df$PHENO_DATE<-as.POSIXct(df[[date_col]])
+    #Per follow up bin incidences 
     #Specify age as either the Age at Onset or End of Follow-up (if not a case)
+    df$PHENO_DATE<-as.POSIXct(df[[date_col]])
+    #from birth
     tmp <- df %>% mutate(AGE=if_else(get(p[idx])==1,
                                      time_length(difftime(PHENO_DATE,DATE_OF_BIRTH),'years'),
                                      time_length(difftime(END_OF_FOLLOWUP, DATE_OF_BIRTH), 'years')))
-    obj<-survfit(as.formula(paste0("Surv(AGE,",p[idx],") ~ SEX")),data=tmp)
-    summary(obj,times=seq(0,100,5))
-    library(survminer)
-    pdf(file="test.pdf")
-    ggsurvplot(obj, conf.int=TRUE, pval=TRUE, risk.table=TRUE, 
-               legend.labs=c("Male", "Female"), legend.title="Sex",  
-               palette=c("dodgerblue2", "orchid2"), 
-               title="Kaplan-Meier Curve for Lung Cancer Survival", 
-               risk.table.height=.15)
-    dev.off()
+    obj<-survfit(as.formula(paste0("Surv(AGE,",p[idx],") ~ SEX")),data=tmp) #regress by sex 
+    tabs<-summary(obj,times=seq(0,100,5))
+    no_groups<-length(tabs$time)/2
+    cols <- lapply(c(2:5) , function(x) tabs[x]) #get the columns we want from the summary.survfit object
+    tbl <- do.call(data.frame, cols) #pull out data into a table
+    tbl$strata<-c(rep(levels(tabs$strata)[1],no_groups),rep(levels(tabs$strata)[2],no_groups)) #label strata
+    tbl$prop<-tbl$n.event/tbl$n.risk*100
+    tbl$pheno<-p[idx]
+    tbl$follow<-"from_birth"
+    #from baseline
+    tmp <- df %>% mutate(AGE=if_else(get(p[idx])==1,
+                                     time_length(difftime(PHENO_DATE,START_OF_FOLLOWUP),'years'),
+                                     time_length(difftime(END_OF_FOLLOWUP, START_OF_FOLLOWUP), 'years')))
+    obj<-survfit(as.formula(paste0("Surv(AGE,",p[idx],") ~ SEX")),data=tmp) #regress by sex 
+    tabs<-summary(obj,times=seq(0,100,5))
+    no_groups<-length(tabs$time)/2
+    cols <- lapply(c(2:5) , function(x) tabs[x]) #get the columns we want from the summary.survfit object
+    tbl2 <- do.call(data.frame, cols)
+    tbl2$strata<-c(rep(levels(tabs$strata)[1],no_groups),rep(levels(tabs$strata)[2],no_groups))
+    tbl2$prop<-tbl2$n.event/tbl2$n.risk*100
+    tbl2$pheno<-p[idx]
+    tbl2$follow<-"from_baseline"
     
- 
+    inc<-rbind(tbl,tbl2)
     
+    #ggplot(tbl,aes(x=time,y=prop,color=sex)) + geom_point()
     
+   # ggplot(tbl2,aes(x=time,y=prop,color=sex)) + geom_point()
+    
+    ### prevalences 
+    #Included if you have reached that age, but only a case if you have had disease onset prior to the end of the 5 year age bin.
+    ages<-seq(5,100,5)
+    tmp3<-NULL
+    for (a in 1:length(ages)){
+      tmp3[[a]]<-tmp %>% filter(AGE<ages[a]) %>% group_by(SEX_NUM) %>% count(get(p[idx])) %>% mutate(prop = prop.table(n))
+      tmp3[[a]]$age<-ages[a]
+      tmp3[[a]]$pheno<-p[idx]
+    }
+    prev<-bind_rows(tmp3)
+
   }
   if (idx==1){
     summary_stats_df<-data.frame(p[idx],n_case,n_control,prev,age_recruitment_median,age_recruitment_IQR,
@@ -197,7 +226,15 @@ write.csv(format(age_df,digits=3),paste0(output_dir,biobank,"_age_quartiles.csv"
 
 #write counts data frame
 names(counts_df)<-c("bins","pheno","count","prop","sample")
-write.csv(format(counts_df,digits=3),paste0(output_dir,biobank,"_prevalences.csv"),row.names=FALSE,quote=FALSE)
+write.csv(format(counts_df,digits=3),paste0(output_dir,biobank,"_counts.csv"),row.names=FALSE,quote=FALSE)
+
+#write prevalence data frame
+names(prev)<-c("sex","case_status","n","prop","age","pheno")
+write.csv(format(prev,digits=3),paste0(output_dir,biobank,"_prevalences.csv"),row.names=FALSE,quote=FALSE)
+
+#write incidence data frame 
+write.csv(format(inc,digits=3),paste0(output_dir,biobank,"_incidences.csv"),row.names=FALSE,quote=FALSE)
+
 
 #plot 
 pdf(file=paste0(output_dir,biobank,"proportions.pdf"),height=4,width=12)
