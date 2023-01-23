@@ -45,7 +45,10 @@ for (idx in 1:length(p)){
     
     df$DATE_OF_BIRTH<-as.POSIXct(df$DATE_OF_BIRTH)
     df$START_OF_FOLLOWUP<-as.POSIXct(df$START_OF_FOLLOWUP)
-    df$END_OF_FOLLOWUP<-as.POSIXct(df$END_OF_FOLLOWUP)
+    df$END_OF_FOLLOWUP<-as.POSIXct(df$END_OF_FOLLOWUP) 
+    #Please fill with either the last linking date (i.e. the last date when the person was still known to be alive) 
+    #or with the date of death.
+
     #set proper baseline
     if (birth_as_baseline==TRUE){
       df$BASELINE<-df$DATE_OF_BIRTH
@@ -122,6 +125,7 @@ for (idx in 1:length(p)){
     #all 
     tmp<-df %>% filter(get(p[idx])==1) %>% mutate(age=as.numeric(difftime(as.POSIXct(get(date_col)),DATE_OF_BIRTH,units="days"))/365.5)
     #lifetimerisks <- data.frame(age=c("1 to 4","5 to 9","10 to 14","15 to 19","20 to 24","25 to 29","30 to 34","35 to 39","40 to 44","45 to 49","50 to 54","55 to 59","60 to 64","65 to 69","70 to 74","75 to 79"))
+    #] is inclusive, ) is exclusive
     tmp$bins<-cut_width(tmp$age,width=5, center=2.5,closed="left") #cut into lifetime risk bins
     total<-as.numeric(tmp %>% summarize(sum(get(p[idx]))))
     counts<- tmp %>% group_by(bins) %>% count(p[idx])
@@ -146,10 +150,24 @@ for (idx in 1:length(p)){
     
     counts<-rbind(counts,counts_f,counts_m)
     
+    df$PHENO_DATE<-as.POSIXct(df[[date_col]])
+    #Specify age as either the Age at Onset or End of Follow-up (if not a case)
+    tmp <- df %>% mutate(AGE=if_else(get(p[idx])==1,
+                                     time_length(difftime(PHENO_DATE,DATE_OF_BIRTH),'years'),
+                                     time_length(difftime(END_OF_FOLLOWUP, DATE_OF_BIRTH), 'years')))
+    obj<-survfit(as.formula(paste0("Surv(AGE,",p[idx],") ~ SEX")),data=tmp)
+    summary(obj,times=seq(0,100,5))
+    library(survminer)
+    pdf(file="test.pdf")
+    ggsurvplot(obj, conf.int=TRUE, pval=TRUE, risk.table=TRUE, 
+               legend.labs=c("Male", "Female"), legend.title="Sex",  
+               palette=c("dodgerblue2", "orchid2"), 
+               title="Kaplan-Meier Curve for Lung Cancer Survival", 
+               risk.table.height=.15)
+    dev.off()
     
-    #coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group")))
+ 
     
-    #] is inclusive, ) is exclusive
     
   }
   if (idx==1){
