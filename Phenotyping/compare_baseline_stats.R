@@ -77,7 +77,7 @@ ukb_eas$Ancestry<-"EAS"
 ukb_eur$Ancestry<-"EUR"
 
 #HUNT 
-drophunt <-c("T1D","C3_CANCER") #these are weird on first pass 
+drophunt <-c("T1D") #is cancer so weird in HUNT
 hunt<-subset(hunt,!(trait %in% drophunt))
 hunt$Biobank<-"HUNT"
 hunt$Ancestry<-"EUR"
@@ -131,9 +131,40 @@ gbd_phenos <- c("Interstitial lung disease and pulmonary sarcoidosis", "Tracheal
 hr_phenos <- c("ILD", "C3_BRONCHUS_LUNG","C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D")
 labels<-c("ILD","Lung Cancer","All Cancers","Appendicitis", "Asthma", "Atrial Fibrillation", "Breast Cancer","Coronary Heart Disease","Colorectal Cancer","Epilepsy","Gout","Hip Osteoarthritis","Knee Osteoarthritis","Major Depression","Skin Melanoma","Prostate Cancer","Rheumatoid Arthritis","Type 1 Diabetes","Type 2 Diabetes")
 label_df<-data.frame(gbd=gbd_phenos,hr=hr_phenos,pretty=labels)
-all<-all %>% left_join(label_df,by=c("trait"="hr")) %>% mutate(biobank_anc=paste0(Biobank,"(",Ancestry,")"))
+all<-all %>% left_join(label_df,by=c("trait"="hr")) %>%
+  mutate(biobank_anc=paste0(Biobank,"(",Ancestry,")"))
 #pretty labels don't have all the traits we did summary statistics for
   
+
+all%>%filter(Ancestry=="EUR"&!is.na(pretty)) %>% 
+  select(pretty,Biobank,prevalence,follow_up_median,follow_up_IQR,female_prev_cases,female_prev_controls,cases,controls,age_onset_median,age_onset_IQR) %>%
+  fwrite(paste0(output_dir,"SuppTable.csv"),quote=FALSE,sep=",")
+
+eurdf<-all%>%filter(Ancestry=="EUR" & !is.na(pretty) & trait!="ILD")
+
+#most common phenotype
+eurdf %>% group_by(Biobank) %>% slice(which.max(prevalence)) %>% select(trait,Biobank,prevalence)
+#least common
+eurdf %>% group_by(Biobank) %>% slice(which.min(prevalence)) %>% select(trait,Biobank,prevalence)
+
+#youngest onset
+eurdf %>% group_by(Biobank) %>% slice(which.max(age_onset_median)) %>% select(trait,Biobank,age_onset_median,age_onset_IQR)
+#oldest onset
+eurdf %>% group_by(Biobank) %>% slice(which.min(age_onset_median)) %>% select(trait,Biobank,age_onset_median,age_onset_IQR)
+
+
+#age at recruitment
+eurdf %>% group_by(Biobank) %>% slice(which.max(age_recruitment_median)) %>% select(trait,Biobank,age_recruitment_median,age_recruitment_IQR)
+
+#% female
+eurdf %>% mutate(females=n_controls_female+as.numeric(n_cases_female)) %>% 
+  mutate(total=cases+controls) %>% mutate(perc_female=females/total) %>% 
+  group_by(Biobank) %>% slice(which.max(total)) %>% select(females,total,perc_female,Biobank)
+
+#follow up time 
+eurdf %>% group_by(Biobank) %>% slice(which.max(follow_up_median)) %>% 
+  select(trait,Biobank,follow_up_median,follow_up_IQR)
+
 subset<-all %>% filter(trait!="C3_BREAST" & trait!="C3_PROSTATE" & !is.na(pretty) & Ancestry %in% c("EUR","SAS","EAS","AFR"))
 pdf(file=paste0(output_dir,"correlations.pdf"),height=10,width=12)
 ggplot(subset,aes(y=pretty,x=biobank_anc,fill=sex_corr)) + geom_tile() + theme_bw() +
