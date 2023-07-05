@@ -1,13 +1,19 @@
-# flagship
-## Pipeline for the flagship project (WP2)
+# Pipeline for the flagship project (WP2)
+This analysis is broken up into Part 1, analyses deployed to analysts with indiviudal-level data access in each biobank, and Part 2, analyses done on summary statistics to draw conclusions across biobanks. In each step, this README text explains what parts of the scripts need to be adjusted to your file paths and dataset.
 
-### Step 0: Requirements and Set-up
+#### Dependencies:
+These scripts assume you have plink and R (libraries: data.table, tidyverse/dplyr) installed on your biobank computing system.
 
-* These scripts assume you have plink and R (libraries: data.table, tidyverse/dplyr) installed on your biobanks system. 
+#### Citation:
+Jermy, Läll, Wolford, et al. A unified framework for estimating country-specific cumulative incidence for 18 diseases stratified by polygenic risk. [medRxiv.](https://doi.org/10.1101/2023.06.12.23291186)
 
-* In each step, I have highlighted what parts of the scripts need to be adjusted.
+#### License:
+This code is available under a CC-BY license.
 
-* If there are errors in the scripts please let me (Bradley Jermy) know on slack and I can amend.
+#### Contact: 
+If you have questions please contact brookewo@ntnu.no. Issues can be raised with the Git Issues feature.
+
+## Part 1: Biobank-specific analyses
 
 ### Step 1: Define phenotypes 
 
@@ -215,10 +221,13 @@
     5. Line 70 - If each section does not subset individuals to those of european ancestries, remove and subset to each ancestry yourself.
     6. Line 108 - Add to the formula any variables you would normally use to control for technical artefacts within your genotype data, i.e. genotype batch/assessment centre.
     7. Line 153 - Amend "file/path/to/output/HR_AgeStratified_[ENTER_BIOBANK_NAME].csv" to your chosen output. 
-   
-    
-**Send all results to bradley.jermy@helsinki.fi :)**
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 
+## Part 2: Analyses on summary statistics
+
+### Step 1: Model selection
+Decide the best model according to the hazard ratios from age and sex stratification (no stratification, sex stratification, age stratification and age and sex stratification). The requirements for choosing one model is explained in the paper but the two attached scripts ‘ModelSelection_Age.R’ and ‘ModelSelection_AgeandSex.R’ are required to allow you to make this decision from the hazard ratios. Essentially, the scripts meta-analyse the European hazard ratios and fits a weighted linear regression to each quartile to see whether the slope is significant. Age and Sex stratification goes that step further by testing whether the slopes differ by sex.
+    
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 Nord Trøndelag Study (HUNT) biobank specific [scripts](https://github.com/bnwolford/hunt_flagship)
 
