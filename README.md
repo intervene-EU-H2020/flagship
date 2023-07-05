@@ -12,7 +12,8 @@ This code is available under a CC-BY license.
 
 #### Contact
 If you have questions please contact brookewo@ntnu.no. Issues can be raised with the Git Issues feature.
-
+    
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 ## Part 1: Biobank-specific analyses
 
 ### Step 1: Define phenotypes 
