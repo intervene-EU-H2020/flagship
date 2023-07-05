@@ -1,5 +1,5 @@
 # Pipeline for the flagship project (WP2)
-This analysis is broken up into Part 1, analyses deployed to analysts with indiviudal-level data access in each biobank, and Part 2, analyses done on summary statistics to draw conclusions across biobanks. In each step, this README text explains what parts of the scripts need to be adjusted to your file paths and dataset.
+This analysis is broken up into [Part 1], analyses deployed to analysts with indiviudal-level data access in each biobank, and [Part 2](https://github.com/intervene-EU-H2020/flagship/blob/main/README.md#part-2-analyses-on-summary-statistics), analyses done on summary statistics to draw conclusions across biobanks. In each step, this README text explains what parts of the scripts need to be adjusted to your file paths and dataset.
 
 #### Dependencies
 These scripts assume you have plink-1.9 and R v4.1.0 or higher installed on your biobank computing system. Required R libraries: data.table, tidyverse/dplyr 
