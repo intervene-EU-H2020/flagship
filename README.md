@@ -8,7 +8,7 @@ These scripts assume you have plink-1.9 and R v4.1.0 or higher installed on your
 Jermy, Läll, Wolford, et al. A unified framework for estimating country-specific cumulative incidence for 18 diseases stratified by polygenic risk. [medRxiv.](https://doi.org/10.1101/2023.06.12.23291186)
 
 #### License
-This code is available under a CC-BY license.
+This code is available under MIT license.
 
 #### Contact
 If you have questions please contact brookewo@ntnu.no. Issues can be raised with the Git Issues feature.
