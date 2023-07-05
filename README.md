@@ -1,16 +1,16 @@
 # Pipeline for the flagship project (WP2)
 This analysis is broken up into Part 1, analyses deployed to analysts with indiviudal-level data access in each biobank, and Part 2, analyses done on summary statistics to draw conclusions across biobanks. In each step, this README text explains what parts of the scripts need to be adjusted to your file paths and dataset.
 
-#### Dependencies:
-These scripts assume you have plink and R (libraries: data.table, tidyverse/dplyr) installed on your biobank computing system.
+#### Dependencies
+These scripts assume you have plink-1.9 and R v4.1.0 or higher installed on your biobank computing system. Required R libraries: data.table, tidyverse/dplyr 
 
-#### Citation:
+#### Citation
 Jermy, Läll, Wolford, et al. A unified framework for estimating country-specific cumulative incidence for 18 diseases stratified by polygenic risk. [medRxiv.](https://doi.org/10.1101/2023.06.12.23291186)
 
-#### License:
+#### License
 This code is available under a CC-BY license.
 
-#### Contact: 
+#### Contact
 If you have questions please contact brookewo@ntnu.no. Issues can be raised with the Git Issues feature.
 
 ## Part 1: Biobank-specific analyses
