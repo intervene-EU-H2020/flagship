@@ -227,7 +227,21 @@ If you have questions please contact brookewo@ntnu.no. Issues can be raised with
 ## Part 2: Analyses on summary statistics
 
 ### Step 1: Model selection
-Decide the best model according to the hazard ratios from age and sex stratification (no stratification, sex stratification, age stratification and age and sex stratification). The requirements for choosing one model is explained in the paper but the two attached scripts ‘ModelSelection_Age.R’ and ‘ModelSelection_AgeandSex.R’ are required to allow you to make this decision from the hazard ratios. Essentially, the scripts meta-analyse the European hazard ratios and fits a weighted linear regression to each quartile to see whether the slope is significant. Age and Sex stratification goes that step further by testing whether the slopes differ by sex.
+Decide the best model according to the hazard ratios from age and sex stratification (no stratification, sex stratification, age stratification and age and sex stratification). See the manuscript for requirements for choosing a model. `ModelSelection_Age.R` and `ModelSelection_AgeandSex.R` conduct model selection from the hazard ratios. Essentially, the scripts meta-analyse the European hazard ratios and fit a weighted linear regression to each quartile to see whether the slope is significant. Age and Sex stratification goes a step further by testing whether the slopes differ by sex.  
+
+`.csv` files for the hazard ratios, age quartiles, and output are hardcoded and should be changed to reflect your filepaths (lines 7, 12, 20, 26, 38, 44, 109,
+197).
+
+### Step 2: Estimate lifetime risk
+
+Once you have decided the appropriate model you will estimate lifetime risk. If ‘Age’ or ‘Age and Sex’ are the chosen models an extra couple of steps are required. I have attached an example scripts from Knee Osteoarthritis in women. ‘Knee_Osteoarthritis_Females_AgeandSexStrat_SplineFitting.R’ and the bootstrap equivalent essentially does the exact same thing as the ModelSelection scripts, however, it is country specific. Once you have these hazard ratios you can place them into associated lifetime risk script and its bootstrap version (Knee_Osteoarthritis_Females_LifetimeRiskEstimation.R).
+ 
+I provide examples for age stratification using Rheumatoid Arthritis, no stratification using Melanoma and sex stratification using Gout in women. Using these as a template, it should be a case of adjusting the scripts to the phenotype and the countries that have been assessed. We can discuss more on Wednesday.
+ 
+In terms of how the Lifetime Risk is estimated I have attached a powerpoint slide (slide 12) which provides the main equation which I summarise below. The aim of the equation is to figure out the incidence per age and PRS group using the total incidence of this age group from the global burden of disease and the hazard ratio relative to the average PRS group (40-60%). In the equation, ‘I’ stands for total incidence and ‘I0’ is the baseline incidence (average PRS group). We assume the hazard ratio is equivalent to the incident rate ratio which allows us to calculate the incidence attributable to each group.
+ 
+To then convert this to lifetime risk, we use the method specified in the supplementary appendix of this paper (https://www.nejm.org/doi/full/10.1056/nejmoa1804492#:~:text=The%20estimated%20global%20lifetime%20risk,interval%2C%2023.7%20to%2026.5).
+ 
     
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 Nord Trøndelag Study (HUNT) biobank specific [scripts](https://github.com/bnwolford/hunt_flagship)
