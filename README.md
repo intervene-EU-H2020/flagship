@@ -67,7 +67,7 @@ If you have questions please contact brookewo@ntnu.no. Issues can be raised with
 
 ### Step 2: Download Adjusted Summary Statistics 
 
-* All pre-adjusted summary statistics can be found [here](https://figshare.com/account/home#/projects/131369).
+* All pre-adjusted summary statistics can be found [here](https://figshare.com/account/home#/projects/131369). Email brookewo@ntnu.no for access.
 
 * Download the pre-adjusted summary statistics created using MegaPRS that correspond to the build of the genome for your biobank.
 
