@@ -243,11 +243,15 @@ Once you have decided the appropriate model you will estimate lifetime risk. If 
 This does the exact same thing as the ModelSelection scripts, however, it is country-specific. Once you have these hazard ratios you can place them into associated lifetime risk script and its bootstrap version.
 `02_AgeandSexStrat_LifetimeRiskEstimation_Bootstrap.R` and `02_AgeandSexStrat_LifetimeRiskEstimation.R`
 
-**Sex:**
+**Sex:**  
 `03_Sex_LifetimeRiskEstimation_Bootstrap.R` and `03_Sex_LifetimeRiskEstimation.R`
 
-**No stratification:**
+**No stratification:**  
 `04_LifetimeRiskEstimation_Bootstrap.R` and `04_LifetimeRiskEstimation.R`
+
+**Age:**  
+`05_Age_SplineFitting_Bootstrap.R` and `05_Age_SplineFitting.R`  
+`06_Age-LifetimeRiskEstimation_Bootstrap.R` and `06_Age_LifetimeRiskEstimation.R`  
 
 Using these as a template, you can adjust the scripts to the phenotype and the countries that have been assessed.
  
