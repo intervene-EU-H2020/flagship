@@ -29,25 +29,29 @@ out<-data.frame(model=NA,biobank=NA,cindex=NA,cindex_SE=NA,pheno=NA)
 
 p<-c(0,0.01,0.05,0.1,0.2,0.4)
 
-#assumes fixed column names
+
 pheno <- fread(input=opt$phenofile, data.table=FALSE)
 
 for(i in 1:length(phenocols)){        
   
   print(phenocols[i])
   
-  #you may need to customize this line depending on the format of your date variable
+  #NB: You may want to read in specific column names for the phenotype of interest in each loop if your file is very large 
+  #pheno <- fread(input=opt$phenofile,select=c("SEX","Person.agreementDate","ANCESTRY","VKOOD1","VKOOD2","eid","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
+  
+  #NB: you may need to customize this line depending on the format of your date variable
   pheno<-pheno %>% mutate_at(paste(sep="_",phenocols[i],"DATE"),as.Date,origin="1970-01-01")
   
   #Read in PRS scores 
   PRS <- fread(input=paste0(opt$prs_path,prscols[i],"_PRS.sscore"), data.table=FALSE)
 
-  #some people may have SCORE1_SUM
-  #Subset columns to the IDs and score only. Note: columns FID or IID may be redundant and can be removed if necessary. Kept in to avoid bugs.
+  #NB: some people may have SCORE1_SUM, or just IID not FID - revise as needed so you select the ID and the score from your file
   PRS <- PRS[,c("#FID","IID","SCORE1_AVG")]
 
-  #Rename ID column to the name of the ID column in the phenotype file
+  #NB: Rename ID column to the name of the ID column in the phenotype file, e.g. can remove FID 
   colnames(PRS) <- c("FID", "ID", "PRS")
+  
+  #NB: if you need to remove certain sample IDs for certain phenotypes due to their use in summary statistics files, you can do that here
 
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS) #joins by "ID" column
@@ -72,7 +76,7 @@ for(i in 1:length(phenocols)){
   pheno[[paste0(phenocols[i])]] <- ifelse(pheno[[paste0(phenocols[i])]]==1 & pheno$AGE > 80, 0, pheno[[paste0(phenocols[i])]])
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
 
-  #set birth year (also af function of how your date of birth is coded)
+  #NB: set birth year (also a function of how your date of birth is coded)
   pheno$BY<-year(pheno$DATE_OF_BIRTH)
 
   #Perform survival analysis
@@ -123,26 +127,29 @@ for(i in 1:length(phenocols)){
 ####breast and prostate cancer run separately because only in males/females
 phenocols<-c("C3_BREAST","C3_PROSTATE")
 prscols<-c("Breast_Cancer","Prostate_Cancer")
-#sex_string<-c("FEMALE","MALE") #assumes this is the coding for SEX column
+#NB: select the appropriate coding. for your SEX column
+#sex_string<-c("female","male") 
 sex_string<-c(2,1) #comment this out and choose FEMALE, MALE if you use that convention
 
 for(l in 1:length(phenocols)){     
-  pheno <- fread(input=opt$phenofile, data.table=FALSE)
-  #you may need to customize this line depending on the format of your date variable, this line is also filtering by sex
-  pheno<-pheno %>% filter(SEX==!!sex_string[l]) %>% mutate_at(paste(sep="_",phenocols[l],"DATE"),as.Date,origin="1970-01-01")
-
-  #Read in PRS scores 
-  PRS <- fread(input=paste0(opt$prs_path,prscols[l],"_PRS.sscore"), data.table=FALSE)
-  PRS <- fread(input=paste0(  "/home/bwolford/scratch/brooke/scores/",prscols[l],"_PRS.sscore"), data.table=FALSE)
   
-
-  #some people may have SCORE1_SUM
-  #Subset columns to the IDs and score only. Note: columns FID or IID may be redundant and can be removed if necessary. Kept in to avoid bugs.
+  #NB: You may want to read in specific column names for the phenotype of interest in each loop if your file is very large 
+  #pheno <- fread(input=opt$phenofile,select=c("SEX","Person.agreementDate","ANCESTRY","VKOOD1","VKOOD2","eid","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
+  
+  #NB: you may need to customize this line depending on the format of your date variable
+  pheno<-pheno %>% mutate_at(paste(sep="_",phenocols[i],"DATE"),as.Date,origin="1970-01-01")
+  
+  #Read in PRS scores 
+  PRS <- fread(input=paste0(opt$prs_path,prscols[i],"_PRS.sscore"), data.table=FALSE)
+  
+  #NB: some people may have SCORE1_SUM, or just IID not FID - revise as needed so you select the ID and the score from your file
   PRS <- PRS[,c("#FID","IID","SCORE1_AVG")]
-
-  #Rename ID column to the name of the ID column in the phenotype file
+  
+  #NB: Rename ID column to the name of the ID column in the phenotype file, e.g. can remove FID 
   colnames(PRS) <- c("FID", "ID", "PRS")
-
+  
+  #NB: if you need to remove certain sample IDs for certain phenotypes due to their use in summary statistics files, you can do that here
+  
   #left_join to the phenotype file
   pheno <- left_join(pheno, PRS) #joins by "ID" column
 
@@ -167,7 +174,7 @@ for(l in 1:length(phenocols)){
   pheno[[paste0(phenocols[l])]] <- ifelse(pheno[[paste0(phenocols[l])]]==1 & pheno$AGE > 80, 0, pheno[[paste0(phenocols[l])]])
   pheno$AGE <- ifelse(pheno$AGE > 80, 80, pheno$AGE)
   
-  #set birth year (also af function of how your date of birth is coded)
+  #NB: set birth year (also a function of how your date of birth is coded)
   pheno$BY<-year(pheno$DATE_OF_BIRTH)
   
   
@@ -196,5 +203,5 @@ for(l in 1:length(phenocols)){
 }
 
 #write the output 
-out$biobank<-out$biobank
+out$biobank<-opt$biobank
 write.table(out,paste0(opt$output_dir,"cindex_output.tab"),quote=FALSE,sep="\t",row.names=FALSE)
