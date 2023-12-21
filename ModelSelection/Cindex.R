@@ -24,6 +24,7 @@ print(opt)
 
 phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Rheumatoid_Arthritis", "T1D","T2D", "ILD", "Lung_Cancer")
+phenocols <- c("C3_CANCER")
 
 out<-data.frame(model=NA,biobank=NA,cindex=NA,cindex_SE=NA,pheno=NA)
 
@@ -125,22 +126,26 @@ for(i in 1:length(phenocols)){
 
 
 ####breast and prostate cancer run separately because only in males/females
+p<-c(0,0.01,0.05,0.1,0.2,0.4)
 phenocols<-c("C3_BREAST","C3_PROSTATE")
 prscols<-c("Breast_Cancer","Prostate_Cancer")
 #NB: select the appropriate coding. for your SEX column
 #sex_string<-c("female","male") 
 sex_string<-c(2,1) #comment this out and choose FEMALE, MALE if you use that convention
+#but be sure to keep the order of female first due to breast cancer then prostrate cancer
+
+pheno <- fread(input=opt$phenofile, data.table=FALSE)  
 
 for(l in 1:length(phenocols)){     
-  
+
   #NB: You may want to read in specific column names for the phenotype of interest in each loop if your file is very large 
   #pheno <- fread(input=opt$phenofile,select=c("SEX","Person.agreementDate","ANCESTRY","VKOOD1","VKOOD2","eid","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
   
   #NB: you may need to customize this line depending on the format of your date variable
-  pheno<-pheno %>% mutate_at(paste(sep="_",phenocols[i],"DATE"),as.Date,origin="1970-01-01")
+  pheno<-pheno %>% mutate_at(paste(sep="_",phenocols[l],"DATE"),as.Date,origin="1970-01-01")
   
   #Read in PRS scores 
-  PRS <- fread(input=paste0(opt$prs_path,prscols[i],"_PRS.sscore"), data.table=FALSE)
+  PRS <- fread(input=paste0(opt$prs_path,prscols[l],"_PRS.sscore"), data.table=FALSE)
   
   #NB: some people may have SCORE1_SUM, or just IID not FID - revise as needed so you select the ID and the score from your file
   PRS <- PRS[,c("#FID","IID","SCORE1_AVG")]
@@ -158,14 +163,14 @@ for(l in 1:length(phenocols)){
   #Assign PRS into percentiles
   q <- quantile(pheno[["PRS"]], probs=c(p,rev(1-p)))
 
-  pheno[[paste0(prscols[i],"_group")]] <- cut(pheno[["PRS"]], q, include.lowest=TRUE,
+  pheno[[paste0(prscols[l],"_group")]] <- cut(pheno[["PRS"]], q, include.lowest=TRUE,
                                             labels=paste("Group",1:(2*length(p)-1)))
   
   
   
   #Make all necessary variables factors
-  pheno[[paste0(prscols[i],"_group")]] <- as.factor(pheno[[paste0(prscols[i],"_group")]])
-  pheno[[paste0(prscols[i],"_group")]] <- relevel(pheno[[paste0(prscols[i],"_group")]], ref=paste("Group",length(p)))
+  pheno[[paste0(prscols[l],"_group")]] <- as.factor(pheno[[paste0(prscols[l],"_group")]])
+  pheno[[paste0(prscols[l],"_group")]] <- relevel(pheno[[paste0(prscols[l],"_group")]], ref=paste("Group",length(p)))
   
   #Specify age as either the Age at Onset or End of Follow-up (if not a case)
   pheno$AGE <- ifelse(pheno[[phenocols[l]]]==1, time_length(difftime(pheno[[paste0(phenocols[l],"_DATE")]], pheno$DATE_OF_BIRTH), 'years'), time_length(difftime(pheno$END_OF_FOLLOWUP, pheno$DATE_OF_BIRTH), 'years'))
@@ -184,7 +189,7 @@ for(l in 1:length(phenocols)){
   
   
   ###group and raw PGS 
-  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[l],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[l],") ~ ",prscols[l],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
   out <- out %>% add_row(cindex=concordance(survival)$concordance, cindex_SE=sqrt(concordance(survival)$var), model="PRS_percentile_group",pheno=phenocols[l])
   
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[l],") ~ PRS + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
@@ -196,7 +201,7 @@ for(l in 1:length(phenocols)){
   
   
   #then add grouping back
-  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[l],") ~ ",prscols[i],"_group + BY + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
+  survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[l],") ~ ",prscols[l],"_group + BY + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
   out <- out %>% add_row(cindex=concordance(survival)$concordance, cindex_SE=sqrt(concordance(survival)$var), model="PRS_percentile_group_and_birthyear",pheno=phenocols[l])
   
 
