@@ -24,19 +24,18 @@ print(opt)
 
 phenocols <- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "I9_CHD", "C3_COLORECTAL", "G6_EPLEPSY", "GOUT", "COX_ARTHROSIS", "KNEE_ARTHROSIS", "F5_DEPRESSIO", "C3_MELANOMA_SKIN", "RHEUMA_SEROPOS_OTH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 prscols <- c("AllCancers", "Appendicitis", "Asthma", "Atrial_Fibrillation", "CHD", "Colorectal_Cancer", "Epilepsy","Gout", "Hip_Osteoarthritis", "Knee_Osteoarthritis","MDD", "Melanoma", "Rheumatoid_Arthritis", "T1D","T2D", "ILD", "Lung_Cancer")
-phenocols <- c("C3_CANCER")
 
 out<-data.frame(model=NA,biobank=NA,cindex=NA,cindex_SE=NA,pheno=NA)
 
 p<-c(0,0.01,0.05,0.1,0.2,0.4)
 
 
-pheno <- fread(input=opt$phenofile, data.table=FALSE)
+
 
 for(i in 1:length(phenocols)){        
   
   print(phenocols[i])
-  
+  pheno <- fread(input=opt$phenofile, data.table=FALSE)
   #NB: You may want to read in specific column names for the phenotype of interest in each loop if your file is very large 
   #pheno <- fread(input=opt$phenofile,select=c("SEX","Person.agreementDate","ANCESTRY","VKOOD1","VKOOD2","eid","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
   
@@ -134,10 +133,11 @@ prscols<-c("Breast_Cancer","Prostate_Cancer")
 sex_string<-c(2,1) #comment this out and choose FEMALE, MALE if you use that convention
 #but be sure to keep the order of female first due to breast cancer then prostrate cancer
 
-pheno <- fread(input=opt$phenofile, data.table=FALSE)  
+
 
 for(l in 1:length(phenocols)){     
 
+  pheno <- fread(input=opt$phenofile, data.table=FALSE)  
   #NB: You may want to read in specific column names for the phenotype of interest in each loop if your file is very large 
   #pheno <- fread(input=opt$phenofile,select=c("SEX","Person.agreementDate","ANCESTRY","VKOOD1","VKOOD2","eid","DATE_OF_BIRTH","PC1","PC2","PC3","PC4","PC5","PC6","PC7","PC8","PC9","PC10",phenocols[i],paste0(phenocols[i],"_DATE"),"END_OF_FOLLOWUP"), data.table=FALSE)
   
@@ -146,6 +146,7 @@ for(l in 1:length(phenocols)){
   
   #Read in PRS scores 
   PRS <- fread(input=paste0(opt$prs_path,prscols[l],"_PRS.sscore"), data.table=FALSE)
+  
   
   #NB: some people may have SCORE1_SUM, or just IID not FID - revise as needed so you select the ID and the score from your file
   PRS <- PRS[,c("#FID","IID","SCORE1_AVG")]
