@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/418926965.svg)](https://zenodo.org/doi/10.5281/zenodo.10632986)
+
 # Pipeline for the flagship project (WP2)
 This analysis is broken up into [Part 1](https://github.com/intervene-EU-H2020/flagship/blob/main/README.md#part-1-biobank-specific-analyses), analyses deployed to analysts with indiviudal-level data access in each biobank, and [Part 2](https://github.com/intervene-EU-H2020/flagship/blob/main/README.md#part-2-analyses-on-summary-statistics), analyses done on summary statistics to draw conclusions across biobanks. In each step, this README text explains what parts of the scripts need to be adjusted to your file paths and dataset.
 
