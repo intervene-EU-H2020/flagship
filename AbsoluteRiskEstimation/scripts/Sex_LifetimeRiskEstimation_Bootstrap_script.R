@@ -442,11 +442,11 @@ while(m < opt$bootstrap){
       scale_fill_manual(values=colors,labels = c("< 20%", "40-60%", "> 95%")) +
       guides(color = guide_legend(reverse=TRUE),fill=guide_legend(reverse=TRUE)) +
       theme(title = element_text(size = 22),
-            legend.text = element_text(size = 16),
-            legend.title = element_text(size = 18),
-            axis.title.x = element_text(size = 18),
-            axis.text.x = element_text(size = 12, angle=-90, hjust=0),
-            axis.title.y = element_text(size = 18),
-            axis.text.y = element_text(size = 16))
-    ggsave(paste0(opt$dir,opt$hr_pheno,"_",opt$sex,"_LifetimeRisk_Bootstrapped_",opt$biobank,".png"), height=10 , width=10)
+            legend.text = element_text(size = 22),
+            legend.title = element_text(size = 22),
+            axis.title.x = element_text(size = 24),
+            axis.text.x = element_text(size = 24, angle=45, hjust=1),
+            axis.title.y = element_text(size = 24),
+            axis.text.y = element_text(size = 24))
+    ggsave(paste0(opt$dir,opt$hr_pheno,"_",opt$sex,"_LifetimeRisk_Bootstrapped_",opt$biobank,".png"), height=10 , width=10, dpi=300)
 

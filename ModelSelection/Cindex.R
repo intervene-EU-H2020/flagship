@@ -14,7 +14,7 @@ option_list <- list(
   make_option("--biobank",type="character",default="",help="String to describe your biobank")
 )
 
-### example Cindex.R --phenofile </path/to/file.txt> --prs </path/to/scores/> --output_dr /path/to/out --biobank "string"
+### example Cindex.R --phenofile </path/to/file.txt> --prs </path/to/scores/> --output_dir /path/to/out --biobank "string"
 
 parser <- OptionParser(usage="%prog [options]", option_list=option_list, description="This script calculates c-index for several models")
 
@@ -64,7 +64,6 @@ for(i in 1:length(phenocols)){
   pheno[[paste0(prscols[i],"_group")]] <- cut(pheno[["PRS"]], q, include.lowest=TRUE,
                                             labels=paste("Group",1:(2*length(p)-1)))
 
-
   #Make all necessary variables factors
   pheno[[paste0(prscols[i],"_group")]] <- as.factor(pheno[[paste0(prscols[i],"_group")]])
   pheno[[paste0(prscols[i],"_group")]] <- relevel(pheno[[paste0(prscols[i],"_group")]], ref=paste("Group",length(p)))
@@ -85,7 +84,6 @@ for(i in 1:length(phenocols)){
   ###null model
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
   out <- out %>% add_row(cindex=concordance(survival)$concordance, cindex_SE=sqrt(concordance(survival)$var), model="null",pheno=phenocols[i])
-
   
   ###group and raw PGS 
   survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)

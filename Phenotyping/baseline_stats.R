@@ -31,8 +31,6 @@ p<- c("C3_CANCER", "K11_APPENDACUT", "J10_ASTHMA", "I9_AF", "C3_BREAST", "I9_CHD
                "C3_MELANOMA_SKIN", "C3_PROSTATE", "RHEUMA_SEROPOS_OTH", "T1D", "T2D", "ILD", "C3_BRONCHUS_LUNG")
 p<-p[!(p %in% drop)] #drop any phenotypes you don't have to avoid errors later
 
-p<- c("C3_CANCER", "K11_APPENDACUT")
-
 #phenotype file must have "SEX", DATE_OF_BIRTH", "START_OF_FOLLOWUP","END_OF_FOLLOWUP" in YYYY-MM-DD format
 #each of the phenotypes above must have a matching column which is the same name with "_DATE" appended
 
@@ -115,6 +113,13 @@ for (idx in 1:length(p)){
       sex_cor_ci<-cor.test(pull(df,p[idx]),df$SEX_NUM,method="pearson")$conf.int
     }
     
+    
+    ### basic survival model
+    #surv ~ AGE + sex per SD of PRS
+    #survival <- coxph(as.formula(paste0("Surv(AGE,",phenocols[i],") ~ ",prscols[i],"_group + PC1 + PC2 + PC3 + PC4 + PC5 + PC6 + PC7 + PC8 + PC9 + PC10")), data=pheno, na.action=na.exclude)
+    #fwrite()
+    #need regisstat variable
+    
     #female percentage
     female<-df[df$SEX_NUM==0,]
     n_female_case<-nrow(df %>% filter(SEX_NUM==0 & get(p[idx])==1))
@@ -191,8 +196,12 @@ for (idx in 1:length(p)){
     #Included if you have reached that age, but only a case if you have had disease onset prior to the end of the 5 year age bin.
     ages<-seq(5,100,5)
     tmp3<-NULL
+    #from birth
+    tmp <- df %>% mutate(AGE=if_else(get(p[idx])==1,
+                                     time_length(difftime(PHENO_DATE,DATE_OF_BIRTH),'years'), #age at diagnosis
+                                     time_length(difftime(END_OF_FOLLOWUP, DATE_OF_BIRTH), 'years'))) #age at end of follow up
     for (a in 1:length(ages)){
-      tmp3[[a]]<-tmp %>% filter(AGE<ages[a]) %>% group_by(SEX_NUM) %>% count(get(p[idx])) %>% mutate(prop = prop.table(n))
+      tmp3[[a]]<-tmp %>% filter(AGE<ages[a]&AGE>=ages[a-1]) %>% group_by(SEX_NUM) %>% count(get(p[idx])) %>% mutate(prop = prop.table(n))
       tmp3[[a]]$age<-ages[a]
       tmp3[[a]]$pheno<-p[idx]
     }
@@ -234,6 +243,9 @@ write.csv(format(prev,digits=3),paste0(output_dir,biobank,"_prevalences.csv"),ro
 
 #write incidence data frame 
 write.csv(format(inc,digits=3),paste0(output_dir,biobank,"_incidences.csv"),row.names=FALSE,quote=FALSE)
+
+
+
 
 
 #plot 
