@@ -29,6 +29,8 @@ all$pheno[all$pheno=="Knee_ARTHROSIS"]<-"KNEE_ARTHROSIS"
 all$ub<-all$cindex+(1.96*all$cindex_SE)
 all$lb<-all$cindex-(1.96*all$cindex_SE)
 
+fwrite(all,"c_index_all.tab",sep="\t",quote=FALSE,col.names=TRUE,row.names=FALSE)
+
 jpeg(file="cindex_facet_phenos.jpg",height=1500,width=1500,res=200)
 ggplot(all,aes(x=cindex,y=pheno,color=model)) + geom_point(alpha=0.5) + facet_wrap(~biobank) + 
   theme_bw() + theme(legend.position="bottom") +
