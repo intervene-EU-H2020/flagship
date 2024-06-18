@@ -7,7 +7,8 @@ This analysis is broken up into [Part 1](https://github.com/intervene-EU-H2020/f
 These scripts assume you have plink-1.9 and R v4.1.0 or higher installed on your biobank computing system. Required R libraries: data.table, tidyverse/dplyr 
 
 #### Citation
-Jermy, Läll, Wolford, et al. A unified framework for estimating country-specific cumulative incidence for 18 diseases stratified by polygenic risk. [medRxiv.](https://doi.org/10.1101/2023.06.12.23291186)
+Jermy, B., Läll, K., Wolford, B.N. et al. A unified framework for estimating country-specific cumulative incidence for 18 diseases stratified by polygenic risk. Nat Commun 15, 5007 (2024). [https://doi.org/10.1038/s41467-024-48938-2](https://www.nature.com/articles/s41467-024-48938-2)
+
 
 #### License
 This code is available under MIT license.
